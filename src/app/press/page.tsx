@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { SOCIAL } from "@/config";
+import { Reveal } from "@/components/Reveal";
+import { BOOK, SOCIAL } from "@/config";
 
 export const metadata: Metadata = {
   title: "Press Kit — Daniel Kliewer",
   description:
-    "Press kit for Daniel Kliewer: bios, downloadable assets, and interview topics on computational sovereignty, local-first AI, and the refusal discipline.",
+    "Press kit for Daniel Kliewer: bios, downloadable assets, and interview topics on computational sovereignty, local-first AI, and governed agents.",
   openGraph: {
     title: "Press kit — Daniel Kliewer",
     description:
@@ -21,30 +22,39 @@ export const metadata: Metadata = {
   },
 };
 
-const SERIF = "font-['Fraunces',Georgia,serif]";
-const MONO = "font-['JetBrains_Mono',ui-monospace,monospace]";
-
 const topics = [
-  "Computational sovereignty: what changes when you own every layer",
-  "Local-first AI as the precondition for trustworthy systems",
-  "Deterministic systems: why reproducibility beats vibes",
-  "AI in regulated industries: law, healthcare, and the audit trail",
-  "The refusal discipline: teaching agents when to say no",
-  "Open weights and the economics of owning your models",
+  "Pricing the cloud as a liability: what changes when you own every layer",
+  "Local-first AI as the precondition for systems you can audit",
+  "Deterministic infrastructure around probabilistic models",
+  "AI in regulated industries: law, healthcare, and the evidence trail",
+  "The refusal discipline: building agents that know when to say no",
+  "Open weights and the economics of owning your inference",
 ];
 
 const assets = [
   {
     title: "Author photo",
-    desc: "Headshot for articles, event listings, and promotional materials.",
+    desc: "Portrait of Daniel Kliewer. Free for editorial use with credit.",
     href: "/images/profile.jpeg",
-    note: "Download photo ↓",
+    note: "Download JPEG ↓",
   },
   {
-    title: "Book cover",
-    desc: "Computational Sovereignty hardcover art for features and reviews.",
-    href: "/images/book-cover.png",
-    note: "Download cover ↓",
+    title: "Book cover — front",
+    desc: "Front cover render of the Computational Sovereignty hardcover.",
+    href: BOOK.coverFront,
+    note: "Download PNG ↓",
+  },
+  {
+    title: "Book cover — spine",
+    desc: "Spine render, for shelf and lineup graphics.",
+    href: BOOK.coverSpine,
+    note: "Download PNG ↓",
+  },
+  {
+    title: "Book cover — back",
+    desc: "Back cover render with the full jacket copy.",
+    href: BOOK.coverBack,
+    note: "Download PNG ↓",
   },
 ];
 
@@ -52,66 +62,93 @@ export default function PressPage() {
   return (
     <>
       {/* HEAD */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
+      <section className="border-b border-hairline">
         <Container className="max-w-3xl py-16 md:py-24">
-          <p className={`${MONO} mb-6 text-[11px] tracking-[0.24em] uppercase text-[#d9a648]`}>
+          <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
             Press
           </p>
-          <h1
-            className={`${SERIF} mb-5 text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-[#ece7da] md:text-5xl`}
-          >
+          <h1 className="mb-5 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.02em] text-bone md:text-5xl">
             Press kit
           </h1>
-          <p className="max-w-xl text-base leading-relaxed text-[#a79d87]">
-            Resources for podcasts, conferences, and interviews covering one question: what
-            happens when you own every layer of your AI stack?
+          <p className="max-w-xl text-base leading-relaxed text-bone-dim">
+            Everything below is cleared for editorial use with credit. The
+            through-line of every interview: what becomes possible when you
+            own every layer of the stack.
           </p>
         </Container>
       </section>
 
       {/* BIO */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
+      <section className="border-b border-hairline">
         <Container className="max-w-3xl py-16 md:py-24">
-          <SectionHeading kicker="Bio" title="About Daniel Kliewer" />
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-[#a79d87]">
-            <p>
-              Daniel Kliewer researches how to reduce the cost of understanding human
-              knowledge. His work examines knowledge compilation, compile-time AI,
-              cognitive memory, and the local-first systems that make knowledge easier to
-              preserve, navigate, and share.
-            </p>
-            <p>
-              Rather than treating AI as a generator of more text, his work treats it as
-              infrastructure for understanding — systems that organize what we already know
-              so more people can learn it, teach it, and build on it. Each project tests a
-              specific hypothesis about how knowledge transfers between people.
-            </p>
-            <p>
-              He is the author of the forthcoming{" "}
-              <em className="text-[#ece7da]">
-                Computational Sovereignty: Building Local-First AI Systems
-              </em>{" "}
-              and the earlier <em className="text-[#ece7da]">Sovereign AI</em>, and he
-              publishes his research openly so the knowledge itself can be shared without
-              being consumed.
-            </p>
-          </div>
+          <SectionHeading kicker="Bio" title="The two-sentence version" />
+          <Reveal>
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-bone-dim">
+              <p>
+                Daniel Kliewer is an AI developer in Austin, Texas, who builds
+                systems that run on hardware he owns — models, retrieval,
+                knowledge graphs, and governed agents, each measured and
+                reproducible.
+              </p>
+              <p>
+                He is the author of{" "}
+                <em className="text-bone">
+                  Computational Sovereignty: Building Local-First AI Systems
+                </em>{" "}
+                (hardcover, 214 pages, {BOOK.price}), the earlier{" "}
+                <em className="text-bone">Sovereign AI</em>, and 184 open
+                research posts documenting the work as it happened.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="mt-10 border border-hairline bg-navy p-7">
+              <p className="mb-3 font-mono text-[11px] tracking-[0.24em] text-gold uppercase">
+                The longer version
+              </p>
+              <div className="space-y-4 text-sm leading-relaxed text-bone-dim">
+                <p>
+                  Kliewer&apos;s work starts from a single priced claim: cloud
+                  AI is a liability — data exfiltration by design, silent model
+                  changes, lock-in through API surface, cost curves that
+                  punish success, availability as someone else&apos;s decision.
+                  The alternative he builds is local-first: open weights on
+                  owned hardware, retrieval evaluated against frozen gold
+                  sets, knowledge compiled into graphs ahead of query time,
+                  and agents governed by deterministic substrates that treat
+                  model cognition as untrusted.
+                </p>
+                <p>
+                  His projects include SpecGen (deterministic code
+                  generation), Ganymede (governed claim compilation), and the
+                  Sovereign Agent Fleet — one frozen governance substrate
+                  exercised across eight domains, with 564 tests and zero
+                  security invariants depending on model behavior. He publishes
+                  the code, the measurements, and the dead ends.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* ASSETS */}
-      <section className="border-b border-[#2c2720] bg-[#1a1712]">
+      <section className="border-b border-hairline bg-navy-deep">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Media" title="Downloadable assets" />
-          <div className="mt-10 grid gap-px border border-[#2c2720] bg-[#2c2720] sm:grid-cols-2">
+          <div className="mt-10 grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
             {assets.map((a) => (
-              <div key={a.title} className="bg-[#1a1712] p-7">
-                <h3 className={`${SERIF} mb-3 text-lg font-medium text-[#ece7da]`}>{a.title}</h3>
-                <p className="mb-4 text-sm leading-relaxed text-[#a79d87]">{a.desc}</p>
+              <div key={a.title} className="bg-navy-deep p-7">
+                <h3 className="mb-3 font-display text-lg font-medium text-bone">
+                  {a.title}
+                </h3>
+                <p className="mb-4 text-sm leading-relaxed text-bone-dim">
+                  {a.desc}
+                </p>
                 <a
                   href={a.href}
                   download
-                  className={`${MONO} text-[11px] tracking-[0.16em] uppercase text-[#6fa58b] hover:text-[#d9a648]`}
+                  className="font-mono text-[11px] tracking-[0.16em] text-gold uppercase transition-colors hover:text-bone"
                 >
                   {a.note}
                 </a>
@@ -122,14 +159,14 @@ export default function PressPage() {
       </section>
 
       {/* INTERVIEW TOPICS */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
+      <section className="border-b border-hairline">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Interviews" title="Suggested topics" />
-          <div className="mt-10 grid gap-px border border-[#2c2720] bg-[#2c2720] sm:grid-cols-2">
+          <div className="mt-10 grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
             {topics.map((t) => (
-              <div key={t} className="flex items-center gap-3 bg-[#14120d] p-5">
-                <span className={`${MONO} shrink-0 text-[#6fa58b]`}>→</span>
-                <span className="text-sm leading-relaxed text-[#ece7da]">{t}</span>
+              <div key={t} className="flex items-center gap-3 bg-abyss p-5">
+                <span className="shrink-0 font-mono text-gold">→</span>
+                <span className="text-sm leading-relaxed text-bone">{t}</span>
               </div>
             ))}
           </div>
@@ -137,15 +174,19 @@ export default function PressPage() {
       </section>
 
       {/* CONTACT */}
-      <section className="bg-[#14120d]">
+      <section>
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Booking" title="Press contact" />
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-[#a79d87]">
-            For interviews, speaking, and press inquiries:{" "}
-            <a href={`mailto:${SOCIAL.email}`} className="text-[#6fa58b] hover:text-[#d9a648]">
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-bone-dim">
+            Interviews, speaking, review copies:{" "}
+            <a
+              href={`mailto:${SOCIAL.email}`}
+              className="text-gold transition-colors hover:text-bone"
+            >
               {SOCIAL.email}
             </a>
-            .
+            . One request: read chapter 1 first. It&apos;s free, ungated, and
+            it will make the conversation better.
           </p>
         </Container>
       </section>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import { getAllPosts, getAllTags } from "@/lib/posts";
+import { formatDate } from "@/lib/formatDate";
 import ResearchSearch from "./ResearchSearch";
 
 export const metadata: Metadata = {
@@ -13,16 +14,7 @@ export const metadata: Metadata = {
 
 const PAGE_SIZE = 20;
 
-function formatDate(iso: string): string {
-  const d = new Date(iso);
-  if (isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  });
-}
+
 
 function pageHref(page: number, tag?: string): string {
   const params = new URLSearchParams();
@@ -71,14 +63,14 @@ export default async function ResearchPage({
         lede="Every essay, tutorial, and experiment in the open — the working notes behind computational sovereignty."
       />
 
-      <p className="font-mono text-xs text-paper-dim mb-8">
+      <p className="font-mono text-xs text-bone-dim mb-8">
         {filtered.length} post{filtered.length === 1 ? "" : "s"}
         {tag ? (
           <>
-            {" "}tagged <span className="text-moss">{tag}</span>{" "}
+            {" "}tagged <span className="text-gold">{tag}</span>{" "}
             <Link
               href="/research"
-              className="underline underline-offset-2 hover:text-paper"
+              className="underline underline-offset-2 hover:text-bone"
             >
               clear
             </Link>
@@ -97,8 +89,8 @@ export default async function ResearchPage({
                 href={active ? "/research" : pageHref(1, t)}
                 className={`font-mono text-xs px-3 py-1.5 rounded-full border transition-colors ${
                   active
-                    ? "bg-moss text-ink border-moss"
-                    : "border-hairline text-paper-dim hover:text-paper hover:border-paper-dim"
+                    ? "bg-gold text-ink border-gold"
+                    : "border-hairline text-bone-dim hover:text-bone hover:border-paper-dim"
                 }`}
               >
                 {t} <span className="opacity-60">{count}</span>
@@ -112,13 +104,13 @@ export default async function ResearchPage({
           {pagePosts.map((p) => (
             <li key={p.slug} className="py-6 first:pt-0">
               <Link href={`/blog/${p.slug}`} className="group block">
-                <p className="font-mono text-xs text-paper-dim mb-2">
+                <p className="font-mono text-xs text-bone-dim mb-2">
                   {formatDate(p.date)}
                 </p>
-                <h2 className="font-display text-xl md:text-2xl text-paper group-hover:text-moss transition-colors">
+                <h2 className="font-display text-xl md:text-2xl text-bone group-hover:text-gold transition-colors">
                   {p.title}
                 </h2>
-                <p className="mt-2 text-sm text-paper-dim leading-relaxed">
+                <p className="mt-2 text-sm text-bone-dim leading-relaxed">
                   {p.description}
                 </p>
                 {p.tags.length > 0 && (
@@ -126,7 +118,7 @@ export default async function ResearchPage({
                     {p.tags.slice(0, 6).map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[11px] px-2 py-1 border border-hairline rounded text-paper-dim"
+                        className="font-mono text-[11px] px-2 py-1 border border-hairline rounded text-bone-dim"
                       >
                         {t}
                       </span>
@@ -147,7 +139,7 @@ export default async function ResearchPage({
             {currentPage > 1 && (
               <Link
                 href={pageHref(currentPage - 1, tag)}
-                className="px-3 py-2 border border-hairline rounded text-paper-dim hover:text-paper hover:border-paper-dim"
+                className="px-3 py-2 border border-hairline rounded text-bone-dim hover:text-bone hover:border-paper-dim"
               >
                 ← Prev
               </Link>
@@ -162,15 +154,15 @@ export default async function ResearchPage({
               .map((n, idx, arr) => (
                 <span key={n} className="flex items-center gap-2">
                   {idx > 0 && arr[idx - 1] !== n - 1 && (
-                    <span className="text-paper-dim">…</span>
+                    <span className="text-bone-dim">…</span>
                   )}
                   <Link
                     href={pageHref(n, tag)}
                     aria-current={n === currentPage ? "page" : undefined}
                     className={`px-3 py-2 rounded border ${
                       n === currentPage
-                        ? "bg-moss text-ink border-moss"
-                        : "border-hairline text-paper-dim hover:text-paper hover:border-paper-dim"
+                        ? "bg-gold text-ink border-gold"
+                        : "border-hairline text-bone-dim hover:text-bone hover:border-paper-dim"
                     }`}
                   >
                     {n}
@@ -180,7 +172,7 @@ export default async function ResearchPage({
             {currentPage < totalPages && (
               <Link
                 href={pageHref(currentPage + 1, tag)}
-                className="px-3 py-2 border border-hairline rounded text-paper-dim hover:text-paper hover:border-paper-dim"
+                className="px-3 py-2 border border-hairline rounded text-bone-dim hover:text-bone hover:border-paper-dim"
               >
                 Next →
               </Link>

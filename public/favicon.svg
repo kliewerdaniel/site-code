@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#14120d"/>
-  <rect x="6" y="6" width="52" height="52" rx="8" fill="none" stroke="#35b558" stroke-width="2"/>
-  <text x="32" y="42" font-family="monospace" font-size="24" font-weight="bold" fill="#f2eee1" text-anchor="middle">DK</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <rect x="1.5" y="1.5" width="45" height="45" rx="7" fill="#1a2332"/>
+  <rect x="1.5" y="1.5" width="45" height="45" rx="7" fill="none" stroke="#d9a648" stroke-width="2.5"/>
+  <line x1="9" y1="11" x2="39" y2="11" stroke="#d9a648" stroke-width="2"/>
+  <circle cx="9" cy="11" r="2.6" fill="#d9a648"/>
+  <circle cx="39" cy="11" r="2.6" fill="#d9a648"/>
+  <circle cx="24" cy="11" r="2.6" fill="#0b1119" stroke="#d9a648" stroke-width="2"/>
+  <rect x="12" y="26" width="5" height="12" fill="#d9a648"/>
+  <rect x="21.5" y="19" width="5" height="19" fill="#d9a648"/>
+  <rect x="31" y="12.5" width="5" height="25.5" fill="#d9a648"/>
+  <line x1="9" y1="38" x2="39" y2="38" stroke="#5b7ba3" stroke-width="2"/>
 </svg>

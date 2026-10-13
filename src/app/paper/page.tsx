@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SovereignMark } from "@/components/Logotype";
 
 export const metadata: Metadata = {
   title: "Sovereign Knowledge Systems — Research Whitepaper",
@@ -41,9 +42,9 @@ const PRINCIPLES = [
 
 export default function PaperPage() {
   return (
-    <article className="bg-ink text-paper">
+    <article className="bg-abyss text-bone">
       <Container className="pt-24 pb-14">
-        <p className="font-mono text-xs uppercase tracking-[0.18em] text-moss mb-5">
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-gold mb-5">
           Research Whitepaper · v3.6 · August 2026
         </p>
         <h1 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.05] max-w-4xl">
@@ -51,12 +52,10 @@ export default function PaperPage() {
           Consequential Authority
         </h1>
         <div className="flex items-center gap-3 mt-8">
-          <div className="w-10 h-10 bg-moss flex items-center justify-center">
-            <span className="text-ink text-sm font-medium">DK</span>
-          </div>
+          <SovereignMark size={40} />
           <div>
-            <p className="text-sm font-medium text-paper">Daniel Kliewer</p>
-            <p className="font-mono text-[0.6rem] tracking-[0.14em] uppercase text-paper-dim">
+            <p className="text-sm font-medium text-bone">Daniel Kliewer</p>
+            <p className="font-mono text-[0.6rem] tracking-[0.14em] uppercase text-bone-dim">
               Author
             </p>
           </div>
@@ -66,8 +65,8 @@ export default function PaperPage() {
       <section className="border-t border-hairline">
         <Container className="py-12 md:py-16">
           <div className="max-w-3xl">
-            <SectionHeading kicker="Abstract" title="What the paper establishes" />
-            <p className="text-paper-dim leading-relaxed text-lg mt-6">
+            <SectionHeading kicker="Abstract" title="What it claims — and what it measured" />
+            <p className="text-bone-dim leading-relaxed text-lg mt-6">
               {ABSTRACT}
             </p>
           </div>
@@ -79,13 +78,13 @@ export default function PaperPage() {
           <div className="max-w-3xl">
             <SectionHeading
               kicker="Core Contributions"
-              title="The principles, stated plainly"
+              title="Three principles, no exceptions"
             />
             <div className="mt-8 space-y-px bg-hairline border border-hairline">
               {PRINCIPLES.map((p) => (
-                <div key={p.name} className="bg-ink-card p-7">
-                  <h3 className="font-display text-xl text-paper mb-3">{p.name}</h3>
-                  <p className="text-paper-dim leading-relaxed">{p.text}</p>
+                <div key={p.name} className="bg-navy p-7">
+                  <h3 className="font-display text-xl text-bone mb-3">{p.name}</h3>
+                  <p className="text-bone-dim leading-relaxed">{p.text}</p>
                 </div>
               ))}
             </div>
@@ -96,23 +95,23 @@ export default function PaperPage() {
       <section className="border-t border-hairline">
         <Container className="py-12 md:py-16">
           <div className="max-w-3xl">
-            <SectionHeading kicker="Evaluation" title="Measured, not asserted" />
-            <ul className="mt-8 space-y-4 text-paper-dim leading-relaxed">
-              <li className="border-l-2 border-moss pl-5">
+            <SectionHeading kicker="Evaluation" title="Counted, not claimed" />
+            <ul className="mt-8 space-y-4 text-bone-dim leading-relaxed">
+              <li className="border-l-2 border-gold pl-5">
                 564 executable tests in the governance substrate — all passing —
                 plus 18 fail-closed compiler-gate tests, used as the benchmark.
               </li>
-              <li className="border-l-2 border-moss pl-5">
+              <li className="border-l-2 border-gold pl-5">
                 One genuinely blind adversary evaluation: a threat-model-agnostic
                 fuzzing harness over the authorization boundary — zero false
                 authorizations across 5,000 randomized attack vectors.
               </li>
-              <li className="border-l-2 border-moss pl-5">
+              <li className="border-l-2 border-gold pl-5">
                 Evaluation organized around four explicit research questions
                 (RQ1–RQ4) and a structural baseline: direct tool-invoking agent
                 versus governed architecture.
               </li>
-              <li className="border-l-2 border-amber pl-5">
+              <li className="border-l-2 border-gold pl-5">
                 The open problem, stated exactly: knowledge poisoning — a case in
                 which a perfectly authorized, perfectly executed action can still
                 be wrong.
@@ -130,23 +129,23 @@ export default function PaperPage() {
               {KEYWORDS.map((k) => (
                 <span
                   key={k}
-                  className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-paper-dim border border-hairline px-3 py-1.5"
+                  className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-bone-dim border border-hairline px-3 py-1.5"
                 >
                   {k}
                 </span>
               ))}
             </div>
-            <div className="mt-10 border border-hairline bg-ink-card p-7">
-              <h3 className="font-display text-2xl text-paper mb-3">
-                Full paper available on request
+            <div className="mt-10 border border-hairline bg-navy p-7">
+              <h3 className="font-display text-2xl text-bone mb-3">
+                The full whitepaper
               </h3>
-              <p className="text-paper-dim leading-relaxed mb-6">
-                The complete whitepaper (v3.6, August 2026) is available as a
-                PDF on request. Reach out and I&apos;ll send it over.
+              <p className="text-bone-dim leading-relaxed mb-6">
+                The complete paper (v3.6, August 2026) is available as a PDF
+                on request. Say the word and it&apos;s yours.
               </p>
               <Link
                 href="/contact"
-                className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-paper hover:border-moss hover:text-moss transition-colors"
+                className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-bone hover:border-gold hover:text-gold transition-colors"
               >
                 Request the paper →
               </Link>
@@ -154,13 +153,13 @@ export default function PaperPage() {
             <div className="mt-10 flex flex-wrap gap-6 items-center">
               <Link
                 href="/fleet"
-                className="font-mono text-xs uppercase tracking-[0.16em] text-moss hover:underline"
+                className="font-mono text-xs uppercase tracking-[0.16em] text-gold hover:underline"
               >
                 ← The Fleet
               </Link>
               <Link
                 href="/research"
-                className="font-mono text-xs uppercase tracking-[0.16em] text-moss hover:underline"
+                className="font-mono text-xs uppercase tracking-[0.16em] text-gold hover:underline"
               >
                 Browse the research log →
               </Link>

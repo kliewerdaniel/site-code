@@ -27,51 +27,51 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const LAYER_DETAILS: Record<string, { problem: string; whyMatters: string }> = {
   "knowledge-compilation": {
     problem:
-      "Human knowledge is scattered across documents, notes, and code. Until it is compiled into navigable structure, it cannot be understood at scale.",
+      "Human knowledge sits scattered across documents, notes, and repositories. Uncompiled, it can't be understood at scale — only searched.",
     whyMatters:
-      "Compilation is the first step in reducing the cost of understanding: it turns a corpus into something a person can actually explore.",
+      "Compilation turns a corpus into something a person can actually explore. That's the first step in making understanding cheap.",
   },
   "compile-time-ai": {
     problem:
-      "Query-time AI rediscovers the same relationships repeatedly. Reasoning done ahead of time is far cheaper to reuse.",
+      "Query-time AI re-derives the same relationships on every request — burning tokens to reach conclusions someone already reached.",
     whyMatters:
-      "Compile-time AI is how we lower the cognitive cost of understanding — the hard work happens once, for everyone.",
+      "Do the hard reasoning once and compile it. Everyone after you inherits the answer instead of re-paying for the question.",
   },
   "scientific-knowledge-systems": {
     problem:
-      "Scientific knowledge is fragmented across papers, code, and institutions. Preserving and connecting it accelerates everyone who comes next.",
+      "Scientific knowledge is fragmented across papers, codebases, and institutions. Each fragment is findable; the connections between them are not.",
     whyMatters:
-      "Every hour a researcher spends searching is an hour not spent discovering. Better knowledge systems return that time to science.",
+      "Every hour a researcher spends re-finding known things is an hour not spent discovering new ones.",
   },
   "local-first-ai": {
     problem:
-      "Cloud-dependent AI places knowledge behind someone else's infrastructure and incentives. Local-first keeps it under the user's control.",
+      "Cloud-hosted AI puts your knowledge behind someone else's infrastructure, pricing, and policies.",
     whyMatters:
-      "Knowledge that can be shared without being consumed should also be owned. Local-first is how understanding stays sovereign.",
+      "Understanding you can't run without permission isn't yours. Local-first keeps the whole loop under your control.",
   },
   "cognitive-memory": {
     problem:
-      "Systems that forget between sessions cannot accumulate understanding. Memory is what turns information into knowledge.",
+      "Systems that forget between sessions can't accumulate understanding. Every conversation starts at zero.",
     whyMatters:
-      "Durable memory is how the cost of understanding keeps falling — each session builds on the last instead of starting over.",
+      "Durable, structured memory is what turns repeated information into compounding knowledge.",
   },
   "research-automation": {
     problem:
-      "Much knowledge work is ingestion, synthesis, and reporting. Automating it returns human time to judgment and care.",
+      "Ingestion, synthesis, and reporting eat the hours that should go to judgment.",
     whyMatters:
-      "Automation at the level of understanding — not replacement — is how more people can do more meaningful work.",
+      "Automate the mechanical parts of knowledge work so human time goes to the parts that need a human.",
   },
   "knowledge-representation": {
     problem:
-      "Understanding that cannot be represented cannot be reused, taught, or improved. Representation is the substrate of transfer.",
+      "Understanding that can't be represented can't be reused, taught, or checked.",
     whyMatters:
-      "Clear representation is what makes knowledge portable — from one mind to another, from one system to the next.",
+      "Representation is the substrate of transfer — from one mind to another, from one system to the next.",
   },
   "decision-graphs": {
     problem:
-      "Judgment is usually implicit and unrepeatable. Making it explicit lets reasoning be inspected and taught.",
+      "Judgment is usually implicit: unrepeatable, uninspectable, unteachable.",
     whyMatters:
-      "When decisions are graphs, not black boxes, understanding becomes something we can pass on and refine.",
+      "Make decisions explicit graphs and reasoning becomes something you can audit, hand down, and improve.",
   },
 };
 
@@ -470,24 +470,24 @@ export default async function FleetDomainPage({ params }: Props) {
   const systems = PROJECTS[domain] ?? [];
 
   return (
-    <div className="bg-ink text-paper">
+    <div className="bg-abyss text-bone">
       <Container className="pt-24 pb-14">
         <Link
           href="/fleet"
-          className="font-mono text-xs uppercase tracking-[0.16em] text-moss hover:underline mb-8 inline-block"
+          className="font-mono text-xs uppercase tracking-[0.16em] text-gold hover:underline mb-8 inline-block"
         >
           ← Back to the Fleet
         </Link>
         <div className="flex items-center gap-4 mb-5">
-          <span className="text-moss text-3xl">{layer.icon}</span>
+          <span className="text-gold text-3xl">{layer.icon}</span>
           <h1 className="font-display text-4xl md:text-6xl tracking-tight">
             {layer.name}
           </h1>
         </div>
-        <p className="text-xl text-paper-dim mb-4 leading-relaxed max-w-3xl">
+        <p className="text-xl text-bone-dim mb-4 leading-relaxed max-w-3xl">
           {layer.description}
         </p>
-        <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-paper-dim">
+        <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-bone-dim">
           A Fleet domain · running on the frozen substrate
         </p>
       </Container>
@@ -495,13 +495,13 @@ export default async function FleetDomainPage({ params }: Props) {
       <section className="border-t border-hairline">
         <Container className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline border border-hairline">
-            <div className="bg-ink-card p-7">
+            <div className="bg-navy p-7">
               <h2 className="font-display text-2xl mb-3">The problem it answers</h2>
-              <p className="text-paper-dim leading-relaxed">{details.problem}</p>
+              <p className="text-bone-dim leading-relaxed">{details.problem}</p>
             </div>
-            <div className="bg-ink-card p-7">
+            <div className="bg-navy p-7">
               <h2 className="font-display text-2xl mb-3">Why it matters</h2>
-              <p className="text-paper-dim leading-relaxed">{details.whyMatters}</p>
+              <p className="text-bone-dim leading-relaxed">{details.whyMatters}</p>
             </div>
           </div>
         </Container>
@@ -511,27 +511,27 @@ export default async function FleetDomainPage({ params }: Props) {
         <Container className="py-12 md:py-16">
           <SectionHeading
             kicker={`${systems.length} Fleet Deployment${systems.length === 1 ? "" : "s"}`}
-            title="Systems in this domain"
-            lede="Open source on GitHub. Every system below runs on the same frozen governance substrate — proving the domain required zero substrate edits."
+            title="The deployments"
+            lede="Open on GitHub. Every system below runs on the same frozen decision substrate — this domain is one more proof that the substrate never needed editing."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             {systems.map((sys) => (
-              <div key={sys.name} className="bg-ink-card border border-hairline p-7">
+              <div key={sys.name} className="bg-navy border border-hairline p-7">
                 <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="font-display text-2xl text-paper">{sys.name}</h3>
-                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-amber whitespace-nowrap pt-1">
+                  <h3 className="font-display text-2xl text-bone">{sys.name}</h3>
+                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-gold whitespace-nowrap pt-1">
                     {sys.status}
                   </span>
                 </div>
-                <p className="text-paper-dim leading-relaxed mb-5">{sys.summary}</p>
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-paper-dim mb-5">
+                <p className="text-bone-dim leading-relaxed mb-5">{sys.summary}</p>
+                <p className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-bone-dim mb-5">
                   {sys.technologies.join(" · ")}
                 </p>
                 <a
                   href={`https://github.com/${sys.repository}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs uppercase tracking-[0.16em] text-moss hover:underline"
+                  className="font-mono text-xs uppercase tracking-[0.16em] text-gold hover:underline"
                 >
                   github.com/{sys.repository} →
                 </a>
@@ -546,13 +546,13 @@ export default async function FleetDomainPage({ params }: Props) {
           <div className="flex flex-wrap gap-6 items-center">
             <Link
               href="/fleet"
-              className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-paper hover:border-moss hover:text-moss transition-colors"
+              className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-bone hover:border-gold hover:text-gold transition-colors"
             >
               ← All Domains
             </Link>
             <Link
               href="/research"
-              className="font-mono text-xs uppercase tracking-[0.16em] text-moss hover:underline"
+              className="font-mono text-xs uppercase tracking-[0.16em] text-gold hover:underline"
             >
               Browse the research log →
             </Link>

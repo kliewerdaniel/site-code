@@ -1,51 +1,88 @@
 @import "tailwindcss";
 
-/* Design tokens — sovereign workshop.
-   :root carries the dark-first defaults; html.light overrides below. */
+/* ============================================================
+   Design system v2 — "The Sovereign Machine"
+   Dark-first. Tokens derived from the book cover: dark navy,
+   amber/gold author-name tone, blueprint grid steel-blue.
+   No light theme: the machine runs at night.
+   ============================================================ */
+
 @theme {
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-space-grotesk), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
     monospace;
 
-  --color-ink: #14120d;
-  --color-ink-soft: #1d1b14;
-  --color-ink-card: #201d15;
-  --color-paper: #f2eee1;
-  --color-paper-dim: #b9b3a1;
-  --color-moss: #35b558;
-  --color-moss-deep: #1a7a3f;
-  --color-amber: #d99a2b;
-  --color-hairline: #2b2820;
-}
+  /* Surfaces */
+  --color-abyss: #0b1119; /* page background: near-black navy */
+  --color-navy: #1a2332; /* cover navy: panels, cards */
+  --color-navy-deep: #131b28; /* recessed panels */
+  --color-navy-raised: #222d42; /* raised elements */
 
-/* Light theme — alternate values. --color-amber stays the same. */
-html.light {
-  --color-ink: #f2eee1;
-  --color-ink-soft: #e9e4d4;
-  --color-ink-card: #ffffff;
-  --color-paper: #14120d;
-  --color-paper-dim: #4a463a;
-  --color-moss: #1a7a3f;
-  --color-hairline: #d8d2bd;
+  /* Ink */
+  --color-bone: #ece7da; /* primary text */
+  --color-bone-dim: #a79d87; /* secondary text */
+  --color-bone-faint: #6f6a5c; /* tertiary text */
+
+  /* Signal */
+  --color-gold: #d9a648; /* amber/gold: primary accent */
+  --color-gold-deep: #9c7023; /* pressed/hover gold */
+  --color-steel: #5b7ba3; /* blueprint steel-blue: grid, pulses */
+  --color-steel-dim: #33465e;
+
+  /* Lines */
+  --color-hairline: #28334a;
 }
 
 ::selection {
-  background: var(--color-moss);
-  color: var(--color-ink);
+  background: var(--color-gold);
+  color: var(--color-abyss);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Subtle terminal-scanline texture for hero bands (opt-in via class). */
-.spec-grid {
+body {
+  background-color: var(--color-abyss);
+  color: var(--color-bone);
+}
+
+/* Static blueprint-grid fallback (reduced motion / no WebGL).
+   Mirrors the shader's grid so the page looks right either way. */
+.blueprint-static {
+  background-color: var(--color-abyss);
   background-image: linear-gradient(
       to right,
-      var(--color-hairline) 1px,
+      rgb(26 35 50 / 0.55) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, var(--color-hairline) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to bottom, rgb(26 35 50 / 0.55) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Focus visibility: sovereignty includes keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Thin, quiet scrollbars. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-hairline) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-hairline);
+  border-radius: 4px;
+}
+
+/* Chapter-card motif: gold keyline derived from the cover's frame. */
+.cover-keyline {
+  box-shadow: inset 0 0 0 1px var(--color-hairline),
+    inset 0 0 0 4px var(--color-abyss), inset 0 0 0 5px rgb(217 166 72 / 0.35);
 }

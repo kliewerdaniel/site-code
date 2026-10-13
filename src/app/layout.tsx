@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SITE, BOOK } from "@/config";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import ShaderBackground from "@/components/ShaderBackground";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -39,23 +40,19 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${BOOK.title}: ${BOOK.subtitle}`,
     description: BOOK.promise,
-    images: [BOOK.coverImage],
+    images: [BOOK.coverFront],
   },
   twitter: {
     card: "summary_large_image",
     title: `${BOOK.title}: ${BOOK.subtitle}`,
     description: BOOK.promise,
-    images: [BOOK.coverImage],
+    images: [BOOK.coverFront],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#14120d",
+  themeColor: "#0b1119",
 };
-
-// Pre-hydration theme init: default is dark; "light" stored in
-// localStorage key "dk-theme" adds the .light class before first paint.
-const themeInitScript = `(function(){try{var t=localStorage.getItem("dk-theme");if(t==="light"){document.documentElement.classList.add("light")}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -68,10 +65,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fraunces.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
-      <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      <body className="bg-ink text-paper font-sans antialiased min-h-screen flex flex-col">
+      <body className="flex min-h-screen flex-col bg-abyss font-sans text-bone antialiased">
+        <ShaderBackground />
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main className="relative flex-1">{children}</main>
         <SiteFooter />
         <Analytics />
       </body>
