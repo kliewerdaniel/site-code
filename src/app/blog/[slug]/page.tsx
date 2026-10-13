@@ -8,6 +8,7 @@ import Prose from "@/components/Prose";
 import Container from "@/components/Container";
 import { SITE } from "@/config";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/posts";
+import { formatDate } from "@/lib/formatDate";
 
 export const dynamicParams = false;
 
@@ -56,7 +57,7 @@ const markdownComponents: Components = {
   pre: ({ node, ...props }) => (
     <pre
       {...props}
-      className="bg-ink-soft font-mono text-sm overflow-x-auto rounded-lg p-4 my-6 border border-hairline"
+      className="bg-navy-deep font-mono text-sm overflow-x-auto rounded-lg p-4 my-6 border border-hairline"
     />
   ),
   code: ({ node, className, children, ...props }) => {
@@ -71,7 +72,7 @@ const markdownComponents: Components = {
     return (
       <code
         {...props}
-        className="font-mono text-[0.85em] bg-ink-soft px-1.5 py-0.5 rounded border border-hairline"
+        className="font-mono text-[0.85em] bg-navy-deep px-1.5 py-0.5 rounded border border-hairline"
       >
         {children}
       </code>
@@ -83,16 +84,7 @@ const markdownComponents: Components = {
   ),
 };
 
-function formatDate(iso: string): string {
-  const d = new Date(iso);
-  if (isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  });
-}
+
 
 export default async function BlogPostPage({
   params,
@@ -111,9 +103,9 @@ export default async function BlogPostPage({
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="font-mono text-xs text-paper-dim mb-8"
+          className="font-mono text-xs text-bone-dim mb-8"
         >
-          <Link href="/research" className="hover:text-moss transition-colors">
+          <Link href="/research" className="hover:text-gold transition-colors">
             Research
           </Link>
           <span className="mx-2">/</span>
@@ -121,11 +113,11 @@ export default async function BlogPostPage({
         </nav>
 
         {/* Header */}
-        <h1 className="font-display text-3xl md:text-5xl text-paper leading-tight">
+        <h1 className="font-display text-3xl md:text-5xl text-bone leading-tight">
           {post.title}
         </h1>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-paper-dim">
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-bone-dim">
           <span>Daniel Kliewer</span>
           <span aria-hidden="true">·</span>
           <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -139,7 +131,7 @@ export default async function BlogPostPage({
               <Link
                 key={t}
                 href={`/research?tag=${encodeURIComponent(t)}`}
-                className="font-mono text-[11px] px-2 py-1 border border-hairline rounded text-paper-dim hover:text-paper hover:border-paper-dim transition-colors"
+                className="font-mono text-[11px] px-2 py-1 border border-hairline rounded text-bone-dim hover:text-bone hover:border-paper-dim transition-colors"
               >
                 {t}
               </Link>
@@ -174,7 +166,7 @@ export default async function BlogPostPage({
         {/* Related posts */}
         {related.length > 0 && (
           <section className="mt-16 pt-10 border-t border-hairline">
-            <h2 className="font-display text-2xl text-paper mb-6">
+            <h2 className="font-display text-2xl text-bone mb-6">
               Related research
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
@@ -182,15 +174,15 @@ export default async function BlogPostPage({
                 <Link
                   key={r.slug}
                   href={`/blog/${r.slug}`}
-                  className="group block border border-hairline rounded-lg p-5 hover:border-moss transition-colors"
+                  className="group block border border-hairline rounded-lg p-5 hover:border-gold transition-colors"
                 >
-                  <p className="font-mono text-[11px] text-paper-dim mb-2">
+                  <p className="font-mono text-[11px] text-bone-dim mb-2">
                     {formatDate(r.date)}
                   </p>
-                  <h3 className="font-display text-lg text-paper group-hover:text-moss transition-colors leading-snug">
+                  <h3 className="font-display text-lg text-bone group-hover:text-gold transition-colors leading-snug">
                     {r.title}
                   </h3>
-                  <p className="mt-2 text-sm text-paper-dim line-clamp-3">
+                  <p className="mt-2 text-sm text-bone-dim line-clamp-3">
                     {r.description}
                   </p>
                 </Link>

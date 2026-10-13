@@ -1,75 +1,80 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
-import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
 import { SOCIAL } from "@/config";
 
 export const metadata: Metadata = {
   title: "Contact — Daniel Kliewer",
   description:
-    "Contact Daniel Kliewer: email, X, GitHub, LinkedIn. For press inquiries, use the press kit.",
-  openGraph: {
-    title: "Contact — Daniel Kliewer",
-    description: "Email, X, GitHub, LinkedIn. For press, use the press kit.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Contact — Daniel Kliewer",
-    description: "Email, X, GitHub, LinkedIn. For press, use the press kit.",
-  },
+    "Contact Daniel Kliewer: email, X, GitHub, LinkedIn. No contact form — pick the channel that fits.",
 };
 
-const SERIF = "font-['Fraunces',Georgia,serif]";
-const MONO = "font-['JetBrains_Mono',ui-monospace,monospace]";
-
 const links = [
-  { label: "Email", href: `mailto:${SOCIAL.email}`, display: SOCIAL.email },
-  { label: "X", href: SOCIAL.x, display: "@kliewer_daniel" },
-  { label: "GitHub", href: SOCIAL.github, display: "github.com/kliewerdaniel" },
-  { label: "LinkedIn", href: SOCIAL.linkedin, display: "Daniel Kliewer" },
+  {
+    label: "Email",
+    display: SOCIAL.email,
+    href: `mailto:${SOCIAL.email}`,
+  },
+  {
+    label: "X",
+    display: "@kliewer_daniel",
+    href: SOCIAL.x,
+  },
+  {
+    label: "GitHub",
+    display: "kliewerdaniel",
+    href: SOCIAL.github,
+  },
+  {
+    label: "LinkedIn",
+    display: "danielkliewer",
+    href: SOCIAL.linkedin,
+  },
 ];
 
 export default function ContactPage() {
   return (
-    <section className="bg-[#14120d]">
+    <section>
       <Container className="max-w-3xl py-20 md:py-28">
-        <p className={`${MONO} mb-6 text-[11px] tracking-[0.24em] uppercase text-[#d9a648]`}>
+        <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
           Contact
         </p>
-        <h1
-          className={`${SERIF} mb-5 text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-[#ece7da] md:text-5xl`}
-        >
-          Get in touch
+        <h1 className="mb-5 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.02em] text-bone md:text-5xl">
+          Pick a channel.
         </h1>
-        <p className="mb-4 max-w-xl text-base leading-relaxed text-[#a79d87]">
-          No contact form — forms get spammed and the email gets read. Pick whichever
-          channel fits.
+        <p className="mb-4 max-w-xl text-base leading-relaxed text-bone-dim">
+          No contact form. Forms get spammed; email gets read. Business,
+          technical questions, and corrections to the book&apos;s numbers are
+          all welcome.
         </p>
-        <p className="mb-12 max-w-xl text-base leading-relaxed text-[#a79d87]">
-          For press, use the{" "}
-          <a href="/press" className="text-[#6fa58b] hover:text-[#d9a648]">
+        <p className="mb-12 max-w-xl text-base leading-relaxed text-bone-dim">
+          Press goes through the{" "}
+          <a href="/press" className="text-gold transition-colors hover:text-bone">
             press kit
           </a>
           .
         </p>
-        <div className="grid gap-px border border-[#2c2720] bg-[#2c2720] sm:grid-cols-2">
-          {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              target={l.href.startsWith("http") ? "_blank" : undefined}
-              rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group bg-[#14120d] p-7"
-            >
-              <p className={`${MONO} mb-2 text-[11px] tracking-[0.2em] uppercase text-[#a79d87]`}>
-                {l.label}
-              </p>
-              <p className={`${SERIF} text-lg text-[#ece7da] transition-colors group-hover:text-[#d9a648]`}>
-                {l.display} <span className={MONO}>↗</span>
-              </p>
-            </a>
-          ))}
-        </div>
+        <Reveal>
+          <div className="grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
+            {links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                target={l.href.startsWith("http") ? "_blank" : undefined}
+                rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="group bg-abyss p-7"
+              >
+                <p className="mb-2 font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
+                  {l.label}
+                </p>
+                <p className="font-display text-lg break-all text-bone transition-colors group-hover:text-gold">
+                  {l.display}{" "}
+                  <span className="font-mono text-sm">↗</span>
+                </p>
+              </a>
+            ))}
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

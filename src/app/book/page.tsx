@@ -2,327 +2,263 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { BookCover } from "@/components/BookCover";
-import { EmailCapture } from "@/components/EmailCapture";
+import { Reveal } from "@/components/Reveal";
+import ChapterStack, { CHAPTERS } from "@/components/ChapterStack";
+import { AmazonCta } from "@/components/AmazonCta";
 import { BOOK } from "@/config";
 
 export const metadata: Metadata = {
-  title: "The Book — Computational Sovereignty",
-  description:
-    "Computational Sovereignty: Building Local-First AI Systems. 24 chapters, ~46,000 words: local models, RAG, GraphRAG, governed agents, air-gapped security. Hardcover 6×9, 214 pages.",
+  title: `The Book — ${BOOK.title}`,
+  description: `Computational Sovereignty: Building Local-First AI Systems. 24 chapters, 8 parts, 214 pages of measured, reproducible local-first AI engineering. Hardcover, ${BOOK.price}.`,
   openGraph: {
-    title: "Computational Sovereignty — the book",
-    description:
-      "24 chapters, ~46,000 words: local models, RAG, GraphRAG, governed agents, air-gapped security. Hardcover 6×9, 214 pages.",
+    title: `${BOOK.title} — the full 24-chapter stack`,
+    description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
     type: "website",
-    images: [BOOK.coverImage],
+    images: [BOOK.coverFront],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Computational Sovereignty — the book",
-    description:
-      "24 chapters, ~46,000 words: local models, RAG, GraphRAG, governed agents, air-gapped security. Hardcover 6×9, 214 pages.",
+    title: `${BOOK.title} — the full 24-chapter stack`,
+    description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
   },
 };
 
-const SERIF = "font-['Fraunces',Georgia,serif]";
-const MONO = "font-['JetBrains_Mono',ui-monospace,monospace]";
-
-const chapters = [
-  "The Cloud Is a Liability",
-  "The Sovereignty Stack",
-  "Your First Local Model",
-  "Tokens, Context, and Sampling",
-  "Choosing Models Like an Engineer",
-  "Serving Models Locally",
-  "Embeddings and Vector Search",
-  "Building Local RAG",
-  "Evaluating Retrieval Honestly",
-  "From Documents to Graphs",
-  "GraphRAG in Practice",
-  "Compile-Time Intelligence",
-  "Tool Use Locally",
-  "State Machines Over Vibes",
-  "The Auditor Pattern",
-  "Quantified Personas",
-  "Dynamic Routing, MoE-Style",
-  "Persona Systems in Production",
-  "The Refusal Discipline",
-  "Contradiction Detection at Scale",
-  "Gold Sets and Frozen Benchmarks",
-  "The Local-First Security Model",
-  "Shipping Sovereign Software",
-  "The Sovereign Practice",
-];
-
-const forReaders = [
-  "Engineers who ship software and want AI on their own hardware",
-  "People in regulated fields who can't send data to a cloud",
-  "Researchers who need results they can reproduce",
-  "Anyone who suspects the demo is lying and wants the measurements",
-];
-
-const notFor = [
-  "You're looking for API wrappers around someone else's model",
-  "You want hype, vibes, and a forty-chapter sermon on the singularity",
-  "You need a framework comparison matrix instead of working systems",
-];
-
-const faqs = [
+/* Eight parts, stated as the claims they make. */
+const parts = [
   {
-    q: "What are the prerequisites?",
-    a: "Basic Python and comfort in a terminal. You don't need a math degree or a GPU cluster — one machine with a decent GPU (or even CPU, for the smaller models) is enough to follow every chapter hands-on.",
+    n: "I",
+    name: "Why Sovereignty",
+    claim: "The cloud is a priced liability, and the stack you need to replace it is five layers tall.",
   },
   {
-    q: "Is code included?",
-    a: "Yes. The book is built around runnable code — models you can download, pipelines you can run, measurements you can repeat. Every major claim comes with something you can execute and check.",
+    n: "II",
+    name: "Inference You Control",
+    claim: "Tokens, sampling, and model selection are engineering decisions with measurable consequences — treat them that way.",
   },
   {
-    q: "Why local-first?",
-    a: "Because dependence is a liability: on a vendor's pricing, on their uptime, on their policy changes, on their ability to see your data. A system you run is a system you can inspect, audit, and keep.",
+    n: "III",
+    name: "Memory That Isn&apos;t a Prompt",
+    claim: "Retrieval is only as honest as its evaluation. Build the gold set first, then believe your numbers.",
   },
   {
-    q: "When is it available?",
-    a: "The hardcover and ebook launch together. Join the email list for the launch notice — you'll also get the sample chapter free.",
+    n: "IV",
+    name: "Knowledge Graphs",
+    claim: "Reason once, compile the result. A knowledge graph is a decision you made ahead of time.",
   },
   {
-    q: "Is the ebook priced yet?",
-    a: "Ebook pricing will be announced at launch alongside the hardcover.",
+    n: "V",
+    name: "Agents That Obey",
+    claim: "An agent without a state machine is a rumor with tool access. Govern the transitions or inherit the incidents.",
   },
   {
-    q: "How is this different from your earlier book, Sovereign AI?",
-    a: "Sovereign AI is an architectural investigation — the reasoning, the first principles. Computational Sovereignty is the practitioner's book: the systems, the code, the measurements.",
+    n: "VI",
+    name: "Personas and Routing",
+    claim: "Personalities can be quantified, and routing between specialists beats one generalist — measured, not asserted.",
+  },
+  {
+    n: "VII",
+    name: "Verification Discipline",
+    claim: "Refusal is a feature, contradiction is data, and benchmarks are frozen or they are fiction.",
+  },
+  {
+    n: "VIII",
+    name: "Privacy, Security, Shipping",
+    claim: "Air-gapped systems have a security model, shipping has a checklist, and the practice compounds.",
   },
 ];
 
-function BuyCta() {
-  const live = BOOK.amazonUrl && !BOOK.amazonUrl.startsWith("#");
-  return (
-    <div className="flex flex-col items-center gap-2">
-      <a
-        href={BOOK.amazonUrl}
-        aria-disabled={!live}
-        className={`inline-flex items-center justify-center rounded-sm bg-[#3e6b52] px-9 py-4 ${MONO} text-[13px] tracking-[0.14em] uppercase text-[#0f110c] transition-colors hover:bg-[#4a7d62]`}
-      >
-        Buy on Amazon — {BOOK.price}
-      </a>
-      {!live && (
-        <p className={`${MONO} text-[10px] tracking-[0.2em] uppercase text-[#d9a648]`}>
-          Available at launch
-        </p>
-      )}
-    </div>
-  );
-}
+const faq = [
+  {
+    q: "Do I need a GPU?",
+    a: "For the serious chapters, yes — 24GB of VRAM or a Mac with unified memory is the entry ticket, and chapter 1 says so up front. The early chapters run fine on a CPU so you can start before the hardware arrives.",
+  },
+  {
+    q: "Is this just anti-cloud ideology?",
+    a: "No. Chapter 1 lists exactly when the cloud is the right call — frontier capability, tiny bursty workloads, no operational capacity — and prices the rest as a liability. The position is default-local, not never-cloud.",
+  },
+  {
+    q: "What skill level does it assume?",
+    a: "Comfort in a terminal, working Python, and no fear of a config file. It does not assume ML training experience — it does assume you have shipped software and been paged for it.",
+  },
+  {
+    q: "How is this different from the blog?",
+    a: "The 184 research posts are the laboratory: experiments, measurements, dead ends. The book is the compiled artifact — the reasoning done once, organized so you don&apos;t have to rediscover it across three years of archives.",
+  },
+  {
+    q: "Ebook or paperback?",
+    a: "Hardcover. 214 pages, 6×9, built to live on a desk next to the machine it describes. There is no DRM to strip because there is no DRM.",
+  },
+  {
+    q: "When does it ship?",
+    a: "The manuscript is complete and reviewed — 24 chapters, ~46,000 words. The Amazon listing opens at launch; the button below goes live the moment it does.",
+  },
+];
+
+const specs: [string, string][] = [
+  ["Title", `${BOOK.title}: ${BOOK.subtitle}`],
+  ["Format", BOOK.format],
+  ["Pages", BOOK.pages],
+  ["Chapters", `${BOOK.chapters} chapters · 8 parts`],
+  ["Words", BOOK.words],
+  ["Price", BOOK.price],
+  ["Author", "Daniel Kliewer"],
+];
 
 export default function BookPage() {
   return (
     <>
-      {/* PROMISE */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
-        <Container className="grid gap-12 py-16 md:grid-cols-[1.1fr_1fr] md:items-center md:py-24">
-          <div>
-            <p className={`${MONO} mb-6 text-[11px] tracking-[0.24em] uppercase text-[#d9a648]`}>
-              The book
-            </p>
-            <h1
-              className={`${SERIF} mb-5 text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-[#ece7da] md:text-6xl`}
-            >
-              {BOOK.title}
-            </h1>
-            <p className={`${SERIF} mb-6 text-xl italic text-[#a79d87]`}>{BOOK.subtitle}</p>
-            <p className="mb-6 max-w-xl text-base leading-relaxed text-[#a79d87]">
-              {BOOK.promise}
-            </p>
-            <dl className={`mb-10 grid max-w-xl grid-cols-3 gap-4 border-y border-[#2c2720] py-5 ${MONO} text-[11px] tracking-[0.12em] uppercase`}>
-              <div>
-                <dt className="mb-1 text-[#a79d87]">Chapters</dt>
-                <dd className="text-lg text-[#ece7da]">24</dd>
+      {/* HEAD */}
+      <section className="border-b border-hairline">
+        <Container className="py-16 md:py-24">
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1.2fr]">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={BOOK.coverFront}
+                alt="Computational Sovereignty — hardcover front cover"
+                className="mx-auto w-full max-w-[300px] rounded-[2px] shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
+              />
+              <div className="mt-6 flex items-center justify-center gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={BOOK.coverSpine}
+                  alt="Book spine"
+                  className="h-24 w-auto rounded-[2px] shadow-lg"
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={BOOK.coverBack}
+                  alt="Book back cover"
+                  className="h-24 w-auto rounded-[2px] shadow-lg"
+                />
               </div>
-              <div>
-                <dt className="mb-1 text-[#a79d87]">Words</dt>
-                <dd className="text-lg text-[#ece7da]">~46,000</dd>
+            </div>
+            <div>
+              <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
+                The book · Hardcover · {BOOK.price}
+              </p>
+              <h1 className="mb-5 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.02em] text-bone md:text-6xl">
+                {BOOK.title}
+              </h1>
+              <p className="mb-6 font-display text-xl text-bone-dim italic md:text-2xl">
+                {BOOK.subtitle}
+              </p>
+              <p className="mb-4 max-w-xl text-base leading-relaxed text-bone-dim">
+                Most AI engineering in 2024–2026 was integration work: call
+                someone else&apos;s model, parse the output, hope the weights don&apos;t
+                change overnight. This book is about the other discipline —
+                building the whole stack on machines you own, where every
+                behavior is reproducible and every number is yours.
+              </p>
+              <p className="mb-8 max-w-xl text-base leading-relaxed text-bone-dim">
+                It starts by pricing the cloud as a liability and ends with a
+                practice for shipping sovereign software. In between: 24
+                chapters of models, retrieval, graphs, agents, personas, and
+                verification — each one measured, each one runnable.
+              </p>
+              <div className="flex flex-wrap items-center gap-4">
+                <AmazonCta />
+                <Link
+                  href="/sample"
+                  className="inline-flex items-center justify-center rounded-sm border border-hairline bg-transparent px-7 py-4 font-mono text-[12px] tracking-[0.14em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
+                >
+                  Read chapter 1 free
+                </Link>
               </div>
-              <div>
-                <dt className="mb-1 text-[#a79d87]">Pages</dt>
-                <dd className="text-lg text-[#ece7da]">{BOOK.pages}</dd>
-              </div>
-            </dl>
-            <BuyCta />
-          </div>
-          <div className="mx-auto w-full max-w-[340px]">
-            <BookCover priority />
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* WHAT THIS BOOK IS */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
-        <Container className="max-w-3xl py-16 md:py-24">
-          <SectionHeading kicker="Practitioner tone" title="What this book is" />
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-[#a79d87]">
-            <p>
-              Twenty-four chapters, about 46,000 words, written end to end by the author —
-              not generated filler. Each chapter builds a real piece of a local-first AI
-              system: running models, retrieval, knowledge graphs, governed agents,
-              refusal logic, security, and the measurement discipline that holds it all
-              together.
-            </p>
-            <p>
-              The tone is practitioner, not academic and not hype. Terminal commands you can
-              run, numbers you can check, decisions you can audit. If a claim can't be
-              measured, it doesn't make it into the book.
-            </p>
-            <p>
-              By the last chapter you won't just understand local-first AI — you'll have
-              built one: a system that runs on your machine, answers from your documents,
-              refuses when it should, and survives an air gap.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* TOC */}
-      <section className="border-b border-[#2c2720] bg-[#1a1712]">
+      {/* THE ARGUMENT — eight parts */}
+      <section className="border-b border-hairline">
         <Container className="py-16 md:py-24">
           <SectionHeading
-            kicker="Table of contents"
-            title="All 24 chapters"
-            lede="Basics to advanced. Every chapter builds on the systems from the ones before it."
+            kicker="The argument"
+            title="Eight parts, one thesis"
+            lede="Each part makes a single claim and then spends three chapters proving it with working systems."
           />
-          <ol className="mt-12 grid gap-x-10 gap-y-px border-y border-[#2c2720] bg-[#2c2720] md:grid-cols-2">
-            {chapters.map((title, i) => (
-              <li key={title} className="flex items-baseline gap-5 bg-[#1a1712] px-5 py-4">
-                <span className={`${MONO} shrink-0 text-[11px] tracking-[0.16em] text-[#6fa58b]`}>
-                  CH.{String(i + 1).padStart(2, "0")}
-                </span>
-                <span className={`${SERIF} text-lg text-[#ece7da]`}>{title}</span>
-              </li>
+          <div className="mt-4 grid gap-px border border-hairline bg-hairline md:grid-cols-2">
+            {parts.map((p, i) => (
+              <Reveal key={p.n} delay={Math.min(i * 0.04, 0.2)}>
+                <div className="h-full bg-abyss p-7">
+                  <p className="mb-3 font-mono text-[11px] tracking-[0.24em] text-gold">
+                    PART {p.n} — {p.name.toUpperCase()}
+                  </p>
+                  <p className="font-display text-lg leading-relaxed text-bone">
+                    {p.claim}
+                  </p>
+                </div>
+              </Reveal>
             ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* FOR / NOT FOR */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
-        <Container className="py-16 md:py-24">
-          <SectionHeading kicker="Read this first" title="Who it's for" />
-          <div className="mt-12 grid gap-px border border-[#2c2720] bg-[#2c2720] md:grid-cols-2">
-            <div className="bg-[#14120d] p-8">
-              <h3 className={`${SERIF} mb-6 text-2xl font-medium text-[#6fa58b]`}>For you</h3>
-              <ul className="space-y-4">
-                {forReaders.map((f) => (
-                  <li key={f} className="flex gap-3 text-sm leading-relaxed text-[#a79d87]">
-                    <span className={`${MONO} shrink-0 text-[#6fa58b]`}>✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-[#14120d] p-8">
-              <h3 className={`${SERIF} mb-6 text-2xl font-medium text-[#d9a648]`}>Not for you</h3>
-              <ul className="space-y-4">
-                {notFor.map((f) => (
-                  <li key={f} className="flex gap-3 text-sm leading-relaxed text-[#a79d87]">
-                    <span className={`${MONO} shrink-0 text-[#d9a648]`}>✕</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </Container>
       </section>
 
-      {/* FORMATS */}
-      <section className="border-b border-[#2c2720] bg-[#1a1712]">
-        <Container className="py-16 md:py-24">
-          <SectionHeading kicker="Formats" title="Get the book" />
-          <div className="mt-12 grid gap-px border border-[#2c2720] bg-[#2c2720] md:grid-cols-2">
-            <div className="flex flex-col bg-[#1a1712] p-8">
-              <p className={`${MONO} mb-4 text-[11px] tracking-[0.2em] uppercase text-[#6fa58b]`}>
-                Hardcover
-              </p>
-              <h3 className={`${SERIF} mb-2 text-2xl font-medium text-[#ece7da]`}>
-                {BOOK.format} · {BOOK.pages} pages
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-[#a79d87]">
-                Print edition, 6×9. The one for your shelf — and the one that survives the
-                air gap.
-              </p>
-              <p className={`${MONO} mb-6 mt-auto text-3xl text-[#ece7da]`}>{BOOK.price}</p>
-              <BuyCta />
-            </div>
-            <div className="flex flex-col bg-[#1a1712] p-8">
-              <p className={`${MONO} mb-4 text-[11px] tracking-[0.2em] uppercase text-[#d9a648]`}>
-                Ebook
-              </p>
-              <h3 className={`${SERIF} mb-2 text-2xl font-medium text-[#ece7da]`}>
-                Ebook edition
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-[#a79d87]">
-                The same 24 chapters, in digital form.
-              </p>
-              <p className={`${MONO} mb-6 mt-auto text-3xl text-[#ece7da]`}>—</p>
-              <p className={`${MONO} text-[11px] tracking-[0.16em] uppercase text-[#d9a648]`}>
-                Price announced at launch
-              </p>
-            </div>
-          </div>
+      {/* CHAPTER STACK */}
+      <ChapterStack />
+
+      {/* SPECS */}
+      <section className="border-b border-hairline">
+        <Container className="max-w-3xl py-16 md:py-24">
+          <SectionHeading kicker="Specifications" title="The physical facts" />
+          <dl className="divide-y divide-hairline border-y border-hairline">
+            {specs.map(([k, v]) => (
+              <div key={k} className="flex items-baseline justify-between gap-6 py-4">
+                <dt className="font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
+                  {k}
+                </dt>
+                <dd className="text-right text-sm text-bone">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </Container>
       </section>
 
       {/* FAQ */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
+      <section className="border-b border-hairline bg-navy-deep">
         <Container className="max-w-3xl py-16 md:py-24">
-          <SectionHeading kicker="FAQ" title="Honest answers" />
-          <div className="mt-10 divide-y divide-[#2c2720] border-y border-[#2c2720]">
-            {faqs.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary
-                  className={`${SERIF} cursor-pointer list-none text-lg font-medium text-[#ece7da] transition-colors hover:text-[#d9a648] [&::-webkit-details-marker]:hidden`}
-                >
-                  <span className={`${MONO} mr-3 text-[11px] tracking-[0.16em] text-[#6fa58b]`}>
-                    +
-                  </span>
-                  {f.q}
-                </summary>
-                <p className="mt-3 pl-7 text-sm leading-relaxed text-[#a79d87]">{f.a}</p>
-              </details>
+          <SectionHeading kicker="Questions" title="Asked and answered" />
+          <div className="mt-4 space-y-8">
+            {faq.map((f) => (
+              <Reveal key={f.q}>
+                <div>
+                  <h3 className="mb-2 font-display text-xl font-medium text-bone">
+                    {f.q}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-bone-dim">{f.a}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* EMAIL */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
-        <Container className="py-16 md:py-20">
-          <EmailCapture
-            variant="inline"
-            heading="Read Chapter 1 free"
-            blurb="The sample chapter, straight to your inbox. Plus the launch notice. No spam, unsubscribe anytime."
-          />
-        </Container>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="bg-[#1a1712]">
-        <Container className="max-w-3xl py-16 text-center md:py-24">
-          <h2 className={`${SERIF} mb-4 text-3xl font-semibold tracking-[-0.01em] text-[#ece7da] md:text-5xl`}>
-            Own your intelligence.
-          </h2>
-          <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#a79d87]">
-            {BOOK.promise}
-          </p>
-          <BuyCta />
-          <p className="mt-6">
-            <Link
-              href="/sample"
-              className={`${MONO} text-[12px] tracking-[0.16em] uppercase text-[#6fa58b] hover:text-[#d9a648]`}
-            >
-              Or read the sample chapter first →
-            </Link>
-          </p>
+      {/* CLOSE */}
+      <section>
+        <Container className="py-16 text-center md:py-24">
+          <Reveal>
+            <p className="mb-4 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
+              {BOOK.chapters} chapters · {BOOK.words} words · {BOOK.price}
+            </p>
+            <h2 className="mx-auto mb-4 max-w-2xl font-display text-3xl font-semibold text-bone md:text-5xl">
+              Own every layer.
+            </h2>
+            <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-bone-dim">
+              The cloud will still be there when you need it. After this book,
+              you&apos;ll know exactly what each API call costs you — and you&apos;ll
+              have the machine to replace it.
+            </p>
+            <AmazonCta />
+            <p className="mt-6">
+              <Link
+                href="/sample"
+                className="font-mono text-[12px] tracking-[0.16em] text-bone-dim uppercase transition-colors hover:text-gold"
+              >
+                Or read chapter 1 free first →
+              </Link>
+            </p>
+          </Reveal>
         </Container>
       </section>
     </>

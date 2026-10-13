@@ -1,6 +1,7 @@
 // Central launch config — the single source of truth for site identity,
-// the book, the old book, email, social links, and navigation.
+// the book, the old book, social links, and navigation.
 // Page components should import from here, never hardcode these values.
+// There is no email config: v2 ships with zero email capture anywhere.
 
 export const SITE = {
   name: "Daniel Kliewer",
@@ -14,11 +15,16 @@ export const BOOK = {
   subtitle: "Building Local-First AI Systems",
   promise:
     "Run serious AI on hardware you own — full applications, no cloud, no exfiltration.",
-  price: "$39.99", // TODO(Daniel): confirm at launch
-  amazonUrl: "#", // TODO(Daniel): paste live Amazon URL at launch
-  coverImage: "/images/book-cover.png",
+  price: "$88", // Hardcover price — decided 2026-10-13. Not a TODO.
+  // TODO(Daniel): paste the live Amazon URL at launch. Book is not listed yet.
+  amazonUrl: "#",
+  coverFront: "/images/book-front.png",
+  coverSpine: "/images/book-spine.png",
+  coverBack: "/images/book-back.png",
   pages: "214",
-  format: "Hardcover, 6×9",
+  format: "Hardcover · 6×9 in",
+  chapters: 24,
+  words: "~46,000",
 } as const;
 
 export const OLD_BOOK = {
@@ -27,12 +33,6 @@ export const OLD_BOOK = {
   format: "Paperback · 72 pages",
   price: "$88",
   amazonUrl: "https://www.amazon.com/dp/B0H6RB7D9J",
-} as const;
-
-export const EMAIL = {
-  // TODO(Daniel): paste Buttondown form endpoint at launch.
-  // While this starts with "#", <EmailCapture/> renders a disabled placeholder.
-  buttondownEndpoint: "#",
 } as const;
 
 export const SOCIAL = {
@@ -45,6 +45,7 @@ export const SOCIAL = {
 export const NAV_ITEMS = [
   { label: "Book", href: "/book" },
   { label: "Research", href: "/research" },
+  { label: "Sample", href: "/sample" },
   { label: "About", href: "/about" },
   { label: "Press", href: "/press" },
   { label: "Contact", href: "/contact" },

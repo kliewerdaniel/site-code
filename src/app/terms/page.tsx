@@ -54,24 +54,24 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <section className="bg-ink text-paper">
+    <section className="bg-abyss text-bone">
       <Container className="pt-24 pb-16">
         <div className="max-w-3xl">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-moss mb-5">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-gold mb-5">
             Legal
           </p>
           <h1 className="font-display text-4xl md:text-5xl tracking-tight mb-4">
             Terms of Use
           </h1>
-          <p className="font-mono text-xs text-paper-dim mb-12">
+          <p className="font-mono text-xs text-bone-dim mb-12">
             Last updated: June 2026
           </p>
 
           <div className="space-y-px bg-hairline border border-hairline">
             {sections.map((s) => (
-              <div key={s.heading} className="bg-ink-card p-7">
+              <div key={s.heading} className="bg-navy p-7">
                 <SectionHeading kicker="Terms" title={s.heading} />
-                <div className="space-y-4 text-paper-dim leading-relaxed mt-4">
+                <div className="space-y-4 text-bone-dim leading-relaxed mt-4">
                   {s.body.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}

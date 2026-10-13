@@ -1,207 +1,182 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
 import { OLD_BOOK } from "@/config";
 
 export const metadata: Metadata = {
   title: "About Daniel Kliewer",
   description:
-    "Computer scientist and AI researcher based in Austin, Texas, working to reduce the cost of understanding human knowledge — through local-first AI, knowledge compilation, and inspectable systems.",
+    "Daniel Kliewer builds local-first AI systems in Austin, Texas. Author of Computational Sovereignty: Building Local-First AI Systems (hardcover, $88).",
   openGraph: {
     title: "About Daniel Kliewer",
     description:
-      "Computer scientist and AI researcher in Austin, Texas. Reducing the cost of understanding human knowledge.",
+      "Builder of local-first AI systems. Author of Computational Sovereignty.",
     type: "website",
   },
   twitter: {
     card: "summary",
     title: "About Daniel Kliewer",
     description:
-      "Computer scientist and AI researcher in Austin, Texas. Reducing the cost of understanding human knowledge.",
+      "Builder of local-first AI systems. Author of Computational Sovereignty.",
   },
 };
 
-const SERIF = "font-['Fraunces',Georgia,serif]";
-const MONO = "font-['JetBrains_Mono',ui-monospace,monospace]";
+/* Rewritten register: flat, declarative, measured. */
 
-const purpose = [
+const positions = [
   {
-    title: "Who I am",
+    title: "The short version",
     body: [
-      "I am a computer scientist and AI researcher based in Austin, Texas. For several years my work has centered on a single question that has steadily overtaken the purely technical ones: how do we make human knowledge cheaper to understand?",
-      "I publish the research openly — the code on GitHub, the reasoning in the blog, the synthesis in the book. If you are investigating similar questions, the work is yours to build on.",
+      "I build AI systems that run on hardware I own. Models, retrieval, knowledge graphs, agents — the full stack, local-first, with the numbers to back up every claim.",
+      "I publish the work openly: the code on GitHub, the reasoning in 184 research posts, the synthesis in the book. If you can use any of it, it's yours.",
     ],
   },
   {
-    title: "The problem I am trying to solve",
+    title: "What I actually believe",
     body: [
-      "Civilization is, in many ways, a system for transferring accumulated knowledge from one generation to the next. The efficiency of that transfer determines how quickly society can progress. Today, acquiring professional knowledge remains expensive — years of education, scarce instructors, fragmented material — which makes qualified expertise rare and leaves essential work understaffed.",
-      "I want to reduce the cost of understanding human knowledge: making it easier to learn a profession, easier to do better research, easier to preserve what institutions already know.",
+      "A system you can't reproduce isn't engineering — it's a demo with good lighting. Determinism, measurement, and ownership aren't aesthetic preferences; they're the difference between infrastructure and luck.",
+      "The cloud is a tool with a price tag, not a default. Price it explicitly, the way you'd price any dependency that can change its behavior without telling you.",
     ],
   },
   {
-    title: "How my projects contribute",
+    title: "How the projects fit",
     body: [
-      "None of my projects are the destination. They are experiments toward the same end.",
-      "Knowledge compilation organizes human knowledge into structured, navigable artifacts before the question is asked. Compile-time AI performs reasoning once and compiles it into representations people can explore. Decision graphs make judgment inspectable. Sovereign memory preserves understanding across sessions. Local-first systems keep that knowledge transparent and under the user's control.",
-      "Each is a different approach to reducing the cognitive cost of understanding.",
+      "SpecGen: deterministic code generation. Ganymede: governed claim compilation with frozen benchmarks. PersonaGen: quantified AI personalities. The Sovereign Agent Fleet: agents under a frozen governance substrate.",
+      "Different instruments, one thesis: probabilistic cognition is powerful and untrustworthy, so the authority around it must be deterministic, inspected, and owned.",
     ],
   },
 ];
 
-const researchPhilosophy = [
-  {
-    title: "Knowledge over text",
-    desc: "The goal is not to generate more language but to organize what already exists — making relationships explicit, navigable, and inspectable.",
-  },
-  {
-    title: "Compile-time, not query-time",
-    desc: "Much of the hard reasoning should happen once, ahead of time, and be compiled into structures people can explore — not rediscovered on every query.",
-  },
-  {
-    title: "Local-first and inspectable",
-    desc: "Knowledge systems should run on the user's own hardware, be transparent, and remain theirs to own and verify.",
-  },
-  {
-    title: "Understanding compounds",
-    desc: "Every hour saved from searching is an hour returned to discovery, teaching, and care. The savings multiply across millions of people.",
-  },
-];
-
-const timeline = [
+const ledger = [
   {
     year: "2026",
-    title: "Mission in Focus",
-    desc: "The research converges on one explicit aim: reducing the cost of understanding human knowledge — from first principles through production systems.",
+    title: "Computational Sovereignty ships",
+    desc: "24 chapters, ~46,000 words, 214-page hardcover. The laboratory years compiled into the artifact.",
   },
   {
     year: "2025",
-    title: "Cognitive Memory Architecture",
-    desc: "Sovereign Memory Bank showed that persistent agent memory requires a multi-layered architecture: raw documents to synthesized abstractions.",
+    title: "Governed agents",
+    desc: "The Sovereign Agent Fleet: one frozen governance substrate exercised across eight domains. 564 tests, zero security invariants depending on model behavior.",
   },
   {
     year: "2025",
-    title: "Knowledge Compilation",
-    desc: "The Sovereign Knowledge Compiler turned heterogeneous corpora into static, navigable semantic artifacts — understanding ahead of the query.",
-  },
-  {
-    year: "2025",
-    title: "Compositional Intelligence",
-    desc: "Dynamic Persona MoE RAG demonstrated that routing between specialized local models produces more coherent reasoning than any single model.",
+    title: "Knowledge compilation",
+    desc: "Static claim-graph artifacts with no inference at view time. Reasoning done once, compiled for everyone.",
   },
   {
     year: "2024",
-    title: "Open Investigation Begins",
-    desc: "Started publishing research in public. The blog and GitHub became the laboratory for systematic exploration.",
+    title: "The laboratory opens",
+    desc: "Research published in public — blog, GitHub, measurements and dead ends included.",
   },
 ];
 
 export default function AboutPage() {
-  const oldBookLive = OLD_BOOK.amazonUrl && !OLD_BOOK.amazonUrl.startsWith("#");
   return (
     <>
       {/* HEAD */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
+      <section className="border-b border-hairline">
         <Container className="flex flex-col items-center gap-10 py-16 md:flex-row md:py-24">
-          <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-sm border border-[#2c2720]">
+          <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-sm border border-hairline">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/profile.jpeg" alt="Daniel Kliewer" className="h-full w-full object-cover" />
+            <img
+              src="/images/profile.jpeg"
+              alt="Daniel Kliewer"
+              className="h-full w-full object-cover"
+            />
           </div>
           <div className="text-center md:text-left">
-            <h1
-              className={`${SERIF} mb-3 text-4xl font-semibold tracking-[-0.02em] text-[#ece7da] md:text-5xl`}
-            >
+            <h1 className="mb-3 font-display text-4xl font-semibold tracking-[-0.02em] text-bone md:text-5xl">
               Daniel Kliewer
             </h1>
-            <p className={`${SERIF} mb-2 text-xl italic text-[#6fa58b]`}>
-              Reducing the Cost of Understanding Human Knowledge
+            <p className="mb-2 font-display text-xl text-gold italic">
+              Local-first AI, measured and owned.
             </p>
-            <p className={`${MONO} text-[11px] tracking-[0.2em] uppercase text-[#a79d87]`}>
+            <p className="font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
               Austin, TX
             </p>
           </div>
         </Container>
       </section>
 
-      {/* PURPOSE */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
+      {/* POSITIONS */}
+      <section className="border-b border-hairline">
         <Container className="max-w-3xl py-16 md:py-24">
-          <SectionHeading kicker="Purpose" title="Why I do this work" />
+          <SectionHeading kicker="Positions" title="Stated plainly" />
           <div className="mt-10 space-y-12">
-            {purpose.map((s) => (
-              <div key={s.title}>
-                <h3 className={`${SERIF} mb-4 text-2xl font-medium text-[#ece7da]`}>{s.title}</h3>
-                <div className="space-y-4 text-base leading-relaxed text-[#a79d87]">
-                  {s.body.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
+            {positions.map((s) => (
+              <Reveal key={s.title}>
+                <div>
+                  <h3 className="mb-4 font-display text-2xl font-medium text-bone">
+                    {s.title}
+                  </h3>
+                  <div className="space-y-4 text-base leading-relaxed text-bone-dim">
+                    {s.body.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* PHILOSOPHY */}
-      <section className="border-b border-[#2c2720] bg-[#1a1712]">
-        <Container className="py-16 md:py-24">
-          <SectionHeading kicker="Method" title="Research philosophy" />
-          <div className="mt-12 grid gap-px border border-[#2c2720] bg-[#2c2720] md:grid-cols-2">
-            {researchPhilosophy.map((s) => (
-              <div key={s.title} className="bg-[#1a1712] p-7">
-                <h3 className={`${SERIF} mb-3 text-lg font-medium text-[#ece7da]`}>{s.title}</h3>
-                <p className="text-sm leading-relaxed text-[#a79d87]">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* TIMELINE */}
-      <section className="border-b border-[#2c2720] bg-[#14120d]">
+      {/* LEDGER */}
+      <section className="border-b border-hairline bg-navy-deep">
         <Container className="max-w-3xl py-16 md:py-24">
-          <SectionHeading kicker="Record" title="Timeline" />
+          <SectionHeading kicker="Record" title="The ledger" />
           <div className="mt-10 space-y-8">
-            {timeline.map((t, i) => (
-              <div key={i} className="flex gap-5">
-                <div className="w-16 shrink-0 text-right">
-                  <span className={`${MONO} text-sm text-[#6fa58b]`}>{t.year}</span>
+            {ledger.map((t) => (
+              <Reveal key={`${t.year}-${t.title}`}>
+                <div className="flex gap-5">
+                  <div className="w-16 shrink-0 text-right">
+                    <span className="font-mono text-sm text-gold">{t.year}</span>
+                  </div>
+                  <div className="w-px shrink-0 bg-hairline" />
+                  <div className="pb-2">
+                    <h3 className="font-display text-lg font-medium text-bone">
+                      {t.title}
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-bone-dim">
+                      {t.desc}
+                    </p>
+                  </div>
                 </div>
-                <div className="w-px shrink-0 bg-[#2c2720]" />
-                <div className="pb-2">
-                  <h3 className={`${SERIF} text-lg font-medium text-[#ece7da]`}>{t.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#a79d87]">{t.desc}</p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
       {/* ALSO BY */}
-      <section className="bg-[#1a1712]">
+      <section>
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Earlier work" title="Also by Daniel Kliewer" />
-          <div className="mt-10 border border-[#2c2720] bg-[#14120d] p-8">
-            <p className={`${MONO} mb-3 text-[11px] tracking-[0.2em] uppercase text-[#a79d87]`}>
-              {OLD_BOOK.format}
-            </p>
-            <h3 className={`${SERIF} mb-2 text-2xl font-medium text-[#ece7da]`}>
-              {OLD_BOOK.title}
-            </h3>
-            <p className={`${SERIF} mb-5 text-lg italic text-[#a79d87]`}>{OLD_BOOK.subtitle}</p>
-            <div className="flex flex-wrap items-center gap-6">
-              <p className={`${MONO} text-2xl text-[#ece7da]`}>{OLD_BOOK.price}</p>
-              <a
-                href={OLD_BOOK.amazonUrl}
-                target={oldBookLive ? "_blank" : undefined}
-                rel={oldBookLive ? "noopener noreferrer" : undefined}
-                className={`${MONO} text-[12px] tracking-[0.16em] uppercase text-[#6fa58b] hover:text-[#d9a648]`}
-              >
-                Buy on Amazon ↗
-              </a>
+          <Reveal>
+            <div className="mt-10 border border-hairline bg-navy p-8">
+              <p className="mb-3 font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
+                {OLD_BOOK.format}
+              </p>
+              <h3 className="mb-2 font-display text-2xl font-medium text-bone">
+                {OLD_BOOK.title}
+              </h3>
+              <p className="mb-5 font-display text-lg text-bone-dim italic">
+                {OLD_BOOK.subtitle}
+              </p>
+              <div className="flex flex-wrap items-center gap-6">
+                <p className="font-mono text-2xl text-bone">{OLD_BOOK.price}</p>
+                <a
+                  href={OLD_BOOK.amazonUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[12px] tracking-[0.16em] text-gold uppercase transition-colors hover:text-bone"
+                >
+                  Buy on Amazon ↗
+                </a>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>

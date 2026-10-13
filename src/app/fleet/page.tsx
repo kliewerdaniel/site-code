@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "The Fleet",
   description:
-    "The Sovereign Agent Fleet: one frozen governance substrate, exercised across eight domains, with zero security invariants depending on model behavior. Intelligence is the accumulated decisions that shaped it.",
+    "The Sovereign Agent Fleet: one frozen governance substrate, exercised across eight domains, with zero security invariants depending on model behavior.",
 };
 
 export interface FleetLayer {
@@ -22,7 +23,7 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "knowledge-compilation",
     name: "Knowledge Compilation",
     description:
-      "Transforming heterogeneous human knowledge into structured, navigable semantic artifacts — organized before the question is asked.",
+      "Heterogeneous knowledge compiled into structured, navigable artifacts — organized before the question is asked.",
     icon: "◆",
     systemCount: 7,
   },
@@ -30,7 +31,7 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "compile-time-ai",
     name: "Compile-Time AI",
     description:
-      "Performing reasoning once and compiling it into representations people can explore, instead of rediscovering relationships on every query. An active, recent direction of the research.",
+      "Reasoning done once and compiled into explorable representations, instead of re-derived on every query.",
     icon: "◆",
     systemCount: 3,
   },
@@ -38,7 +39,7 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "scientific-knowledge-systems",
     name: "Scientific Knowledge Systems",
     description:
-      "Semantic infrastructure for preserving scientific knowledge and accelerating discovery — making research easier to build upon.",
+      "Semantic infrastructure for preserving science and accelerating the people who build on it.",
     icon: "◆",
     systemCount: 8,
   },
@@ -46,7 +47,7 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "local-first-ai",
     name: "Local-First AI",
     description:
-      "Knowledge systems that run on your own hardware — transparent, inspectable, and under the user's control rather than a third party's cloud.",
+      "Knowledge systems on your own hardware: transparent, inspectable, and nobody else's to revoke.",
     icon: "◆",
     systemCount: 6,
   },
@@ -54,7 +55,7 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "cognitive-memory",
     name: "Cognitive Memory",
     description:
-      "Persistent, structured memory that compounds understanding across sessions instead of forgetting it between conversations.",
+      "Persistent structured memory that compounds understanding across sessions instead of resetting it.",
     icon: "◆",
     systemCount: 6,
   },
@@ -62,7 +63,7 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "research-automation",
     name: "Research Automation",
     description:
-      "Autonomous and semi-autonomous agents that ingest, synthesize, and broadcast knowledge — returning time to human discovery and care.",
+      "Agents that ingest, synthesize, and broadcast — returning human hours to judgment and care.",
     icon: "◆",
     systemCount: 10,
   },
@@ -70,7 +71,7 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "knowledge-representation",
     name: "Knowledge Representation",
     description:
-      "How understanding is modeled and made explicit — from intermediate representations to structured publishing of what we know.",
+      "Making understanding explicit: from intermediate representations to structured publishing.",
     icon: "◆",
     systemCount: 4,
   },
@@ -78,44 +79,45 @@ export const FLEET_LAYERS: FleetLayer[] = [
     slug: "decision-graphs",
     name: "Decision Graphs",
     description:
-      "Explicit representations of judgment that make reasoning inspectable, reusable, and improvable over time.",
+      "Judgment rendered as inspectable graphs — reusable, improvable, teachable.",
     icon: "◆",
     systemCount: 1,
   },
 ];
 
 const NARRATIVE =
-  "None of these projects is the destination. Each is a different approach toward the same goal — making human knowledge cheaper to understand, preserve, and share.";
+  "Every project here is an experiment in the same direction: probabilistic models are powerful and untrustworthy, so the authority around them must be deterministic, inspectable, and frozen.";
 
 export default function FleetPage() {
   return (
-    <div className="bg-ink text-paper">
+    <div>
       <Container className="pt-24 pb-14">
-        <p className="font-mono text-xs uppercase tracking-[0.18em] text-moss mb-5">
+        <p className="mb-5 font-mono text-xs tracking-[0.28em] text-gold uppercase">
           The Sovereign Agent Fleet
         </p>
-        <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+        <h1 className="font-display text-5xl leading-[0.95] tracking-tight text-bone md:text-6xl lg:text-7xl">
           One substrate.
           <br />
-          Many minds.
+          Eight domains. Zero edits.
         </h1>
-        <p className="font-display text-xl md:text-2xl text-paper leading-snug max-w-3xl mt-7">
-          Intelligence is the accumulated decisions that shaped it. The Fleet is
-          the empirical proof: a single frozen governance substrate, exercised
-          across eight domains, with zero security invariants depending on
-          model behavior.
+        <p className="mt-7 max-w-3xl font-display text-xl leading-snug text-bone md:text-2xl">
+          The claim is falsifiable: a single frozen governance substrate runs
+          every system below, and no domain has required a substrate edit.
+          Show one that does, and the thesis weakens.
         </p>
-        <p className="text-paper-dim max-w-2xl leading-relaxed mt-4">{NARRATIVE}</p>
-        <div className="flex flex-wrap gap-6 mt-8 items-center">
+        <p className="mt-4 max-w-2xl leading-relaxed text-bone-dim">
+          {NARRATIVE}
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-6">
           <Link
             href="/mission"
-            className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-paper hover:border-moss hover:text-moss transition-colors"
+            className="inline-block border border-hairline px-6 py-3 font-mono text-xs tracking-[0.16em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
           >
             Read the Mission →
           </Link>
           <Link
             href="/research"
-            className="font-mono text-xs uppercase tracking-[0.16em] text-moss hover:underline"
+            className="font-mono text-xs tracking-[0.16em] text-gold uppercase hover:underline"
           >
             Explore the Research →
           </Link>
@@ -124,45 +126,35 @@ export default function FleetPage() {
 
       <section className="border-t border-hairline">
         <Container className="py-12 md:py-16">
-          <div className="max-w-2xl mb-10">
+          <div className="mb-10 max-w-2xl">
             <SectionHeading
-              kicker="Topology"
-              title="Many domains, one substrate"
-              lede="Every domain below runs on the same frozen decision substrate. Proving a new domain requires zero edits to that substrate — that is the whole point."
+              kicker="The topology"
+              title="Eight domains, one frozen substrate"
+              lede="Each domain below is a separate proof attempt. Same decision function, zero edits, zero security invariants that depend on what the model happens to do."
             />
           </div>
-        </Container>
-      </section>
-
-      <section className="border-t border-hairline">
-        <Container className="py-12 md:py-16">
-          <div className="max-w-2xl mb-10">
-            <SectionHeading
-              kicker="Fleet Domains"
-              title="Proven against the substrate"
-            />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline border border-hairline">
-            {FLEET_LAYERS.map((layer) => (
-              <Link
-                key={layer.slug}
-                href={`/fleet/${layer.slug}`}
-                className="bg-ink-card p-7 hover:bg-ink-soft transition-colors group"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-moss text-lg">{layer.icon}</span>
-                  <h3 className="font-display text-2xl text-paper group-hover:text-moss transition-colors">
-                    {layer.name}
-                  </h3>
-                </div>
-                <p className="text-paper-dim leading-relaxed mb-5">
-                  {layer.description}
-                </p>
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-paper-dim">
-                  {layer.systemCount} system{layer.systemCount === 1 ? "" : "s"} ·
-                  running on the frozen substrate →
-                </p>
-              </Link>
+          <div className="grid grid-cols-1 gap-px border border-hairline bg-hairline md:grid-cols-2">
+            {FLEET_LAYERS.map((layer, i) => (
+              <Reveal key={layer.slug} delay={Math.min(i * 0.04, 0.2)}>
+                <Link
+                  href={`/fleet/${layer.slug}`}
+                  className="group block h-full bg-abyss p-7 transition-colors hover:bg-navy-deep"
+                >
+                  <div className="mb-3 flex items-center gap-3">
+                    <span className="text-lg text-gold">{layer.icon}</span>
+                    <h3 className="font-display text-2xl text-bone transition-colors group-hover:text-gold">
+                      {layer.name}
+                    </h3>
+                  </div>
+                  <p className="mb-5 leading-relaxed text-bone-dim">
+                    {layer.description}
+                  </p>
+                  <p className="font-mono text-[0.65rem] tracking-[0.14em] text-bone-faint uppercase">
+                    {layer.systemCount} system
+                    {layer.systemCount === 1 ? "" : "s"} · frozen substrate →
+                  </p>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -170,21 +162,22 @@ export default function FleetPage() {
 
       <section className="border-t border-hairline">
         <Container className="py-12 md:py-16">
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <SectionHeading kicker="Where to begin" title="Start with the mission" />
-            <p className="text-paper-dim mt-6 mb-8">
-              Start with the mission, or dive into the compiled research log.
+            <p className="mt-6 mb-8 text-bone-dim">
+              The mission states the thesis. The fleet is the evidence. The
+              research log is the record.
             </p>
-            <div className="flex flex-wrap gap-6 justify-center items-center">
+            <div className="flex flex-wrap items-center justify-center gap-6">
               <Link
                 href="/mission"
-                className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-paper hover:border-moss hover:text-moss transition-colors"
+                className="inline-block border border-hairline px-6 py-3 font-mono text-xs tracking-[0.16em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
               >
                 The Mission →
               </Link>
               <Link
                 href="/research"
-                className="font-mono text-xs uppercase tracking-[0.16em] text-moss hover:underline"
+                className="font-mono text-xs tracking-[0.16em] text-gold uppercase hover:underline"
               >
                 Browse the research log →
               </Link>
