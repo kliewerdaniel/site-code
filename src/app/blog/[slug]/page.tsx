@@ -57,7 +57,7 @@ const markdownComponents: Components = {
   pre: ({ node, ...props }) => (
     <pre
       {...props}
-      className="bg-navy-deep font-mono text-sm overflow-x-auto rounded-lg p-4 my-6 border border-hairline"
+      className="bg-void-2 font-mono text-sm overflow-x-auto rounded-lg p-4 my-6 border border-rule"
     />
   ),
   code: ({ node, className, children, ...props }) => {
@@ -72,7 +72,7 @@ const markdownComponents: Components = {
     return (
       <code
         {...props}
-        className="font-mono text-[0.85em] bg-navy-deep px-1.5 py-0.5 rounded border border-hairline"
+        className="font-mono text-[0.85em] bg-void-2 px-1.5 py-0.5 rounded border border-rule"
       >
         {children}
       </code>
@@ -103,7 +103,7 @@ export default async function BlogPostPage({
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="font-mono text-xs text-bone-dim mb-8"
+          className="font-mono text-xs text-ink-2 mb-8"
         >
           <Link href="/research" className="hover:text-gold transition-colors">
             Research
@@ -113,11 +113,11 @@ export default async function BlogPostPage({
         </nav>
 
         {/* Header */}
-        <h1 className="font-display text-3xl md:text-5xl text-bone leading-tight">
+        <h1 className="display-lg">
           {post.title}
         </h1>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-bone-dim">
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-ink-2">
           <span>Daniel Kliewer</span>
           <span aria-hidden="true">·</span>
           <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -131,7 +131,7 @@ export default async function BlogPostPage({
               <Link
                 key={t}
                 href={`/research?tag=${encodeURIComponent(t)}`}
-                className="font-mono text-[11px] px-2 py-1 border border-hairline rounded text-bone-dim hover:text-bone hover:border-paper-dim transition-colors"
+                className="font-mono text-[11px] px-2 py-1 border border-rule rounded text-ink-2 hover:text-ink hover:border-rule-2 transition-colors"
               >
                 {t}
               </Link>
@@ -141,7 +141,7 @@ export default async function BlogPostPage({
 
         {/* Hero image */}
         {post.image && (
-          <div className="relative w-full aspect-video mt-10 rounded-lg overflow-hidden border border-hairline">
+          <div className="relative w-full aspect-video mt-10 rounded-lg overflow-hidden border border-rule">
             <Image
               src={post.image}
               alt={post.title}
@@ -165,8 +165,8 @@ export default async function BlogPostPage({
 
         {/* Related posts */}
         {related.length > 0 && (
-          <section className="mt-16 pt-10 border-t border-hairline">
-            <h2 className="font-display text-2xl text-bone mb-6">
+          <section className="mt-16 pt-10 border-t border-rule">
+            <h2 className="font-display text-2xl text-ink mb-6">
               Related research
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
@@ -174,15 +174,15 @@ export default async function BlogPostPage({
                 <Link
                   key={r.slug}
                   href={`/blog/${r.slug}`}
-                  className="group block border border-hairline rounded-lg p-5 hover:border-gold transition-colors"
+                  className="group block border border-rule rounded-lg p-5 hover:border-gold transition-colors"
                 >
-                  <p className="font-mono text-[11px] text-bone-dim mb-2">
+                  <p className="font-mono text-[11px] text-ink-2 mb-2">
                     {formatDate(r.date)}
                   </p>
-                  <h3 className="font-display text-lg text-bone group-hover:text-gold transition-colors leading-snug">
+                  <h3 className="font-display text-lg text-ink group-hover:text-gold transition-colors leading-snug">
                     {r.title}
                   </h3>
-                  <p className="mt-2 text-sm text-bone-dim line-clamp-3">
+                  <p className="mt-2 text-sm text-ink-2 line-clamp-3">
                     {r.description}
                   </p>
                 </Link>

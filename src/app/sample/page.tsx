@@ -28,20 +28,20 @@ export const metadata: Metadata = {
 export default function SamplePage() {
   return (
     <>
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="max-w-2xl py-16 md:py-24">
           <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
             Free excerpt · No gate · Chapter 1 of 24
           </p>
-          <h1 className="mb-5 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.02em] text-bone md:text-5xl">
+          <h1 className="display-lg mb-5">
             The Cloud Is a Liability
           </h1>
-          <p className="mb-10 font-display text-xl text-bone-dim italic">
+          <p className="mb-10 font-display text-xl text-ink-2 italic">
             Why every dependency you don&apos;t own is a bill you haven&apos;t
             been sent yet.
           </p>
 
-          <article className="space-y-6 text-base leading-relaxed text-bone-dim">
+          <article className="space-y-6 text-base leading-relaxed text-ink-2">
             <p>
               Every AI system you build on someone else&apos;s API rests on a
               bet: that the provider&apos;s incentives stay aligned with yours
@@ -56,12 +56,12 @@ export default function SamplePage() {
               liability you carry, and liabilities should be measured.
             </p>
 
-            <h2 className="pt-4 font-display text-2xl font-medium text-bone">
+            <h2 className="display-md">
               The five liabilities
             </h2>
 
             <p>
-              <strong className="text-bone">
+              <strong className="text-ink">
                 1. Data exfiltration by design.
               </strong>{" "}
               When you send a prompt to a hosted model, you send your data to
@@ -76,7 +76,7 @@ export default function SamplePage() {
               confidentiality boundary is a Terms of Service document.
             </p>
             <p>
-              <strong className="text-bone">2. Silent model changes.</strong>{" "}
+              <strong className="text-ink">2. Silent model changes.</strong>{" "}
               Hosted models are versioned the way weather is versioned.
               Providers update weights, adjust system prompts, and tune
               refusal behavior without notice, and your application&apos;s
@@ -87,7 +87,7 @@ export default function SamplePage() {
               infrastructure; it is a rumor.
             </p>
             <p>
-              <strong className="text-bone">
+              <strong className="text-ink">
                 3. Vendor lock-in through API surface.
               </strong>{" "}
               Every provider-specific parameter — the exact shape of a
@@ -98,7 +98,7 @@ export default function SamplePage() {
               why they are offered.
             </p>
             <p>
-              <strong className="text-bone">
+              <strong className="text-ink">
                 4. Cost curves that punish success.
               </strong>{" "}
               API pricing is linear in usage and set unilaterally. A prototype
@@ -110,7 +110,7 @@ export default function SamplePage() {
               meter running.
             </p>
             <p>
-              <strong className="text-bone">
+              <strong className="text-ink">
                 5. Availability as someone else&apos;s decision.
               </strong>{" "}
               Rate limits, outages, account suspensions, and geographic
@@ -122,7 +122,7 @@ export default function SamplePage() {
               first time someone else turns their computer off.
             </p>
 
-            <h2 className="pt-4 font-display text-2xl font-medium text-bone">
+            <h2 className="display-md">
               When the cloud is the right call
             </h2>
 
@@ -144,7 +144,7 @@ export default function SamplePage() {
             </ul>
             <p>
               The sovereign position is not &ldquo;never use APIs.&rdquo; It is:{" "}
-              <strong className="text-bone">
+              <strong className="text-ink">
                 default to local, escalate to cloud deliberately, and know the
                 price of the escalation.
               </strong>{" "}
@@ -153,7 +153,7 @@ export default function SamplePage() {
               because the trade-off was analyzed.
             </p>
 
-            <h2 className="pt-4 font-display text-2xl font-medium text-bone">
+            <h2 className="display-md">
               The sovereignty test
             </h2>
 
@@ -182,25 +182,25 @@ export default function SamplePage() {
               about building architectures.
             </p>
 
-            <h2 className="pt-4 font-display text-2xl font-medium text-bone">
+            <h2 className="display-md">
               What sovereignty costs
             </h2>
 
             <p>Nothing in this book is free. Local-first AI costs:</p>
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                <strong className="text-bone">Hardware.</strong> A machine with
+                <strong className="text-ink">Hardware.</strong> A machine with
                 24GB+ of VRAM (or a Mac with unified memory) is the entry
                 ticket for serious local work. This is a capital expense, not
                 a subscription — budget it once.
               </li>
               <li>
-                <strong className="text-bone">Operational attention.</strong>{" "}
+                <strong className="text-ink">Operational attention.</strong>{" "}
                 You are now the SRE for your inference stack. Updates,
                 monitoring, and debugging are yours.
               </li>
               <li>
-                <strong className="text-bone">Capability ceiling.</strong> You
+                <strong className="text-ink">Capability ceiling.</strong> You
                 will not run a 400B-parameter model on a laptop. You will
                 learn, in Chapter 5, how often that actually matters. (Less
                 than the marketing suggests.)
@@ -215,22 +215,22 @@ export default function SamplePage() {
             </p>
           </article>
 
-          <p className="mt-10 border-t border-hairline pt-6 font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
+          <p className="mt-10 border-t border-rule pt-6 font-mono text-[11px] tracking-[0.2em] text-ink-3 uppercase">
             End of excerpt · Chapter 1 of 24 · {BOOK.words} words total
           </p>
         </Container>
       </section>
 
-      <section className="bg-navy-deep">
+      <section className="bg-void-2">
         <Container className="py-16 text-center md:py-20">
           <Reveal>
             <p className="mb-4 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
               {BOOK.title} · Hardcover · 214 pages
             </p>
-            <h2 className="mx-auto mb-4 max-w-2xl font-display text-3xl font-semibold text-bone md:text-4xl">
+            <h2 className="display-lg mx-auto mb-4 max-w-2xl">
               Twenty-three chapters where that came from.
             </h2>
-            <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-bone-dim">
+            <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-ink-2">
               Models, retrieval, knowledge graphs, governed agents — built on
               your machine, measured honestly, priced without apology.
             </p>

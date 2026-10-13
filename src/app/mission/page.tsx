@@ -62,12 +62,12 @@ export default function MissionPage() {
         <p className="mb-5 font-mono text-xs tracking-[0.28em] text-gold uppercase">
           The Mission
         </p>
-        <h1 className="max-w-4xl font-display text-4xl leading-[1.02] tracking-tight text-bone md:text-5xl lg:text-6xl">
+        <h1 className="display-lg max-w-4xl">
           Intelligence is the{" "}
           <span className="text-gold">accumulated decisions</span> that shaped
           it.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-bone-dim">
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
           The Sovereign Agent Fleet is the empirical proof. One frozen
           governance substrate, exercised across eight domains — with zero
           security invariants depending on model behavior.
@@ -75,11 +75,11 @@ export default function MissionPage() {
       </Container>
 
       {sections.map((section) => (
-        <section key={section.id} id={section.id} className="border-t border-hairline">
+        <section key={section.id} id={section.id} className="border-t border-rule">
           <Container className="py-12 md:py-16">
             <div className="max-w-3xl">
               <SectionHeading kicker={section.kicker} title={section.heading} />
-              <div className="mt-6 space-y-5 text-lg leading-relaxed text-bone-dim">
+              <div className="mt-6 space-y-5 text-lg leading-relaxed text-ink-2">
                 {section.body.map((para, j) => (
                   <p key={j}>{para}</p>
                 ))}
@@ -89,19 +89,19 @@ export default function MissionPage() {
         </section>
       ))}
 
-      <section className="border-t border-hairline bg-navy-deep">
+      <section className="border-t border-rule bg-void-2">
         <Container className="py-12 md:py-16">
           <SectionHeading
             kicker="The proof, in numbers"
             title="The Fleet invariants"
           />
-          <dl className="mt-8 grid grid-cols-1 gap-px border border-hairline bg-hairline sm:grid-cols-3">
+          <dl className="mt-8 grid grid-cols-1 gap-px border border-rule bg-rule sm:grid-cols-3">
             {invariants.map((s) => (
-              <div key={s.label} className="bg-navy-deep p-6 sm:p-8">
-                <div className="font-display text-5xl leading-none text-bone sm:text-6xl">
+              <div key={s.label} className="bg-void-2 p-6 sm:p-8">
+                <div className="font-display text-5xl leading-none text-ink sm:text-6xl">
                   {s.value}
                 </div>
-                <dd className="mt-4 font-mono text-[0.65rem] leading-relaxed tracking-[0.14em] text-bone-dim uppercase">
+                <dd className="mt-4 font-mono text-[0.65rem] leading-relaxed tracking-[0.14em] text-ink-2 uppercase">
                   {s.label}
                 </dd>
               </div>
@@ -110,7 +110,7 @@ export default function MissionPage() {
           <div className="mt-8">
             <Link
               href="/fleet"
-              className="inline-block border border-hairline px-6 py-3 font-mono text-xs tracking-[0.16em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
+              className="inline-block border border-rule px-6 py-3 font-mono text-xs tracking-[0.16em] text-ink uppercase transition-colors hover:border-gold hover:text-gold"
             >
               Meet the Fleet →
             </Link>
@@ -118,18 +118,18 @@ export default function MissionPage() {
         </Container>
       </section>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <div className="mx-auto max-w-2xl text-center">
             <SectionHeading kicker="Where to begin" title="Explore the work" />
-            <p className="mt-6 mb-8 text-bone-dim">
+            <p className="mt-6 mb-8 text-ink-2">
               The mission is one thread. The Fleet is the proof. The research
               log is the record.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6">
               <Link
                 href="/fleet"
-                className="inline-block border border-hairline px-6 py-3 font-mono text-xs tracking-[0.16em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
+                className="inline-block border border-rule px-6 py-3 font-mono text-xs tracking-[0.16em] text-ink uppercase transition-colors hover:border-gold hover:text-gold"
               >
                 Meet the Fleet →
               </Link>

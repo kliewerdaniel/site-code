@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Container from "@/components/Container";
-import SectionHeading from "@/components/SectionHeading";
+import { Exhibit, Kicker } from "@/components/Archetypes";
 import { getAllPosts, getAllTags } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
 import ResearchSearch from "./ResearchSearch";
@@ -13,8 +12,6 @@ export const metadata: Metadata = {
 };
 
 const PAGE_SIZE = 20;
-
-
 
 function pageHref(page: number, tag?: string): string {
   const params = new URLSearchParams();
@@ -56,21 +53,23 @@ export default async function ResearchPage({
   }));
 
   return (
-    <Container className="py-16 md:py-24">
-      <SectionHeading
-        kicker="Research Archive"
-        title="Research"
-        lede="Every essay, tutorial, and experiment in the open — the working notes behind computational sovereignty."
-      />
+    <Exhibit wide>
+      <Kicker>Research archive</Kicker>
+      <h1 className="display-lg mt-5">Research</h1>
+      <p className="mt-6 max-w-2xl leading-relaxed text-ink-2">
+        Every essay, tutorial, and experiment in the open — the working notes
+        behind computational sovereignty.
+      </p>
 
-      <p className="font-mono text-xs text-bone-dim mb-8">
+      <p className="label data mt-10">
         {filtered.length} post{filtered.length === 1 ? "" : "s"}
         {tag ? (
           <>
-            {" "}tagged <span className="text-gold">{tag}</span>{" "}
+            {" "}
+            tagged <span className="text-gold">{tag}</span>{" "}
             <Link
               href="/research"
-              className="underline underline-offset-2 hover:text-bone"
+              className="underline underline-offset-2 hover:text-gold"
             >
               clear
             </Link>
@@ -79,18 +78,19 @@ export default async function ResearchPage({
       </p>
 
       <ResearchSearch posts={searchable}>
-        {/* Tag filter chips */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* Tag filter chips — a chip is right here because these are a
+            filter control, not content. */}
+        <div className="mb-14 flex flex-wrap gap-2">
           {topTags.map(({ tag: t, count }) => {
             const active = tag === t;
             return (
               <Link
                 key={t}
                 href={active ? "/research" : pageHref(1, t)}
-                className={`font-mono text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                className={`rounded-full border px-3 py-1.5 font-mono text-[11px] tracking-[0.08em] transition-colors ${
                   active
-                    ? "bg-gold text-ink border-gold"
-                    : "border-hairline text-bone-dim hover:text-bone hover:border-paper-dim"
+                    ? "border-gold bg-gold text-void"
+                    : "border-rule text-ink-2 hover:border-rule-2 hover:text-ink"
                 }`}
               >
                 {t} <span className="opacity-60">{count}</span>
@@ -99,32 +99,33 @@ export default async function ResearchPage({
           })}
         </div>
 
-        {/* Paginated post list */}
-        <ul className="divide-y divide-hairline">
+        {/* Ruled entries. v2 boxed every post; the rules carry the
+            structure instead, which is what gives the page its pace. */}
+        <ul className="border-t border-rule">
           {pagePosts.map((p) => (
-            <li key={p.slug} className="py-6 first:pt-0">
-              <Link href={`/blog/${p.slug}`} className="group block">
-                <p className="font-mono text-xs text-bone-dim mb-2">
-                  {formatDate(p.date)}
-                </p>
-                <h2 className="font-display text-xl md:text-2xl text-bone group-hover:text-gold transition-colors">
-                  {p.title}
-                </h2>
-                <p className="mt-2 text-sm text-bone-dim leading-relaxed">
-                  {p.description}
-                </p>
-                {p.tags.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {p.tags.slice(0, 6).map((t) => (
-                      <span
-                        key={t}
-                        className="font-mono text-[11px] px-2 py-1 border border-hairline rounded text-bone-dim"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
+            <li key={p.slug} className="ruled-row">
+              <Link
+                href={`/blog/${p.slug}`}
+                className="group grid grid-cols-1 items-baseline gap-x-9 gap-y-2 py-7 md:grid-cols-[9rem_1fr]"
+              >
+                <span className="label data">{formatDate(p.date)}</span>
+                <span>
+                  <span className="display-md block transition-colors group-hover:text-gold">
+                    {p.title}
+                  </span>
+                  <span className="mt-3 block max-w-3xl leading-relaxed text-ink-2">
+                    {p.description}
+                  </span>
+                  {p.tags.length > 0 && (
+                    <span className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+                      {p.tags.slice(0, 6).map((t) => (
+                        <span key={t} className="label">
+                          {t}
+                        </span>
+                      ))}
+                    </span>
+                  )}
+                </span>
               </Link>
             </li>
           ))}
@@ -133,13 +134,13 @@ export default async function ResearchPage({
         {/* Pagination */}
         {totalPages > 1 && (
           <nav
-            className="mt-12 flex items-center justify-center gap-2 font-mono text-sm"
+            className="mt-16 flex items-center justify-center gap-2 font-mono text-sm"
             aria-label="Pagination"
           >
             {currentPage > 1 && (
               <Link
                 href={pageHref(currentPage - 1, tag)}
-                className="px-3 py-2 border border-hairline rounded text-bone-dim hover:text-bone hover:border-paper-dim"
+                className="rounded border border-rule px-3 py-2 text-ink-2 transition-colors hover:border-rule-2 hover:text-ink"
               >
                 ← Prev
               </Link>
@@ -147,22 +148,20 @@ export default async function ResearchPage({
             {Array.from({ length: totalPages }, (_, i) => i + 1)
               .filter(
                 (n) =>
-                  n === 1 ||
-                  n === totalPages ||
-                  Math.abs(n - currentPage) <= 2
+                  n === 1 || n === totalPages || Math.abs(n - currentPage) <= 2
               )
               .map((n, idx, arr) => (
                 <span key={n} className="flex items-center gap-2">
                   {idx > 0 && arr[idx - 1] !== n - 1 && (
-                    <span className="text-bone-dim">…</span>
+                    <span className="text-ink-3">…</span>
                   )}
                   <Link
                     href={pageHref(n, tag)}
                     aria-current={n === currentPage ? "page" : undefined}
-                    className={`px-3 py-2 rounded border ${
+                    className={`rounded border px-3 py-2 transition-colors ${
                       n === currentPage
-                        ? "bg-gold text-ink border-gold"
-                        : "border-hairline text-bone-dim hover:text-bone hover:border-paper-dim"
+                        ? "border-gold bg-gold text-void"
+                        : "border-rule text-ink-2 hover:border-rule-2 hover:text-ink"
                     }`}
                   >
                     {n}
@@ -172,7 +171,7 @@ export default async function ResearchPage({
             {currentPage < totalPages && (
               <Link
                 href={pageHref(currentPage + 1, tag)}
-                className="px-3 py-2 border border-hairline rounded text-bone-dim hover:text-bone hover:border-paper-dim"
+                className="rounded border border-rule px-3 py-2 text-ink-2 transition-colors hover:border-rule-2 hover:text-ink"
               >
                 Next →
               </Link>
@@ -180,6 +179,6 @@ export default async function ResearchPage({
           </nav>
         )}
       </ResearchSearch>
-    </Container>
+    </Exhibit>
   );
 }

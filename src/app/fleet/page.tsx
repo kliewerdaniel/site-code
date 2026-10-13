@@ -95,23 +95,23 @@ export default function FleetPage() {
         <p className="mb-5 font-mono text-xs tracking-[0.28em] text-gold uppercase">
           The Sovereign Agent Fleet
         </p>
-        <h1 className="font-display text-5xl leading-[0.95] tracking-tight text-bone md:text-6xl lg:text-7xl">
+        <h1 className="display-lg">
           One substrate.
           <br />
           Eight domains. Zero edits.
         </h1>
-        <p className="mt-7 max-w-3xl font-display text-xl leading-snug text-bone md:text-2xl">
+        <p className="mt-7 max-w-3xl font-display text-xl leading-snug text-ink md:text-2xl">
           The claim is falsifiable: a single frozen governance substrate runs
           every system below, and no domain has required a substrate edit.
           Show one that does, and the thesis weakens.
         </p>
-        <p className="mt-4 max-w-2xl leading-relaxed text-bone-dim">
+        <p className="mt-4 max-w-2xl leading-relaxed text-ink-2">
           {NARRATIVE}
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-6">
           <Link
             href="/mission"
-            className="inline-block border border-hairline px-6 py-3 font-mono text-xs tracking-[0.16em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
+            className="inline-block border border-rule px-6 py-3 font-mono text-xs tracking-[0.16em] text-ink uppercase transition-colors hover:border-gold hover:text-gold"
           >
             Read the Mission →
           </Link>
@@ -124,7 +124,7 @@ export default function FleetPage() {
         </div>
       </Container>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <div className="mb-10 max-w-2xl">
             <SectionHeading
@@ -133,23 +133,23 @@ export default function FleetPage() {
               lede="Each domain below is a separate proof attempt. Same decision function, zero edits, zero security invariants that depend on what the model happens to do."
             />
           </div>
-          <div className="grid grid-cols-1 gap-px border border-hairline bg-hairline md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px border border-rule bg-rule md:grid-cols-2">
             {FLEET_LAYERS.map((layer, i) => (
               <Reveal key={layer.slug} delay={Math.min(i * 0.04, 0.2)}>
                 <Link
                   href={`/fleet/${layer.slug}`}
-                  className="group block h-full bg-abyss p-7 transition-colors hover:bg-navy-deep"
+                  className="group block h-full bg-void p-7 transition-colors hover:bg-void-2"
                 >
                   <div className="mb-3 flex items-center gap-3">
                     <span className="text-lg text-gold">{layer.icon}</span>
-                    <h3 className="font-display text-2xl text-bone transition-colors group-hover:text-gold">
+                    <h3 className="font-display text-2xl text-ink transition-colors group-hover:text-gold">
                       {layer.name}
                     </h3>
                   </div>
-                  <p className="mb-5 leading-relaxed text-bone-dim">
+                  <p className="mb-5 leading-relaxed text-ink-2">
                     {layer.description}
                   </p>
-                  <p className="font-mono text-[0.65rem] tracking-[0.14em] text-bone-faint uppercase">
+                  <p className="font-mono text-[0.65rem] tracking-[0.14em] text-ink-3 uppercase">
                     {layer.systemCount} system
                     {layer.systemCount === 1 ? "" : "s"} · frozen substrate →
                   </p>
@@ -160,18 +160,18 @@ export default function FleetPage() {
         </Container>
       </section>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <div className="mx-auto max-w-2xl text-center">
             <SectionHeading kicker="Where to begin" title="Start with the mission" />
-            <p className="mt-6 mb-8 text-bone-dim">
+            <p className="mt-6 mb-8 text-ink-2">
               The mission states the thesis. The fleet is the evidence. The
               research log is the record.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6">
               <Link
                 href="/mission"
-                className="inline-block border border-hairline px-6 py-3 font-mono text-xs tracking-[0.16em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
+                className="inline-block border border-rule px-6 py-3 font-mono text-xs tracking-[0.16em] text-ink uppercase transition-colors hover:border-gold hover:text-gold"
               >
                 The Mission →
               </Link>

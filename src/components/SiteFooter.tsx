@@ -1,47 +1,98 @@
 import Link from "next/link";
-import { OLD_BOOK, SECONDARY_NAV } from "@/config";
+import { OLD_BOOK, SECONDARY_NAV, SOCIAL } from "@/config";
 import Container from "@/components/Container";
 import { SovereignMark } from "@/components/Logotype";
 
+/* v3 footer: an instrument readout, not a link farm.
+   Every link that existed in v2 is still here — this is a navigation
+   surface, so nothing may be dropped for looks. */
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-hairline bg-navy-deep">
-      <Container className="py-12">
-        <div className="mb-10 flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+    <footer className="border-t border-rule bg-void">
+      <Container className="py-16">
+        <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div className="flex items-start gap-4">
             <SovereignMark size={44} />
             <div>
-              <p className="font-mono text-sm font-semibold tracking-[0.28em] text-bone">
-                DANIEL&nbsp;KLIEWER
-              </p>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-bone-dim">
+              <p className="label text-ink">Daniel Kliewer</p>
+              <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-2">
                 Local-first AI systems. Measured, reproducible, owned.
               </p>
             </div>
           </div>
-          <nav
-            aria-label="Secondary"
-            className="flex flex-wrap gap-x-7 gap-y-3"
-          >
-            {SECONDARY_NAV.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="font-mono text-xs tracking-[0.15em] text-bone-dim uppercase transition-colors hover:text-gold"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+
+          <div className="flex flex-col gap-10 sm:flex-row sm:gap-16">
+            <nav aria-label="Secondary">
+              <p className="label mb-4">More</p>
+              <ul className="flex flex-col gap-2">
+                {SECONDARY_NAV.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="label transition-colors hover:text-gold"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <nav aria-label="Elsewhere">
+              <p className="label mb-4">Elsewhere</p>
+              <ul className="flex flex-col gap-2">
+                <li>
+                  <a
+                    href={SOCIAL.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="label transition-colors hover:text-gold"
+                  >
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={SOCIAL.x}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="label transition-colors hover:text-gold"
+                  >
+                    X
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={SOCIAL.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="label transition-colors hover:text-gold"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`mailto:${SOCIAL.email}`}
+                    className="label transition-colors hover:text-gold"
+                  >
+                    Email
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div className="flex flex-col justify-between gap-4 border-t border-hairline pt-8 md:flex-row md:items-center">
-          <p className="text-sm text-bone-dim">
+
+        <div className="mt-14 flex flex-col justify-between gap-4 border-t border-rule pt-8 md:flex-row md:items-center">
+          <p className="text-sm text-ink-2">
             Also by Daniel Kliewer:{" "}
             <a
               href={OLD_BOOK.amazonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-bone underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
+              className="text-ink underline decoration-gold/40 underline-offset-4 transition-colors hover:decoration-gold"
             >
               {OLD_BOOK.title} (paperback) →
             </a>
@@ -49,11 +100,11 @@ export function SiteFooter() {
           <div className="flex items-center gap-6">
             <Link
               href="/feed.xml"
-              className="font-mono text-xs text-bone-dim transition-colors hover:text-gold"
+              className="label transition-colors hover:text-gold"
             >
               RSS
             </Link>
-            <p className="font-mono text-xs text-bone-dim">© 2026 Daniel Kliewer</p>
+            <p className="label">© 2026 Daniel Kliewer</p>
           </div>
         </div>
       </Container>

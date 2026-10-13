@@ -31,3 +31,9 @@ yarn-error.log*
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# Hermes planning scratch — local plans and design prototypes, not part of
+# the product. docs/design/ IS tracked (the spec and prototype are review
+# artifacts); only the binary cover copy the prototype references is not.
+.hermes/
+docs/design/*.png

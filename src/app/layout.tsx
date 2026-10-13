@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SITE, BOOK } from "@/config";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import ShaderBackground from "@/components/ShaderBackground";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -65,8 +64,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fraunces.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="flex min-h-screen flex-col bg-abyss font-sans text-bone antialiased">
-        <ShaderBackground />
+      <body className="grain flex min-h-screen flex-col bg-void font-sans text-ink antialiased">
         <SiteHeader />
         <main className="relative flex-1">{children}</main>
         <SiteFooter />

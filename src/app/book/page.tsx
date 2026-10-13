@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import ChapterStack, { CHAPTERS } from "@/components/ChapterStack";
+import { CHAPTERS, PARTS } from "@/lib/chapters";
+import { Figure, FigureRow, Kicker } from "@/components/Archetypes";
 import { AmazonCta } from "@/components/AmazonCta";
 import { BOOK } from "@/config";
 
@@ -108,7 +109,7 @@ export default function BookPage() {
   return (
     <>
       {/* HEAD */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="py-16 md:py-24">
           <div className="grid items-center gap-12 md:grid-cols-[1fr_1.2fr]">
             <div>
@@ -137,20 +138,20 @@ export default function BookPage() {
               <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
                 The book · Hardcover · {BOOK.price}
               </p>
-              <h1 className="mb-5 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.02em] text-bone md:text-6xl">
+              <h1 className="display-lg mb-5">
                 {BOOK.title}
               </h1>
-              <p className="mb-6 font-display text-xl text-bone-dim italic md:text-2xl">
+              <p className="mb-6 font-display text-xl text-ink-2 italic md:text-2xl">
                 {BOOK.subtitle}
               </p>
-              <p className="mb-4 max-w-xl text-base leading-relaxed text-bone-dim">
+              <p className="mb-4 max-w-xl text-base leading-relaxed text-ink-2">
                 Most AI engineering in 2024–2026 was integration work: call
                 someone else&apos;s model, parse the output, hope the weights don&apos;t
                 change overnight. This book is about the other discipline —
                 building the whole stack on machines you own, where every
                 behavior is reproducible and every number is yours.
               </p>
-              <p className="mb-8 max-w-xl text-base leading-relaxed text-bone-dim">
+              <p className="mb-8 max-w-xl text-base leading-relaxed text-ink-2">
                 It starts by pricing the cloud as a liability and ends with a
                 practice for shipping sovereign software. In between: 24
                 chapters of models, retrieval, graphs, agents, personas, and
@@ -160,7 +161,7 @@ export default function BookPage() {
                 <AmazonCta />
                 <Link
                   href="/sample"
-                  className="inline-flex items-center justify-center rounded-sm border border-hairline bg-transparent px-7 py-4 font-mono text-[12px] tracking-[0.14em] text-bone uppercase transition-colors hover:border-gold hover:text-gold"
+                  className="inline-flex items-center justify-center rounded-sm border border-rule bg-transparent px-7 py-4 font-mono text-[12px] tracking-[0.14em] text-ink uppercase transition-colors hover:border-gold hover:text-gold"
                 >
                   Read chapter 1 free
                 </Link>
@@ -171,21 +172,21 @@ export default function BookPage() {
       </section>
 
       {/* THE ARGUMENT — eight parts */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="py-16 md:py-24">
           <SectionHeading
             kicker="The argument"
             title="Eight parts, one thesis"
             lede="Each part makes a single claim and then spends three chapters proving it with working systems."
           />
-          <div className="mt-4 grid gap-px border border-hairline bg-hairline md:grid-cols-2">
+          <div className="mt-4 grid gap-px border border-rule bg-rule md:grid-cols-2">
             {parts.map((p, i) => (
               <Reveal key={p.n} delay={Math.min(i * 0.04, 0.2)}>
-                <div className="h-full bg-abyss p-7">
+                <div className="h-full bg-void p-7">
                   <p className="mb-3 font-mono text-[11px] tracking-[0.24em] text-gold">
                     PART {p.n} — {p.name.toUpperCase()}
                   </p>
-                  <p className="font-display text-lg leading-relaxed text-bone">
+                  <p className="font-display text-lg leading-relaxed text-ink">
                     {p.claim}
                   </p>
                 </div>
@@ -195,20 +196,61 @@ export default function BookPage() {
         </Container>
       </section>
 
-      {/* CHAPTER STACK */}
-      <ChapterStack />
+      {/* CHAPTERS — INSTRUMENT. Replaces v2's 24-card scroll animation
+          with a ruled readout: the whole table of contents, readable at
+          a glance, identical in both motion modes. */}
+      <section className="instrument">
+        <Container>
+          <Kicker>Table of contents</Kicker>
+          <h2 className="display-lg mt-5">
+            Twenty-four chapters, eight parts.
+          </h2>
+          <p className="mt-6 max-w-2xl leading-relaxed text-ink-2">
+            Each part builds on the one before it. Every chapter ends with
+            something running on your own machine.
+          </p>
+
+          <FigureRow>
+            <Figure value={String(BOOK.chapters)} label="Chapters" />
+            <Figure value={BOOK.pages} label="Pages" />
+            <Figure value={BOOK.words} label="Words" />
+            <Figure value={String(PARTS.length)} label="Parts" />
+          </FigureRow>
+
+          <div className="mt-20">
+            {PARTS.map((part) => (
+              <div key={part} className="mb-2">
+                <p className="label mt-10 mb-1 text-ink-3">{part}</p>
+                <div className="border-t border-rule">
+                  {CHAPTERS.filter((c) => c.part === part).map((c) => (
+                    <div
+                      key={c.n}
+                      className="ruled-row grid grid-cols-[3rem_1fr] items-baseline gap-x-6 py-4"
+                    >
+                      <span className="label data text-gold">
+                        {String(c.n).padStart(2, "0")}
+                      </span>
+                      <span className="display-md">{c.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       {/* SPECS */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Specifications" title="The physical facts" />
-          <dl className="divide-y divide-hairline border-y border-hairline">
+          <dl className="divide-y divide-rule border-y border-rule">
             {specs.map(([k, v]) => (
               <div key={k} className="flex items-baseline justify-between gap-6 py-4">
-                <dt className="font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
+                <dt className="font-mono text-[11px] tracking-[0.2em] text-ink-3 uppercase">
                   {k}
                 </dt>
-                <dd className="text-right text-sm text-bone">{v}</dd>
+                <dd className="text-right text-sm text-ink">{v}</dd>
               </div>
             ))}
           </dl>
@@ -216,17 +258,17 @@ export default function BookPage() {
       </section>
 
       {/* FAQ */}
-      <section className="border-b border-hairline bg-navy-deep">
+      <section className="border-b border-rule bg-void-2">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Questions" title="Asked and answered" />
           <div className="mt-4 space-y-8">
             {faq.map((f) => (
               <Reveal key={f.q}>
                 <div>
-                  <h3 className="mb-2 font-display text-xl font-medium text-bone">
+                  <h3 className="mb-2 font-display text-xl font-medium text-ink">
                     {f.q}
                   </h3>
-                  <p className="text-sm leading-relaxed text-bone-dim">{f.a}</p>
+                  <p className="text-sm leading-relaxed text-ink-2">{f.a}</p>
                 </div>
               </Reveal>
             ))}
@@ -241,10 +283,10 @@ export default function BookPage() {
             <p className="mb-4 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
               {BOOK.chapters} chapters · {BOOK.words} words · {BOOK.price}
             </p>
-            <h2 className="mx-auto mb-4 max-w-2xl font-display text-3xl font-semibold text-bone md:text-5xl">
+            <h2 className="display-lg mx-auto mb-4 max-w-2xl">
               Own every layer.
             </h2>
-            <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-bone-dim">
+            <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-ink-2">
               The cloud will still be there when you need it. After this book,
               you&apos;ll know exactly what each API call costs you — and you&apos;ll
               have the machine to replace it.
@@ -253,7 +295,7 @@ export default function BookPage() {
             <p className="mt-6">
               <Link
                 href="/sample"
-                className="font-mono text-[12px] tracking-[0.16em] text-bone-dim uppercase transition-colors hover:text-gold"
+                className="font-mono text-[12px] tracking-[0.16em] text-ink-2 uppercase transition-colors hover:text-gold"
               >
                 Or read chapter 1 free first →
               </Link>

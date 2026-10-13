@@ -62,15 +62,15 @@ export default function PressPage() {
   return (
     <>
       {/* HEAD */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="max-w-3xl py-16 md:py-24">
           <p className="mb-6 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
             Press
           </p>
-          <h1 className="mb-5 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.02em] text-bone md:text-5xl">
+          <h1 className="display-lg mb-5">
             Press kit
           </h1>
-          <p className="max-w-xl text-base leading-relaxed text-bone-dim">
+          <p className="max-w-xl text-base leading-relaxed text-ink-2">
             Everything below is cleared for editorial use with credit. The
             through-line of every interview: what becomes possible when you
             own every layer of the stack.
@@ -79,11 +79,11 @@ export default function PressPage() {
       </section>
 
       {/* BIO */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Bio" title="The two-sentence version" />
           <Reveal>
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-bone-dim">
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-ink-2">
               <p>
                 Daniel Kliewer is an AI developer in Austin, Texas, who builds
                 systems that run on hardware he owns — models, retrieval,
@@ -92,21 +92,21 @@ export default function PressPage() {
               </p>
               <p>
                 He is the author of{" "}
-                <em className="text-bone">
+                <em className="text-ink">
                   Computational Sovereignty: Building Local-First AI Systems
                 </em>{" "}
                 (hardcover, 214 pages, {BOOK.price}), the earlier{" "}
-                <em className="text-bone">Sovereign AI</em>, and 184 open
+                <em className="text-ink">Sovereign AI</em>, and 184 open
                 research posts documenting the work as it happened.
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className="mt-10 border border-hairline bg-navy p-7">
+            <div className="mt-10 border border-rule bg-slate p-7">
               <p className="mb-3 font-mono text-[11px] tracking-[0.24em] text-gold uppercase">
                 The longer version
               </p>
-              <div className="space-y-4 text-sm leading-relaxed text-bone-dim">
+              <div className="space-y-4 text-sm leading-relaxed text-ink-2">
                 <p>
                   Kliewer&apos;s work starts from a single priced claim: cloud
                   AI is a liability — data exfiltration by design, silent model
@@ -133,22 +133,22 @@ export default function PressPage() {
       </section>
 
       {/* ASSETS */}
-      <section className="border-b border-hairline bg-navy-deep">
+      <section className="border-b border-rule bg-void-2">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Media" title="Downloadable assets" />
-          <div className="mt-10 grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
+          <div className="mt-10 grid gap-px border border-rule bg-rule sm:grid-cols-2">
             {assets.map((a) => (
-              <div key={a.title} className="bg-navy-deep p-7">
-                <h3 className="mb-3 font-display text-lg font-medium text-bone">
+              <div key={a.title} className="bg-void-2 p-7">
+                <h3 className="mb-3 font-display text-lg font-medium text-ink">
                   {a.title}
                 </h3>
-                <p className="mb-4 text-sm leading-relaxed text-bone-dim">
+                <p className="mb-4 text-sm leading-relaxed text-ink-2">
                   {a.desc}
                 </p>
                 <a
                   href={a.href}
                   download
-                  className="font-mono text-[11px] tracking-[0.16em] text-gold uppercase transition-colors hover:text-bone"
+                  className="font-mono text-[11px] tracking-[0.16em] text-gold uppercase transition-colors hover:text-ink"
                 >
                   {a.note}
                 </a>
@@ -159,14 +159,14 @@ export default function PressPage() {
       </section>
 
       {/* INTERVIEW TOPICS */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Interviews" title="Suggested topics" />
-          <div className="mt-10 grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
+          <div className="mt-10 grid gap-px border border-rule bg-rule sm:grid-cols-2">
             {topics.map((t) => (
-              <div key={t} className="flex items-center gap-3 bg-abyss p-5">
+              <div key={t} className="flex items-center gap-3 bg-void p-5">
                 <span className="shrink-0 font-mono text-gold">→</span>
-                <span className="text-sm leading-relaxed text-bone">{t}</span>
+                <span className="text-sm leading-relaxed text-ink">{t}</span>
               </div>
             ))}
           </div>
@@ -177,11 +177,11 @@ export default function PressPage() {
       <section>
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Booking" title="Press contact" />
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-bone-dim">
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-ink-2">
             Interviews, speaking, review copies:{" "}
             <a
               href={`mailto:${SOCIAL.email}`}
-              className="text-gold transition-colors hover:text-bone"
+              className="text-gold transition-colors hover:text-ink"
             >
               {SOCIAL.email}
             </a>

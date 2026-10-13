@@ -43,13 +43,13 @@ export default function ResearchSearch({
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search 184 research posts…"
           aria-label="Search research posts"
-          className="w-full bg-navy-deep border border-hairline rounded-lg px-4 py-3 font-mono text-sm text-bone placeholder:text-bone-dim/50 focus:outline-none focus:border-gold"
+          className="w-full bg-void-2 border border-rule rounded-lg px-4 py-3 font-mono text-sm text-ink placeholder:text-ink-2/50 focus:outline-none focus:border-gold"
         />
         {query && (
           <button
             type="button"
             onClick={() => setQuery("")}
-            className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-bone-dim hover:text-bone"
+            className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-ink-2 hover:text-ink"
             aria-label="Clear search"
           >
             ✕
@@ -61,21 +61,21 @@ export default function ResearchSearch({
         children
       ) : (
         <div>
-          <p className="font-mono text-xs text-bone-dim mb-6">
+          <p className="font-mono text-xs text-ink-2 mb-6">
             {results.length} result{results.length === 1 ? "" : "s"} for
             &ldquo;{query.trim()}&rdquo;
           </p>
-          <ul className="divide-y divide-hairline">
+          <ul className="divide-y divide-rule">
             {results.map((p) => (
               <li key={p.slug} className="py-6 first:pt-0">
                 <Link href={`/blog/${p.slug}`} className="group block">
-                  <p className="font-mono text-xs text-bone-dim mb-2">
+                  <p className="font-mono text-xs text-ink-2 mb-2">
                     {formatDate(p.date)}
                   </p>
-                  <h2 className="font-display text-xl md:text-2xl text-bone group-hover:text-gold transition-colors">
+                  <h2 className="font-display text-xl md:text-2xl text-ink group-hover:text-gold transition-colors">
                     {p.title}
                   </h2>
-                  <p className="mt-2 text-sm text-bone-dim leading-relaxed">
+                  <p className="mt-2 text-sm text-ink-2 leading-relaxed">
                     {p.description}
                   </p>
                   {p.tags.length > 0 && (
@@ -83,7 +83,7 @@ export default function ResearchSearch({
                       {p.tags.slice(0, 6).map((t) => (
                         <span
                           key={t}
-                          className="font-mono text-[11px] px-2 py-1 border border-hairline rounded text-bone-dim"
+                          className="font-mono text-[11px] px-2 py-1 border border-rule rounded text-ink-2"
                         >
                           {t}
                         </span>
@@ -95,7 +95,7 @@ export default function ResearchSearch({
             ))}
           </ul>
           {results.length === 0 && (
-            <p className="text-bone-dim text-sm">
+            <p className="text-ink-2 text-sm">
               No posts match. Try different terms.
             </p>
           )}

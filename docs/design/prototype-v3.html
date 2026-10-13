@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v3 "The Instrument" — direction prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#01040a; --void-2:#050a12; --slate:#0d1d28; --slate-2:#152129; --slate-3:#1a2e38;
+    --ink:#f2f4f5; --ink-2:#b8c2c6; --ink-3:#8a979d;
+    --gold:#ffc370; --gold-2:#e8a94e;
+    --rule:#1e2c36; --rule-2:#2c3d49;
+    --f-display:'Fraunces',Georgia,serif;
+    --f-body:'Space Grotesk',system-ui,sans-serif;
+    --f-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--void); color:var(--ink);
+    font-family:var(--f-body); font-size:17px; line-height:1.65;
+    letter-spacing:.005em; -webkit-font-smoothing:antialiased;
+  }
+  /* grain: the cinematic tell, static, one composited layer */
+  body::after{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+  .label{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-3)}
+  .data{font-variant-numeric:tabular-nums}
+  .rule{border:0;border-top:1px solid var(--rule)}
+
+  /* ---- chrome ---- */
+  header{position:sticky;top:0;z-index:100;background:rgba(1,4,10,.72);
+    backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  .nav a{color:var(--ink-2);text-decoration:none;font-family:var(--f-mono);font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;transition:color .2s}
+  .nav a:hover{color:var(--gold)}
+  .nav .links{display:flex;gap:32px}
+  .mark{font-family:var(--f-display);font-size:19px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+
+  /* ---- SCENE ---- */
+  .scene{min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden}
+  .scene .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:center;width:100%}
+  h1{font-family:var(--f-display);font-weight:400;
+    font-size:clamp(3.5rem,9vw,8.5rem);line-height:.92;letter-spacing:-.03em}
+  .deck{font-family:var(--f-display);font-style:italic;font-weight:400;
+    font-size:clamp(1.15rem,2vw,1.6rem);line-height:1.4;color:var(--ink-2);margin-top:28px}
+  .lede{margin-top:32px;max-width:52ch;color:var(--ink-2)}
+  .cta{display:inline-block;margin-top:44px;padding:18px 34px;background:var(--gold);
+    color:var(--void);font-family:var(--f-mono);font-size:12px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:2px;
+    transition:background .2s}
+  .cta:hover{background:var(--gold-2)}
+  .ghost{display:inline-block;margin-left:22px;padding:18px 30px;border:1px solid var(--rule-2);
+    color:var(--ink);font-family:var(--f-mono);font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;text-decoration:none;border-radius:2px;transition:border-color .2s}
+  .ghost:hover{border-color:var(--gold);color:var(--gold)}
+  /* the object in void */
+  .object{position:relative;display:flex;align-items:center;justify-content:center}
+  .object img{width:100%;max-width:400px;display:block;border-radius:2px;
+    box-shadow:0 60px 140px rgba(0,0,0,.9), 0 0 0 1px rgba(255,195,112,.08)}
+  .object::before{content:"";position:absolute;width:120%;height:120%;
+    background:radial-gradient(ellipse at center,rgba(255,195,112,.07),transparent 62%);z-index:-1}
+
+  /* ---- EXHIBIT ---- */
+  .exhibit{padding:190px 0}
+  .exhibit .head{max-width:60ch}
+  h2{font-family:var(--f-display);font-weight:400;
+    font-size:clamp(2rem,4vw,3.25rem);line-height:1.05;letter-spacing:-.02em;margin-top:20px}
+  .exhibit p{margin-top:26px;color:var(--ink-2);max-width:62ch}
+  .entries{margin-top:78px;border-top:1px solid var(--rule)}
+  .entry{display:grid;grid-template-columns:88px 1fr;gap:36px;padding:36px 0;
+    border-bottom:1px solid var(--rule)}
+  .entry .n{font-family:var(--f-mono);font-size:12px;color:var(--gold);
+    letter-spacing:.1em;padding-top:5px}
+  .entry h3{font-family:var(--f-display);font-weight:400;font-size:1.4rem;
+    letter-spacing:-.01em;line-height:1.25}
+  .entry p{margin-top:10px;color:var(--ink-2);max-width:58ch;font-size:16px}
+
+  /* ---- INSTRUMENT ---- */
+  .instrument{background:var(--void-2);padding:150px 0;border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule)}
+  .figs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+    margin-top:64px;border:1px solid var(--rule)}
+  .fig{background:var(--void-2);padding:40px 32px}
+  .fig .v{font-family:var(--f-mono);font-size:clamp(2rem,3.4vw,3rem);font-weight:500;
+    letter-spacing:-.02em;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+  .fig .k{margin-top:16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-3);line-height:1.6}
+
+  /* ---- research list ---- */
+  .posts{margin-top:64px}
+  .post{display:grid;grid-template-columns:150px 1fr auto;gap:32px;align-items:baseline;
+    padding:30px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:inherit}
+  .post:hover h3{color:var(--gold)}
+  .post .d{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);letter-spacing:.08em}
+  .post h3{font-family:var(--f-display);font-weight:400;font-size:1.25rem;
+    letter-spacing:-.01em;transition:color .2s;line-height:1.3}
+  .post .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);padding:5px 11px;border-radius:2px}
+
+  footer{background:var(--void);padding:80px 0;border-top:1px solid var(--rule)}
+  .foot{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .foot a{color:var(--ink-3);text-decoration:none;font-family:var(--f-mono);font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;display:block;padding:7px 0}
+  .foot a:hover{color:var(--gold)}
+  .swatches{display:flex;gap:0;margin-top:44px;border:1px solid var(--rule)}
+  .sw{height:76px;flex:1;display:flex;align-items:flex-end;padding:8px;
+    font-family:var(--f-mono);font-size:9px;color:var(--ink);letter-spacing:.06em}
+  @media(max-width:900px){
+    .scene .wrap{grid-template-columns:1fr;gap:48px}
+    .entries .entry{grid-template-columns:56px 1fr;gap:20px}
+    .figs{grid-template-columns:repeat(2,1fr)}
+    .post{grid-template-columns:1fr;gap:8px}
+    .exhibit{padding:110px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <span class="mark">Daniel Kliewer</span>
+    <nav class="links">
+      <a href="#">Book</a><a href="#">Research</a><a href="#">Sample</a>
+      <a href="#">About</a><a href="#">Press</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ A. SCENE ============ -->
+<section class="scene">
+  <div class="wrap">
+    <div>
+      <p class="label">Hardcover · 214 pages · $88</p>
+      <h1 style="margin-top:26px">Computational Sovereignty</h1>
+      <p class="deck">Building Local-First AI Systems</p>
+      <p class="lede">Twenty-four chapters on building AI systems that run on hardware you
+        own. Models, retrieval, knowledge graphs, governed agents — each one measured,
+        each one reproducible, none of them rented.</p>
+      <div>
+        <a class="cta" href="#">Buy the hardcover — $88</a>
+        <a class="ghost" href="#">Read chapter 1 free</a>
+      </div>
+    </div>
+    <div class="object">
+      <img src="book-front.png" alt="Book cover">
+    </div>
+  </div>
+</section>
+
+<!-- ============ B. EXHIBIT ============ -->
+<section class="exhibit">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">01 — What you will have built</p>
+      <h2>Six systems, running on your own machine.</h2>
+      <p>Not metaphors. By the last page each of these exists on your hardware, and you
+        can point at the number that proves it works.</p>
+    </div>
+    <div class="entries">
+      <div class="entry">
+        <span class="n data">CH 3–6</span>
+        <div>
+          <h3>A working inference stack</h3>
+          <p>Open weights downloaded, quantized, and served from your own machine. You
+            will know what the GPU is doing at every step, because you configured it.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n data">CH 7–9</span>
+        <div>
+          <h3>Retrieval you can defend</h3>
+          <p>Embeddings, vector search, and a RAG pipeline evaluated against a frozen gold
+            set. Recall is a number you measured, not a feeling you have.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n data">CH 10–12</span>
+        <div>
+          <h3>A compiled knowledge graph</h3>
+          <p>Documents turned into entities and relations, reasoned over at compile time.
+            The answers were organized before the question was asked.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ C. INSTRUMENT (chapters — replaces the scroll stack) ============ -->
+<section class="instrument">
+  <div class="wrap">
+    <p class="label">02 — The instrument</p>
+    <h2>Twenty-four chapters, eight parts.</h2>
+    <div class="figs">
+      <div class="fig"><div class="v">24</div><div class="k">Chapters</div></div>
+      <div class="fig"><div class="v">214</div><div class="k">Pages</div></div>
+      <div class="fig"><div class="v">46k</div><div class="k">Words</div></div>
+      <div class="fig"><div class="v">0</div><div class="k">Cloud dependencies</div></div>
+    </div>
+
+    <div style="margin-top:96px;border-top:1px solid var(--rule)">
+      <div style="display:grid;grid-template-columns:88px 1fr 150px;gap:32px;padding:26px 0;
+                  border-bottom:1px solid var(--rule);align-items:baseline">
+        <span class="label" style="color:var(--gold)">01</span>
+        <h3 style="font-family:var(--f-display);font-weight:400;font-size:1.3rem;
+                   letter-spacing:-.01em">The Cloud Is a Liability</h3>
+        <span class="label" style="text-align:right">I — Why Sovereignty</span>
+      </div>
+      <div style="display:grid;grid-template-columns:88px 1fr 150px;gap:32px;padding:26px 0;
+                  border-bottom:1px solid var(--rule);align-items:baseline">
+        <span class="label" style="color:var(--gold)">02</span>
+        <h3 style="font-family:var(--f-display);font-weight:400;font-size:1.3rem;
+                   letter-spacing:-.01em">The Sovereignty Stack</h3>
+        <span class="label" style="text-align:right">I — Why Sovereignty</span>
+      </div>
+      <div style="display:grid;grid-template-columns:88px 1fr 150px;gap:32px;padding:26px 0;
+                  border-bottom:1px solid var(--rule);align-items:baseline">
+        <span class="label" style="color:var(--gold)">03</span>
+        <h3 style="font-family:var(--f-display);font-weight:400;font-size:1.3rem;
+                   letter-spacing:-.01em">Your First Local Model</h3>
+        <span class="label" style="text-align:right">I — Why Sovereignty</span>
+      </div>
+      <div style="display:grid;grid-template-columns:88px 1fr 150px;gap:32px;padding:26px 0;
+                  border-bottom:1px solid var(--rule);align-items:baseline">
+        <span class="label" style="color:var(--gold)">04</span>
+        <h3 style="font-family:var(--f-display);font-weight:400;font-size:1.3rem;
+                   letter-spacing:-.01em">Tokens, Context, and Sampling</h3>
+        <span class="label" style="text-align:right">II — Inference You Control</span>
+      </div>
+      <div style="padding:26px 0">
+        <span class="label">… 20 more chapters</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXHIBIT (research) ============ -->
+<section class="exhibit">
+  <div class="wrap">
+    <p class="label">03 — Research log</p>
+    <h2>Written in public, newest first.</h2>
+    <div class="posts">
+      <a class="post" href="#">
+        <span class="d data">Oct 12, 2026</span>
+        <h3>MindBroadcast — a compile-time knowledge pipeline</h3>
+        <span class="tag">Compilers</span>
+      </a>
+      <a class="post" href="#">
+        <span class="d data">Oct 11, 2026</span>
+        <h3>Rust-native creative suite installation</h3>
+        <span class="tag">Tooling</span>
+      </a>
+      <a class="post" href="#">
+        <span class="d data">Sep 26, 2026</span>
+        <h3>Omarchy on a 2017 MacBook Pro: a setup retrospective</h3>
+        <span class="tag">Systems</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <p class="label">Daniel Kliewer</p>
+        <p style="margin-top:14px;color:var(--ink-3);font-size:15px;max-width:34ch">
+          Writing and building local-first AI systems.</p>
+      </div>
+      <div><p class="label">Work</p><a href="#">Book</a><a href="#">Research</a><a href="#">Sample</a></div>
+      <div><p class="label">Elsewhere</p><a href="#">GitHub</a><a href="#">X</a><a href="#">LinkedIn</a></div>
+    </div>
+    <div class="swatches">
+      <div class="sw" style="background:#01040a">void</div>
+      <div class="sw" style="background:#0d1d28">slate</div>
+      <div class="sw" style="background:#1a2e38">slate-3</div>
+      <div class="sw" style="background:#8a979d;color:#01040a">ink-3</div>
+      <div class="sw" style="background:#ffc370;color:#01040a">gold</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
