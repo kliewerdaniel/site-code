@@ -62,7 +62,7 @@ export function Logotype({
     <span className={`inline-flex items-center gap-3 ${className ?? ""}`}>
       <SovereignMark size={markSize} />
       <span
-        className={`font-mono text-sm font-semibold tracking-[0.28em] text-bone ${
+        className={`font-mono text-sm font-semibold tracking-[0.28em] text-ink ${
           wordmarkClassName ?? ""
         }`}
       >

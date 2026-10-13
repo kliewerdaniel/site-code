@@ -75,9 +75,9 @@ export default function AboutPage() {
   return (
     <>
       {/* HEAD */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="flex flex-col items-center gap-10 py-16 md:flex-row md:py-24">
-          <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-sm border border-hairline">
+          <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-sm border border-rule">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/profile.jpeg"
@@ -86,13 +86,13 @@ export default function AboutPage() {
             />
           </div>
           <div className="text-center md:text-left">
-            <h1 className="mb-3 font-display text-4xl font-semibold tracking-[-0.02em] text-bone md:text-5xl">
+            <h1 className="display-lg mb-3">
               Daniel Kliewer
             </h1>
             <p className="mb-2 font-display text-xl text-gold italic">
               Local-first AI, measured and owned.
             </p>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-ink-3 uppercase">
               Austin, TX
             </p>
           </div>
@@ -100,17 +100,17 @@ export default function AboutPage() {
       </section>
 
       {/* POSITIONS */}
-      <section className="border-b border-hairline">
+      <section className="border-b border-rule">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Positions" title="Stated plainly" />
           <div className="mt-10 space-y-12">
             {positions.map((s) => (
               <Reveal key={s.title}>
                 <div>
-                  <h3 className="mb-4 font-display text-2xl font-medium text-bone">
+                  <h3 className="mb-4 font-display text-2xl font-medium text-ink">
                     {s.title}
                   </h3>
-                  <div className="space-y-4 text-base leading-relaxed text-bone-dim">
+                  <div className="space-y-4 text-base leading-relaxed text-ink-2">
                     {s.body.map((p, i) => (
                       <p key={i}>{p}</p>
                     ))}
@@ -123,7 +123,7 @@ export default function AboutPage() {
       </section>
 
       {/* LEDGER */}
-      <section className="border-b border-hairline bg-navy-deep">
+      <section className="border-b border-rule bg-void-2">
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Record" title="The ledger" />
           <div className="mt-10 space-y-8">
@@ -133,12 +133,12 @@ export default function AboutPage() {
                   <div className="w-16 shrink-0 text-right">
                     <span className="font-mono text-sm text-gold">{t.year}</span>
                   </div>
-                  <div className="w-px shrink-0 bg-hairline" />
+                  <div className="w-px shrink-0 bg-rule" />
                   <div className="pb-2">
-                    <h3 className="font-display text-lg font-medium text-bone">
+                    <h3 className="font-display text-lg font-medium text-ink">
                       {t.title}
                     </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-bone-dim">
+                    <p className="mt-1 text-sm leading-relaxed text-ink-2">
                       {t.desc}
                     </p>
                   </div>
@@ -154,23 +154,23 @@ export default function AboutPage() {
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Earlier work" title="Also by Daniel Kliewer" />
           <Reveal>
-            <div className="mt-10 border border-hairline bg-navy p-8">
-              <p className="mb-3 font-mono text-[11px] tracking-[0.2em] text-bone-faint uppercase">
+            <div className="mt-10 border border-rule bg-slate p-8">
+              <p className="mb-3 font-mono text-[11px] tracking-[0.2em] text-ink-3 uppercase">
                 {OLD_BOOK.format}
               </p>
-              <h3 className="mb-2 font-display text-2xl font-medium text-bone">
+              <h3 className="mb-2 font-display text-2xl font-medium text-ink">
                 {OLD_BOOK.title}
               </h3>
-              <p className="mb-5 font-display text-lg text-bone-dim italic">
+              <p className="mb-5 font-display text-lg text-ink-2 italic">
                 {OLD_BOOK.subtitle}
               </p>
               <div className="flex flex-wrap items-center gap-6">
-                <p className="font-mono text-2xl text-bone">{OLD_BOOK.price}</p>
+                <p className="font-mono text-2xl text-ink">{OLD_BOOK.price}</p>
                 <a
                   href={OLD_BOOK.amazonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[12px] tracking-[0.16em] text-gold uppercase transition-colors hover:text-bone"
+                  className="font-mono text-[12px] tracking-[0.16em] text-gold uppercase transition-colors hover:text-ink"
                 >
                   Buy on Amazon ↗
                 </a>

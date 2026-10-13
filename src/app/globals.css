@@ -1,10 +1,21 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Design system v2 — "The Sovereign Machine"
-   Dark-first. Tokens derived from the book cover: dark navy,
-   amber/gold author-name tone, blueprint grid steel-blue.
-   No light theme: the machine runs at night.
+   Design system v3 — "The Instrument"
+
+   The site is a precision instrument displayed in a dark room.
+   Drama comes from scale, contrast, and emptiness — never from
+   added effects.
+
+   Every colour below is DERIVED FROM THE BOOK COVER
+   (public/images/book-front.png), not invented:
+     - --color-void   = mean of the cover's darkest decile (#01040a)
+     - --color-slate* = the cover's navy midtones
+     - --color-gold   = the cover's actual accent (#ffc370),
+                        NOT v2's muddier #d9a648
+   Contrast is verified, not assumed: all 5 inks pass WCAG AA 4.5 on
+   all 5 surfaces (worst case --color-ink-3 on --color-slate-3 = 4.69).
+   Reproduce with ~/.hermes/cache/scratch/palette_check.py
    ============================================================ */
 
 @theme {
@@ -14,30 +25,29 @@
     monospace;
 
   /* Surfaces */
-  --color-abyss: #0b1119; /* page background: near-black navy */
-  --color-navy: #1a2332; /* cover navy: panels, cards */
-  --color-navy-deep: #131b28; /* recessed panels */
-  --color-navy-raised: #222d42; /* raised elements */
+  --color-void: #01040a; /* page ground */
+  --color-void-2: #050a12; /* recessed panels */
+  --color-slate: #0d1d28; /* raised surface */
+  --color-slate-2: #152129; /* mean cover colour */
+  --color-slate-3: #1a2e38; /* highest surface */
 
-  /* Ink — v2.1: secondary/tertiary raised for comfortable reading
-     over the dimmed background. Hierarchy preserved. */
-  --color-bone: #ece7da; /* primary text */
-  --color-bone-dim: #c3b9a4; /* secondary text */
-  --color-bone-faint: #8d8774; /* tertiary text */
+  /* Ink */
+  --color-ink: #f2f4f5; /* primary text */
+  --color-ink-2: #b8c2c6; /* secondary text */
+  --color-ink-3: #8a979d; /* tertiary / labels */
 
-  /* Signal */
-  --color-gold: #d9a648; /* amber/gold: primary accent */
-  --color-gold-deep: #9c7023; /* pressed/hover gold */
-  --color-steel: #5b7ba3; /* blueprint steel-blue: grid, pulses */
-  --color-steel-dim: #33465e;
+  /* Accent — singular. Emphasis and primary action only. */
+  --color-gold: #ffc370;
+  --color-gold-2: #e8a94e; /* pressed / hover */
 
   /* Lines */
-  --color-hairline: #28334a;
+  --color-rule: #1e2c36;
+  --color-rule-2: #2c3d49;
 }
 
 ::selection {
   background: var(--color-gold);
-  color: var(--color-abyss);
+  color: var(--color-void);
 }
 
 html {
@@ -45,21 +55,8 @@ html {
 }
 
 body {
-  background-color: var(--color-abyss);
-  color: var(--color-bone);
-}
-
-/* Static blueprint-grid fallback (reduced motion / no WebGL).
-   Mirrors the shader's grid so the page looks right either way. */
-.blueprint-static {
-  background-color: #05080e;
-  background-image: linear-gradient(
-      to right,
-      rgb(91 123 163 / 0.07) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgb(91 123 163 / 0.07) 1px, transparent 1px);
-  background-size: 56px 56px;
+  background-color: var(--color-void);
+  color: var(--color-ink);
 }
 
 /* Focus visibility: sovereignty includes keyboard users. */
@@ -71,19 +68,110 @@ body {
 /* Thin, quiet scrollbars. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-hairline) transparent;
+  scrollbar-color: var(--color-rule) transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--color-hairline);
+  background: var(--color-rule);
   border-radius: 4px;
 }
 
-/* Chapter-card motif: gold keyline derived from the cover's frame. */
-.cover-keyline {
-  box-shadow: inset 0 0 0 1px var(--color-hairline),
-    inset 0 0 0 4px var(--color-abyss), inset 0 0 0 5px rgb(217 166 72 / 0.35);
+@layer components {
+  /* ---- Type scale ------------------------------------------------
+     Cinematic display: large, and lighter than v2's 700. Weight 400
+     (not 300) — at clamp() scale 300 thins out on non-retina
+     displays. The gap between the largest and smallest type IS the
+     drama. */
+
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3.5rem, 9vw, 8.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .display-md {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  /* The instrument voice: every label, unit, and figure. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  /* Figures align in columns. */
+  .data {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- Archetypes -------------------------------------------------
+     Three, and only three. A page that uses the same one twice in a
+     row is a bug. */
+
+  /* A. SCENE — full-bleed, object in void. Max one per page. */
+  .scene {
+    display: flex;
+    min-height: 92vh;
+    align-items: center;
+  }
+
+  /* B. EXHIBIT — gallery pacing. Generous space, narrow measure. */
+  .exhibit {
+    padding-block: clamp(5rem, 12vw, 12rem);
+  }
+
+  /* C. INSTRUMENT — data display. Ruled rows, tabular figures. */
+  .instrument {
+    padding-block: clamp(4rem, 9vw, 9rem);
+    border-block: 1px solid var(--color-rule);
+    background-color: var(--color-void-2);
+  }
+
+  /* Ruled row: the unboxed replacement for v2's card grid. */
+  .ruled-row {
+    border-bottom: 1px solid var(--color-rule);
+  }
+}
+
+/* ---- Film grain ---------------------------------------------------
+   The cinematic tell, on every page. Static — no animation, one
+   composited layer, never intercepts input. This replaces v2's
+   blueprint grid, which was the template tell. z-index stays below
+   the header (100) so it cannot disturb the header's
+   backdrop-filter compositing. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain::after {
+    opacity: 0.02;
+  }
 }

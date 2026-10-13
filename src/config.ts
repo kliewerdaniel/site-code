@@ -16,8 +16,8 @@ export const BOOK = {
   promise:
     "Run serious AI on hardware you own — full applications, no cloud, no exfiltration.",
   price: "$88", // Hardcover price — decided 2026-10-13. Not a TODO.
-  // TODO(Daniel): paste the live Amazon URL at launch. Book is not listed yet.
-  amazonUrl: "#",
+  // Live Amazon listing — confirmed 2026-10-13.
+  amazonUrl: "https://www.amazon.com/dp/B0HMWFR6G7",
   coverFront: "/images/book-front.png",
   coverSpine: "/images/book-spine.png",
   coverBack: "/images/book-back.png",

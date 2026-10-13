@@ -42,49 +42,49 @@ const PRINCIPLES = [
 
 export default function PaperPage() {
   return (
-    <article className="bg-abyss text-bone">
+    <article className="bg-void text-ink">
       <Container className="pt-24 pb-14">
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-gold mb-5">
           Research Whitepaper · v3.6 · August 2026
         </p>
-        <h1 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.05] max-w-4xl">
+        <h1 className="display-lg max-w-4xl">
           Sovereign Knowledge Systems: Separating Probabilistic Cognition from
           Consequential Authority
         </h1>
         <div className="flex items-center gap-3 mt-8">
           <SovereignMark size={40} />
           <div>
-            <p className="text-sm font-medium text-bone">Daniel Kliewer</p>
-            <p className="font-mono text-[0.6rem] tracking-[0.14em] uppercase text-bone-dim">
+            <p className="text-sm font-medium text-ink">Daniel Kliewer</p>
+            <p className="font-mono text-[0.6rem] tracking-[0.14em] uppercase text-ink-2">
               Author
             </p>
           </div>
         </div>
       </Container>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <div className="max-w-3xl">
             <SectionHeading kicker="Abstract" title="What it claims — and what it measured" />
-            <p className="text-bone-dim leading-relaxed text-lg mt-6">
+            <p className="text-ink-2 leading-relaxed text-lg mt-6">
               {ABSTRACT}
             </p>
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <div className="max-w-3xl">
             <SectionHeading
               kicker="Core Contributions"
               title="Three principles, no exceptions"
             />
-            <div className="mt-8 space-y-px bg-hairline border border-hairline">
+            <div className="mt-8 space-y-px bg-rule border border-rule">
               {PRINCIPLES.map((p) => (
-                <div key={p.name} className="bg-navy p-7">
-                  <h3 className="font-display text-xl text-bone mb-3">{p.name}</h3>
-                  <p className="text-bone-dim leading-relaxed">{p.text}</p>
+                <div key={p.name} className="bg-slate p-7">
+                  <h3 className="font-display text-xl text-ink mb-3">{p.name}</h3>
+                  <p className="text-ink-2 leading-relaxed">{p.text}</p>
                 </div>
               ))}
             </div>
@@ -92,11 +92,11 @@ export default function PaperPage() {
         </Container>
       </section>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <div className="max-w-3xl">
             <SectionHeading kicker="Evaluation" title="Counted, not claimed" />
-            <ul className="mt-8 space-y-4 text-bone-dim leading-relaxed">
+            <ul className="mt-8 space-y-4 text-ink-2 leading-relaxed">
               <li className="border-l-2 border-gold pl-5">
                 564 executable tests in the governance substrate — all passing —
                 plus 18 fail-closed compiler-gate tests, used as the benchmark.
@@ -121,7 +121,7 @@ export default function PaperPage() {
         </Container>
       </section>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <div className="max-w-3xl">
             <SectionHeading kicker="Keywords" title="Filed under" />
@@ -129,23 +129,23 @@ export default function PaperPage() {
               {KEYWORDS.map((k) => (
                 <span
                   key={k}
-                  className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-bone-dim border border-hairline px-3 py-1.5"
+                  className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-ink-2 border border-rule px-3 py-1.5"
                 >
                   {k}
                 </span>
               ))}
             </div>
-            <div className="mt-10 border border-hairline bg-navy p-7">
-              <h3 className="font-display text-2xl text-bone mb-3">
+            <div className="mt-10 border border-rule bg-slate p-7">
+              <h3 className="font-display text-2xl text-ink mb-3">
                 The full whitepaper
               </h3>
-              <p className="text-bone-dim leading-relaxed mb-6">
+              <p className="text-ink-2 leading-relaxed mb-6">
                 The complete paper (v3.6, August 2026) is available as a PDF
                 on request. Say the word and it&apos;s yours.
               </p>
               <Link
                 href="/contact"
-                className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-bone hover:border-gold hover:text-gold transition-colors"
+                className="inline-block border border-rule px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-ink hover:border-gold hover:text-gold transition-colors"
               >
                 Request the paper →
               </Link>

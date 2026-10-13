@@ -1,8 +1,9 @@
 "use client";
 
-import { Component, useEffect, useState, type ReactNode } from "react";
+import { Component, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { BOOK } from "@/config";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 /* ============================================================
    HeroBook — the signature of the site.
@@ -50,21 +51,16 @@ class SceneErrorBoundary extends Component<
 
 const MOTION_QUERY = "(prefers-reduced-motion: reduce), (max-width: 640px)";
 
-function initialMode(): "static" | "scene" {
-  if (typeof window === "undefined") return "static";
-  return window.matchMedia(MOTION_QUERY).matches ? "static" : "scene";
-}
-
 export default function HeroBook({ className }: { className?: string }) {
-  const [mode, setMode] = useState<"static" | "scene">(initialMode);
-
-  useEffect(() => {
-    const mq = window.matchMedia(MOTION_QUERY);
-    const onChange = (e: MediaQueryListEvent) =>
-      setMode(e.matches ? "static" : "scene");
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  /* serverValue = true: the server cannot evaluate matchMedia, so it always
+     renders the static cover — and hydration must reproduce that same output
+     before opting into the live scene. Computing the mode during render
+     (useState(initialMode)) made the client's first pass emit the BookScene
+     <Suspense> tree while the server had emitted StaticCover, which React
+     reported as a hydration failure. There is no flash on the way in: the
+     dynamic import's loading fallback IS StaticCover, so the cover stays
+     painted until the scene is ready. */
+  const isStatic = useMediaQuery(MOTION_QUERY, true);
 
   return (
     <div
@@ -72,12 +68,12 @@ export default function HeroBook({ className }: { className?: string }) {
       role="img"
       aria-label="Interactive 3D hardcover of Computational Sovereignty — drag to rotate"
     >
-      {mode === "scene" ? (
+      {isStatic ? (
+        <StaticCover />
+      ) : (
         <SceneErrorBoundary>
           <BookScene />
         </SceneErrorBoundary>
-      ) : (
-        <StaticCover />
       )}
     </div>
   );

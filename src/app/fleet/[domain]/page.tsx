@@ -470,7 +470,7 @@ export default async function FleetDomainPage({ params }: Props) {
   const systems = PROJECTS[domain] ?? [];
 
   return (
-    <div className="bg-abyss text-bone">
+    <div className="bg-void text-ink">
       <Container className="pt-24 pb-14">
         <Link
           href="/fleet"
@@ -480,34 +480,34 @@ export default async function FleetDomainPage({ params }: Props) {
         </Link>
         <div className="flex items-center gap-4 mb-5">
           <span className="text-gold text-3xl">{layer.icon}</span>
-          <h1 className="font-display text-4xl md:text-6xl tracking-tight">
+          <h1 className="display-lg">
             {layer.name}
           </h1>
         </div>
-        <p className="text-xl text-bone-dim mb-4 leading-relaxed max-w-3xl">
+        <p className="text-xl text-ink-2 mb-4 leading-relaxed max-w-3xl">
           {layer.description}
         </p>
-        <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-bone-dim">
+        <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-ink-2">
           A Fleet domain · running on the frozen substrate
         </p>
       </Container>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline border border-hairline">
-            <div className="bg-navy p-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-rule border border-rule">
+            <div className="bg-slate p-7">
               <h2 className="font-display text-2xl mb-3">The problem it answers</h2>
-              <p className="text-bone-dim leading-relaxed">{details.problem}</p>
+              <p className="text-ink-2 leading-relaxed">{details.problem}</p>
             </div>
-            <div className="bg-navy p-7">
+            <div className="bg-slate p-7">
               <h2 className="font-display text-2xl mb-3">Why it matters</h2>
-              <p className="text-bone-dim leading-relaxed">{details.whyMatters}</p>
+              <p className="text-ink-2 leading-relaxed">{details.whyMatters}</p>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12 md:py-16">
           <SectionHeading
             kicker={`${systems.length} Fleet Deployment${systems.length === 1 ? "" : "s"}`}
@@ -516,15 +516,15 @@ export default async function FleetDomainPage({ params }: Props) {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             {systems.map((sys) => (
-              <div key={sys.name} className="bg-navy border border-hairline p-7">
+              <div key={sys.name} className="bg-slate border border-rule p-7">
                 <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="font-display text-2xl text-bone">{sys.name}</h3>
+                  <h3 className="font-display text-2xl text-ink">{sys.name}</h3>
                   <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-gold whitespace-nowrap pt-1">
                     {sys.status}
                   </span>
                 </div>
-                <p className="text-bone-dim leading-relaxed mb-5">{sys.summary}</p>
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-bone-dim mb-5">
+                <p className="text-ink-2 leading-relaxed mb-5">{sys.summary}</p>
+                <p className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-ink-2 mb-5">
                   {sys.technologies.join(" · ")}
                 </p>
                 <a
@@ -541,12 +541,12 @@ export default async function FleetDomainPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="border-t border-hairline">
+      <section className="border-t border-rule">
         <Container className="py-12">
           <div className="flex flex-wrap gap-6 items-center">
             <Link
               href="/fleet"
-              className="inline-block border border-hairline px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-bone hover:border-gold hover:text-gold transition-colors"
+              className="inline-block border border-rule px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-ink hover:border-gold hover:text-gold transition-colors"
             >
               ← All Domains
             </Link>
