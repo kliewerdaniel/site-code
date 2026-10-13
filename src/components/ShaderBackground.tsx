@@ -4,8 +4,10 @@ import { useEffect, useRef } from "react";
 
 /* ============================================================
    ShaderBackground — "The Sovereign Machine" ambient layer.
-   Custom GLSL: dark blueprint grid with slow current-like pulses
-   drifting along the grid lines. GPU-cheap single fullscreen pass.
+   v2.1: restraint pass. The grid is FELT, not seen: near-black
+   base, hairlines at ~8% opacity, no pulses, no orbs, nothing
+   that can ever compete with the text layer. A single slow
+   breathing of overall brightness is the only motion.
 
    Fully self-contained: no textures, no fonts, no network calls.
    prefers-reduced-motion (or no WebGL) -> the static CSS grid
@@ -26,56 +28,29 @@ uniform float u_time;
 
 float gridLine(vec2 p, float cells) {
   vec2 g = abs(fract(p * cells - 0.5) - 0.5);
-  return 1.0 - smoothstep(0.0, 0.035, min(g.x, g.y));
+  return 1.0 - smoothstep(0.0, 0.03, min(g.x, g.y));
 }
 
 void main() {
   vec2 uv = gl_FragCoord.xy / u_res;
   vec2 p = uv * vec2(u_res.x / u_res.y, 1.0);
 
-  // base: abyss
-  vec3 col = vec3(0.043, 0.067, 0.098);
+  // base: near-black with a breath of navy
+  vec3 col = vec3(0.020, 0.028, 0.045);
 
-  // fine + major blueprint grids
-  float fine = gridLine(p, 24.0);
-  float major = gridLine(p, 6.0);
-  col += vec3(0.102, 0.137, 0.196) * fine * 0.5;
-  col += vec3(0.157, 0.200, 0.259) * major * 0.6;
+  // whisper grids — visible only if you look for them
+  float fine = gridLine(p, 28.0);
+  float major = gridLine(p, 7.0);
+  col += vec3(0.357, 0.482, 0.639) * fine * 0.055;
+  col += vec3(0.357, 0.482, 0.639) * major * 0.085;
 
-  // pulses: current drifting along grid lines
-  float aspect = u_res.x / u_res.y;
-  for (int i = 0; i < 6; i++) {
-    float fi = float(i);
-    float speed = 0.028 + 0.014 * fract(fi * 0.6180339);
-    float t = fract(u_time * speed + fi * 0.371);
-    vec2 q;
-    vec2 dir;
-    if (mod(fi, 2.0) < 1.0) {
-      // horizontal lane: y sits on a major grid row, x sweeps
-      float row = (floor(fi * 1.7) + 0.5) / 6.0;
-      q = vec2(t * aspect, row);
-      dir = vec2(1.0, 0.0);
-    } else {
-      // vertical lane: x sits on a major grid column, y sweeps
-      float colu = (floor(fi * 2.3) + 0.5) / 10.0;
-      q = vec2(colu * aspect, t);
-      dir = vec2(0.0, 1.0);
-    }
-    vec2 dvec = p - q;
-    float along = dot(dvec, dir);
-    vec2 across = dvec - dir * along;
-    float core = exp(-dot(dvec, dvec) * 900.0);
-    float trail = exp(-along * along * 28.0) * exp(-dot(across, across) * 2600.0)
-      * step(along, 0.0);
-    vec3 pc = mod(fi, 3.0) < 1.0
-      ? vec3(0.851, 0.651, 0.282)   // gold
-      : vec3(0.357, 0.482, 0.639);  // steel blue
-    col += pc * (core * 1.1 + trail * 0.55);
-  }
+  // one slow breath of brightness, ±2.5% over ~40 seconds
+  float breath = 0.975 + 0.025 * sin(u_time * 0.157);
+  col *= breath;
 
-  // vignette: keep the edges deep
-  float vig = smoothstep(1.25, 0.35, length(uv - 0.5) * 1.6);
-  col *= mix(0.55, 1.0, vig);
+  // deep vignette: edges fall to pure black
+  float vig = smoothstep(1.3, 0.3, length(uv - 0.5) * 1.6);
+  col *= mix(0.45, 1.0, vig);
 
   gl_FragColor = vec4(col, 1.0);
 }

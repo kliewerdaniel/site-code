@@ -2,6 +2,7 @@
   "dependencies": {
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
+    "@react-three/postprocessing": "^3.2.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/three": "^0.186.0",
     "@vercel/analytics": "^2.0.1",
@@ -15,7 +16,7 @@
     "tailwindcss": "^4.3.3",
     "three": "^0.186.1"
   },
-  "description": "danielkliewer.com \u2014 sovereign workshop. Next.js 16, dark-first, book-first.",
+  "description": "danielkliewer.com — sovereign workshop. Next.js 16, dark-first, book-first.",
   "devDependencies": {
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",

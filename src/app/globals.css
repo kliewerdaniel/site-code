@@ -19,10 +19,11 @@
   --color-navy-deep: #131b28; /* recessed panels */
   --color-navy-raised: #222d42; /* raised elements */
 
-  /* Ink */
+  /* Ink — v2.1: secondary/tertiary raised for comfortable reading
+     over the dimmed background. Hierarchy preserved. */
   --color-bone: #ece7da; /* primary text */
-  --color-bone-dim: #a79d87; /* secondary text */
-  --color-bone-faint: #6f6a5c; /* tertiary text */
+  --color-bone-dim: #c3b9a4; /* secondary text */
+  --color-bone-faint: #8d8774; /* tertiary text */
 
   /* Signal */
   --color-gold: #d9a648; /* amber/gold: primary accent */
@@ -51,13 +52,13 @@ body {
 /* Static blueprint-grid fallback (reduced motion / no WebGL).
    Mirrors the shader's grid so the page looks right either way. */
 .blueprint-static {
-  background-color: var(--color-abyss);
+  background-color: #05080e;
   background-image: linear-gradient(
       to right,
-      rgb(26 35 50 / 0.55) 1px,
+      rgb(91 123 163 / 0.07) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgb(26 35 50 / 0.55) 1px, transparent 1px);
+    linear-gradient(to bottom, rgb(91 123 163 / 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
