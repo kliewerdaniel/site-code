@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Design tokens — sovereign workshop.
+   :root carries the dark-first defaults; html.light overrides below. */
+@theme {
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-space-grotesk), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+
+  --color-ink: #14120d;
+  --color-ink-soft: #1d1b14;
+  --color-ink-card: #201d15;
+  --color-paper: #f2eee1;
+  --color-paper-dim: #b9b3a1;
+  --color-moss: #35b558;
+  --color-moss-deep: #1a7a3f;
+  --color-amber: #d99a2b;
+  --color-hairline: #2b2820;
+}
+
+/* Light theme — alternate values. --color-amber stays the same. */
+html.light {
+  --color-ink: #f2eee1;
+  --color-ink-soft: #e9e4d4;
+  --color-ink-card: #ffffff;
+  --color-paper: #14120d;
+  --color-paper-dim: #4a463a;
+  --color-moss: #1a7a3f;
+  --color-hairline: #d8d2bd;
+}
+
+::selection {
+  background: var(--color-moss);
+  color: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle terminal-scanline texture for hero bands (opt-in via class). */
+.spec-grid {
+  background-image: linear-gradient(
+      to right,
+      var(--color-hairline) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--color-hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
