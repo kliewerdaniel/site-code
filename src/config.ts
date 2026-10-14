@@ -39,7 +39,7 @@ export const SOCIAL = {
   email: "danielkliewer@gmail.com",
   x: "https://x.com/kliewer_daniel",
   github: "https://github.com/kliewerdaniel",
-  linkedin: "https://www.linkedin.com/in/danielkliewer",
+  linkedin: "https://www.linkedin.com/in/daniel-kliewer-42691944/",
 } as const;
 
 export const NAV_ITEMS = [
