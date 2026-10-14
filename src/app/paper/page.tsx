@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SovereignMark } from "@/components/Logotype";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "Sovereign Knowledge Systems — Research Whitepaper",
   description:
     "An architecture for governed agentic computation in which probabilistic model cognition is treated as an untrusted epistemic component, while authorization, execution, verification, and evidence are independently governed computational boundaries.",
-};
+  path: "/paper",
+});
 
 const ABSTRACT = `We present an architecture for governed agentic computation in which probabilistic model cognition is deliberately treated as an untrusted epistemic component, while authorization, execution, verification, and evidence are implemented as independently governed computational boundaries. The architecture is organized around a single research object — an explicitly ordered trust-transition sequence (knowledge → compilation → retrieval → cognition → proposal → authorization → execution → verification → evidence) — and a formal principle, the Authority Non-Equivalence Principle: no probabilistic inference, regardless of confidence, capability, or semantic plausibility, constitutes authorization to perform a consequential operation. We state five architectural invariants and we formalize the distinction between three types of correctness the architecture separates — epistemic, authority, execution — none of which implies the others. The architecture is implemented and demonstrated across two cooperating codebases: A10 (the epistemic substrate: a knowledge compiler producing a versioned graph and search index behind a fail-closed gate) and Sovereign Agent Fleet (the authority and execution substrate: a frozen deterministic authorization function, cryptographic identity, human approval, bounded execution, and a tamper-evident audit ledger). We evaluate the architecture against its own invariants using its test suite as the benchmark (564 executable tests in the governance substrate, all passing; 18 fail-closed compiler-gate tests) and report the results, classified by adversarial condition. We add one genuinely blind adversary evaluation — a threat-model-agnostic fuzzing harness over the authorization boundary — and report its result: zero false authorizations across 5,000 randomized attack vectors. We organize the evaluation around four explicit research questions (RQ1–RQ4) and a structural baseline (direct tool-invoking agent versus governed architecture), specifying conditions, failure criteria, counts, and reproducibility. We claim precisely what the evidence constrains — that the authority available to probabilistic cognition is independently verifiable — and we close by stating the open problem, knowledge poisoning, exactly, as a case in which a perfectly authorized, perfectly executed action can still be wrong.`;
 

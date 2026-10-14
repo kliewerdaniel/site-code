@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -7,10 +6,12 @@ import { CHAPTERS, PARTS } from "@/lib/chapters";
 import { Figure, FigureRow, Kicker } from "@/components/Archetypes";
 import { AmazonCta } from "@/components/AmazonCta";
 import { BOOK } from "@/config";
+import { bookSchema, seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: `The Book — ${BOOK.title}`,
   description: `Computational Sovereignty: Building Local-First AI Systems. 24 chapters, 8 parts, 214 pages of measured, reproducible local-first AI engineering. Hardcover, ${BOOK.price}.`,
+  path: "/book",
   openGraph: {
     title: `${BOOK.title} — the full 24-chapter stack`,
     description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     title: `${BOOK.title} — the full 24-chapter stack`,
     description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
   },
-};
+});
 
 /* Eight parts, stated as the claims they make. */
 const parts = [
@@ -108,6 +109,10 @@ const specs: [string, string][] = [
 export default function BookPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: bookSchema() }}
+      />
       {/* HEAD */}
       <section className="border-b border-rule">
         <Container className="py-16 md:py-24">

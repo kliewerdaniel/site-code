@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
 import { AmazonCta } from "@/components/AmazonCta";
 import { BOOK } from "@/config";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "Chapter 1: The Cloud Is a Liability — Free Excerpt",
   description: `Read the opening of Computational Sovereignty: Building Local-First AI Systems, free and ungated. The full 214-page hardcover is ${BOOK.price}.`,
+  path: "/sample",
   openGraph: {
     title: "Chapter 1: The Cloud Is a Liability",
     description:
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "The free, ungated opening of Computational Sovereignty. Price the cloud as a liability, then decide if you want the other 23 chapters.",
   },
-};
+});
 
 /* Excerpted verbatim from Chapter 1 of the manuscript.
    No gate, no form, no email. Read it here; the CTA is at the end. */

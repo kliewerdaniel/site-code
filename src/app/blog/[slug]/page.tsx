@@ -7,12 +7,17 @@ import remarkGfm from "remark-gfm";
 import Prose from "@/components/Prose";
 import Container from "@/components/Container";
 import { SITE } from "@/config";
-import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/posts";
+import {
+  getAllPosts,
+  getPostBySlug,
+  getRelatedPosts,
+  getArchiveNeighbors,
+  tagSlug,
+} from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
+import { articleSchema, breadcrumbSchema, canonical, seo } from "@/lib/seo";
 
 export const dynamicParams = false;
-
-const SITE_URL = SITE.url;
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -27,14 +32,13 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return { title: "Not found" };
 
-  const url = `${SITE_URL}/blog/${post.slug}`;
-  const image = post.image ? `${SITE_URL}${post.image}` : undefined;
+  const url = `${SITE.url}/blog/${post.slug}`;
+  const image = post.image ? `${SITE.url}${post.image}` : undefined;
 
-  return {
+  return seo({
     title: post.title,
     description: post.description,
-    metadataBase: new URL(SITE_URL),
-    alternates: { canonical: url },
+    path: `/blog/${post.slug}`,
     openGraph: {
       title: post.title,
       description: post.description,
@@ -50,10 +54,20 @@ export async function generateMetadata({
       description: post.description,
       images: image ? [image] : undefined,
     },
-  };
+  });
 }
 
 const markdownComponents: Components = {
+  // Demote every markdown heading one level: the post's <h1> is the title,
+  // rendered in JSX above. Post bodies use "#" for top-level sections, which
+  // would otherwise emit a second <h1> per section (mindbroadcast: 32).
+  // Markdown # -> h2, ## -> h3, ### -> h4, etc.
+  h1: ({ node, ...props }) => <h2 {...props} className="font-display text-2xl font-semibold text-ink tracking-tight pt-4" />,
+  h2: ({ node, ...props }) => <h3 {...props} className="font-display text-xl font-semibold text-ink tracking-tight pt-2" />,
+  h3: ({ node, ...props }) => <h4 {...props} className="font-display text-lg font-semibold text-ink tracking-tight pt-2" />,
+  h4: ({ node, ...props }) => <h5 {...props} className="font-display text-base font-semibold text-ink tracking-tight pt-2" />,
+  h5: ({ node, ...props }) => <h6 {...props} className="font-display text-sm font-semibold text-ink tracking-tight pt-2" />,
+  h6: ({ node, ...props }) => <h6 {...props} className="font-display text-sm font-semibold text-ink tracking-tight pt-2" />,
   pre: ({ node, ...props }) => (
     <pre
       {...props}
@@ -95,13 +109,39 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(slug, 3);
+  const related = getRelatedPosts(slug, 6);
+  const neighbors = getArchiveNeighbors(slug, 8)
+    .filter((p) => !related.some((r) => r.slug === p.slug))
+    .slice(0, 6);
 
   return (
-    <Container className="py-16 md:py-24">
-      <article className="max-w-3xl mx-auto">
-        {/* Breadcrumb */}
-        <nav
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: articleSchema({
+            title: post.title,
+            description: post.description,
+            slug: post.slug,
+            date: post.date,
+            image: post.image,
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Research", path: "/research" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        }}
+      />
+      <Container className="py-16 md:py-24">
+        <article className="max-w-3xl mx-auto">
+          {/* Breadcrumb */}
+          <nav
           aria-label="Breadcrumb"
           className="font-mono text-xs text-ink-2 mb-8"
         >
@@ -118,7 +158,16 @@ export default async function BlogPostPage({
         </h1>
 
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-ink-2">
-          <span>Daniel Kliewer</span>
+          <address className="not-italic">
+            By{" "}
+            <Link
+              rel="author"
+              href="/about"
+              className="text-ink transition-colors hover:text-gold"
+            >
+              Daniel Kliewer
+            </Link>
+          </address>
           <span aria-hidden="true">·</span>
           <time dateTime={post.date}>{formatDate(post.date)}</time>
           <span aria-hidden="true">·</span>
@@ -130,7 +179,7 @@ export default async function BlogPostPage({
             {post.tags.map((t) => (
               <Link
                 key={t}
-                href={`/research?tag=${encodeURIComponent(t)}`}
+                href={`/research?tag=${tagSlug(t)}`}
                 className="font-mono text-[11px] px-2 py-1 border border-rule rounded text-ink-2 hover:text-ink hover:border-rule-2 transition-colors"
               >
                 {t}
@@ -190,7 +239,40 @@ export default async function BlogPostPage({
             </div>
           </section>
         )}
-      </article>
-    </Container>
+
+        {/* More from the archive — second-order cross-links. Tag overlap first,
+            then temporal neighbors, so every post links deeper into the graph
+            instead of ending as a dead-end leaf. This is what distributes
+            authority across the 184-post tail rather than concentrating it on
+            the /research hub. */}
+        {neighbors.length > 0 && (
+          <section className="mt-14 pt-10 border-t border-rule">
+            <h2 className="font-display text-2xl text-ink mb-6">
+              More from the archive
+            </h2>
+            <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
+              {neighbors.map((r) => (
+                <li key={r.slug} className="ruled-row">
+                  <Link
+                    href={`/blog/${r.slug}`}
+                    className="group block"
+                    title={r.title}
+                  >
+                    <span className="label data block text-ink-3">
+                      {formatDate(r.date)}
+                    </span>
+                    <span className="mt-1 block font-display text-base text-ink transition-colors group-hover:text-gold leading-snug">
+                      {r.title}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        </article>
+      </Container>
+    </>
   );
 }

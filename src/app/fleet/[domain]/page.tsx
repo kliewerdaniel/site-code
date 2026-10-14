@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FLEET_LAYERS } from "../page";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() {
   return FLEET_LAYERS.map((l) => ({ domain: l.slug }));
@@ -17,11 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { domain } = await params;
   const layer = FLEET_LAYERS.find((l) => l.slug === domain);
   if (!layer) return { title: "Domain Not Found" };
-  return {
+  return seo({
     title: `${layer.name} — Fleet Domain`,
     description: layer.description,
-    alternates: { canonical: `/fleet/${domain}` },
-  };
+    path: `/fleet/${domain}`,
+  });
 }
 
 const LAYER_DETAILS: Record<string, { problem: string; whyMatters: string }> = {

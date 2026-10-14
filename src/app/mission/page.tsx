@@ -3,12 +3,14 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "The Mission",
   description:
     "Intelligence is the accumulated decisions that shaped it. The Sovereign Agent Fleet is the empirical proof: one frozen governance substrate, eight domains, zero security invariants depending on model behavior.",
-};
+  path: "/mission",
+});
 
 const sections = [
   {

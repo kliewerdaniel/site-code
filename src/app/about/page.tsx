@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { OLD_BOOK } from "@/config";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "About Daniel Kliewer",
   description:
     "Daniel Kliewer builds local-first AI systems in Austin, Texas. Author of Computational Sovereignty: Building Local-First AI Systems (hardcover, $88).",
+  path: "/about",
   openGraph: {
     title: "About Daniel Kliewer",
     description:
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Builder of local-first AI systems. Author of Computational Sovereignty.",
   },
-};
+});
 
 /* Rewritten register: flat, declarative, measured. */
 

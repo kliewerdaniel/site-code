@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "The Fleet",
   description:
     "The Sovereign Agent Fleet: one frozen governance substrate, exercised across eight domains, with zero security invariants depending on model behavior.",
-};
+  path: "/fleet",
+});
 
 export interface FleetLayer {
   slug: string;

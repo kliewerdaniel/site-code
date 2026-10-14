@@ -137,16 +137,33 @@ export function getPostBySlug(slug: string): Post | undefined {
   return loadPosts().find((p) => p.slug === slug);
 }
 
-/** Tag usage counts, sorted by count descending. */
-export function getAllTags(): { tag: string; count: number }[] {
-  const counts = new Map<string, number>();
+/** Canonical slug for a tag: lowercase, hyphen-joined. Both the ?tag= URL and
+ *  tag matching normalize through this so "RAG", "rag" and "RAG " all resolve
+ *  to one page — never two crawlable spellings of the same content. */
+export function tagSlug(tag: string): string {
+  return tag
+    .trim()
+    .toLowerCase()
+    .replace(/[\s_]+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+}
+
+/** Tag usage counts, keyed by canonical slug, sorted by count descending.
+ *  `tag` is the most common original spelling; `count` is the summed usage. */
+export function getAllTags(): { tag: string; slug: string; count: number }[] {
+  const bySlug = new Map<string, { tag: string; count: number }>();
   for (const post of loadPosts()) {
     for (const tag of post.tags) {
-      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+      const slug = tagSlug(tag);
+      if (!slug) continue;
+      const entry = bySlug.get(slug) ?? { tag, count: 0 };
+      entry.count += 1;
+      if (tag.length < entry.tag.length) entry.tag = tag;
+      bySlug.set(slug, entry);
     }
   }
-  return [...counts.entries()]
-    .map(([tag, count]) => ({ tag, count }))
+  return [...bySlug.entries()]
+    .map(([slug, e]) => ({ tag: e.tag, slug, count: e.count }))
     .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 }
 
@@ -173,4 +190,44 @@ export function getRelatedPosts(slug: string, n = 3): Post[] {
     })
     .slice(0, n)
     .map((r) => r.post);
+}
+
+/**
+ * Cross-links for a post's "More from the archive" block. Unlike
+ * getRelatedPosts this never returns empty: posts with no tag overlap (or no
+ * tags at all) fall back to their chronological neighbors, so every post
+ * contributes outbound links into the graph instead of being a dead-end leaf.
+ * Tag-overlap results always take precedence; temporal fill only pads to n.
+ */
+export function getArchiveNeighbors(slug: string, n = 6): Post[] {
+  const all = loadPosts();
+  const idx = all.findIndex((p) => p.slug === slug);
+  if (idx === -1) return [];
+
+  const primary = getRelatedPosts(slug, n);
+  const seen = new Set([slug, ...primary.map((p) => p.slug)]);
+  const out = [...primary];
+
+  // Temporal fill: walk outward from the post's position in the
+  // newest-first ordering, alternating before/after so the links stay
+  // contextually near in time.
+  let before = idx - 1;
+  let after = idx + 1;
+  while (out.length < n && (before >= 0 || after < all.length)) {
+    if (after < all.length) {
+      const p = all[after++];
+      if (!seen.has(p.slug)) {
+        seen.add(p.slug);
+        out.push(p);
+      }
+    }
+    if (out.length < n && before >= 0) {
+      const p = all[before--];
+      if (!seen.has(p.slug)) {
+        seen.add(p.slug);
+        out.push(p);
+      }
+    }
+  }
+  return out;
 }

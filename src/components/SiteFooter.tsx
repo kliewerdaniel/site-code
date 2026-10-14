@@ -15,7 +15,15 @@ export function SiteFooter() {
           <div className="flex items-start gap-4">
             <SovereignMark size={44} />
             <div>
-              <p className="label text-ink">Daniel Kliewer</p>
+              <address className="not-italic">
+                <Link
+                  rel="author"
+                  href="/about"
+                  className="label text-ink transition-colors hover:text-gold"
+                >
+                  Daniel Kliewer
+                </Link>
+              </address>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-2">
                 Local-first AI systems. Measured, reproducible, owned.
               </p>

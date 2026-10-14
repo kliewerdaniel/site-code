@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { BOOK, SOCIAL } from "@/config";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "Press Kit — Daniel Kliewer",
   description:
     "Press kit for Daniel Kliewer: bios, downloadable assets, and interview topics on computational sovereignty, local-first AI, and governed agents.",
+  path: "/press",
   openGraph: {
     title: "Press kit — Daniel Kliewer",
     description:
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Bios, downloadable assets, and interview topics on computational sovereignty and local-first AI.",
   },
-};
+});
 
 const topics = [
   "Pricing the cloud as a liability: what changes when you own every layer",

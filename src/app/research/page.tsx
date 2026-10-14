@@ -1,15 +1,40 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Exhibit, Kicker } from "@/components/Archetypes";
-import { getAllPosts, getAllTags } from "@/lib/posts";
+import { getAllPosts, getAllTags, tagSlug } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
+import { seo } from "@/lib/seo";
 import ResearchSearch from "./ResearchSearch";
 
-export const metadata: Metadata = {
-  title: "Research",
-  description:
-    "The full research archive — local-first AI systems, deterministic pipelines, and computational sovereignty.",
-};
+interface PageProps {
+  searchParams: Promise<{ page?: string; tag?: string }>;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: PageProps): Promise<Metadata> {
+  const { tag } = await searchParams;
+  const activeTag = tag
+    ? getAllTags().find((t) => t.slug === tagSlug(tag))
+    : undefined;
+  if (activeTag) {
+    const allPosts = getAllPosts();
+    const count = allPosts.filter((p) =>
+      p.tags.some((t) => tagSlug(t) === activeTag.slug)
+    ).length;
+    return seo({
+      title: `${activeTag.tag} research — ${count} posts`,
+      description: `Research posts tagged ${activeTag.tag}: ${count} essays on local-first AI, deterministic pipelines, and computational sovereignty.`,
+      path: `/research?tag=${activeTag.slug}`,
+    });
+  }
+  return seo({
+    title: "Research",
+    description:
+      "The full research archive — local-first AI systems, deterministic pipelines, and computational sovereignty.",
+    path: "/research",
+  });
+}
 
 const PAGE_SIZE = 20;
 
@@ -33,8 +58,14 @@ export default async function ResearchPage({
   const allTags = getAllTags();
   const topTags = allTags.slice(0, 30);
 
-  const filtered = tag
-    ? allPosts.filter((p) => p.tags.includes(tag))
+  // Resolve the incoming ?tag= to a canonical tag entry by slug, so "RAG",
+  // "rag" and "RAG " all land on the same page with the same display spelling.
+  const activeTag = tag
+    ? allTags.find((t) => t.slug === tagSlug(tag))
+    : undefined;
+
+  const filtered = activeTag
+    ? allPosts.filter((p) => p.tags.some((t) => tagSlug(t) === activeTag.slug))
     : allPosts;
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -54,19 +85,24 @@ export default async function ResearchPage({
 
   return (
     <Exhibit wide>
-      <Kicker>Research archive</Kicker>
-      <h1 className="display-lg mt-5">Research</h1>
+      <Kicker>
+        {activeTag ? `${activeTag.tag} · research archive` : "Research archive"}
+      </Kicker>
+      <h1 className="display-lg mt-5">
+        {activeTag ? `${activeTag.tag} research` : "Research"}
+      </h1>
       <p className="mt-6 max-w-2xl leading-relaxed text-ink-2">
-        Every essay, tutorial, and experiment in the open — the working notes
-        behind computational sovereignty.
+        {activeTag
+          ? `${filtered.length} ${filtered.length === 1 ? "post" : "posts"} tagged ${activeTag.tag} — essays and experiments on ${activeTag.tag.toLowerCase()}, drawn from the working notes behind computational sovereignty.`
+          : "Every essay, tutorial, and experiment in the open — the working notes behind computational sovereignty."}
       </p>
 
       <p className="label data mt-10">
         {filtered.length} post{filtered.length === 1 ? "" : "s"}
-        {tag ? (
+        {activeTag ? (
           <>
             {" "}
-            tagged <span className="text-gold">{tag}</span>{" "}
+            tagged <span className="text-gold">{activeTag.tag}</span>{" "}
             <Link
               href="/research"
               className="underline underline-offset-2 hover:text-gold"
@@ -81,12 +117,12 @@ export default async function ResearchPage({
         {/* Tag filter chips — a chip is right here because these are a
             filter control, not content. */}
         <div className="mb-14 flex flex-wrap gap-2">
-          {topTags.map(({ tag: t, count }) => {
-            const active = tag === t;
+          {topTags.map(({ tag: t, slug, count }) => {
+            const active = activeTag?.slug === slug;
             return (
               <Link
-                key={t}
-                href={active ? "/research" : pageHref(1, t)}
+                key={slug}
+                href={active ? "/research" : pageHref(1, slug)}
                 className={`rounded-full border px-3 py-1.5 font-mono text-[11px] tracking-[0.08em] transition-colors ${
                   active
                     ? "border-gold bg-gold text-void"
@@ -130,6 +166,36 @@ export default async function ResearchPage({
             </li>
           ))}
         </ul>
+
+        {/* Complete archive. Every post link is present in the DOM inside a
+            <details>, so crawlers reach all 184 posts in one hop from the home
+            page (home → research → post) instead of burying 164 of them behind
+            pagination at depth 4+. The disclosure keeps the UI clean without
+            hiding content from crawlers — <details> renders in the HTML whether
+            or not it is open. */}
+        <details className="mt-16 border-t border-rule pt-10">
+          <summary className="label cursor-pointer text-gold hover:underline underline-offset-4">
+            Full archive — all {allPosts.length} posts
+          </summary>
+          <ul className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            {allPosts.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={`/blog/${p.slug}`}
+                  className="group block"
+                  title={`${p.title} — ${formatDate(p.date)}`}
+                >
+                  <span className="label data block text-ink-3">
+                    {formatDate(p.date)}
+                  </span>
+                  <span className="mt-1 block font-display text-base text-ink transition-colors group-hover:text-gold leading-snug">
+                    {p.title}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </details>
 
         {/* Pagination */}
         {totalPages > 1 && (

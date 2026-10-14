@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
@@ -15,11 +14,13 @@ import {
 import { BOOK } from "@/config";
 import { getAllPosts } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
+import { orgWebsiteGraph, seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "Computational Sovereignty — Daniel Kliewer",
   description:
     "Computational Sovereignty: Building Local-First AI Systems. A 214-page hardcover on running models, retrieval, graphs, and governed agents on your own machine. $88.",
+  path: "/",
   openGraph: {
     title: "Computational Sovereignty — Daniel Kliewer",
     description:
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     description:
       "24 chapters. One working rule: if you can&apos;t run it on your own machine, you don&apos;t own it. Hardcover, 214 pages, $88.",
   },
-};
+});
 
 /* Six things you will have built by the last page. Not metaphors — systems. */
 const builds = [
@@ -111,10 +112,31 @@ const friction = [
 
 export default async function HomePage() {
   const posts = await getAllPosts();
-  const latest = posts.slice(0, 3);
+  // Curated, spread across the archive: 3 most recent plus landmark posts from
+  // across the history. The home page is the highest-PageRank node on the site,
+  // so linking significant posts directly from here distributes authority to
+  // content instead of funneling it all through the /research hub.
+  const recent = posts.slice(0, 3);
+  const featuredSlugs = [
+    "2026-09-03-pagerank-seo-information-architecture-problem",
+    "2026-01-03-american-phoenix",
+    "2025-12-04-critical-nextjs-rce-cve-2025-66478-security-guide",
+    "2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
+    "2025-07-06-demystifying-large-language-models",
+  ];
+  const bySlug = new Map(posts.map((p) => [p.slug, p]));
+  const featured = featuredSlugs
+    .map((s) => bySlug.get(s))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p))
+    .filter((p) => !recent.some((r) => r.slug === p.slug));
+  const latest = [...recent, ...featured];
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: orgWebsiteGraph() }}
+      />
       {/* ============ A. SCENE ============
           The object lit in a dark room. One per page. */}
       <section className="scene border-b border-rule">

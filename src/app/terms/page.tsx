@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "Terms of Use",
   description:
     "Terms of use for danielkliewer.com and the Sovereign AI project.",
-};
+  path: "/terms",
+});
 
 const sections = [
   {

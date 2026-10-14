@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
 import { SOCIAL } from "@/config";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = seo({
   title: "Contact — Daniel Kliewer",
   description:
     "Contact Daniel Kliewer: email, X, GitHub, LinkedIn. No contact form — pick the channel that fits.",
-};
+  path: "/contact",
+});
 
 const links = [
   {
