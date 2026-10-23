@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="1600" height="1040" fill="#0b1119"/>
+<g stroke="#101825" stroke-width="1">
+<line x1="0" y1="0" x2="0" y2="1040"/>
+<line x1="80" y1="0" x2="80" y2="1040"/>
+<line x1="160" y1="0" x2="160" y2="1040"/>
+<line x1="240" y1="0" x2="240" y2="1040"/>
+<line x1="320" y1="0" x2="320" y2="1040"/>
+<line x1="400" y1="0" x2="400" y2="1040"/>
+<line x1="480" y1="0" x2="480" y2="1040"/>
+<line x1="560" y1="0" x2="560" y2="1040"/>
+<line x1="640" y1="0" x2="640" y2="1040"/>
+<line x1="720" y1="0" x2="720" y2="1040"/>
+<line x1="800" y1="0" x2="800" y2="1040"/>
+<line x1="880" y1="0" x2="880" y2="1040"/>
+<line x1="960" y1="0" x2="960" y2="1040"/>
+<line x1="1040" y1="0" x2="1040" y2="1040"/>
+<line x1="1120" y1="0" x2="1120" y2="1040"/>
+<line x1="1200" y1="0" x2="1200" y2="1040"/>
+<line x1="1280" y1="0" x2="1280" y2="1040"/>
+<line x1="1360" y1="0" x2="1360" y2="1040"/>
+<line x1="1440" y1="0" x2="1440" y2="1040"/>
+<line x1="1520" y1="0" x2="1520" y2="1040"/>
+<line x1="0" y1="0" x2="1600" y2="0"/>
+<line x1="0" y1="80" x2="1600" y2="80"/>
+<line x1="0" y1="160" x2="1600" y2="160"/>
+<line x1="0" y1="240" x2="1600" y2="240"/>
+<line x1="0" y1="320" x2="1600" y2="320"/>
+<line x1="0" y1="400" x2="1600" y2="400"/>
+<line x1="0" y1="480" x2="1600" y2="480"/>
+<line x1="0" y1="560" x2="1600" y2="560"/>
+<line x1="0" y1="640" x2="1600" y2="640"/>
+<line x1="0" y1="720" x2="1600" y2="720"/>
+<line x1="0" y1="800" x2="1600" y2="800"/>
+<line x1="0" y1="880" x2="1600" y2="880"/>
+<line x1="0" y1="960" x2="1600" y2="960"/>
+</g>
+<rect x="0" y="0" width="1600" height="6" fill="#d9a648"/>
+<text x="120" y="130" font-family="Menlo, monospace" font-size="25" letter-spacing="6" fill="#8b93a3">SECURITY LOG · 2026-10-23</text>
+<text x="118" y="228" font-family="Georgia, serif" font-weight="bold" font-size="74" fill="#e8e4da">The Trust Store</text>
+<text x="118" y="316" font-family="Georgia, serif" font-weight="bold" font-size="74" fill="#e8e4da">Nobody Patched</text>
+<rect x="120" y="348" width="360" height="4" fill="#d9a648"/>
+<text font-family="Georgia, serif" font-size="29" fill="#8b93a3">
+<tspan x="120" y="398">eMudhra’s compromised intermediate keys, the Node.js</tspan>
+<tspan x="120" y="438">security release, and the build-time gate that now refuses</tspan>
+<tspan x="120" y="478">to compile on a vulnerable runtime.</tspan>
+</text>
+<text x="120" y="540" font-family="Menlo, monospace" font-size="23" letter-spacing="3" fill="#8b93a3">COMPROMISED emSign ROOTS IN THE BUNDLED STORE</text>
+<text x="220.0" y="676" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="72" fill="#e05563">4</text>
+<rect x="120" y="700" width="200" height="140" fill="#e05563" opacity="0.88"/>
+<text x="220.0" y="882" text-anchor="middle" font-family="Menlo, monospace" font-size="23" fill="#e8e4da">v22.23.1 (before)</text>
+<text x="220.0" y="920" text-anchor="middle" font-family="Menlo, monospace" font-size="20" letter-spacing="2" fill="#e05563">VULNERABLE</text>
+<text x="530.0" y="781" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="72" fill="#4fbf8f">1</text>
+<rect x="430" y="805" width="200" height="35" fill="#4fbf8f" opacity="0.88"/>
+<text x="530.0" y="882" text-anchor="middle" font-family="Menlo, monospace" font-size="23" fill="#e8e4da">v22.23.4 (after)</text>
+<text x="530.0" y="920" text-anchor="middle" font-family="Menlo, monospace" font-size="20" letter-spacing="2" fill="#4fbf8f">PATCHED</text>
+<line x1="96" y1="840" x2="740" y2="840" stroke="#8b93a3" stroke-width="2"/>
+<text x="1000" y="540" font-family="Menlo, monospace" font-size="23" letter-spacing="3" fill="#8b93a3">ROOTS THE PATCH DROPS</text>
+<rect x="1000" y="566" width="470" height="48" fill="#e05563" opacity="0.16"/>
+<text x="1018" y="602" font-family="Menlo, monospace" font-size="21" fill="#e05563">&#10005;  dropped by v22.23.4</text>
+<text x="1000" y="664" font-family="Menlo, monospace" font-size="24" fill="#e8e4da">emSign ECC Root CA - G3</text>
+<text x="1000" y="696" font-family="Menlo, monospace" font-size="18" fill="#8b93a3">eMudhra Technologies Limited · SHA-1 3043FA4F…FE6BBC1</text>
+<text x="1000" y="758" font-family="Menlo, monospace" font-size="24" fill="#e8e4da">emSign Root CA - C1</text>
+<text x="1000" y="790" font-family="Menlo, monospace" font-size="18" fill="#8b93a3">eMudhra Inc · SHA-1 E72EF1DF…864F01</text>
+<text x="1000" y="852" font-family="Menlo, monospace" font-size="24" fill="#e8e4da">emSign ECC Root CA - C3</text>
+<text x="1000" y="884" font-family="Menlo, monospace" font-size="18" fill="#8b93a3">eMudhra Inc · SHA-1 B6AF43C2…CE4866</text>
+<rect x="1000" y="920" width="470" height="48" fill="#4fbf8f" opacity="0.14"/>
+<text x="1018" y="956" font-family="Menlo, monospace" font-size="21" fill="#4fbf8f">&#10003;  emSign Root CA - G1 retained</text>
+<rect x="0" y="968" width="1600" height="72" fill="#101825"/>
+<text x="120" y="1012" font-family="Menlo, monospace" font-size="22" fill="#8b93a3">CVE-2026-111943  ·  Node.js 22.23.4 / 24.22.1 / 26.12.1  ·  PHP2Shell: not applicable</text>
+<text x="1480" y="1012" text-anchor="end" font-family="Georgia, serif" font-size="24" fill="#d9a648">danielkliewer.com</text>
+</svg>
