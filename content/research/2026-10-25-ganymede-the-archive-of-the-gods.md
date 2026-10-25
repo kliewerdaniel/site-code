@@ -41,6 +41,8 @@ Everything below was executed. Every number came off a file on disk.
 
 ![The protagonist at the threshold of the archive](/images/ganymede-archive-hero.jpg)
 
+**Watch the film:** [Ganymede, the Archive of the Gods](https://youtu.be/NbcUXQCPQw4) — 3:08, 1536×864, h264 + AAC.
+
 ## 0. The shape of the repository
 
 The single most important decision in the whole build was that **each stage
@@ -445,6 +447,7 @@ The report also declares what it cannot score, in the artifact itself:
 
 - Repository: `~/Projects/ganymede-archive`
 - Film: `output/ganymede_archive_of_the_gods.mp4` — 3:08, 1536×864, h264 + AAC
+- Published: <https://youtu.be/NbcUXQCPQw4>
 - Reproduce: `output/RUNBOOK.md` (exact order, plus the eight traps)
 - Failures: `output/POSTMORTEM.md` (each with the measurement that exposed it)
 - Judgements: `output/MANUAL_REVIEW.md`
