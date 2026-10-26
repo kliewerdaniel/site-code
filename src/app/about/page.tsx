@@ -3,10 +3,10 @@ import { HeroBand } from "@/components/HeroBand";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { BOOK, OLD_BOOK } from "@/config";
-import { seo } from "@/lib/seo";
+import { profilePageSchema, seo } from "@/lib/seo";
 
 export const metadata = seo({
-  title: "About Daniel Kliewer",
+  title: "About",
   description:
     "Daniel Kliewer is an AI engineer in Austin, Texas. Ten years in search relevance at Amazon, a self-directed computer science education through MIT OpenCourseWare, twenty years of painting and animation, and local-first AI systems built on hardware he owns.",
   path: "/about",
@@ -17,7 +17,7 @@ export const metadata = seo({
     type: "profile",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "About Daniel Kliewer",
     description:
       "AI engineer in Austin. Search relevance, local-first systems, and twenty years of painting.",
@@ -111,6 +111,10 @@ const beliefs = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: profilePageSchema() }}
+      />
       {/* HEAD */}
       <HeroBand
         poster="/images/hero/hero-about.jpg"

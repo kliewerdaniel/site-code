@@ -16,12 +16,22 @@ export const metadata = seo({
     title: `${BOOK.title} — the full 24-chapter stack`,
     description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
     type: "website",
-    images: [BOOK.coverFront],
+    // The cover is a 1837×3050 portrait. Declaring its real aspect stops the
+    // social preview from being silently cropped to the 1200×630 default.
+    images: [
+      {
+        url: BOOK.coverFront,
+        width: 1837,
+        height: 3050,
+        alt: `${BOOK.title}: ${BOOK.subtitle} — hardcover cover`,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: `${BOOK.title} — the full 24-chapter stack`,
     description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
+    images: [BOOK.coverFront],
   },
 });
 

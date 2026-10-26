@@ -6,10 +6,22 @@ export interface Post {
   slug: string;
   title: string;
   date: string;
+  /** `updated` frontmatter, normalised like `date`; falls back to `date`. */
+  updated?: string;
   description: string;
   tags: string[];
   image?: string;
-  canonicalUrl: string;
+  /**
+   * Optional `seoTitle` frontmatter. Takes precedence over `title` for the
+   * `<title>` tag and the social titles, so a long working headline can have a
+   * shorter, slot-sized search title without editing the body or the display.
+   */
+  seoTitle?: string;
+  /**
+   * Optional `seoDescription` frontmatter. Takes precedence over the derived
+   * description for the meta description and the social descriptions.
+   */
+  seoDescription?: string;
   content: string;
   readingMinutes: number;
 }
@@ -85,19 +97,25 @@ function parsePostFile(filename: string): Post {
       ? data.description.trim()
       : plainTextExcerpt(content, 160);
 
-  const canonical =
-    (typeof data.canonical_url === "string" && data.canonical_url.trim()) ||
-    (typeof data.canonicalUrl === "string" && data.canonicalUrl.trim()) ||
-    `/blog/${slug}`;
+  const strField = (key: string): string | undefined => {
+    const v = data[key];
+    return typeof v === "string" && v.trim().length > 0 ? v.trim() : undefined;
+  };
+
+  const updated = normalizeDate(data.updated);
+  const seoTitle = strField("seoTitle");
+  const seoDescription = strField("seoDescription");
 
   return {
     slug,
     title: typeof data.title === "string" ? data.title : String(data.title ?? slug),
     date: normalizeDate(data.date),
+    ...(updated ? { updated } : {}),
     description,
     tags: normalizeTags(data.tags),
     image,
-    canonicalUrl: canonical,
+    ...(seoTitle ? { seoTitle } : {}),
+    ...(seoDescription ? { seoDescription } : {}),
     content,
     readingMinutes: Math.max(1, Math.ceil(countWords(content) / 200)),
   };

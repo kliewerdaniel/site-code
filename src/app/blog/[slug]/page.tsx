@@ -15,7 +15,13 @@ import {
   tagSlug,
 } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
-import { articleSchema, breadcrumbSchema, canonical, seo } from "@/lib/seo";
+import {
+  DEFAULT_OG_IMAGE,
+  articleSchema,
+  breadcrumbSchema,
+  canonical,
+  seo,
+} from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -32,27 +38,38 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return { title: "Not found" };
 
-  const url = `${SITE.url}/blog/${post.slug}`;
+  // `seoTitle` / `seoDescription` frontmatter override the display title and
+  // the derived excerpt for search and social without changing the headline
+  // the reader sees on the page.
+  const title = post.seoTitle ?? post.title;
+  const description = post.seoDescription ?? post.description;
   const image = post.image ? `${SITE.url}${post.image}` : undefined;
+  // The social card falls back to the shared 1200×630 default when the post has
+  // no image of its own, so a post is never published without a preview image.
+  const cardImage = image ?? canonical(DEFAULT_OG_IMAGE);
 
   return seo({
-    title: post.title,
-    description: post.description,
+    title,
+    description,
     path: `/blog/${post.slug}`,
+    type: "article",
+    // A headline plus "%s — Daniel Kliewer" routinely exceeds a search-result
+    // slot; the headline alone is the correct title for these pages.
+    absoluteTitle: true,
     openGraph: {
-      title: post.title,
-      description: post.description,
-      url,
+      title,
+      description,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updated ?? post.date,
       tags: post.tags,
-      images: image ? [{ url: image, alt: post.title }] : undefined,
+      ...(post.image ? { images: [{ url: cardImage, alt: post.title }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images: image ? [image] : undefined,
+      title,
+      description,
+      images: [cardImage],
     },
   });
 }
@@ -124,6 +141,7 @@ export default async function BlogPostPage({
             description: post.description,
             slug: post.slug,
             date: post.date,
+            updated: post.updated,
             image: post.image,
           }),
         }}
@@ -140,16 +158,20 @@ export default async function BlogPostPage({
       />
       <Container className="py-16 md:py-24">
         <article className="max-w-3xl mx-auto">
-          {/* Breadcrumb */}
+          {/* Breadcrumb — matches the BreadcrumbList schema emitted above. */}
           <nav
           aria-label="Breadcrumb"
           className="font-mono text-xs text-ink-2 mb-8"
         >
+          <Link href="/" className="hover:text-gold transition-colors">
+            Home
+          </Link>
+          <span className="mx-2">/</span>
           <Link href="/research" className="hover:text-gold transition-colors">
             Research
           </Link>
           <span className="mx-2">/</span>
-          <span>{formatDate(post.date)}</span>
+          <span>{post.title}</span>
         </nav>
 
         {/* Header */}

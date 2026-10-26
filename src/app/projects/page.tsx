@@ -10,7 +10,6 @@ export const metadata: Metadata = seo({
   description:
     "The systems: governed agent runtimes, knowledge compilers, local inference tooling and creative automation. Each entry states what it does, how it works, and what state it is actually in.",
   path: "/projects",
-  openGraph: { images: ["/images/og-home.jpg"] },
 });
 
 const ORDER: Maturity[] = ["implementation", "prototype", "research"];
