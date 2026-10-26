@@ -16,9 +16,12 @@ export interface SearchablePost {
 
 export default function ResearchSearch({
   posts,
+  total,
   children,
 }: {
   posts: SearchablePost[];
+  /** Real archive size, so the placeholder can never drift from the data. */
+  total: number;
   children: React.ReactNode;
 }) {
   const [query, setQuery] = useState("");
@@ -36,7 +39,7 @@ export default function ResearchSearch({
 
   return (
     <div>
-      {/* Sticky so search stays reachable through a 184-post archive — and,
+      {/* Sticky so search stays reachable through the archive — and,
           because it now floats over the scrolling list, it is the one place on
           this page where glass has something real to blur. `top` reads the
           header's measured height rather than a guessed constant. */}
@@ -49,7 +52,7 @@ export default function ResearchSearch({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search 184 research posts…"
+            placeholder={`Search ${total} research posts…`}
             aria-label="Search research posts"
             className="w-full rounded-lg border border-rule-2/70 bg-void/55 px-4 py-3 font-mono text-sm text-ink placeholder:text-ink-2/50 focus:border-gold focus:outline-none"
           />
