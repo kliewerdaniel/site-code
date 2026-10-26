@@ -5,11 +5,6 @@ description: "Your practical guide to running AI on your own hardware. Ollama se
 image: /images/ComfyUI_00207_.png
 layout: post
 title: 'Local AI Architecture: Running Models on Your Own Hardware'
-og:description: "Your practical guide to running AI on your own hardware. Ollama setup, model selection, hardware requirements from $2K to $50K, and wiring local inference into a sovereign pipeline."
-og:image: /images/ComfyUI_00207_.png
-og:title: 'Local AI Architecture: Running Models on Your Own Hardware'
-og:type: article
-og:url: /blog/local-ai-architecture-synthesis
 tags:
   - local-ai
   - sovereign-ai

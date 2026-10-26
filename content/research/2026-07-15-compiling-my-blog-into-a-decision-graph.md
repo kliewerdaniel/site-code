@@ -5,10 +5,6 @@ date: 07-15-2026
 description: "I pointed the Sovereign Knowledge Compiler at all 153 posts on this blog, ran it on a local LLM, and got back a decision graph. Here is what it found, the live interactive demo, and why compiling memory beats retrieving it."
 layout: post
 title: 'I Compiled My Blog Into a Decision Graph'
-og:description: "153 blog posts, one local LLM, zero cloud calls. The Sovereign Knowledge Compiler turns a blog into 1,513 facts and 436 decisions — and a live 3D knowledge graph."
-og:title: 'I Compiled My Blog Into a Decision Graph'
-og:type: article
-og:url: /blog/2026-07-15-compiling-my-blog-into-a-decision-graph
 image: /images/ganymede.png
 tags:
   - ai-agents

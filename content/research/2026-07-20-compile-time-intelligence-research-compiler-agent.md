@@ -5,10 +5,6 @@ date: 07-20-2026
 description: "An autonomous Research Compiler Agent that compiles web sources into a persistent, queryable, provenance-tracked Knowledge Artifact — moving semantic computation from runtime inference into reusable artifacts (Compile-Time Intelligence). Built on the Knowledge Compiler SDK; local-first and reproducible."
 layout: post
 title: 'Compile-Time Intelligence: Building a Research Compiler Agent That Compiles Knowledge Instead of Re-Reading It'
-og:description: "An autonomous Research Compiler Agent that compiles web sources into a persistent, queryable, provenance-tracked Knowledge Artifact (Compile-Time Intelligence)."
-og:title: 'Compile-Time Intelligence: A Research Compiler Agent That Compiles Knowledge'
-og:type: article
-og:url: /blog/2026-07-20-compile-time-intelligence-research-compiler-agent
 image: "/images/12092025/uncensored-ai-chatbot-architecture-diagram.png"
 tags:
   - ai-agents

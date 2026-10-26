@@ -9,12 +9,6 @@ description: The capstone synthesis of every system I have built — Dynamic Per
   architecture called SOVEREIGN. This is the project blueprint.
 image: /images/ComfyUI_00198_.png
 layout: post
-og:description: The capstone synthesis of Dynamic Persona MoE RAG, knowledge graphs,
-  governance, and local inference — collapsed into one unified sovereign AI architecture.
-og:image: /images/ComfyUI_00198_.png
-og:title: 'SOVEREIGN: The Unified Architecture for Local-First AI'
-og:type: article
-og:url: /blog/2026-03-29-sovereign-synthesis
 tags:
 - sovereign AI
 - local-first
@@ -39,11 +33,6 @@ tags:
 - TypeScript
 title: 'SOVEREIGN: The Unified Architecture — A Magnum Opus for Local-First AI Systems
   That Think for Themselves'
-twitter:card: summary_large_image
-twitter:description: Every module I've built collapsed into one sovereign AI architecture.
-  This is the blueprint.
-twitter:image: /images/ComfyUI_00198_.png
-twitter:title: 'SOVEREIGN: The Unified Architecture for Local-First AI'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "docker", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "ollama", "python", "quantization", "rag", "sentence-transformers", "typescript"]
 ---
 # SOVEREIGN: The Unified Architecture

@@ -21,15 +21,6 @@ canonical_url: /blog/2026-07-11-knowledge-compiler-compiling-human-knowledge-int
 
 image: /images/The_Knowledge_Compiler_-_Slide_3.png
 layout: post
-og:description: 
-og:image: /images/The_Knowledge_Compiler_-_Slide_3.png
-og:title: ''
-og:type: article
-og:url: 
-twitter:card: summary_large_image
-twitter:description: ''
-twitter:image: /images/The_Knowledge_Compiler_-_Slide_3.png
-twitter:title: ''
 wiki_references: []
 
 

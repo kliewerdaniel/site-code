@@ -12,12 +12,6 @@ excerpt: A complete Rust tutorial on building objective05-exec — a local-first
   discovery, signal evaluation, and a poll→evaluate→execute loop.
 image: /images/ComfyUI_00209_.png
 layout: post
-og:description: A complete Rust tutorial on bridging a Kuzu knowledge graph to real-world
-  tools with a local-first poll→evaluate→execute agent runtime and TOOLS.md discovery.
-og:image: /images/ComfyUI_00209_.png
-og:title: 'objective05-exec: Giving Your Local Intelligence System Hands'
-og:type: article
-og:url: /blog/objective05-exec-giving-local-intelligence-system-hands
 tags:
 - Rust
 - objective05
@@ -43,12 +37,6 @@ tags:
 - contradiction detection
 title: 'objective05-exec: Giving Your Local Intelligence System Hands — A Rust Tutorial
   on Bridging a Knowledge Graph to Real-World Tool Execution'
-twitter:card: summary_large_image
-twitter:description: A complete Rust tutorial on bridging a Kuzu knowledge graph to
-  real-world tools with a local-first poll→evaluate→execute agent runtime and TOOLS.md
-  discovery.
-twitter:image: /images/ComfyUI_00209_.png
-twitter:title: 'objective05-exec: Giving Your Local Intelligence System Hands'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "docker", "knowledge-graphs", "kubernetes", "llama3", "local-first-ai", "local-inference", "mcp", "rust"]
 ---
 

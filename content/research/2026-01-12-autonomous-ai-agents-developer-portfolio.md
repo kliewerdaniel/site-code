@@ -8,12 +8,6 @@ description: Comprehensive portfolio guide to building autonomous AI agents usin
   and Orthos for AI developers seeking computational sovereignty.
 image: /images/ComfyUI_00240_.png
 layout: post
-og:description: Developer portfolio showcasing autonomous AI agents, local LLM integration,
-  MCP protocols, and GraphRAG implementations for computational sovereignty.
-og:image: /images/ComfyUI_00240_.png
-og:title: 'Autonomous AI Agents: Building Distributed Systems with Local LLMs'
-og:type: article
-og:url: https://danielkliewer.com/blog/2026-01-12-autonomous-ai-agents-developer-portfolio
 tags:
 - autonomous-ai-agents
 - local-llm
@@ -27,11 +21,6 @@ tags:
 - rag-architecture
 title: 'Autonomous AI Agents: Building Distributed Systems with Local LLMs - Developer
   Portfolio'
-twitter:card: summary_large_image
-twitter:description: Build autonomous AI agents with local inference, MCP, and GraphRAG.
-  Portfolio of SpecGen, MCBot01, and more for AI developers.
-twitter:image: /images/ComfyUI_00240_.png
-twitter:title: 'Autonomous AI Agents: Developer Portfolio & Local LLM Guide'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "mcp", "ollama", "python", "rag", "reinforcement-learning", "rlhf", "sentence-transformers", "transformers", "typescript"]
 ---
 

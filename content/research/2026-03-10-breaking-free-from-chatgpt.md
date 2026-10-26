@@ -8,12 +8,6 @@ description: Learn how to export your ChatGPT history and build a sovereign AI s
   personal AI that remembers your unique thinking.
 image: /images/1019020.png
 layout: post
-og:description: Stop giving your thoughts to OpenAI. Learn how to export your ChatGPT
-  history and build a sovereign AI system that remembers your unique thinking.
-og:image: /images/1019020.png
-og:title: 'Breaking Free from ChatGPT: Take Back Your AI Sovereignty'
-og:type: article
-og:url: /blog/2026-03-10-breaking-free-from-chatgpt
 tags:
 - AI sovereignty
 - ChatGPT export
@@ -23,11 +17,6 @@ tags:
 - RAG systems
 - AI independence
 title: 'Breaking Free from ChatGPT: How to Take Back Your AI Sovereignty'
-twitter:card: summary_large_image
-twitter:description: Stop giving your thoughts to OpenAI. Learn how to export your
-  ChatGPT history and build a sovereign AI system that remembers your unique thinking.
-twitter:image: /images/1019020.png
-twitter:title: 'Breaking Free from ChatGPT: Take Back Your AI Sovereignty'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "embeddings", "llama3", "local-first-ai", "local-inference", "ollama", "rag", "security", "sentence-transformers"]
 ---
 

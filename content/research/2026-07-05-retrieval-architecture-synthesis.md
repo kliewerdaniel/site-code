@@ -5,11 +5,6 @@ description: "Memory systems and retrieval architecture for sovereign AI. Sovere
 image: /images/ComfyUI_00205_.png
 layout: post
 title: 'Retrieval Architecture: Memory Systems That Compound'
-og:description: "Memory systems and retrieval architecture for sovereign AI. Sovereign Memory Bank, Dynamic Persona MoE RAG, Objective05, and GraphRAG — the subsystems that make retrieval compound over time."
-og:image: /images/ComfyUI_00205_.png
-og:title: 'Retrieval Architecture: Memory Systems That Compound'
-og:type: article
-og:url: /blog/retrieval-architecture-synthesis
 tags:
   - retrieval-augmented-generation
   - sovereign-memory-bank

@@ -7,13 +7,6 @@ description: A comprehensive guide to building a memory-driven synthetic intelli
   experts RAG to create an evolving cognitive architecture.
 image: /images/1025004.png
 layout: post
-og:description: A comprehensive guide to building a memory-driven synthetic intelligence
-  system that combines dynamic persona modeling, knowledge graphs, and mixture of
-  experts RAG to create an evolving cognitive architecture.
-og:image: /images/1025004.png
-og:title: 'Dynamic Persona MoE RAG: Building a Memory-Driven Synthetic Intelligence'
-og:type: article
-og:url: /blog/dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence
 tags:
 - AI
 - Knowledge Graphs
@@ -25,12 +18,6 @@ tags:
 - LLM
 title: 'Dynamic Persona MoE RAG: Building a Memory-Driven Synthetic Intelligence with
   Knowledge Graphs and Persona Evolution'
-twitter:card: summary_large_image
-twitter:description: A comprehensive guide to building a memory-driven synthetic intelligence
-  system that combines dynamic persona modeling, knowledge graphs, and mixture of
-  experts RAG to create an evolving cognitive architecture.
-twitter:image: /images/1025004.png
-twitter:title: 'Dynamic Persona MoE RAG: Building a Memory-Driven Synthetic Intelligence'
 wiki_references: ["ai-agents", "embeddings", "knowledge-graphs", "python", "rag", "sentence-transformers"]
 ---
 

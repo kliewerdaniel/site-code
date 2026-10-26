@@ -6,11 +6,6 @@ description: "MindBroadcast is a persistent, autonomous broadcasting system that
 image: /images/1021018.png
 layout: post
 title: "MindBroadcast — A Technical Specification for a Persistent, Autonomous, News-Driven Intelligence and Broadcasting System"
-og:description: "A complete technical specification for MindBroadcast: a local-first, event-driven, persistent AI system that continuously ingests, interprets, and broadcasts evidence-grounded analysis of the world."
-og:image: /images/1021018.png
-og:title: "MindBroadcast — A Technical Specification for a Persistent, Autonomous, News-Driven Intelligence and Broadcasting System"
-og:type: article
-og:url: /blog/2026-10-12-mindbroadcast
 tags:
   - mindbroadcast
   - autonomous-broadcasting
@@ -21,10 +16,6 @@ tags:
   - sovereign-ai
   - architecture
   - persona-driven
-twitter:card: summary_large_image
-twitter:description: "A complete technical specification for a persistent, autonomous, local-first AI broadcasting system that maintains an internal model of the world and produces ongoing, evidence-grounded interpretations."
-twitter:image: /images/1021018.png
-twitter:title: "MindBroadcast — A Technical Specification for a Persistent, Autonomous, News-Driven Intelligence and Broadcasting System"
 ---
 
 # MindBroadcast

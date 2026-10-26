@@ -8,12 +8,6 @@ description: Discover the Model Context Protocol (MCP) that transforms AI coding
   developers and language models.
 image: /images/ComfyUI_00186_.png
 layout: post
-og:description: End the frustration of AI hallucinations in coding. Learn how MCP
-  restores context, dignity, and partnership in AI-assisted development.
-og:image: /images/11052025/ai-collaboration-partnership-mcp-protocol.jpg
-og:title: 'Unlock True AI Collaboration: MCP Beginner''s Guide'
-og:type: article
-og:url: https://danielkliewer.com/blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp
 tags:
 - MCP
 - Model Context Protocol
@@ -25,11 +19,6 @@ tags:
 - AI tools
 title: 'The Ghost in the Machine is Finally Allowed to See: A Beginner''s Guide to
   MCP'
-twitter:card: summary_large_image
-twitter:description: Stop describing your codebase to AI. With MCP, your AI can finally
-  see, touch, and remember. A complete beginner's guide.
-twitter:image: /images/11052025/ai-collaboration-partnership-mcp-protocol.jpg
-twitter:title: 'MCP: The AI Collaboration Revolution for Developers'
 wiki_references: ["local-inference", "mcp", "ollama", "rag"]
 ---
 

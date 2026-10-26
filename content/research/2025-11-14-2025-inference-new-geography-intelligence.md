@@ -7,12 +7,6 @@ description: Explore how AI inference is becoming the defining resource of the k
   power.
 image: /images/ComfyUI_00240_.png
 layout: post
-og:description: How AI inference is reshaping global power structures and why the
-  ability to run models at scale will define the next economic era
-og:image: https://danielkliewer.com/images/11132025/inference-geography-hero.png
-og:title: Inference and the New Geography of Intelligence
-og:type: article
-og:url: https://danielkliewer.com/blog/inference-new-geography-intelligence
 tags:
 - AI
 - inference
@@ -24,11 +18,6 @@ tags:
 - knowledge economy
 title: 'Inference and the New Geography of Intelligence: Why Running AI Models Matters
   More Than Training Them'
-twitter:card: summary_large_image
-twitter:description: The nations and companies that control AI inference will set
-  the terms of the digital economy
-twitter:image: https://danielkliewer.com/images/11132025/inference-geography-hero.png
-twitter:title: Inference and the New Geography of Intelligence
 wiki_references: ["ai-sovereignty", "data-sovereignty", "llama3", "local-first-ai", "quantization"]
 ---
 

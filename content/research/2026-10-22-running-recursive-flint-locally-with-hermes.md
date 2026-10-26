@@ -6,11 +6,6 @@ description: "A complete, verified log of running Recursive's 39.8B-parameter Fl
 image: /images/ai-job-market.png
 layout: post
 title: "Hoisting Recursive Flint Aboard Hermes: A Pirate's Guide to Running a 40B MoE Locally"
-og:description: "Every command, every measured number, every pitfall from running Recursive Flint (39.8B MoE) locally on an Apple M4 Pro and making it Hermes's default model. Includes the architecture gate, the chat-template trap that kills tool calling, quant selection, self-hosted llama.cpp, and launchd persistence."
-og:image: /images/ai-job-market.png
-og:title: "Hoisting Recursive Flint Aboard Hermes: A Pirate's Guide to Running a 40B MoE Locally"
-og:type: article
-og:url: /blog/2026-10-22-running-recursive-flint-locally-with-hermes
 tags:
   - local-llm
   - llama-cpp
@@ -19,10 +14,6 @@ tags:
   - apple-silicon
   - quantization
   - flint
-twitter:card: summary_large_image
-twitter:description: "Every command, every measured number, every pitfall from running Recursive Flint (39.8B MoE) locally on an Apple M4 Pro and making it Hermes's default model."
-twitter:image: /images/ai-job-market.png
-twitter:title: "Hoisting Recursive Flint Aboard Hermes: A Pirate's Guide to Running a 40B MoE Locally"
 ---
 
 Arrr, gather round. This be the log of how I took a 40-billion-parameter mixture-of-experts

@@ -9,13 +9,6 @@ description: Master programming and computer science with free YouTube channels.
   a job-ready developer.
 image: /images/1021002.png
 layout: post
-og:description: Master programming and computer science with free YouTube channels.
-  Comprehensive roadmap from beginner to job-ready developer with curated tutorials.
-og:image: /images/1021002.png
-og:title: 'Learn Programming for Free: Complete YouTube Roadmap to Master Computer
-  Science (2025)'
-og:type: article
-og:url: https://danielkliewer.com/blog/2025-10-21-learn-programming-computer-science-youtube-roadmap
 tags:
 - free programming tutorials
 - YouTube coding channels
@@ -29,12 +22,6 @@ tags:
 - Python programming roadmap
 title: 'Learn Programming for Free: Complete YouTube Roadmap to Master Computer Science
   (2025)'
-twitter:card: summary_large_image
-twitter:description: Master programming and computer science with free YouTube channels.
-  Comprehensive roadmap from beginner to job-ready developer with curated tutorials.
-twitter:image: /images/1021002.png
-twitter:title: 'Learn Programming for Free: Complete YouTube Roadmap to Master Computer
-  Science (2025)'
 wiki_references: ["docker", "kubernetes", "python", "transformers"]
 ---
 

@@ -8,13 +8,6 @@ description: Discover the chilling true story of KonradFreeman on Reddit, who is
   digital entity, blending grief, technology, and mental health challenges.
 image: /images/digital-resurrection-ai.png
 layout: post
-og:description: A deep dive into how one developer is using AI to recreate his murdered
-  friend's personality, exploring the ethics, technology, and psychology behind digital
-  resurrection.
-og:image: /images/digital-resurrection-ai.png
-og:title: 'Reddit''s Most Haunting Project: AI Brings Murdered Friend Back to Life'
-og:type: article
-og:url: https://danielkliewer.com/blog/2025-10-31-reddit-haunting-project-ai-resurrection
 tags:
 - AI
 - Reddit
@@ -28,12 +21,6 @@ tags:
 - Technology
 title: 'Reddit''s Most Haunting Project: Meet the Man Coding His Murdered Friend Back
   to Life'
-twitter:card: summary_large_image
-twitter:description: Explore the eerie convergence of grief and AI as one developer
-  codes his way through trauma to resurrect a lost friend.
-twitter:image: /images/digital-resurrection-ai.png
-twitter:title: 'Reddit''s Most Haunting Project: AI Brings Murdered Friend Back to
-  Life'
 wiki_references: ["ai-agents", "knowledge-graphs", "local-inference", "ollama", "python", "rag", "reinforcement-learning", "rlhf"]
 ---
 

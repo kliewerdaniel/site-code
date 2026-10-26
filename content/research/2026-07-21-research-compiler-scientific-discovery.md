@@ -5,8 +5,6 @@ date: 07-21-2026
 description: "A research vision: why scientific knowledge needs a new computational architecture. The Clinical Research Compiler SDK is an early prototype of a scientific reasoning compiler that transforms literature into versioned understanding — not a better research assistant."
 layout: post
 title: 'A Research Compiler for Scientific Understanding, Not a Better Research Assistant'
-og:description: "Current AI retrieves and summarizes knowledge. A research compiler should transform scientific literature into versioned representations of understanding — evidence graphs, causal models, contradiction maps, unknowns, hypotheses, and research opportunities."
-og:title: 'A Research Compiler for Scientific Understanding'
 og.type: article
 og.url: /blog/2026-07-21-research-compiler-scientific-discovery
 image: "/images/12092025/uncensored-ai-chatbot-architecture-diagram.png"

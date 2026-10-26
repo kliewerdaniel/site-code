@@ -5,12 +5,6 @@ date: 07-12-2026
 author: Daniel Kliewer
 canonical: https://www.danielkliewer.com/blog/2026-07-12-compile-time-ai-knowledge-compiler-architecture
 description: "A taxonomy of the emerging Compile-Time AI movement — kib, Kompile, Brian Letort's Context Compilation Theory, llm-wiki-compiler, OVIR, and the SkCC paper — and why moving reasoning from runtime to compile time is the next architectural shift in AI systems."
-og:title: "Compile-Time AI: Why the Industry Is Quietly Building an LLVM for Knowledge"
-og:description: "Six independent teams are converging on the same idea: stop re-reasoning at every query. Compile knowledge, context, and skills once — offline — and let runtime be cheap, deterministic, and owned."
-og:type: article
-twitter:card: summary_large_image
-twitter:title: "Compile-Time AI: Why the Industry Is Quietly Building an LLVM for Knowledge"
-twitter:description: "A taxonomy of knowledge, context, skill, and runtime compilation across kib, Kompile, Context Compilation Theory, llm-wiki-compiler, OVIR, and the SkCC paper."
 tags: [compile-time-ai, knowledge-compiler, sovereign-ai, ai-architecture, intermediate-representation, ai-compilers, semantic-compilation, beyond-rag]
 wiki_references: [knowledge-compilation, context-compilation, skill-compilation, sovereign-ai, intermediate-representation, retrieval-augmented-generation]
 image: /images/1025003.png

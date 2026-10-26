@@ -5,10 +5,6 @@ date: 07-18-2026
 description: "How we built k8s-docs-compiler — a Kubernetes knowledge compiler that applies compile-time AI: intelligence moved to the build step, shipped as a static, queryable, versioned knowledge graph with zero runtime inference."
 layout: post
 title: 'Compile-Time AI in Practice: How We Built a Kubernetes Knowledge Compiler'
-og:description: "A hands-on walkthrough of k8s-docs-compiler: a 5-phase Python compiler that turns the Kubernetes docs into a static knowledge graph, with an opt-in local-model synthesis pass that runs once at build time."
-og:title: 'Compile-Time AI in Practice: How We Built a Kubernetes Knowledge Compiler'
-og:type: article
-og:url: /blog/2026-07-18-compile-time-ai-k8s
 image: /images/ganymede.png
 tags:
   - compile-time-ai

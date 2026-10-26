@@ -7,14 +7,6 @@ description: A critical examination of Render's decision to integrate ClickHouse
   platforms.
 image: /images/ComfyUI_00189_.png
 layout: post
-og:description: A critical examination of Render's decision to integrate ClickHouse
-  for log processing, raising concerns about data privacy and developer trust in cloud
-  platforms.
-og:image: /images/ComfyUI_00189_.png
-og:title: 'Render''s Latest Betrayal: Or How My Logs Quietly Became Someone Else''s
-  Asset'
-og:type: article
-og:url: /blog/2026-01-22-renders-latest-betrayal-or-how-my-logs-quietly-became-someone-elses-asset/
 tags:
 - render
 - data-privacy
@@ -22,13 +14,6 @@ tags:
 - ai-development
 - logs
 title: 'Render''s Latest Betrayal: Or How My Logs Quietly Became Someone Else''s Asset'
-twitter:card: summary_large_image
-twitter:description: A critical examination of Render's decision to integrate ClickHouse
-  for log processing, raising concerns about data privacy and developer trust in cloud
-  platforms.
-twitter:image: /images/ComfyUI_00189_.png
-twitter:title: 'Render''s Latest Betrayal: Or How My Logs Quietly Became Someone Else''s
-  Asset'
 wiki_references: []
 ---
 

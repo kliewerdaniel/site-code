@@ -21,14 +21,6 @@ keywords:
 - SEO optimization
 - local-first writing
 layout: post
-og:description: Transform VSCode into a powerful blogging platform with AI assistance,
-  automated workflows, and zero costs. Complete guide with practical examples and
-  deployment strategies.
-og:image: /images/11112025/vscode-blogging-setup-guide-infographic.png
-og:title: 'The Complete Guide to VSCode for Free Technical Blogging: From Setup to
-  Publication'
-og:type: article
-og:url: https://yourdomain.com/blog/vscode-complete-blogging-guide
 readtime: ' min'
 tags:
   - architecture
@@ -40,11 +32,6 @@ tags:
   - sovereign-ai
   - tutorial
 title: 'The Complete Guide to VSCode for Free Technical Blogging: From Setup to Publication'
-twitter:card: summary_large_image
-twitter:description: Master VSCode for technical blogging with AI, MCP, SEO optimization,
-  and automated deployment. 3,500+ word comprehensive guide.
-twitter:image: /images/11112025/vscode-blogging-setup-guide-infographic.png
-twitter:title: 'Complete VSCode Blogging Guide: Free Setup to Publication'
 wiki_references: ["ai-sovereignty", "data-sovereignty", "docker", "llama3", "local-first-ai", "local-inference", "mcp", "ollama", "python", "quantization"]
 ---
 

@@ -6,12 +6,6 @@ description: A comprehensive exploration of audible binary transmission and how 
   vocal-auditory channels can function as lossless data encoding mediums
 image: /images/code.jpg
 layout: post
-og:description: Exploring how human vocal-auditory channels can function as lossless
-  data encoding mediums using rhythmic chanting and Morse code
-og:image: /images/code.jpg
-og:title: 'The Biological API: Why AI Developers Should Care About Rhythmic Chanting'
-og:type: article
-og:url: /blog/the-biological-api-why-ai-developers-should-care-about-rhythmic-chanting
 tags:
 - AI
 - biology
@@ -19,11 +13,6 @@ tags:
 - rhythmic chanting
 - audible binary
 title: 'The Biological API: Why AI Developers Should Care About Rhythmic Chanting'
-twitter:card: summary_large_image
-twitter:description: Exploring how human vocal-auditory channels can function as lossless
-  data encoding mediums using rhythmic chanting and Morse code
-twitter:image: /images/code.jpg
-twitter:title: 'The Biological API: Why AI Developers Should Care About Rhythmic Chanting'
 wiki_references: ["python"]
 ---
 

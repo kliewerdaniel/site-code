@@ -7,12 +7,6 @@ description: An in-depth analysis of Qwen-Scope, sparse autoencoders, and the sh
   models.
 image: /images/1020001.png
 layout: post
-og:description: How sparse autoencoders are transforming interpretability into a practical
-  interface for steering, evaluating, and optimizing LLMs.
-og:image: /images/1020001.png
-og:title: Qwen-Scope and the Rise of Feature-Level Control
-og:type: article
-og:url: /blog/qwen-scope-interpretability-interface
 tags:
 - LLM
 - interpretability
@@ -23,11 +17,6 @@ tags:
 - machine learning
 title: 'Qwen-Scope and the Rise of Feature-Level Control: From Interpretability to
   Interface'
-twitter:card: summary_large_image
-twitter:description: Interpretability is no longer passive—Qwen-Scope turns it into
-  an active development interface.
-twitter:image: /images/1020001.png
-twitter:title: Qwen-Scope and the Rise of Feature-Level Control
 wiki_references: ["prompt-engineering", "rlhf"]
 ---
 

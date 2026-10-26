@@ -6,11 +6,6 @@ description: "GLM-5.2 runs locally on four workstation GPUs. Context engineering
 image: /images/ComfyUI_00197_.png
 layout: post
 title: 'The Sovereign Loop: Why Model-Local AI Is the Missing Operating System Layer'
-og:description: "GLM-5.2 runs locally on four workstation GPUs. Context engineering has become agent-harness engineering. Here's why sovereignty isn't a niche interest — it's the missing operating system layer."
-og:image: /images/ComfyUI_00197_.png
-og:title: 'The Sovereign Loop: Why Model-Local AI Is the Missing Operating System Layer'
-og:type: article
-og:url: /blog/2026-07-06-the-sovereign-loop-why-model-local-ai-is-the-missing-os-layer
 tags:
   - sovereign-ai
   - local-ai

@@ -6,14 +6,6 @@ date: 06-14-2026
 description: "Sovereign Memory Bank's full architecture: the seven-layer memory model, tripartite storage, the autonomous evolution engine, and the FastAPI agent interface with hybrid recall."
 image: /images/1103010.png
 layout: post
-og:description: A deep dive into Sovereign Memory Bank, an autonomous cognitive memory
-  system that transforms markdown documents into a continuously evolving seven-layer
-  memory architecture optimized for agent reasoning and knowledge synthesis.
-og:image: /images/1103010.png
-og:title: 'Sovereign Memory Bank: A Deep Dive Into Autonomous Cognitive Memory for
-  Agent Systems'
-og:type: article
-og:url: /blog/2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems
 tags:
 - memory
 - ai-agents
@@ -23,13 +15,6 @@ tags:
 - cognitive-memory
 title: 'Sovereign Memory Bank: A Deep Dive Into Autonomous Cognitive Memory for Agent
   Systems'
-twitter:card: summary_large_image
-twitter:description: A deep dive into Sovereign Memory Bank, an autonomous cognitive
-  memory system that transforms markdown documents into a continuously evolving seven-layer
-  memory architecture optimized for agent reasoning and knowledge synthesis.
-twitter:image: /images/1103010.png
-twitter:title: 'Sovereign Memory Bank: A Deep Dive Into Autonomous Cognitive Memory
-  for Agent Systems'
 wiki_references: ["ai-agents", "embeddings", "knowledge-graphs", "local-first-ai", "local-inference", "ollama", "python", "rag", "sentence-transformers"]
 ---
 

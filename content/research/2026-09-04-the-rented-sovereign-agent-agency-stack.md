@@ -6,18 +6,9 @@ date: 09-04-2026
 description: 'A technical teardown of the $5K/month AI agent agency playbook — Hermes Agent, Orgo, AgentMail, AgentPhone, Honcho, Composio, and Stripes Machine Payments Protocol — read through a computational sovereignty lens.'
 image: /images/ComfyUI_00210_.png
 layout: post
-og:description: 'A technical teardown of the $5K/month AI agent agency playbook — Hermes Agent, Orgo, AgentMail, AgentPhone, Honcho, Composio, and Stripes Machine Payments Protocol — read through a computational sovereignty lens.'
-og:image: /images/ComfyUI_00210_.png
-og:title: 'The Rented Sovereign — What the $5K/Month Agent Agency Stack Actually Reveals'
-og:type: article
-og:url: /blog/the-rented-sovereign-agent-agency-stack
 tags:
 - 'agents, hermes-agent, computer-use, sovereign-ai, agentic-commerce, compile-time-ai, orgo, composio]'
 title: 'The Rented Sovereign — What the $5K/Month Agent Agency Stack Actually Reveals'
-twitter:card: summary_large_image
-twitter:description: 'A technical teardown of the $5K/month AI agent agency playbook — Hermes Agent, Orgo, AgentMail, AgentPhone, Honcho, Composio, and Stripes Machine Payments Protocol — read through a computational sovereignty lens.'
-twitter:image: /images/ComfyUI_00210_.png
-twitter:title: 'The Rented Sovereign — What the $5K/Month Agent Agency Stack Actually Reveals'
 wiki_references: []
 ---
 

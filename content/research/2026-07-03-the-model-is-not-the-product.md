@@ -6,11 +6,6 @@ description: "Three converging research threads — Apple's Residual Context Dif
 image: /images/ComfyUI_00186_.png
 layout: post
 title: 'The Model Is Not the Product: Residual State, Compiled Agents, and Optimization Loops'
-og:description: "Three converging research threads collapse into a single architectural claim: the model is no longer the product. The loop is."
-og:image: /images/ComfyUI_00186_.png
-og:title: 'The Model Is Not the Product: Residual State, Compiled Agents, and Optimization Loops'
-og:type: article
-og:url: /blog/the-model-is-not-the-product
 tags:
   - model-is-not-the-product
   - residual-context-diffusion
@@ -26,10 +21,6 @@ tags:
   - sovereign-memory-bank
   - objective05
   - dynamic-moe-rag
-twitter:card: summary_large_image
-twitter:description: "Three converging research threads collapse into a single architectural claim: the model is no longer the product. The loop is."
-twitter:image: /images/ComfyUI_00186_.png
-twitter:title: 'The Model Is Not the Product: Residual State, Compiled Agents, and Optimization Loops'
 wiki_references: ["model-is-not-the-product", "residual-context-diffusion", "sglang", "execution-graphs", "constrained-optimization", "agent-loops", "knowledge-graphs", "local-ai", "sovereign-ai"]
 ---
 

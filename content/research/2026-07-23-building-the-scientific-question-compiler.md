@@ -5,7 +5,6 @@ date: 07-23-2026
 description: "We built the second compiler in the Scientific State program: the Scientific Question Compiler, which turns a corpus into a map of what humanity does not yet know. Local-first, running on a 35B model on our own hardware. Here is what we built, what broke, and what it means."
 layout: post
 title: 'Building the Scientific Question Compiler: A Map of What We Do Not Know'
-og:description: "The second compiler in the Scientific State program compiles papers into ranked, classified, dependency-linked research questions. Built local-first on a 35B model. Live demo included."
 og.title: 'The Scientific Question Compiler'
 og.type: article
 og.url: /blog/2026-07-23-building-the-scientific-question-compiler

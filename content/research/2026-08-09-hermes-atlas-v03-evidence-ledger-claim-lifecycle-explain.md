@@ -6,11 +6,6 @@ description: "Hermes Atlas v0.3 adds an evidence ledger to every claim, a provab
 image: /images/1103012.png
 layout: post
 title: 'Hermes Atlas v0.3: An Evidence Ledger, a Provable Claim Lifecycle, and an Explain Command'
-og:description: "Hermes Atlas v0.3 adds an evidence ledger to every claim, a provable claim lifecycle (including DELETE-driven invalidation that retains history), and an `atlas explain` command. Every number below was measured, not asserted."
-og:image: /images/1103012.png
-og:title: 'Hermes Atlas v0.3: An Evidence Ledger, a Provable Claim Lifecycle, and an Explain Command'
-og:type: article
-og:url: /blog/2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain
 tags:
   - sovereign-ai
   - local-ai

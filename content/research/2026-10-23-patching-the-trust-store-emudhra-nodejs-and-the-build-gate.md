@@ -6,11 +6,6 @@ description: "Responding to the October 2026 eMudhra certificate compromise: map
 image: /images/emudhra-nodejs-security.png
 layout: post
 title: "The Trust Store Nobody Patched: A Log of Patching eMudhra, Node.js, and a Lie in npm Audit"
-og:description: "Every command, every fingerprint, every pitfall from responding to the October 2026 eMudhra and Node.js security advisory. Includes the grep that lies about trust stores, the runtime gate that fails closed, the critical Next.js RCE found by a routine npm install, and why npm's suggested fix was a trap."
-og:image: /images/emudhra-nodejs-security.png
-og:title: "The Trust Store Nobody Patched: A Log of Patching eMudhra, Node.js, and a Lie in npm Audit"
-og:type: article
-og:url: /blog/2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate
 tags:
   - security
   - nodejs
@@ -19,10 +14,6 @@ tags:
   - nextjs
   - supply-chain
   - hermes-agent
-twitter:card: summary_large_image
-twitter:description: "Every command, every fingerprint, every pitfall from responding to the October 2026 eMudhra and Node.js security advisory — including the grep that lies about trust stores and the critical Next.js RCE a routine npm install revealed."
-twitter:image: /images/emudhra-nodejs-security.png
-twitter:title: "The Trust Store Nobody Patched: A Log of Patching eMudhra, Node.js, and a Lie in npm Audit"
 ---
 
 Arrr, gather round. A letter arrived in me inbox this morning — the kind every

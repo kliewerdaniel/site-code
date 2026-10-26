@@ -7,13 +7,6 @@ description: Learn how to build an uncensored AI chatbot that can extract person
   from text and switch knowledge bases dynamically using MCP and NotebookLM.
 image: /images/12092025/mcp-integration-uncensored-chatbot.png
 layout: post
-og:description: Learn how to build an uncensored AI chatbot that can extract personas
-  from text and switch knowledge bases dynamically using MCP and NotebookLM.
-og:image: /images/12092025/mcp-integration-uncensored-chatbot.png
-og:title: How I Built a Fully Uncensored, Persona-Driven AI Chatbot Using MCP and
-  NotebookLM
-og:type: article
-og:url: https://danielkliewer.com/blog/2025-12-09-mcp-integration-uncensored-chatbot
 tags:
 - AI
 - Chatbot
@@ -23,12 +16,6 @@ tags:
 - RAG
 - Persona Extraction
 title: How I Built a Fully Uncensored, Persona-Driven AI Chatbot Using MCP and NotebookLM
-twitter:card: summary_large_image
-twitter:description: Learn how to build an uncensored AI chatbot that can extract
-  personas from text and switch knowledge bases dynamically using MCP and NotebookLM.
-twitter:image: /images/12092025/mcp-integration-uncensored-chatbot.png
-twitter:title: How I Built a Fully Uncensored, Persona-Driven AI Chatbot Using MCP
-  and NotebookLM
 wiki_references: ["constitutional-ai", "llama3", "local-inference", "mcp", "prompt-engineering", "python", "quantization", "rag", "rlhf"]
 ---
 

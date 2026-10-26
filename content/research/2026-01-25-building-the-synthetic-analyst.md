@@ -7,14 +7,6 @@ description: A deep dive into building an advanced RAG system that uses dynamic 
   bias detection.
 image: /images/ComfyUI_00199_.png
 layout: post
-og:description: Learn how to build an advanced RAG system that uses dynamic personas
-  and cross-validation to create synthetic analysts capable of critical thinking and
-  bias detection.
-og:image: /images/ComfyUI_00199_.png
-og:title: 'Building the Synthetic Analyst: From RAG to Reason with Dynamic Persona
-  MoE'
-og:type: article
-og:url: /blog/2026-01-25-building-the-synthetic-analyst/
 tags:
 - AI
 - RAG
@@ -24,13 +16,6 @@ tags:
 - Bias Detection
 - Cross-Validation
 title: 'Building the Synthetic Analyst: From RAG to Reason with Dynamic Persona MoE'
-twitter:card: summary_large_image
-twitter:description: Learn how to build an advanced RAG system that uses dynamic personas
-  and cross-validation to create synthetic analysts capable of critical thinking and
-  bias detection.
-twitter:image: /images/ComfyUI_00199_.png
-twitter:title: 'Building the Synthetic Analyst: From RAG to Reason with Dynamic Persona
-  MoE'
 wiki_references: ["knowledge-graphs", "local-inference", "ollama", "python", "rag"]
 ---
 # Building the Synthetic Analyst: From RAG to Reason with Dynamic Persona MoE

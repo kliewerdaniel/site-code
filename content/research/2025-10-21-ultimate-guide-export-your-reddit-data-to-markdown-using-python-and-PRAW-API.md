@@ -9,13 +9,6 @@ description: Complete tutorial on exporting Reddit submissions, comments, and sa
   or content migration.
 image: /images/1021019.png
 layout: post
-og:description: Learn how to export all your Reddit data to Markdown format using
-  a robust Python script with PRAW. Includes submissions, comments, saved posts, and
-  media downloads.
-og:image: /images/1021019.png
-og:title: 'Ultimate Guide: Export Reddit Data to Markdown with Python'
-og:type: article
-og:url: https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API
 tags:
 - python
 - reddit
@@ -27,11 +20,6 @@ tags:
 - backup
 - data-analysis
 title: 'Ultimate Guide: Export Your Reddit Data to Markdown Using Python & PRAW API'
-twitter:card: summary_large_image
-twitter:description: Complete guide to exporting Reddit submissions, comments, and
-  media to Markdown using Python and PRAW API with rate limit handling.
-twitter:image: /images/1021019.png
-twitter:title: 'Export Reddit Data to Markdown: Python Tutorial'
 wiki_references: ["python"]
 ---
 

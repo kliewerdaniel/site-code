@@ -6,11 +6,6 @@ description: "Hermes Atlas v0.2 is a benchmark-and-fix release: claim-level cove
 image: /images/1103012.png
 layout: post
 title: 'Hermes Atlas v0.2: Claim-Level Coverage, a Determinism Gate, and a Knowledge-Mutation Canary'
-og:description: "Hermes Atlas v0.2 is a benchmark-and-fix release: claim-level coverage localisation, a determinism gate that proves compile reproducibility, and a knowledge-mutation canary. Every number below was measured, not asserted."
-og:image: /images/1103012.png
-og:title: 'Hermes Atlas v0.2: Claim-Level Coverage, a Determinism Gate, and a Knowledge-Mutation Canary'
-og:type: article
-og:url: /blog/2026-08-09-hermes-atlas-v02-claim-level-coverage-determinism-gate-knowledge-mutation-canary
 tags:
   - sovereign-ai
   - local-ai

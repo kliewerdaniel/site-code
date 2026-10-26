@@ -6,14 +6,6 @@ author: Daniel Kliewer
 canonical: https://danielkliewer.com/blog/recursive-research-compiler-knowledge-compiler-sdk
 description: "A case study in Compile-Time AI: how the Knowledge Compiler SDK turns Markdown into inspectable intermediate representations, and how pairing it with an agent like Hermes lets a codebase compile its own next generation of passes."
 image: /images/1019010.png
-og:
-  title: "The Recursive Research Compiler: Turning Compile-Time AI Inward"
-  description: "How the Knowledge Compiler SDK compiles Markdown into durable intermediate representations — and how an agent can use it to compile its own architecture."
-  type: article
-twitter:
-  card: summary_large_image
-  title: "The Recursive Research Compiler"
-  description: "Compile-Time AI, applied: a self-improving knowledge compiler that writes its own next generation of passes."
 tags:
   - compile-time-ai
   - sovereign-ai

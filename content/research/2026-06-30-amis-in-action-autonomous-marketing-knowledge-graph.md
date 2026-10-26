@@ -6,11 +6,6 @@ date: 06-30-2026
 description: 'A technical deep-dive into testing the AMIS Agentic Marketing Intelligence System against live Vercel analytics data. Exploring the full 16-phase pipeline, knowledge graph construction, recommendation engines, and how Sovereign AI fundamentals enable autonomous content strategy.'
 image: /images/ComfyUI_00208_.png
 layout: post
-og:description: 'Testing AMIS today: Vercel analytics → autonomous marketing intelligence. Full technical breakdown of the local-first system built on Sovereign AI principles.'
-og:image: /images/ComfyUI_00208_.png
-og:title: 'AMIS in Action: Live Vercel Analytics to Autonomous Marketing Knowledge Graph'
-og:type: article
-og:url: /blog/2026-06-30-amis-in-action-autonomous-marketing-knowledge-graph.md
 tags:
 - amis
 - sovereign-ai
@@ -21,10 +16,6 @@ tags:
 - marketing-intelligence
 - vercel-analytics
 title: 'AMIS in Action: Live Vercel Analytics to Autonomous Marketing Knowledge Graph'
-twitter:card: summary_large_image
-twitter:description: 'Testing AMIS today: Vercel analytics → autonomous marketing intelligence. Full technical breakdown of the local-first system built on Sovereign AI principles.'
-twitter:image: /images/ComfyUI_00208_.png
-twitter:title: 'AMIS in Action: Live Vercel Analytics to Autonomous Marketing Knowledge Graph'
 wiki_references: []
 ---
 

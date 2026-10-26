@@ -8,14 +8,6 @@ description: An exploration of data sovereignty as the foundation for human agen
   to preserve autonomy and resist centralized corporate control.
 image: /images/ComfyUI_00190_.png
 layout: post
-og:description: An exploration of data sovereignty as the foundation for human agency
-  in the age of AI, arguing that local control over data and algorithms is essential
-  to preserve autonomy and resist centralized corporate control.
-og:image: /images/ComfyUI_00190_.png
-og:title: 'The Sovereignty Manifesto: Why Local Data is the Last Bastion of Human
-  Agency'
-og:type: article
-og:url: /blog/2026-03-28-sovereignty-manifesto
 tags:
 - AI
 - data sovereignty
@@ -25,13 +17,6 @@ tags:
 - open source
 - governance
 title: 'The Sovereignty Manifesto: Why Local Data is the Last Bastion of Human Agency'
-twitter:card: summary_large_image
-twitter:description: An exploration of data sovereignty as the foundation for human
-  agency in the age of AI, arguing that local control over data and algorithms is
-  essential to preserve autonomy and resist centralized corporate control.
-twitter:image: /images/ComfyUI_00190_.png
-twitter:title: 'The Sovereignty Manifesto: Why Local Data is the Last Bastion of Human
-  Agency'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "local-first-ai", "quantization", "rlhf"]
 ---
 

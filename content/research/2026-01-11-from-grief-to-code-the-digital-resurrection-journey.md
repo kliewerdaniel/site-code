@@ -6,12 +6,6 @@ description: Formalizing memory preservation constraints in AI systems to enable
   reconstruction and long-horizon autonomy beyond traditional RAG and agent frameworks.
 image: /images/phoenix.jpg
 layout: post
-og:description: A rigorous framework for embedding identity constraints in AI systems,
-  enabling novel forms of memory preservation and autonomous behavior.
-og:image: /images/phoenix.jpg
-og:title: 'Memory Preservation Invariants: A New Class of Autonomous Agent Architectures'
-og:type: article
-og:url: https://danielkliewer.com/blog/2026-01-11-memory-preservation-invariants
 tags:
 - AI
 - autonomous-agents
@@ -20,11 +14,6 @@ tags:
 - deterministic-pipelines
 - computational-sovereignty
 title: 'Memory Preservation Invariants: A New Class of Autonomous Agent Architectures'
-twitter:card: summary_large_image
-twitter:description: 'Formalizing identity reconstruction in AI: invariants, interfaces,
-  and failure modes for memory-preserving agents.'
-twitter:image: /images/phoenix.jpg
-twitter:title: 'Memory Preservation Invariants: A New Class of Autonomous Agent Architectures'
 wiki_references: ["ai-agents", "embeddings", "knowledge-graphs", "python", "rag", "sentence-transformers"]
 ---
 

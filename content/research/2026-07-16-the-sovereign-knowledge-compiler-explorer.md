@@ -5,10 +5,6 @@ date: 07-16-2026
 description: "A fully static, prerendered knowledge explorer with zero runtime inference — built from a deterministic compile-time curriculum compiler. This is the recipe: how it was made, why it works, and how any human or AI can reconstruct it from a corpus."
 layout: post
 title: 'The Sovereign Knowledge Compiler Explorer: A Recipe for Compiling Knowledge Into a Static, Living Artifact'
-og:description: "How to build a zero-runtime-inference knowledge explorer: a deterministic Python compiler that emits a content-hashed curriculum, and a static Next.js app that serves it. Full recipe, reproducible build, and the evolution from idea to artifact."
-og:title: 'The Sovereign Knowledge Compiler Explorer: A Recipe for Compiling Knowledge Into a Static, Living Artifact'
-og:type: article
-og:url: /blog/2026-07-16-the-sovereign-knowledge-compiler-explorer
 image: /images/ganymede.png
 tags:
   - ai-agents

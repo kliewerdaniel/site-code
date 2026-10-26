@@ -5,11 +5,6 @@ date: 07-10-2026
 description: 'A spec-driven walkthrough of the Telemetry Intelligence Engine (TIE): a local-first GraphRAG system that turns GA4 telemetry and site content into a behavioral knowledge graph an operator can query in natural language.'
 image: /images/1021018.png
 layout: post
-og:description: 'How to architect a local-first analytics reasoning system that fuses a behavioral knowledge graph, vector retrieval, and local LLM inference into a queryable analyst for your own website.'
-og:image: /images/1021018.png
-og:title: 'The Telemetry Intelligence Engine: A Local-First GraphRAG System for Website Analytics'
-og:type: article
-og:url: /blog/2026-07-10-telemetry-intelligence-engine
 tags:
 - 'graphrag'
 - 'local-first-ai'
@@ -17,10 +12,6 @@ tags:
 - 'analytics'
 - 'sovereign-ai'
 title: 'The Telemetry Intelligence Engine: A Local-First GraphRAG System for Website Analytics'
-twitter:card: summary_large_image
-twitter:description: 'Turning GA4 exports into a behavioral knowledge graph queried by a local LLM analyst — architecture, schema, and an MVP build plan.'
-twitter:image: /images/1021018.png
-twitter:title: 'The Telemetry Intelligence Engine: A Local-First GraphRAG System for Website Analytics'
 wiki_references: []
 ---
 

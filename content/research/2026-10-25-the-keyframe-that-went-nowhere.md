@@ -6,11 +6,6 @@ description: "One selfie into a 3:42 film: ten stills, a cloned voice, a headles
 image: /images/2001-documentary-frame-10.jpg
 layout: post
 title: "The Keyframe That Went Nowhere: Building a 3:42 Film Out of Ten Generated Frames"
-og:description: "Ten stills, a cloned voice, and a headless NLE. The dimension rule that rejects exact 16:9, a vox venv that does not exist under the name everyone uses, and three silent failures in the edit — including a keyframe written into the wrong time space."
-og:image: /images/2001-documentary-frame-10.jpg
-og:title: "The Keyframe That Went Nowhere: Building a 3:42 Film Out of Ten Generated Frames"
-og:type: article
-og:url: /blog/2026-10-25-the-keyframe-that-went-nowhere
 tags:
   - local-image-generation
   - tts
@@ -19,10 +14,6 @@ tags:
   - video-editing
   - mlx
   - hermes-agent
-twitter:card: summary_large_image
-twitter:description: "Ten stills, a cloned voice, a headless NLE. Three failures that all reported success — a keyframe in the wrong time space, a quality flag silently ignored, a loudness setting that nests."
-twitter:image: /images/2001-documentary-frame-10.jpg
-twitter:title: "The Keyframe That Went Nowhere: Building a 3:42 Film Out of Ten Generated Frames"
 ---
 
 The ask started small: take one selfie, replace the background. Then: make it a

@@ -6,11 +6,6 @@ description: "A full retrospective and replication guide for rehab-analyzer: a l
 image: /images/rehab-analyzer-result-view.png
 layout: post
 title: 'Building a Local-First Rehab Cost Analyzer with an AI Agent (Full Build + Replication Guide)'
-og:description: "How a single Hermes Agent session produced a working Next.js + local-LLM rehab estimator — and the exact steps to reproduce it."
-og:image: /images/rehab-analyzer-result-view.png
-og:title: 'Building a Local-First Rehab Cost Analyzer with an AI Agent (Full Build + Replication Guide)'
-og:type: article
-og:url: /blog/2026-08-08-building-rehab-analyzer-with-hermes
 tags:
   - ai-agents
   - hermit-agent

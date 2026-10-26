@@ -7,14 +7,6 @@ description: Build a citation-grounded AI study system that ingests massive PDFs
   for students tired of compromised answers.
 image: /images/ComfyUI_00240_.png
 layout: post
-og:description: Build a citation-grounded AI study system that ingests massive PDFs
-  whole. A complete technical guide to vector databases, reranking strategies, and
-  LLM orchestration for students tired of compromised answers.
-og:image: /images/11052025/recursive-agent-core-architecture-diagram.png
-og:title: How to Build an AI Study System That Actually Works (Citizens Replace Your
-  Broken PDF Tools)
-og:type: article
-og:url: /blog/how-to-build-an-ai-study-system-that-actually-works-citizens-replace-your-broken-pdf-tools
 tags:
 - AI
 - LLM
@@ -28,13 +20,6 @@ tags:
 - Ollama
 title: How to Build an AI Study System That Actually Works (Citizens Replace Your
   Broken PDF Tools)
-twitter:card: summary_large_image
-twitter:description: Build a citation-grounded AI study system that ingests massive
-  PDFs whole. A complete technical guide to vector databases, reranking strategies,
-  and LLM orchestration for students tired of compromised answers.
-twitter:image: /images/11052025/recursive-agent-core-architecture-diagram.png
-twitter:title: How to Build an AI Study System That Actually Works (Citizens Replace
-  Your Broken PDF Tools)
 wiki_references: ["ai-agents", "docker", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "ollama", "prompt-engineering", "python", "rag", "sentence-transformers", "transformers"]
 ---
 

@@ -9,13 +9,6 @@ description: A deep technical and philosophical examination of what it means to 
   intelligence in code.
 image: /images/1025004.png
 layout: post
-og:description: A deep technical and philosophical examination of AI systems designed
-  for extraction versus AI systems designed for autonomy—with real code from the Dynamic
-  MoE RAG architecture.
-og:image: /images/1025004.png
-og:title: 'The Architecture of Autonomy: Corporate AI vs. Sovereign AI'
-og:type: article
-og:url: /blog/2026-03-29-architecture-of-autonomy
 tags:
 - AI
 - sovereign AI
@@ -34,11 +27,6 @@ tags:
 - philosophy of AI
 title: 'The Architecture of Autonomy: Why the Divergence Between Corporate and Sovereign
   AI Is the Most Important Design Decision of Our Generation'
-twitter:card: summary_large_image
-twitter:description: Every routing decision in AI architecture is a political act.
-  Here's what that means in code.
-twitter:image: /images/1025004.png
-twitter:title: 'The Architecture of Autonomy: Corporate AI vs. Sovereign AI'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "ollama", "python", "rag", "reinforcement-learning", "rlhf", "sentence-transformers"]
 ---
 

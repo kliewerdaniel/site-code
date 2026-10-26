@@ -5,11 +5,6 @@ description: "A revised architecture for agent memory that treats cognition as s
 image: /images/1103010.png
 layout: post
 title: 'The Sovereign Knowledge Compiler: Compile-Time Memory for Local-First AI Agents'
-og:description: "A revised architecture for agent memory that treats cognition as something compiled once into inspectable artifacts rather than retrieved fresh on every query."
-og:image: /images/1103010.png
-og:title: 'The Sovereign Knowledge Compiler: Compile-Time Memory for Local-First AI Agents'
-og:type: article
-og:url: /blog/2026-07-15-sovereign-knowledge-compiler-compile-time-memory
 tags:
   - ai-agents
   - memory

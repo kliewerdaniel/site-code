@@ -5,11 +5,6 @@ description: "Beginner on-ramp to sovereign AI. Defines key terms — recipe com
 image: /images/ComfyUI_00201_.png
 layout: post
 title: 'Getting Started with Sovereign AI: Your First Recipe'
-og:description: "Beginner on-ramp to sovereign AI. Defines key terms — recipe compilation, signal routing, autonomous evaluation — and walks you through your first recipe capture in five steps."
-og:image: /images/ComfyUI_00201_.png
-og:title: 'Getting Started with Sovereign AI: Your First Recipe'
-og:type: article
-og:url: /blog/getting-started-sovereign-ai
 tags:
   - sovereign-ai
   - getting-started

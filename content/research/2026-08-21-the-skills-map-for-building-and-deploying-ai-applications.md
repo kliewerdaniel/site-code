@@ -6,11 +6,6 @@ description: "A field guide to the six competencies that make up building and de
 image: /images/ai-engineering-skills-map.png
 layout: post
 title: 'The Skills Map for Building and Deploying AI Applications'
-og:description: "Six competencies, one discipline: building reliable software on top of unreliable AI components. A field guide with the papers, frameworks, and posts behind each skill."
-og:image: /images/ai-engineering-skills-map.png
-og:title: 'The Skills Map for Building and Deploying AI Applications'
-og:type: article
-og:url: /blog/2026-08-21-the-skills-map-for-building-and-deploying-ai-applications
 tags:
   - ai-engineering
   - llm

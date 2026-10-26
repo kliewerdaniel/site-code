@@ -6,11 +6,6 @@ description: "Hermes Atlas v0.4 proves the v0.3 evidence ledger and provable cla
 image: /images/1103012.png
 layout: post
 title: 'Hermes Atlas v0.4: Proving the Evidence Ledger & Claim Lifecycle with a Gold-Labeled Benchmark'
-og:description: "Hermes Atlas v0.4 proves the v0.3 evidence ledger and provable claim lifecycle with a gold-labeled benchmark. Every number was measured on a fixed, model-free corpus; two real bugs were found and fixed in the process."
-og:image: /images/1103012.png
-og:title: 'Hermes Atlas v0.4: Proving the Evidence Ledger & Claim Lifecycle with a Gold-Labeled Benchmark'
-og:type: article
-og:url: /blog/2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark
 tags:
   - sovereign-ai
   - local-ai

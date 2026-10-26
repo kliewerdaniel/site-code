@@ -7,13 +7,6 @@ description: Discover SpecGen, a revolutionary CLI tool that transforms natural 
   workflows and retrieval-augmented generation.
 image: /images/ComfyUI_00240_.png
 layout: post
-og:description: Transform natural language specifications into production-ready application
-  skeletons using AI-powered agentic workflows. No more boilerplate coding - just
-  describe what you want and get a complete, runnable application.
-og:image: /images/ComfyUI_00240_.png
-og:title: 'SpecGen: Deterministic AI-Powered Code Generation from Natural Language'
-og:type: article
-og:url: /blog/2026-01-07-specgen-deterministic-ai-powered-code-generation-from-naturals-language
 tags:
 - AI
 - Code Generation
@@ -25,11 +18,6 @@ tags:
 - RAG
 - Software Development
 title: 'SpecGen: Deterministic AI-Powered Code Generation from Natural Language'
-twitter:card: summary_large_image
-twitter:description: Transform natural language specifications into production-ready
-  application skeletons using AI-powered agentic workflows.
-twitter:image: /images/ComfyUI_00240_.png
-twitter:title: 'SpecGen: Deterministic AI-Powered Code Generation'
 wiki_references: ["ai-agents", "python", "rag", "rust", "sentence-transformers", "transformers"]
 ---
 

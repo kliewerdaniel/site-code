@@ -7,13 +7,6 @@ description: 'A complete guide to Document-Driven Development and AI-assisted co
   documentation, and iterative AI collaboration.'
 image: /images/1103010.png
 layout: post
-og:description: Learn how to build production-ready applications using Document-Driven
-  Development and AI coding agents. Complete workflow, prompts, and methodology included.
-og:image: https://danielkliewer.com/images/1103010.png
-og:title: 'Document-Driven Development: Building a Next.js Blog With AI From Start
-  to Finish'
-og:type: article
-og:url: https://danielkliewer.com/blog/document-driven-development-nextjs-blog
 tags:
 - vibe-coding
 - document-driven-development
@@ -25,11 +18,6 @@ tags:
 - developer-productivity
 title: 'Document-Driven Development: How I Built a Production Blog Without Writing
   a Single Line of Code By Hand'
-twitter:card: summary_large_image
-twitter:description: A revolutionary approach to software development using documentation
-  as code and AI agents as collaborators. See the complete workflow.
-twitter:image: https://danielkliewer.com/images/1103010.png
-twitter:title: 'Document-Driven Development: AI-Powered Next.js Blog Creation'
 wiki_references: ["ai-agents", "embeddings", "local-inference", "ollama", "prompt-engineering", "python", "rag", "sentence-transformers", "typescript"]
 ---
 

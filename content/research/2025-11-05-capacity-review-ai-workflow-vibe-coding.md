@@ -13,13 +13,6 @@ keywords: capacity review 2025, ai workflow automation tools, vibe coding softwa
   capacity.so review, ai productivity tools, automation platform comparison, best
   ai workflow tools
 layout: post
-og:description: Comprehensive review of Capacity.so—the AI workflow platform built
-  for developers who think in documentation and build in automation. See if it's worth
-  the investment.
-og:image: /images/11052025/capacity-workflow-automation.png
-og:title: 'Capacity Review: AI Workflow Automation for Vibe Coders (2025)'
-og:type: article
-og:url: https://danielkliewer.com/blog/2025-11-05-capacity-review-ai-workflow-vibe-coding
 tags:
 - capacity review
 - ai workflow automation
@@ -33,12 +26,6 @@ tags:
 - ai coding assistant
 title: 'Capacity Review: The AI Workflow Engine That Actually Understands Vibe Coding
   (2025)'
-twitter:card: summary_large_image
-twitter:description: Real talk on Capacity.so—does this AI automation platform live
-  up to the hype for document-driven developers? Complete feature breakdown and honest
-  assessment.
-twitter:image: /images/11052025/capacity-workflow-automation.png
-twitter:title: 'Capacity Review: The AI Workflow Tool Vibe Coders Actually Need'
 wiki_references: ["ai-agents", "local-inference", "ollama", "prompt-engineering", "python"]
 ---
 

@@ -6,11 +6,6 @@ description: "Choosing a local model for Hermes on an M4 Pro and making it coexi
 image: /images/two-models-one-harness.png
 layout: post
 title: "Two Models, One Harness: Swapping Flint for Gemma 4 Without Losing Either"
-og:description: "Every command, every measured number, every pitfall from surveying what exists on Hugging Face, verifying a 17 GB GGUF before downloading it, the two flags gemma4 refuses to run without, the memory wall that turned requests into 500s, and the speed measurement that broke my own claim."
-og:image: /images/two-models-one-harness.png
-og:title: "Two Models, One Harness: Swapping Flint for Gemma 4 Without Losing Either"
-og:type: article
-og:url: /blog/2026-10-23-two-models-one-harness
 tags:
   - local-llm
   - llama-cpp
@@ -19,10 +14,6 @@ tags:
   - gemma
   - apple-silicon
   - benchmarking
-twitter:card: summary_large_image
-twitter:description: "Every command, every measured number, every pitfall from surveying what exists on Hugging Face, verifying a 17 GB GGUF before downloading it, the memory wall, and the speed measurement that broke my own claim."
-twitter:image: /images/two-models-one-harness.png
-twitter:title: "Two Models, One Harness: Swapping Flint for Gemma 4 Without Losing Either"
 ---
 
 Arrr, gather round. Yesterday I hoisted Recursive Flint aboard Hermes — a 40B

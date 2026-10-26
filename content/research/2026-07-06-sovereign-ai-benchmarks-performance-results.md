@@ -5,11 +5,6 @@ description: "Real performance results from the Sovereign Intelligence Stack. Re
 image: /images/ComfyUI_00196_.png
 layout: post
 title: 'Sovereign Intelligence Stack: Performance Benchmarks'
-og:description: "Real performance results from the Sovereign Intelligence Stack. Recipe compilation at 1,375/sec, signal routing at 1.2M/sec, and autonomous evaluation at 1.7M test cases/sec — all with sub-millisecond latency."
-og:image: /images/ComfyUI_00196_.png
-og:title: 'Sovereign Intelligence Stack: Performance Benchmarks'
-og:type: article
-og:url: /blog/sovereign-ai-benchmarks-performance-results
 tags:
   - sovereign-ai
   - benchmarks

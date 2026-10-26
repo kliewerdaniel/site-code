@@ -8,13 +8,6 @@ description: A comprehensive implementation roadmap for completing the Dynamic P
   requirements for building a sovereign synthetic intelligence platform.
 image: /images/ComfyUI_00203_.png
 layout: post
-og:description: A comprehensive implementation roadmap for completing the Dynamic
-  Persona MoE RAG system, detailing the missing components, development phases, and
-  technical requirements for building a sovereign synthetic intelligence platform.
-og:image: /images/ComfyUI_00203_.png
-og:title: Dynamic Persona MoE RAG - Implementation Plan
-og:type: article
-og:url: /blog/2026-01-28-dynamic-persona-moe-rag-implementation-plan
 tags:
 - AI
 - Implementation
@@ -24,12 +17,6 @@ tags:
 - Local-First
 - Privacy
 title: Dynamic Persona MoE RAG - Implementation Plan
-twitter:card: summary_large_image
-twitter:description: A comprehensive implementation roadmap for completing the Dynamic
-  Persona MoE RAG system, detailing the missing components, development phases, and
-  technical requirements for building a sovereign synthetic intelligence platform.
-twitter:image: /images/ComfyUI_00203_.png
-twitter:title: Dynamic Persona MoE RAG - Implementation Plan
 wiki_references: ["ai-agents", "knowledge-graphs", "kubernetes", "local-first-ai", "local-inference", "mcp", "ollama", "python", "rag"]
 ---
 

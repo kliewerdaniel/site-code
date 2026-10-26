@@ -6,11 +6,6 @@ description: "Getting Qwen-Image-2.1-Turbo running on an Apple M4 Pro: the MLX p
 image: /images/qwen-image-yacht-edit.png
 layout: post
 title: "The Checkpoint That Couldn't Run: Getting Qwen-Image-2.1-Turbo Onto an M4 Pro"
-og:description: "Every command, every measured number, every pitfall from the CUDA quickstart that cannot work on Apple Silicon, the MLX conversion that does, the Pillow pin that fails like a broken install, the thread-affinity bug that passed every test, and the swap wall that makes a job look hung."
-og:image: /images/qwen-image-yacht-edit.png
-og:title: "The Checkpoint That Couldn't Run: Getting Qwen-Image-2.1-Turbo Onto an M4 Pro"
-og:type: article
-og:url: /blog/2026-10-24-qwen-image-2-1-turbo-on-apple-silicon
 tags:
   - local-image-generation
   - mlx
@@ -18,10 +13,6 @@ tags:
   - qwen-image
   - apple-silicon
   - hermes-agent
-twitter:card: summary_large_image
-twitter:description: "Every command, every measured number, every pitfall from the CUDA quickstart that cannot work on Apple Silicon, the MLX conversion that does, the Pillow pin that fails like a broken install, the thread-affinity bug that passed every test, and the swap wall."
-twitter:image: /images/qwen-image-yacht-edit.png
-twitter:title: "The Checkpoint That Couldn't Run: Getting Qwen-Image-2.1-Turbo Onto an M4 Pro"
 ---
 
 The ask was simple: run Qwen-Image-2.1-Turbo on my Mac, drive it from a browser,

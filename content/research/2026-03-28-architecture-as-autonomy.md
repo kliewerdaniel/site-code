@@ -9,14 +9,6 @@ description: An exploration of how building a local AI stack is an act of creati
   autonomy.
 image: /images/1025003.png
 layout: post
-og:description: An exploration of how building a local AI stack is an act of creative
-  sovereignty, arguing that the architecture you choose shapes the outputs you create
-  and that owning your execution path is essential for genuine artistic and intellectual
-  autonomy.
-og:image: /images/1025003.png
-og:title: Architecture as Autonomy
-og:type: article
-og:url: /blog/2026-03-28-architecture-as-autonomy
 tags:
 - AI
 - local AI
@@ -28,13 +20,6 @@ tags:
 - autonomy
 - open source
 title: Architecture as Autonomy
-twitter:card: summary_large_image
-twitter:description: An exploration of how building a local AI stack is an act of
-  creative sovereignty, arguing that the architecture you choose shapes the outputs
-  you create and that owning your execution path is essential for genuine artistic
-  and intellectual autonomy.
-twitter:image: /images/1025003.png
-twitter:title: Architecture as Autonomy
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "docker", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "mcp", "ollama", "python", "quantization", "rag", "reinforcement-learning", "rlhf", "sentence-transformers", "typescript"]
 ---
 

@@ -7,12 +7,6 @@ description: How a 2016 experiment in encoding binary data as singable chant rev
   cognition has specific affordances that differ fundamentally from digital computation.
 image: /images/code.jpg
 layout: post
-og:description: How a 2016 experiment in encoding binary data as singable chant revealed
-  principles we're only now rediscovering in AI development
-og:image: /images/audible-data-transmission-chart.jpg
-og:title: 'Audible Data Transmission: When Humans Become the Codec'
-og:type: article
-og:url: https://danielkliewer.com/blog/audible-data-transmission-when-humans-become-the-codec
 tags:
 - AI
 - Information Theory
@@ -20,11 +14,6 @@ tags:
 - Encoding
 - Cognitive Science
 title: 'Audible Data Transmission: When Humans Become the Codec'
-twitter:card: summary_large_image
-twitter:description: How a 2016 experiment in encoding binary data as singable chant
-  revealed principles we're only now rediscovering in AI development
-twitter:image: /images/code.jpg
-twitter:title: 'Audible Data Transmission: When Humans Become the Codec'
 wiki_references: ["embeddings", "sentence-transformers"]
 ---
 

@@ -12,15 +12,6 @@ excerpt: A deep technical guide to building a local-first design and development
   stack.
 image: /images/1103012.png
 layout: post
-og:description: A deep technical guide to building a local-first design and development
-  operating system with OpenDesign and OpenCode — covering architecture, installation,
-  MCP wiring, skill authoring, Docker deployment, environment variables, and the sovereign
-  design stack.
-og:image: /images/1103012.png
-og:title: 'OpenDesign + OpenCode: Building a Local-First Design Operating System Inside
-  Your Terminal'
-og:type: article
-og:url: /blog/opendesign-opencode-local-first-design-operating-system
 tags:
 - OpenDesign
 - OpenCode
@@ -42,14 +33,6 @@ tags:
 - skill.md
 title: 'OpenDesign + OpenCode: Building a Local-First Design Operating System Inside
   Your Terminal'
-twitter:card: summary_large_image
-twitter:description: A deep technical guide to building a local-first design and development
-  operating system with OpenDesign and OpenCode — covering architecture, installation,
-  MCP wiring, skill authoring, Docker deployment, environment variables, and the sovereign
-  design stack.
-twitter:image: /images/1103012.png
-twitter:title: 'OpenDesign + OpenCode: Building a Local-First Design Operating System
-  Inside Your Terminal'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "docker", "embeddings", "local-first-ai", "local-inference", "mcp", "ollama", "sentence-transformers"]
 ---
 

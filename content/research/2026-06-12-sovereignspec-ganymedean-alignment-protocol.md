@@ -13,13 +13,6 @@ excerpt: An exhaustive, technically rigorous exposition of SovereignSpec, the Ga
   recursive intent preservation, and local-first autonomous system architecture.
 image: /images/ganymede.png
 layout: post
-og:description: An exhaustive, technically rigorous exposition of SovereignSpec, the
-  Ganymedean Alignment Protocol, and the underlying principles of specification-driven
-  civilizational engineering.
-og:image: /images/ganymede.png
-og:title: SovereignSpec and the Ganymedean Alignment Protocol
-og:type: article
-og:url: /blog/sovereignspec-ganymedean-alignment-protocol
 tags:
 - SovereignSpec
 - Ganymedean Alignment Protocol
@@ -44,14 +37,6 @@ tags:
 - RAG
 - deterministic code generation
 title: 'SovereignSpec and the Ganymedean Alignment Protocol: A Technical Treatise'
-twitter:card: summary_large_image
-twitter:description: An exhaustive, technically rigorous exposition of SovereignSpec,
-  the Ganymedean Alignment Protocol, and the underlying principles of specification-driven
-  civilizational engineering.
-twitter:image: /images/ganymede.png
-twitter:title: SovereignSpec and the Ganymedean Alignment Protocol
-twitter:type: article
-twitter:url: /blog/sovereignspec-ganymedean-alignment-protocol
 wiki_references: ["ai-agents", "ai-sovereignty", "constitutional-ai", "data-sovereignty", "embeddings", "knowledge-graphs", "local-first-ai", "quantization", "rag", "rust", "sentence-transformers", "transformers"]
 ---
 

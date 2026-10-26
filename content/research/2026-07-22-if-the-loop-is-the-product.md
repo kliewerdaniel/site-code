@@ -5,8 +5,6 @@ date: 07-22-2026
 description: "Yesterday I argued scientific knowledge needs a compiler, not a better research assistant. Today I built the general one — five discovery passes, local-first version control for understanding, and a live explorer. This is what it means when the loop, not the model, is the product."
 layout: post
 title: 'If the Loop Is the Product, Observability Becomes the Operating System'
-og:description: "The Scientific Discovery Compiler turns a corpus into versioned understanding: causal structure, consensus and silence, falsifiable hypotheses, a research plan, and a local-first version history of the loop itself."
-og:title: 'If the Loop Is the Product'
 og.type: article
 og.url: /blog/2026-07-22-if-the-loop-is-the-product
 image: "/images/12092025/uncensored-ai-chatbot-architecture-diagram.png"

@@ -5,10 +5,6 @@ date: 07-21-2026
 description: "How to compile medical guidelines, trials, and literature into a provenance-tracked, queryable Clinical Knowledge Artifact — and deploy a live evidence explorer to Vercel — by extending the Research Compiler Agent SDK into a Clinical Research Compiler."
 layout: post
 title: 'Compiling Medical Evidence: A Clinical Research Compiler That Turns Guidelines and Trials Into a Queryable Knowledge Artifact'
-og:description: "Extend the Research Compiler Agent SDK into a Clinical Research Compiler: treatments, evidence grades, treatment conflicts, and guideline evolution — deployed as a live Vercel explorer."
-og:title: 'Compiling Medical Evidence: A Clinical Research Compiler'
-og:type: article
-og:url: /blog/2026-07-21-compiling-medical-evidence-clinical-research-compiler
 image: "/images/12092025/uncensored-ai-chatbot-architecture-diagram.png"
 tags:
   - ai-agents

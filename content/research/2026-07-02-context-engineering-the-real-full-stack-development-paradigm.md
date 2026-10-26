@@ -8,15 +8,6 @@ excerpt: "An exploration of the blind spots in current AI development coverage a
 tags: ["context-engineering", "coding-agents", "sovereign-ai", "agent-harness", "open-source", "MCP", "local-first", "AI development", "full-stack", "vibe coding", "spec-driven", "agent memory", "design-as-code"]
 canonical_url: /blog/2026-07-02-context-engineering-the-real-full-stack-development-paradigm
 image: "/images/ComfyUI_00200_.png"
-og:title: "Context Engineering: The Real Full-Stack Development Paradigm in 2026"
-og:description: "An exploration of the blind spots in current AI development coverage and the emergence of context engineering, agent harnesses, and the coding agent ecosystem as the true full-stack development paradigm of 2026."
-og:image: "/images/ComfyUI_00200_.png"
-og:url: "/blog/context-engineering-the-real-full-stack-development-paradigm"
-og:type: "article"
-twitter:card: "summary_large_image"
-twitter:title: "Context Engineering: The Real Full-Stack Development Paradigm in 2026"
-twitter:description: "An exploration of the blind spots in current AI development coverage and the emergence of context engineering, agent harnesses, and the coding agent ecosystem as the true full-stack development paradigm of 2026."
-twitter:image: "/images/ComfyUI_00200_.png"
 categories:
   - AI Development
   - Context Engineering

@@ -7,13 +7,6 @@ description: A comprehensive guide to building voice-enabled AI systems using op
   components, emphasizing ethical development, local computation, and user sovereignty.
 image: /images/ai-development-manifesto.png
 layout: post
-og:description: A comprehensive guide to building voice-enabled AI systems using open-source
-  components, emphasizing ethical development, local computation, and user sovereignty.
-og:image: /images/ai-development-manifesto.png
-og:title: 'Architectures of Autonomous Voice: Building Ethically-Grounded AI Systems
-  from First Principles'
-og:type: article
-og:url: /blog/2026-01-05-architectures-of-autonomous-voice
 tags:
 - voice-ai
 - artificial-intelligence
@@ -25,13 +18,6 @@ tags:
 - autonomous-systems
 title: 'Architectures of Autonomous Voice: Building Ethically-Grounded AI Systems
   from First Principles'
-twitter:card: summary_large_image
-twitter:description: A comprehensive guide to building voice-enabled AI systems using
-  open-source components, emphasizing ethical development, local computation, and
-  user sovereignty.
-twitter:image: /images/ai-development-manifesto.png
-twitter:title: 'Architectures of Autonomous Voice: Building Ethically-Grounded AI
-  Systems from First Principles'
 wiki_references: ["embeddings", "knowledge-graphs", "local-inference", "ollama", "quantization", "sentence-transformers", "transformers", "typescript"]
 ---
 

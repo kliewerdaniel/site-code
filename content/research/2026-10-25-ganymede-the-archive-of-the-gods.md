@@ -6,11 +6,6 @@ description: "A 3:08 mythological science-fiction film built with local models a
 image: /images/ganymede-archive-hero.jpg
 layout: post
 title: "Ganymede, the Archive of the Gods: A Film Pipeline an Agent Can Replicate"
-og:description: "Twenty environments, six effect templates, a 2.5D rig, a cloned voice and a twenty-check report — with the full repo layout and every data contract between stages. Plus the seven audio attempts it took to beat a broken export stage."
-og:image: /images/ganymede-archive-hero.jpg
-og:title: "Ganymede, the Archive of the Gods: A Film Pipeline an Agent Can Replicate"
-og:type: article
-og:url: /blog/2026-10-25-ganymede-the-archive-of-the-gods
 tags:
   - local-image-generation
   - effectcraft
@@ -20,10 +15,6 @@ tags:
   - mlx
   - video-editing
   - hermes-agent
-twitter:card: summary_large_image
-twitter:description: "Twenty environments, six effect templates, a 2.5D rig and a twenty-check artifact report. The full repo layout, every data contract, and the seven attempts it took to stop the export clipping the mix."
-twitter:image: /images/ganymede-archive-hero.jpg
-twitter:title: "Ganymede, the Archive of the Gods: A Film Pipeline an Agent Can Replicate"
 ---
 
 The brief was a 3–4 minute mythological science-fiction film about an archive

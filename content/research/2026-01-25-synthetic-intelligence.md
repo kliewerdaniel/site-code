@@ -7,12 +7,6 @@ description: A comprehensive guide to building deterministic, local-first Synthe
   Intelligence systems using Dynamic Persona Mixture of Experts RAG architecture
 image: /images/ComfyUI_00204_.png
 layout: post
-og:description: Building deterministic, local-first AI systems with Dynamic Persona
-  Mixture of Experts RAG architecture
-og:image: /images/ComfyUI_00204_.png
-og:title: 'Synthetic Intelligence: Engineering the Sovereign, Deterministic Mind'
-og:type: article
-og:url: /blog/2026-01-25-synthetic-intelligence
 tags:
 - AI
 - Synthetic Intelligence
@@ -23,11 +17,6 @@ tags:
 - Knowledge Graphs
 - Data Sovereignty
 title: 'Synthetic Intelligence: Engineering the Sovereign, Deterministic Mind'
-twitter:card: summary_large_image
-twitter:description: Building deterministic, local-first AI systems with Dynamic Persona
-  Mixture of Experts RAG architecture
-twitter:image: /images/ComfyUI_00204_.png
-twitter:title: 'Synthetic Intelligence: Engineering the Sovereign, Deterministic Mind'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "mcp", "ollama", "quantization", "rag", "sentence-transformers"]
 ---
 

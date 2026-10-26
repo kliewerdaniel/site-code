@@ -6,11 +6,6 @@ description: "A full replication guide for Hermes Video Agent — a local-first,
 image: /images/hva-landing.png
 layout: post
 title: 'Building Hermes Video Agent: a local-first, human-in-the-loop video pipeline'
-og:description: "Replication guide for a local-first, HITL video pipeline: idea → script → storyboard → licensed visuals → clonable-voice narration → captioned MP4. Commands, schemas, and lessons."
-og:image: /images/hva-landing.png
-og:title: 'Building Hermes Video Agent: a local-first, human-in-the-loop video pipeline'
-og:type: article
-og:url: /blog/2026-08-09-hermes-video-agent
 tags:
   - ai-agents
   - local-first-ai

@@ -7,14 +7,6 @@ description: A detailed synthesis of insights from multiple articles exploring h
   support.
 image: images/ai-job-market.png
 layout: post
-og:description: A detailed synthesis of insights from multiple articles exploring
-  how AI is revolutionizing business operations, from vibe selling to intelligent
-  customer support.
-og:image: /images/ai-job-market.png
-og:title: 'The AI Revolution in Business: Transforming Sales, CRM, and Customer Management
-  in 2026'
-og:type: article
-og:url: /blog/
 slug: the-ai-revolution-in-business-transforming-sales-crm-and-customer-management-in-2026
 tags:
 - AI
@@ -26,13 +18,6 @@ tags:
 - Innovation
 title: 'The AI Revolution in Business: Transforming Sales, CRM, and Customer Management
   in 2026'
-twitter:card: summary_large_image
-twitter:description: A detailed synthesis of insights from multiple articles exploring
-  how AI is revolutionizing business operations, from vibe selling to intelligent
-  customer support.
-twitter:image: /images/ai-job-market.png
-twitter:title: 'The AI Revolution in Business: Transforming Sales, CRM, and Customer
-  Management in 2026'
 wiki_references: ["ai-agents"]
 ---
 

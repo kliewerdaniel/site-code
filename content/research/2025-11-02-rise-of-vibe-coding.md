@@ -9,13 +9,6 @@ description: Master vibe coding with this definitive comparison of Cursor 2.0 vs
   your workflow.
 image: /images/1101001.png
 layout: post
-og:description: Complete guide to vibe coding. Compare top AI IDEs building real projects.
-  Master document-driven development, AI agents, and rapid prototyping techniques
-  for better code.
-og:image: /images/1101001.png
-og:title: 'The Rise of Vibe Coding: Cursor 2.0 vs VS Code + Cline AI Battle'
-og:type: article
-og:url: ''
 tags:
 - vibe-coding
 - ai-coding
@@ -30,11 +23,6 @@ tags:
 - seo-optimization
 title: 'The Rise of Vibe Coding: Cursor 2.0 vs VS Code + Cline - Ultimate AI Coding
   Showdown 2025'
-twitter:card: summary_large_image
-twitter:description: 'Ultimate vibe coding guide: Cursor 2.0 vs VS Code + Cline showdown.
-  Build AI news generator, compare AI agents, master document-driven development.'
-twitter:image: /images/1101001.png
-twitter:title: 'Vibe Coding Mastery: Cursor vs VS Code AI Battle 2025'
 wiki_references: ["ai-agents", "local-inference", "ollama", "python", "typescript"]
 ---
 

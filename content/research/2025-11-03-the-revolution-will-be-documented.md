@@ -12,12 +12,6 @@ description: A provocative manifesto challenging traditional gatekeeping in soft
   a 'real' programmer.
 image: /images/ai-development-manifesto.png
 layout: post
-og:description: Challenging software engineering gatekeeping with document-driven
-  development and AI collaboration—a manifesto for the future of programming.
-og:image: /images/ai-development-manifesto.png
-og:title: 'The Revolution Will Be Documented: AI-Assisted Development Manifesto'
-og:type: article
-og:url: https://yourdomain.com/blog/2025/11/03/the-revolution-will-be-documented
 tags:
 - AI Assisted Development
 - Document Driven Development
@@ -31,11 +25,6 @@ tags:
 - AI Collaboration
 title: 'The Revolution Will Be Documented: A Manifesto for AI-Assisted Software Development
   in the Age of Gatekeeping'
-twitter:card: summary_large_image
-twitter:description: Redefining software engineering with document-driven development
-  and AI collaboration. No more manual code generation—focus on problems, not syntax.
-twitter:image: /images/ai-development-manifesto.png
-twitter:title: 'AI-Assisted Development Manifesto: Breaking Software Gatekeeping'
 wiki_references: ["ai-agents", "embeddings", "llama3", "local-inference", "ollama", "prompt-engineering", "python", "rag", "sentence-transformers", "typescript"]
 ---
 

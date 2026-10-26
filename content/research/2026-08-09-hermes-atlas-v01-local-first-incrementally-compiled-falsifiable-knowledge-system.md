@@ -6,11 +6,6 @@ description: "Hermes Atlas v0.1 is a local-first, incrementally-compiled, falsif
 image: /images/1103012.png
 layout: post
 title: 'Hermes Atlas v0.1: A Local-First, Incrementally-Compiled, Falsifiable Knowledge System'
-og:description: "Hermes Atlas v0.1 is a local-first, incrementally-compiled, falsifiable knowledge system. This is a full replication guide: every command was run for real, and the failure modes are the findings."
-og:image: /images/1103012.png
-og:title: 'Hermes Atlas v0.1: A Local-First, Incrementally-Compiled, Falsifiable Knowledge System'
-og:type: article
-og:url: /blog/2026-08-09-hermes-atlas-v01-local-first-incrementally-compiled-falsifiable-knowledge-system
 tags:
   - sovereign-ai
   - local-ai

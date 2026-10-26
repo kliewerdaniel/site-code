@@ -7,14 +7,6 @@ description: Complete technical guide to building a production-ready research as
   framework for rigorous AI system testing.
 image: /images/11152025/graphrag-research-assistant-architecture.png
 layout: post
-og:description: Master GraphRAG implementation with Neo4j, Ollama, and vero-eval for
-  production-ready AI research assistants. Complete guide with code examples and evaluation
-  frameworks.
-og:image: /images/11152025/graphrag-research-assistant-architecture.png
-og:title: Building and Evaluating a Local-First Research Assistant with GraphRAG and
-  vero-eval
-og:type: article
-og:url: https://danielkliewer.com/blog/building-evaluating-local-research-assistant-graphrag-vero-eval
 tags:
 - AI
 - GraphRAG
@@ -28,11 +20,6 @@ tags:
 - AI Evaluation
 title: Building and Evaluating a Local-First Research Assistant with GraphRAG and
   vero-eval
-twitter:card: summary_large_image
-twitter:description: Build production-ready AI research assistants using GraphRAG,
-  Neo4j, Ollama, and vero-eval evaluation framework.
-twitter:image: /images/11152025/graphrag-research-assistant-architecture.png
-twitter:title: Local Research Assistant with GraphRAG & vero-eval
 wiki_references: ["ai-agents", "docker", "embeddings", "graphrag", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "ollama", "python", "rag", "reinforcement-learning", "rlhf", "sentence-transformers", "transformers", "typescript"]
 ---
 

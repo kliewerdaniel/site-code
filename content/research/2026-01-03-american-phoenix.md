@@ -8,14 +8,6 @@ description: From mescaline baby to AI pioneer, this is the untold story of how 
   age.
 image: /images/phoenix.jpg
 layout: post
-og:description: From mescaline baby to AI pioneer, this is the untold story of how
-  trauma, technology, and unbreakable will forged a new path for human resilience
-  in the digital age.
-og:image: /images/phoenix.jpg
-og:title: 'The American Phoenix: How One Man''s Digital Resurrection Rewrites the
-  Rules of Survival'
-og:type: article
-og:url: https://danielkliewer.com/blog/2026-01-03-american-phoenix
 tags:
 - resilience
 - America
@@ -25,13 +17,6 @@ tags:
 - innovation
 title: 'The American Phoenix: How One Man''s Digital Resurrection Rewrites the Rules
   of Survival'
-twitter:card: summary_large_image
-twitter:description: From mescaline baby to AI pioneer, this is the untold story of
-  how trauma, technology, and unbreakable will forged a new path for human resilience
-  in the digital age.
-twitter:image: /images/phoenix.jpg
-twitter:title: 'The American Phoenix: How One Man''s Digital Resurrection Rewrites
-  the Rules of Survival'
 wiki_references: ["ai-agents", "knowledge-graphs", "python"]
 ---
 

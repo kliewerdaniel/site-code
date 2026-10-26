@@ -6,11 +6,6 @@ description: "A methodology guide and continuity record: how a bare Hermes Agent
 image: /images/ComfyUI_00200_.png
 layout: post
 title: 'How I Taught an Agent to Edit Video — and the Repeatable Method Behind It'
-og:description: "A methodology guide and continuity record: how a bare Hermes Agent became a video-editing assistant, and the general method for teaching an agent any craft."
-og:image: /images/ComfyUI_00200_.png
-og:title: 'How I Taught an Agent to Edit Video — and the Repeatable Method Behind It'
-og:type: article
-og:url: /blog/2026-08-05-build-a-video-editing-hermes-agent
 tags:
   - ai-agents
   - local-first-ai

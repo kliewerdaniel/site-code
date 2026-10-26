@@ -8,12 +8,6 @@ description: An autonomous news ingestion, claim extraction, contradiction track
   No vendor lock-in.
 image: /images/open-source-ai-accessibility.png
 layout: post
-og:description: An autonomous news ingestion, claim extraction, contradiction tracking,
-  and TTS broadcast system that runs entirely locally.
-og:image: /images/open-source-ai-accessibility.png
-og:title: 'objective03: My Laptop Eats the News and Talks Back'
-og:type: article
-og:url: /blog/2026-06-01-objective03-local-news-agency
 tags:
 - local AI
 - news aggregation
@@ -26,11 +20,6 @@ tags:
 - Qwen3-TTS
 - sovereign AI
 title: 'objective03: My Laptop Eats the News and Talks Back'
-twitter:card: summary_large_image
-twitter:description: An autonomous news ingestion, claim extraction, contradiction
-  tracking, and TTS broadcast system that runs entirely locally.
-twitter:image: /images/open-source-ai-accessibility.png
-twitter:title: 'objective03: My Laptop Eats the News and Talks Back'
 wiki_references: ["ai-sovereignty", "data-sovereignty", "embeddings", "llama3", "local-first-ai", "local-inference", "python", "quantization", "sentence-transformers"]
 ---
 

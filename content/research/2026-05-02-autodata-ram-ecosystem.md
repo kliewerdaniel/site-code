@@ -7,14 +7,6 @@ description: 'Facebook Research''s RAM catalog and its Autodata project represen
   a first-class reasoning loop. Here''s what that means for the future of AI development.'
 image: /images/ComfyUI_00192_.png
 layout: post
-og:description: 'Facebook Research''s RAM catalog and its Autodata project represent
-  a paradigm shift: synthetic data generation is no longer a preprocessing step, it''s
-  a first-class reasoning loop.'
-og:image: /images/ComfyUI_00192_.png
-og:title: 'Autodata and the RAM Ecosystem: When AI Learns to Build Its Own Training
-  Data'
-og:type: article
-og:url: /blog/autodata-ram-ecosystem
 tags:
 - AI
 - synthetic data
@@ -25,13 +17,6 @@ tags:
 - meta-learning
 - data science
 title: 'Autodata and the RAM Ecosystem: When AI Learns to Build Its Own Training Data'
-twitter:card: summary_large_image
-twitter:description: 'Facebook Research''s RAM catalog and its Autodata project represent
-  a paradigm shift: synthetic data generation is no longer a preprocessing step, it''s
-  a first-class reasoning loop.'
-twitter:image: /images/ComfyUI_00192_.png
-twitter:title: 'Autodata and the RAM Ecosystem: When AI Learns to Build Its Own Training
-  Data'
 wiki_references: ["ai-agents", "rlhf", "transformers"]
 ---
 

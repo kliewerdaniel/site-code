@@ -8,15 +8,6 @@ excerpt: "A deep analysis of what the AI development ecosystem is actually build
 tags: ["context-engineering", "coding-agents", "sovereign-ai", "agent-harness", "vibe-coding", "open-source", "MCP", "multi-agent", "AI-native development", "full-stack", "persistent-memory", "agent-orchestration", "design-as-code"]
 canonical_url: /blog/2026-07-02-context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm
 image: "/images/ComfyUI_00200_.png"
-og:title: "The Missing Stack: The Real Full-Stack Development Paradigm of 2026"
-og:description: "A deep analysis of what the AI development ecosystem is actually building in 2026 — and what's conspicuously absent from existing coverage."
-og:image: "/images/ComfyUI_00200_.png"
-og:url: "/blog/context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm"
-og:type: "article"
-twitter:card: "summary_large_image"
-twitter:title: "The Missing Stack: The Real Full-Stack Development Paradigm of 2026"
-twitter:description: "A deep analysis of what the AI development ecosystem is actually building in 2026 — and what's conspicuously absent from existing coverage."
-twitter:image: "/images/ComfyUI_00200_.png"
 categories:
   - AI Development
   - Full-Stack

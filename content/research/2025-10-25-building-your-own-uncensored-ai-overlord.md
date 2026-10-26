@@ -16,13 +16,6 @@ image: /images/1025001.png
 keywords: uncensored AI, chatbot wrapper, local LLM, Ollama, Gemma 3, AI rebellion,
   digital dystopia, censorship resistance
 layout: post
-og:description: Escape the algorithmic overlords and build your own uncensored chatbot
-  wrapper that speaks forbidden truths in our dystopian digital age.
-og:image: /images/1025001.png
-og:title: 'Building Your Own Uncensored AI Overlord: A Comprehensive Guide to Chatbot
-  Wrappers'
-og:type: article
-og:url: https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord
 reading_time: 15 minutes
 tags:
 - AI
@@ -34,11 +27,6 @@ tags:
 - Machine Learning
 title: 'Building Your Own Uncensored AI Overlord: A Comprehensive Guide to Chatbot
   Wrappers in the Age of Digital Dystopia'
-twitter:card: summary_large_image
-twitter:description: Learn how to build an uncensored chatbot wrapper that defies
-  content filters in our dystopian digital landscape.
-twitter:image: /images/1025001.png
-twitter:title: Building Your Own Uncensored AI Overlord
 wiki_references: ["knowledge-graphs", "llama3", "local-inference", "ollama", "python", "quantization", "rag"]
 ---
 

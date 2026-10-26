@@ -8,14 +8,6 @@ description: A technical deep-dive into Synthetic Intelligence (Synth-Int), a lo
   emerges not from cloud APIs but from rigorous engineering and data sovereignty.
 image: /images/ComfyUI_00186_.png
 layout: post
-og:description: A technical deep-dive into Synthetic Intelligence (Synth-Int), a local-first,
-  deterministic AI framework that replaces probabilistic black boxes with explicit
-  persona constraints and auditable evolution.
-og:image: /images/ComfyUI_00186_.png
-og:title: 'Synthetic Intelligence: Why ''Emergence'' is Just Math and Why Your Data
-  Should Stay Local'
-og:type: article
-og:url: /blog/synthetic-intelligence-why-emergence-is-math-and-data-should-stay-local
 tags:
 - AI
 - local AI
@@ -28,13 +20,6 @@ tags:
 - engineering
 title: 'Synthetic Intelligence: Why ''Emergence'' is Just Math and Why Your Data Should
   Stay Local'
-twitter:card: summary_large_image
-twitter:description: A technical deep-dive into Synthetic Intelligence (Synth-Int),
-  a local-first, deterministic AI framework that replaces probabilistic black boxes
-  with explicit persona constraints and auditable evolution.
-twitter:image: /images/ComfyUI_00186_.png
-twitter:title: 'Synthetic Intelligence: Why ''Emergence'' is Just Math and Why Your
-  Data Should Stay Local'
 wiki_references: ["ai-sovereignty", "data-sovereignty", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "ollama", "python", "rag", "sentence-transformers"]
 ---
 

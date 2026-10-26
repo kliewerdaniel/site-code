@@ -10,13 +10,6 @@ image: /images/11102025/top-ai-algorithms.jpeg
 keywords: AI algorithms, machine learning algorithms, data science algorithms, AI
   tutorials, machine learning projects, Python AI, scikit-learn, TensorFlow, PyTorch
 layout: post
-og:description: Master the core AI algorithms with real-world applications and coding
-  projects. Perfect for builders, researchers, and innovators seeking practical ML
-  solutions.
-og:image: /images/11102025/top-ai-algorithms.jpeg
-og:title: 'Top 20 AI Algorithms: Complete Guide with Use Cases and Sample Projects'
-og:type: article
-og:url: https://danielkliewer.com/blog/2025-11-10-top-ai-algorithms
 tags:
 - AI
 - Machine Learning
@@ -30,11 +23,6 @@ tags:
 - Deep Learning
 title: 'Top 20 AI Algorithms: Complete Guide with Use Cases and Sample Projects for
   Developers'
-twitter:card: summary_large_image
-twitter:description: Unlock the power of AI algorithms with hands-on projects and
-  use cases for developers and entrepreneurs.
-twitter:image: /images/11102025/top-ai-algorithms.jpeg
-twitter:title: 'Top 20 AI Algorithms: Complete Guide with Use Cases and Sample Projects'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "docker", "embeddings", "kubernetes", "local-first-ai", "local-inference", "ollama", "python", "quantization", "rlhf", "rust", "sentence-transformers", "transformers"]
 ---
 

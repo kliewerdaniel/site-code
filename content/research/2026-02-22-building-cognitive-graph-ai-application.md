@@ -8,12 +8,6 @@ description: Learn how to build a sophisticated cognitive routing system that tr
   and directed acyclic graphs.
 image: /images/1019010.png
 layout: post
-og:description: Learn how to build a sophisticated cognitive routing system with personas,
-  FSM, and DAG for intelligent AI responses.
-og:image: /images/1019010.png
-og:title: Building a Cognitive Graph AI Application
-og:type: article
-og:url: /blog/2026-02-22-building-cognitive-graph-ai-application
 tags:
 - ai
 - cognitive-architecture
@@ -22,11 +16,6 @@ tags:
 - personas
 - llm
 title: 'Building a Cognitive Graph AI Application: A Comprehensive Guide'
-twitter:card: summary_large_image
-twitter:description: A comprehensive guide to building a cognitive routing system
-  with personas, finite state machines, and directed acyclic graphs.
-twitter:image: /images/1019010.png
-twitter:title: Building a Cognitive Graph AI Application
 wiki_references: ["llama3", "local-inference", "ollama", "typescript"]
 ---
 

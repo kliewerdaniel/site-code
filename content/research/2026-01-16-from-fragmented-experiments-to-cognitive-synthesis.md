@@ -7,13 +7,6 @@ description: How two years of AI experimentation—from basic chatbots to autono
   knowledge, memory, and personality into something profoundly new.
 image: /images/101801.png
 layout: post
-og:description: How two years of AI experimentation—from basic chatbots to autonomous
-  architectures—converged into Simulacra, a living cognitive system that synthesizes
-  knowledge, memory, and personality into something profoundly new.
-og:image: /images/101801.png
-og:title: 'From Fragmented Experiments to Cognitive Synthesis: The Evolution of Simulacra'
-og:type: article
-og:url: /blog/2026-01-15-from-fragmented-experiments-to-cognitive-synthesis
 tags:
 - AI
 - autonomous-agents
@@ -22,10 +15,6 @@ tags:
 - digital-resurrection
 - simulacra
 title: 'From Fragmented Experiments to Cognitive Synthesis : The Evolution of Simulacra'
-twitter:card: summary_large_image
-twitter:image: /images/101801.png
-twitter:title: 'From Fragmented Experiments to Cognitive Synthesis: The Evolution
-  of Simulacra'
 wiki_references: ["ai-agents", "docker", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "mcp", "ollama", "python", "rag", "sentence-transformers", "transformers", "typescript"]
 ---
 

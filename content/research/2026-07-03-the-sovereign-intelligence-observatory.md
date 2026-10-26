@@ -6,11 +6,6 @@ description: "The Sovereign Intelligence Observatory: a six-component local-firs
 image: /images/ComfyUI_00204_.png
 layout: post
 title: 'The Loop Is the Product: Inside the Sovereign Intelligence Observatory'
-og:description: "Six components, one philosophy: intelligence is not the model, it's the accumulated, observable, versioned decisions that shaped it."
-og:image: /images/CComfyUI_00204_.png
-og:title: 'The Loop Is the Product: Inside the Sovereign Intelligence Observatory'
-og:type: article
-og:url: /blog/the-sovereign-intelligence-observatory
 tags:
   - sovereign-intelligence-observatory
   - agent-recipes
@@ -25,10 +20,6 @@ tags:
   - sovereignspec
   - synthint
   - observability
-twitter:card: summary_large_image
-twitter:description: "Six components, one philosophy: intelligence is not the model, it's the accumulated, observable, versioned decisions that shaped it."
-twitter:image: /images/ComfyUI_00204_.png
-twitter:title: 'The Loop Is the Product: Inside the Sovereign Intelligence Observatory'
 wiki_references: ["sovereign-intelligence-observatory", "agent-recipes", "drift-detection", "expert-signal-routing", "tacit-knowledge-extraction", "autonomy-ladders", "knowledge-graphs", "local-ai", "sovereign-ai"]
 ---
 

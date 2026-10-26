@@ -7,13 +7,6 @@ description: Learn how DeerFlow 2.0 bridges the execution gap in AI with its Sup
   local-first AI agent systems.
 image: /images/open-source-ai-accessibility.png
 layout: post
-og:description: Learn how DeerFlow 2.0 bridges the execution gap in AI with its SuperAgent
-  harness, AIO sandbox, and persistent memory. Complete guide to building sovereign,
-  local-first AI agent systems.
-og:image: /images/open-source-ai-accessibility.png
-og:title: 'DeerFlow 2.0: Building Sovereign AI Agent Systems with Local-First Architecture'
-og:type: article
-og:url: /blog/deerflow-2-building-sovereign-ai-agent-systems
 tags:
 - deerflow
 - ai-agents
@@ -25,12 +18,6 @@ tags:
 - superagent
 - open-source
 title: 'DeerFlow 2.0: Building Sovereign AI Agent Systems with Local-First Architecture'
-twitter:card: summary_large_image
-twitter:description: Learn how DeerFlow 2.0 bridges the execution gap in AI with its
-  SuperAgent harness, AIO sandbox, and persistent memory.
-twitter:image: /images/open-source-ai-accessibility.png
-twitter:title: 'DeerFlow 2.0: Building Sovereign AI Agent Systems with Local-First
-  Architecture'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "docker", "embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "mcp", "ollama", "python", "rag", "sentence-transformers", "transformers"]
 ---
 

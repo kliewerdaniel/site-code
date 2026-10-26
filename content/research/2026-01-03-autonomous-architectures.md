@@ -8,14 +8,6 @@ description: A comprehensive exploration of the transition from Generative AI to
   for building self-evolving simulation architects.
 image: /images/101801.png
 layout: post
-og:description: A comprehensive exploration of the transition from Generative AI to
-  Agentic AI, featuring Cline, Grok-Fast, and frameworks like SICA, ReMA, Eureka,
-  and Voyager for building self-evolving simulation architects.
-og:image: /images/101801.png
-og:title: 'Autonomous Architectures: The Convergence of High-Velocity Inference and
-  Self-Improving Agentic Frameworks'
-og:type: article
-og:url: https://danielkliewer.com/blog/2026-01-03-autonomous-architectures
 tags:
 - AI
 - autonomous-agents
@@ -24,13 +16,6 @@ tags:
 - agentic-frameworks
 title: 'Autonomous Architectures: The Convergence of High-Velocity Inference and Self-Improving
   Agentic Frameworks'
-twitter:card: summary_large_image
-twitter:description: A comprehensive exploration of the transition from Generative
-  AI to Agentic AI, featuring Cline, Grok-Fast, and frameworks like SICA, ReMA, Eureka,
-  and Voyager for building self-evolving simulation architects.
-twitter:image: /images/101801.png
-twitter:title: 'Autonomous Architectures: The Convergence of High-Velocity Inference
-  and Self-Improving Agentic Frameworks'
 wiki_references: ["ai-agents", "mcp", "prompt-engineering", "python"]
 ---
 

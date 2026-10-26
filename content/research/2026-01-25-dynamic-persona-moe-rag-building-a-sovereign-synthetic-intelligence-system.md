@@ -8,13 +8,6 @@ description: A comprehensive guide to building a local-first, privacy-focused AI
   explorable intelligence while maintaining complete data sovereignty.
 image: /images/2026-01-25-dynamic-persona-moe-rag.png
 layout: post
-og:description: A comprehensive guide to building a local-first, privacy-focused AI
-  system that transforms large corpuses into grounded, attributable, and conversationally
-  explorable intelligence while maintaining complete data sovereignty.
-og:image: /images/2026-01-25-dynamic-persona-moe-rag.png
-og:title: Dynamic Persona MoE RAG - Building a Sovereign Synthetic Intelligence System
-og:type: article
-og:url: /blog/2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system
 tags:
 - AI
 - Machine Learning
@@ -23,13 +16,6 @@ tags:
 - Sovereignty
 - Synthetic Intelligence
 title: Dynamic Persona MoE RAG - Building a Sovereign Synthetic Intelligence System
-twitter:card: summary_large_image
-twitter:description: A comprehensive guide to building a local-first, privacy-focused
-  AI system that transforms large corpuses into grounded, attributable, and conversationally
-  explorable intelligence while maintaining complete data sovereignty.
-twitter:image: /images/2026-01-25-dynamic-persona-moe-rag.png
-twitter:title: Dynamic Persona MoE RAG - Building a Sovereign Synthetic Intelligence
-  System
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "ollama", "python", "rag"]
 ---
 ![image](/images/ComfyUI_00206_.png)

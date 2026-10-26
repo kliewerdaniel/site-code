@@ -5,11 +5,6 @@ description: "A comprehensive synthesis of four years of architectural investiga
 image: /images/ComfyUI_00210_.png
 layout: post
 title: 'Sovereign AI Architecture: Building Compounding Intelligence'
-og:description: "A comprehensive synthesis of four years of architectural investigation into sovereign AI. Ties together the Sovereign Intelligence Stack, Sovereign Memory Bank, Dynamic Persona MoE RAG, Objective05, and SovereignSpec into one unified compounding intelligence architecture."
-og:image: /images/ComfyUI_00210_.png
-og:title: 'Sovereign AI Architecture: Building Compounding Intelligence'
-og:type: article
-og:url: /blog/sovereign-ai-architecture-synthesis
 tags:
   - sovereign-ai
   - ai-architecture

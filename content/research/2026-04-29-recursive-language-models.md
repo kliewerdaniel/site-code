@@ -8,12 +8,6 @@ description: Explore Recursive Language Models (RLMs), a powerful new inference 
   and Omar Khattab.
 image: /images/rlm-hero.png
 layout: post
-og:description: How RLMs let language models decompose massive inputs, run code, and
-  recursively query themselves—outperforming traditional long-context methods.
-og:image: /images/rlm-hero.png
-og:title: 'Recursive Language Models: Near-Infinite Context Through Programmable Self-Calls'
-og:type: article
-og:url: /blog/recursive-language-models
 tags:
 - AI
 - LLM
@@ -22,11 +16,6 @@ tags:
 - inference-scaling
 title: 'Recursive Language Models: Breaking the Context Barrier with Programmable
   Reasoning'
-twitter:card: summary_large_image
-twitter:description: A paradigm shift for handling massive documents and complex reasoning
-  in LLMs.
-twitter:image: /images/rlm-hero.png
-twitter:title: 'Recursive Language Models: Infinite Context via REPL + Recursion'
 wiki_references: ["ai-agents", "docker", "python", "rag", "rlhf", "transformers"]
 ---
 

@@ -6,11 +6,6 @@ description: "The complete build, launch, and verification record for the Rust-n
 image: /images/photocraft.png
 layout: post
 title: "Building a Rust-Native Creative Suite on Apple Silicon: A Complete, Verified Installation"
-og:description: "8 Rust-native creative applications, built from source on a MacBook Pro M4 Pro. All verified with real builds, real launches, and real smoke tests."
-og:image: /images/photocraft.png
-og:title: "Building a Rust-Native Creative Suite on Apple Silicon: A Complete, Verified Installation"
-og:type: article
-og:url: /blog/rust-native-creative-suite-installation
 tags:
   - rust-native
   - creative-suite
@@ -23,10 +18,6 @@ tags:
   - video-editing
   - pdf
   - page-layout
-twitter:card: summary_large_image
-twitter:description: "8 Rust-native creative applications, built from source on a MacBook Pro M4 Pro. All verified."
-twitter:image: /images/photocraft.png
-twitter:title: "Building a Rust-Native Creative Suite on Apple Silicon"
 ---
 
 # Building a Rust-Native Creative Suite on Apple Silicon: A Complete, Verified Installation

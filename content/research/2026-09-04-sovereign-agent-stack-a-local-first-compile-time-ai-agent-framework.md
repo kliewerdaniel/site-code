@@ -7,11 +7,6 @@ date: 09-04-2026
 description: "The Sovereign Agent Stack (SAS) is a local-first, compile-time AI agent framework that operationalizes the sovereignty thesis from The Rented Sovereign. A complete 7-layer architecture with 156 tests, 23 E2E tests, plugin system, MCP server, and package manager distribution."
 image: /images/ComfyUI_00210_.png
 layout: post
-og:description: "The Sovereign Agent Stack (SAS) is a local-first, compile-time AI agent framework that operationalizes the sovereignty thesis from The Rented Sovereign."
-og:image: /images/ComfyUI_00210_.png
-og:title: "The Sovereign Agent Stack — A Local-First, Compile-Time AI Agent Framework"
-og:type: article
-og:url: /blog/sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework
 tags:
   - sovereign-agent-stack
   - local-first
@@ -22,10 +17,6 @@ tags:
   - python
   - mcp
   - ai-agents
-twitter:card: summary_large_image
-twitter:description: "The Sovereign Agent Stack (SAS) is a local-first, compile-time AI agent framework that operationalizes the sovereignty thesis from The Rented Sovereign."
-twitter:image: /images/ComfyUI_00210_.png
-twitter:title: "The Sovereign Agent Stack — A Local-First, Compile-Time AI Agent Framework"
 wiki_references: ["sovereign-agent-stack", "local-first", "compile-time-ai", "sovereign-ai"]
 ---
 

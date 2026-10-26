@@ -8,14 +8,6 @@ description: Complete implementation guide transforming the theoretical dynamic 
   multi-provider LLM integration, real-time visualization, and production-ready deployment.
 image: /images/ComfyUI_00192_.png
 layout: post
-og:description: Complete implementation guide transforming the theoretical dynamic
-  persona MoE RAG system into a fully functional, end-to-end AI orchestration platform
-  with multi-provider LLM integration, real-time visualization, and production-ready
-  deployment.
-og:image: /images/ComfyUI_00192_.png
-og:title: 'From Scaffolding to Reality: Building the Dynamic Persona MOE RAG System'
-og:type: article
-og:url: /blog/2026-01-22-from-scaffolding-to-reality-building-the-dynamic-persona-moe-rag-system
 tags:
 - AI
 - Machine Learning
@@ -28,14 +20,6 @@ tags:
 - Next.js
 - Web Development
 title: 'From Scaffolding to Reality: Building the Dynamic Persona MOE RAG System'
-twitter:card: summary_large_image
-twitter:description: Complete implementation guide transforming the theoretical dynamic
-  persona MoE RAG system into a fully functional, end-to-end AI orchestration platform
-  with multi-provider LLM integration, real-time visualization, and production-ready
-  deployment.
-twitter:image: /images/ComfyUI_00192_.png
-twitter:title: 'From Scaffolding to Reality: Building the Dynamic Persona MOE RAG
-  System'
 wiki_references: ["ai-agents", "knowledge-graphs", "kubernetes", "local-inference", "ollama", "python", "rag", "typescript"]
 ---
 

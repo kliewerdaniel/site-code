@@ -8,13 +8,6 @@ description: A comprehensive guide to building a dynamic, graph-based Mixture-of
   contextually rich responses.
 image: /images/ComfyUI_00186_.png
 layout: post
-og:description: A comprehensive guide to building a dynamic, graph-based Mixture-of-Experts
-  Retrieval-Augmented Generation system that leverages persona-driven AI agents for
-  contextually rich responses.
-og:image: /images/ComfyUI_00186_.png
-og:title: Building a Dynamic Persona-Based Mixture-of-Experts RAG System
-og:type: article
-og:url: /blog/2026-01-22-dynamic-persona-moe-rag
 tags:
 - AI
 - Machine Learning
@@ -24,12 +17,6 @@ tags:
 - Ollama
 - Python
 title: Building a Dynamic Persona-Based Mixture-of-Experts RAG System
-twitter:card: summary_large_image
-twitter:description: A comprehensive guide to building a dynamic, graph-based Mixture-of-Experts
-  Retrieval-Augmented Generation system that leverages persona-driven AI agents for
-  contextually rich responses.
-twitter:image: /images/ComfyUI_00186_.png
-twitter:title: Building a Dynamic Persona-Based Mixture-of-Experts RAG System
 wiki_references: ["ai-agents", "knowledge-graphs", "local-inference", "ollama", "python", "rag"]
 ---
 

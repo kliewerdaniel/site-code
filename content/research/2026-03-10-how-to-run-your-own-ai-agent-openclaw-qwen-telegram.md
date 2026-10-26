@@ -7,12 +7,6 @@ description: Build your own local AI agent that runs on your computer and talks 
   you through Telegram. No cloud, no subscriptions, just software and curiosity.
 image: /images/1018001.png
 layout: post
-og:description: Build your own local AI agent that runs on your computer and talks
-  to you through Telegram. No cloud, no subscriptions, just software and curiosity.
-og:image: /images/1018001.png
-og:title: 'How to Run Your Own AI Agent: OpenClaw + Qwen 3.5 + Telegram (Fully Local)'
-og:type: article
-og:url: /blog/2026-03-10-how-to-run-your-own-ai-agent-openclaw-qwen-telegram
 tags:
 - AI
 - OpenClaw
@@ -22,12 +16,6 @@ tags:
 - Autonomous Agents
 - Tutorial
 title: 'How to Run Your Own AI Agent: OpenClaw + Qwen 3.5 + Telegram (Fully Local)'
-twitter:card: summary_large_image
-twitter:description: Build your own local AI agent that runs on your computer and
-  talks to you through Telegram. No cloud, no subscriptions, just software and curiosity.
-twitter:image: /images/1018001.png
-twitter:title: 'How to Run Your Own AI Agent: OpenClaw + Qwen 3.5 + Telegram (Fully
-  Local)'
 wiki_references: ["ai-agents", "llama3", "local-inference", "ollama"]
 ---
 

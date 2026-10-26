@@ -5,11 +5,6 @@ description: "Building a 5-layer architecture where every AI decision compounds 
 image: /images/ComfyUI_00195_.png
 layout: post
 title: 'The Sovereign Intelligence Stack: Building Compounding AI Infrastructure'
-og:description: "Building a 5-layer architecture where every AI decision compounds into the next layer. The recipe compiler, signal router, autonomous evaluation loop, and more — with working code."
-og:image: /images/ComfyUI_00195_.png
-og:title: 'The Sovereign Intelligence Stack: Building Compounding AI Infrastructure'
-og:type: article
-og:url: /blog/sovereign-intelligence-stack
 tags:
   - sovereign-intelligence
   - ai-infrastructure

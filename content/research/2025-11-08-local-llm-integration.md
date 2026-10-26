@@ -8,12 +8,6 @@ description: Learn how to integrate local large language models for secure, effi
   ONNX runtimes with practical Python and PHP examples.
 image: /images/ComfyUI_00186_.png
 layout: post
-og:description: Master local LLM deployment for parsing and summarizing tabular data.
-  Complete tutorial with code examples, security best practices, and performance optimization.
-og:image: /images/11082025/local-llm-tabular-data-guide.png
-og:title: 'Local LLM Integration: Secure Tabular Data Processing Guide'
-og:type: article
-og:url: ''
 tags:
 - local-llm
 - data-processing
@@ -23,11 +17,6 @@ tags:
 - tabular-data-analysis
 title: 'Local LLM Integration: A Pragmatic Guide to Parsing & Summarizing Tabular
   Data'
-twitter:card: summary_large_image
-twitter:description: Secure, efficient tabular data processing with local LLMs. Ollama,
-  vLLM, TGI examples included.
-twitter:image: /images/11082025/local-llm-tabular-data-guide.png
-twitter:title: 'Local LLM for Tabular Data: Complete Integration Guide'
 wiki_references: ["docker", "llama3", "local-inference", "ollama", "prompt-engineering", "python", "quantization"]
 ---
 

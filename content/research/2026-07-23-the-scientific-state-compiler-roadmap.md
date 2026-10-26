@@ -5,8 +5,6 @@ date: 07-23-2026
 description: "A research roadmap: the four compiler directions — Mechanistic Reasoning, Scientific Question, Scientific State, and Discovery — are not competing projects. They are five passes in one architecture that compiles the scientific corpus into a versioned, executable model of human understanding. Here is the full plan."
 layout: post
 title: 'Compiling the State of Human Understanding: A Roadmap for the Scientific State Compiler'
-og:description: "From today's Scientific Discovery Compiler to a versioned operating system for science. The four research directions unify into one pipeline: Evidence → Questions → Mechanisms → State → Discovery."
-og:title: 'Compiling the State of Human Understanding'
 og.type: article
 og.url: /blog/2026-07-23-the-scientific-state-compiler-roadmap
 image: "/images/12092025/uncensored-ai-chatbot-architecture-diagram.png"

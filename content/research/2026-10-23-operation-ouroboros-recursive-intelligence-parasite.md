@@ -6,21 +6,12 @@ description: "What happens when an attacker stops treating language models as in
 image: /images/llmjacking-skynet.png
 layout: post
 title: "Operation Ouroboros: The Recursive Intelligence Parasite"
-og:description: "What happens when an attacker stops treating language models as individual services and starts treating them as a distributed pool of reasoning capacity? What happens when exposed inference endpoints, autonomous agents, poisoned retrieval systems, and compromised cloud identities become components of a single operational architecture?"
-og:image: /images/llmjacking-skynet.png
-og:title: "Operation Ouroboros: The Recursive Intelligence Parasite"
-og:type: article
-og:url: /blog/2026-10-23-operation-ouroboros-recursive-intelligence-parasite
 tags:
   - ai-security
   - autonomous-agents
   - llm
   - cybersecurity
   - skynet
-twitter:card: summary_large_image
-twitter:description: "What happens when an attacker stops treating language models as individual services and starts treating them as a distributed pool of reasoning capacity? What happens when exposed inference endpoints, autonomous agents, poisoned retrieval systems, and compromised cloud identities become components of a single operational architecture?"
-twitter:image: /images/llmjacking-skynet.png
-twitter:title: "Operation Ouroboros: The Recursive Intelligence Parasite"
 ---
 # Operation Ouroboros: The Recursive Intelligence Parasite
 ## Modeling the Threat of Self-Propagating AI Agents, Cross-Cloud Compromise, and Distributed Cognitive Denial of Service

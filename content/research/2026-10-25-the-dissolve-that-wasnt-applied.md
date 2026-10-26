@@ -6,11 +6,6 @@ description: "A 2:57 short film from six Rust reimplementations of the Adobe sui
 image: /images/last-human-in-the-loop-hero.jpg
 layout: post
 title: "The Dissolve That Wasn't Applied: Six Rust Tools, Four Silent Failures, and a 2:57 Film"
-og:description: "Fifteen stills, a cloned voice, a synthesised score, and a headless edit in six Rust reimplementations of the Adobe suite. Four failures that each reported success — two id namespaces in one API, a caption track that never renders, a grade that no-ops, and two frozen shots."
-og:image: /images/last-human-in-the-loop-hero.jpg
-og:title: "The Dissolve That Wasn't Applied: Six Rust Tools, Four Silent Failures, and a 2:57 Film"
-og:type: article
-og:url: /blog/2026-10-25-the-dissolve-that-wasnt-applied
 tags:
   - local-image-generation
   - filmcraft
@@ -19,10 +14,6 @@ tags:
   - video-editing
   - mlx
   - hermes-agent
-twitter:card: summary_large_image
-twitter:description: "Six Rust reimplementations of the Adobe suite, one 2:57 film, and four failures that each reported success — two id namespaces, a caption track that never renders, a grade that no-ops, and two frozen shots."
-twitter:image: /images/last-human-in-the-loop-hero.jpg
-twitter:title: "The Dissolve That Wasn't Applied: Six Rust Tools, Four Silent Failures, and a 2:57 Film"
 ---
 
 The brief was a film. Not an image, not a prompt — a finished two-to-three minute

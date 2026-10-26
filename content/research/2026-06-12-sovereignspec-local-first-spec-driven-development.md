@@ -12,13 +12,6 @@ excerpt: A project proposal for SovereignSpec — a local-first, offline spec-dr
   cloud API calls required.
 image: /images/ComfyUI_00200_.png
 layout: post
-og:description: A local-first, offline spec-driven development engine that treats
-  specifications as living, graph-grounded artifacts and enforces deterministic code
-  generation through structured pipelines — no cloud API calls required.
-og:image: /images/ComfyUI_00200_.png
-og:title: SovereignSpec — Local-First Spec-Driven Development
-og:type: article
-og:url: /blog/sovereignspec-local-first-spec-driven-development
 tags:
 - SovereignSpec
 - spec-driven development
@@ -41,12 +34,6 @@ tags:
 - deterministic code generation
 - sovereign AI
 title: 'Project Proposal: SovereignSpec — Local-First Spec-Driven Development'
-twitter:card: summary_large_image
-twitter:description: A local-first, offline spec-driven development engine that treats
-  specifications as living, graph-grounded artifacts and enforces deterministic code
-  generation through structured pipelines — no cloud API calls required.
-twitter:image: /images/ComfyUI_00200_.png
-twitter:title: SovereignSpec — Local-First Spec-Driven Development
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "knowledge-graphs", "llama3", "local-first-ai", "python", "quantization", "rag"]
 ---
 

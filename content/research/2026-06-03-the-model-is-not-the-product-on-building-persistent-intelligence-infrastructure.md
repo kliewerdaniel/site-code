@@ -8,13 +8,6 @@ description: A deep dive into building Objective05 — a local-first persistent 
   with the model as a processing component rather than the system core.
 image: /images/1025003.png
 layout: post
-og:description: A deep dive into building Objective05 — a local-first persistent intelligence
-  system in Rust — and the architectural case for treating information infrastructure
-  as the real product.
-og:image: /images/1025003.png
-og:title: 'The Model Is Not the Product: On Building Persistent Intelligence Infrastructure'
-og:type: article
-og:url: /blog/the-model-is-not-the-product-on-building-persistent-intelligence-infrastructure
 tags:
 - local AI
 - Rust
@@ -27,13 +20,6 @@ tags:
 - sovereign AI
 - contradiction detection
 title: 'The Model Is Not the Product: On Building Persistent Intelligence Infrastructure'
-twitter:card: summary_large_image
-twitter:description: A deep dive into building Objective05 — a local-first persistent
-  intelligence system in Rust — and the architectural case for treating information
-  infrastructure as the real product.
-twitter:image: /images/1025003.png
-twitter:title: 'The Model Is Not the Product: On Building Persistent Intelligence
-  Infrastructure'
 wiki_references: ["ai-sovereignty", "data-sovereignty", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "rust"]
 ---
 

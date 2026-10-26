@@ -5,11 +5,6 @@ date: 09-26-2026
 description: 'Replacing macOS on a 2017 MacBook Pro with Omarchy — the flash-drive install, the hybrid-graphics black screen, a boot menu that silently rolled back the filesystem, and wiring a local Llama 3.1 8B into an agent harness. What broke, what actually fixed it, and what the firmware would not give up.'
 image: /images/ComfyUI_00210_.png
 layout: post
-og:description: 'Replacing macOS on a 2017 MacBook Pro with Omarchy — the flash-drive install, the hybrid-graphics black screen, a boot menu that silently rolled back the filesystem, and wiring a local Llama 3.1 8B into an agent harness. What broke, what actually fixed it, and what the firmware would not give up.'
-og:image: /images/ComfyUI_00210_.png
-og:title: 'Omarchy on a 2017 MacBook Pro: A Setup Retrospective'
-og:type: article
-og:url: /blog/omarchy-on-a-2017-macbook-pro-a-setup-retrospective
 tags:
 - linux
 - omarchy
@@ -25,10 +20,6 @@ tags:
 - local-first
 - self-hosting
 title: 'Omarchy on a 2017 MacBook Pro: A Setup Retrospective'
-twitter:card: summary_large_image
-twitter:description: 'Replacing macOS on a 2017 MacBook Pro with Omarchy — the flash-drive install, the hybrid-graphics black screen, a boot menu that silently rolled back the filesystem, and wiring a local Llama 3.1 8B into an agent harness. What broke, what actually fixed it, and what the firmware would not give up.'
-twitter:image: /images/ComfyUI_00210_.png
-twitter:title: 'Omarchy on a 2017 MacBook Pro: A Setup Retrospective'
 wiki_references: []
 ---
 

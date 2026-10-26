@@ -6,11 +6,6 @@ description: "How six separate investigations became one reproducible local vide
 image: /images/hlvs-lighthouse-hero.jpg
 layout: post
 title: "Hermes Local Video Studio: A Reproducible Video Production Capability for Agents"
-og:description: "Six investigations, one capability. Qwen-Image plus the ArtCraft Rust suite, wrapped in a validation layer that distinguishes what was requested from what was verified — with the four silent failures that distinction caught."
-og:image: /images/hlvs-lighthouse-hero.jpg
-og:title: "Hermes Local Video Studio: A Reproducible Video Production Capability for Agents"
-og:type: article
-og:url: /blog/2026-10-25-hermes-local-video-studio
 tags:
   - hermes-agent
   - local-image-generation
@@ -19,10 +14,6 @@ tags:
   - mlx
   - video-editing
   - reproducibility
-twitter:card: summary_large_image
-twitter:description: "A reproducible local video-production capability: Qwen-Image plus the ArtCraft Rust suite, with a validation layer that separates requested from verified."
-twitter:image: /images/hlvs-lighthouse-hero.jpg
-twitter:title: "Hermes Local Video Studio: A Reproducible Video Production Capability for Agents"
 ---
 
 For the last two weeks I have been building films with local models and local

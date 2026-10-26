@@ -6,11 +6,6 @@ description: "A 2:22 film about impossible space, built from fifteen stills and 
 image: /images/impossible-shot-hero.jpg
 layout: post
 title: "The Mask That Rendered Anyway: One 2:22 Film Through an Impossible Space"
-og:description: "Fifteen stills, a 2.5D parallax rig, and a headless edit — and a mask API that accepts a rect, ignores it, and reports success. Every mask in the film was a default centred shape until the vertices were read back out of the engine."
-og:image: /images/impossible-shot-hero.jpg
-og:title: "The Mask That Rendered Anyway: One 2:22 Film Through an Impossible Space"
-og:type: article
-og:url: /blog/2026-10-25-the-mask-that-rendered-anyway
 tags:
   - local-image-generation
   - artcraft-suite
@@ -19,10 +14,6 @@ tags:
   - after-effects
   - mlx
   - hermes-agent
-twitter:card: summary_large_image
-twitter:description: "A 2:22 film through an impossible space: fifteen stills, a 2.5D parallax rig, and a mask API that accepts a rect, ignores it, and reports success."
-twitter:image: /images/impossible-shot-hero.jpg
-twitter:title: "The Mask That Rendered Anyway: One 2:22 Film Through an Impossible Space"
 ---
 
 The brief was a film about impossible space. A protagonist walks into an ordinary

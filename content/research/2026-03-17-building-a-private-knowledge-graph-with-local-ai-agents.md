@@ -11,13 +11,6 @@ description: Learn how to build a comprehensive knowledge graph and vector datab
   data sovereignty while leveraging AI power.
 featured: true
 image: /images/ComfyUI_00278_.png
-og:description: Learn how to build a comprehensive knowledge graph and vector database
-  entirely on your local machine using Mistral Vibe as a coding agent, achieving full
-  data sovereignty while leveraging AI power.
-og:image: /images/ComfyUI_00278_.png
-og:title: Building a Private Knowledge Graph with Local AI Agents
-og:type: article
-og:url: /blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents.md
 readingTime: 8 minutes
 tags:
 - AI
@@ -28,12 +21,6 @@ tags:
 - Mistral Vibe
 - Privacy
 title: Building a Private Knowledge Graph with Local AI Agents
-twitter:card: summary_large_image
-twitter:description: Learn how to build a comprehensive knowledge graph and vector
-  database entirely on your local machine using Mistral Vibe as a coding agent, achieving
-  full data sovereignty while leveraging AI power.
-twitter:image: /images/ComfyUI_00278_.png
-twitter:title: Building a Private Knowledge Graph with Local AI Agents
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "embeddings", "knowledge-graphs", "python", "quantization", "sentence-transformers", "transformers"]
 ---
 # Building a Private Knowledge Graph with Local AI Agents

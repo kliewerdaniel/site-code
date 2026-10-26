@@ -8,14 +8,6 @@ description: A hilarious yet profound takedown of how we anthropomorphize infini
   and absurdly funny.
 image: /images/101801.png
 layout: post
-og:description: A hilarious yet profound takedown of how we anthropomorphize infinity,
-  AI, and abstract systems - exposing the paradoxes that make our metaphors both dangerous
-  and absurdly funny.
-og:image: /images/101801.png
-og:title: 'Infinity, Paradox, and Autonomous Architects: Why Anthropomorphizing AI
-  is the Ultimate Roast'
-og:type: article
-og:url: https://danielkliewer.com/blog/2026-01-05-quantizing-consciousness-digital-resurrection
 tags:
 - philosophy-of-math
 - set-theory
@@ -27,13 +19,6 @@ tags:
 - consciousness
 title: 'Infinity, Paradox, and Autonomous Architects: Why Anthropomorphizing AI is
   the Ultimate Roast'
-twitter:card: summary_large_image
-twitter:description: A hilarious yet profound takedown of how we anthropomorphize
-  infinity, AI, and abstract systems - exposing the paradoxes that make our metaphors
-  both dangerous and absurdly funny.
-twitter:image: /images/101801.png
-twitter:title: 'Infinity, Paradox, and Autonomous Architects: Why Anthropomorphizing
-  AI is the Ultimate Roast'
 wiki_references: ["ai-agents", "mcp", "quantization"]
 ---
 

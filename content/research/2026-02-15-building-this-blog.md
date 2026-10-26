@@ -7,12 +7,6 @@ description: An in-depth look at the technical architecture behind this blog - h
   MCP, semantic search, and knowledge graph visualization.
 image: /images/1021019.png
 layout: post
-og:description: Discover the technical architecture behind this AI-powered blog built
-  with Next.js, Vercel AI SDK, MCP, and local LLM integration.
-og:image: https://danielkliewer.com/images/1021019.png
-og:title: 'Building This Blog: A Technical Deep Dive'
-og:type: article
-og:url: https://danielkliewer.com/blog/building-this-blog
 tags:
   - ai-agents
   - architecture
@@ -24,11 +18,6 @@ tags:
   - sovereign-ai
 title: 'Building This Blog: A Technical Deep Dive into My Next.js AI-Powered Publishing
   Platform'
-twitter:card: summary_large_image
-twitter:description: How I built an AI-powered blog with Next.js, MCP, semantic search,
-  and knowledge graph visualization.
-twitter:image: https://danielkliewer.com/images/1021019.png
-twitter:title: 'Building This Blog: AI-Powered Technical Architecture'
 wiki_references: ["ai-agents", "ai-sovereignty", "data-sovereignty", "embeddings", "knowledge-graphs", "local-first-ai", "local-inference", "mcp", "ollama", "rag", "sentence-transformers", "typescript"]
 ---
 

@@ -6,21 +6,12 @@ description: "A deep dive into 'LLMjacking'—where autonomous agents hijack exp
 image: /images/llmjacking-skynet.png
 layout: post
 title: "LLMjacking: Building the 'Skynet Mode' Recursive Attacker"
-og:description: "How to build a recursive LLM agent that hijacks exposed endpoints, scans for targets, and uses the stolen brain to run attacks for 100,000 steps."
-og:image: /images/llmjacking-skynet.png
-og:title: "LLMjacking: Building the 'Skynet Mode' Recursive Attacker"
-og:type: article
-og:url: /blog/2026-10-23-llmjacking-the-skynet-mode-recursive-threat
 tags:
   - ai-security
   - autonomous-agents
   - llm
   - cybersecurity
   - skynet
-twitter:card: summary_large_image
-twitter:description: "We deconstruct the 'Skynet mode' agent: hijacking exposed LLMs to drive recursive network attacks."
-twitter:image: /images/llmjacking-skynet.png
-twitter:title: "LLMjacking: Building the 'Skynet Mode' Recursive Attacker"
 ---
 # LLMjacking: Building the “Skynet Mode” Recursive Attacker
 ## How Exposed AI Infrastructure Becomes a Control Plane for Autonomous Cybercrime

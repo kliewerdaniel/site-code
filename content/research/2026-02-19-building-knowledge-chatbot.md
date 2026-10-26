@@ -7,13 +7,6 @@ description: How to build a chatbot that captures your knowledge, answers questi
   locally with zero API costs.
 image: /images/1021019.png
 layout: post
-og:description: Turn your expertise into an AI chatbot that anyone can query. Learn
-  to build a local-first knowledge capture system with Ollama, Chroma, and semantic
-  search.
-og:image: https://danielkliewer.com/images/1021019.png
-og:title: Building a Knowledge-Sharing Chatbot
-og:type: article
-og:url: https://danielkliewer.com/blog/building-knowledge-chatbot
 tags:
 - ai
 - ollama
@@ -26,11 +19,6 @@ tags:
 - expertise-capture
 title: 'Building a Knowledge-Sharing Chatbot: Turn Expertise Into an AI That Anyone
   Can Query'
-twitter:card: summary_large_image
-twitter:description: Capture your expertise and turn it into a queryable AI - no cloud,
-  no API costs, complete privacy.
-twitter:image: https://danielkliewer.com/images/1021019.png
-twitter:title: Build a Chatbot That Knows What You Know
 wiki_references: ["embeddings", "knowledge-graphs", "llama3", "local-first-ai", "local-inference", "ollama", "python", "rag", "rlhf", "sentence-transformers"]
 ---
 
