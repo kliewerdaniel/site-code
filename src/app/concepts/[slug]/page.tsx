@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Exhibit, Kicker, RuledRow } from "@/components/Archetypes";
 import { formatDate } from "@/lib/formatDate";
-import { seo } from "@/lib/seo";
+import { breadcrumbSchema, seo } from "@/lib/seo";
 import {
   CONCEPTS,
   getConcept,
@@ -40,7 +40,29 @@ export default async function ConceptPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Concepts", path: "/concepts" },
+            { name: concept.name, path: `/concepts/${concept.slug}` },
+          ]),
+        }}
+      />
       <Exhibit>
+        {/* Breadcrumb — matches the BreadcrumbList schema above. */}
+        <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-2 mb-8">
+          <Link href="/" className="hover:text-gold transition-colors">
+            Home
+          </Link>
+          <span className="mx-2">/</span>
+          <Link href="/concepts" className="hover:text-gold transition-colors">
+            Concepts
+          </Link>
+          <span className="mx-2">/</span>
+          <span>{concept.name}</span>
+        </nav>
         <Kicker>Concept</Kicker>
         <h1 className="display-lg mt-6 max-w-3xl">{concept.name}</h1>
         <p className="display-md mt-6 max-w-2xl text-ink-2 italic">

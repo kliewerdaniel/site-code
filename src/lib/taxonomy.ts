@@ -521,6 +521,15 @@ export function projectsForConcept(concept: Concept): Project[] {
     .filter((p): p is Project => Boolean(p));
 }
 
+/**
+ * Reverse lookup: the projects whose own write-up list includes this post.
+ * Derived from `Project.articles`, so a post's "Part of" block can never
+ * disagree with the project page's "Where this was worked out" block.
+ */
+export function projectsForPost(slug: string): Project[] {
+  return PROJECTS.filter((p) => p.articles.includes(slug));
+}
+
 export const MATURITY_LABEL: Record<Maturity, string> = {
   implementation: "Implementation",
   prototype: "Prototype",

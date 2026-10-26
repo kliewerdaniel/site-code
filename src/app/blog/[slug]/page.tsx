@@ -22,6 +22,12 @@ import {
   canonical,
   seo,
 } from "@/lib/seo";
+import {
+  conceptsForProject,
+  projectsForPost,
+  type Concept,
+  type Project,
+} from "@/lib/taxonomy";
 
 export const dynamicParams = false;
 
@@ -131,6 +137,21 @@ export default async function BlogPostPage({
     .filter((p) => !related.some((r) => r.slug === p.slug))
     .slice(0, 6);
 
+  // "Part of": the systems this post is a write-up for, plus the concepts those
+  // systems implement. Both sides are derived from taxonomy.ts (projectsForPost
+  // reads Project.articles), so this block and the project page's own writing
+  // block can never disagree. Rendered only when the post genuinely belongs to
+  // something — a post that is not about a project gets no empty section.
+  const partOfProjects = projectsForPost(slug);
+  const partOfConcepts: Concept[] = [];
+  for (const project of partOfProjects) {
+    for (const concept of conceptsForProject(project)) {
+      if (!partOfConcepts.some((c) => c.slug === concept.slug)) {
+        partOfConcepts.push(concept);
+      }
+    }
+  }
+
   return (
     <>
       <script
@@ -234,6 +255,50 @@ export default async function BlogPostPage({
           </ReactMarkdown>
         </Prose>
 
+        {/* Part of — the systems this post is a write-up for. Computed from
+            taxonomy.ts, never hand-listed; omitted entirely when the post is
+            not about a project. */}
+        {partOfProjects.length > 0 && (
+          <section className="mt-16 pt-10 border-t border-rule">
+            <h2 className="font-display text-2xl text-ink mb-6">Part of</h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {partOfProjects.map((project: Project) => (
+                <Link
+                  key={project.slug}
+                  href={`/projects/${project.slug}`}
+                  className="group block border border-rule rounded-lg p-5 hover:border-gold transition-colors"
+                >
+                  <p className="font-mono text-[11px] text-ink-2 mb-2">
+                    System
+                  </p>
+                  <h3 className="font-display text-lg text-ink group-hover:text-gold transition-colors leading-snug">
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-2 line-clamp-3">
+                    {project.role}
+                  </p>
+                </Link>
+              ))}
+            </div>
+            {partOfConcepts.length > 0 && (
+              <div className="mt-8">
+                <p className="label text-ink-3 mb-3">Concepts it implements</p>
+                <div className="flex flex-wrap gap-2">
+                  {partOfConcepts.map((concept) => (
+                    <Link
+                      key={concept.slug}
+                      href={`/concepts/${concept.slug}`}
+                      className="font-mono text-[11px] px-2 py-1 border border-rule rounded text-ink-2 hover:text-ink hover:border-rule-2 transition-colors"
+                    >
+                      {concept.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Related posts */}
         {related.length > 0 && (
           <section className="mt-16 pt-10 border-t border-rule">
@@ -265,7 +330,7 @@ export default async function BlogPostPage({
         {/* More from the archive — second-order cross-links. Tag overlap first,
             then temporal neighbors, so every post links deeper into the graph
             instead of ending as a dead-end leaf. This is what distributes
-            authority across the 184-post tail rather than concentrating it on
+            authority across the archive tail rather than concentrating it on
             the /research hub. */}
         {neighbors.length > 0 && (
           <section className="mt-14 pt-10 border-t border-rule">
