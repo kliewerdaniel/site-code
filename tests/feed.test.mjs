@@ -83,6 +83,23 @@ test("escapeXml: escapes all five XML metacharacters", () => {
   assert.equal(escapeXml(`&<>"'`), "&amp;&lt;&gt;&quot;&apos;");
 });
 
+test("feedXml: the self link is origin + /feed.xml for any trailing-slash form", () => {
+  // The original implementation concatenated the channel link with the
+  // filename, which produced "…danielkliewer.comfeed.xml" for a bare origin.
+  for (const link of [
+    "https://www.danielkliewer.com",
+    "https://www.danielkliewer.com/",
+    "https://www.danielkliewer.com///",
+  ]) {
+    const xml = feedXml({ ...CHANNEL, link });
+    assert.match(
+      xml,
+      /<atom:link href="https:\/\/www\.danielkliewer\.com\/feed\.xml" rel="self"/
+    );
+    assert.ok(!xml.includes("comfeed.xml"), `concatenation bug for ${link}`);
+  }
+});
+
 test("feedXml: an empty item list still yields a well-formed document", () => {
   const xml = feedXml({ ...CHANNEL, items: [] });
   assert.match(xml, /<rss version="2\.0"/);

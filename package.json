@@ -23,11 +23,15 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.4.2",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3"
   },
   "license": "UNLICENSED",
   "name": "danielkliewer-com-v2",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -35,7 +39,10 @@
     "start": "next start",
     "test": "node --test tests/*.test.mjs",
     "prenode": "node scripts/check-node-version.mjs",
-    "prebuild": "npm run prenode && node scripts/check-images.mjs"
+    "prebuild": "npm run prenode && node scripts/image-dimensions.mjs && node scripts/check-images.mjs",
+    "validate:content": "node scripts/validate-content.mjs",
+    "validate:build": "node scripts/validate-build.mjs",
+    "check:routes": "node scripts/check-routes.mjs"
   },
   "version": "2.0.0"
 }

@@ -1,0 +1,75 @@
+# CI for danielkliewer.com.
+#
+# The repository had no CI at all (no .github/, no vercel.json, no middleware),
+# so none of the gates below were enforced anywhere but a developer's machine.
+# This workflow is the only place the full gate runs before a merge.
+#
+# Deliberately NOT set: DK_ALLOW_NODE_VERSION. The runtime floor is the whole
+# point of scripts/check-node-version.mjs; allowing it to be bypassed in CI
+# would mean CI can pass on a runtime the gate exists to reject.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# One run at a time per branch; a newer push cancels the older run.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Node version comes from .nvmrc so CI and local cannot drift. The
+      # prebuild prenode gate then fails closed on anything older than 22.23.4.
+      - name: Read .nvmrc
+        id: nvmrc
+        run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.nvmrc.outputs.version }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # No high or critical production vulnerabilities. `npm audit` exits
+      # non-zero above --audit-level=high, so this is a real gate.
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
+      # Runs prenode + image-dimensions + check-images via the prebuild hook.
+      - name: Build
+        run: npm run build
+
+      # Content contract: fatal on a broken post, reports editorial drift.
+      - name: Validate content
+        run: npm run validate:content
+
+      # Post-build assertions over the prerendered HTML: one h1, self-referential
+      # canonical, complete OG/Twitter, parseable JSON-LD, no unintended noindex,
+      # sitemap count == built page count.
+      - name: Validate build
+        run: npm run validate:build
+
+      # Route parity: every URL in the manifest resolves, and every removed
+      # section still 308s to its replacement. Starts its own server and always
+      # kills it, so CI never leaks a process.
+      - name: Route parity
+        run: npm run check:routes

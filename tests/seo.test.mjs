@@ -23,6 +23,7 @@ import {
   buildMetadata,
   canonicalFor,
   jsonLd,
+  mergeMeta,
   resolveUpdated,
 } from "../src/lib/seo-core.ts";
 
@@ -189,6 +190,25 @@ test("resolveUpdated: falls back to date, and prefers a real updated value", () 
     resolveUpdated("2026-01-01T00:00:00.000Z", ""),
     "2026-01-01T00:00:00.000Z"
   );
+});
+
+// ---- mergeMeta (the actual F4 root cause) --------------------------------
+
+test("mergeMeta: merges one level deep so an override cannot drop a default", () => {
+  // `mergeMeta(base, base)` was the original bug — merging the object with
+  // itself, a no-op that meant the deep-merge never happened.
+  const a = { openGraph: { title: "A", url: "u", images: ["i"] }, robots: { index: false } };
+  const b = { openGraph: { title: "B" }, robots: undefined };
+  const out = mergeMeta(a, b);
+  assert.deepEqual(out.openGraph, { title: "B", url: "u", images: ["i"] });
+  // `undefined` must not clobber a default: a caller's absent keys arrive as
+  // explicit undefined and `{...a, ...b}` alone would wipe them.
+  assert.deepEqual(out.robots, { index: false });
+});
+
+test("mergeMeta: replaces, not merges, non-nested top-level keys", () => {
+  const out = mergeMeta({ title: "A" }, { title: "B" });
+  assert.equal(out.title, "B");
 });
 
 // ---- absoluteImage -------------------------------------------------------
