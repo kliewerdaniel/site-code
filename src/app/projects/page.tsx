@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Exhibit, Kicker, RuledRow } from "@/components/Archetypes";
+import { HeroBand } from "@/components/HeroBand";
 import { seo } from "@/lib/seo";
 import { PROJECTS, MATURITY_LABEL, type Maturity } from "@/lib/taxonomy";
 
@@ -17,7 +18,12 @@ const ORDER: Maturity[] = ["implementation", "prototype", "research"];
 export default function ProjectsPage() {
   return (
     <>
-      <Exhibit>
+      <HeroBand
+        poster="/images/hero/hero-projects.jpg"
+        srcMp4="/images/hero/hero-projects-loop.mp4"
+        srcWebm="/images/hero/hero-projects-loop.webm"
+        alt="A row of machined metal instruments on a dark steel bench under a single warm amber light"
+      >
         <Kicker>Systems</Kicker>
         <h1 className="display-lg mt-6 max-w-3xl">
           Twelve systems, and the problem each one was built to answer.
@@ -33,7 +39,7 @@ export default function ProjectsPage() {
           are a dated snapshot read on 25 October 2026 — a last-commit date and a
           count of test files. They are not benchmarks and not adoption figures.
         </p>
-      </Exhibit>
+      </HeroBand>
 
       <section className="border-t border-rule bg-void-2">
         <div className="mx-auto w-full max-w-5xl px-6 py-20">

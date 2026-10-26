@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Exhibit, Kicker } from "@/components/Archetypes";
+import { HeroBand } from "@/components/HeroBand";
 import { getAllPosts, getAllTags, tagSlug } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
 import { seo } from "@/lib/seo";
@@ -84,7 +85,13 @@ export default async function ResearchPage({
   }));
 
   return (
-    <Exhibit wide>
+    <>
+    <HeroBand
+      poster="/images/hero/hero-research.jpg"
+      srcMp4="/images/hero/hero-research-loop.mp4"
+      srcWebm="/images/hero/hero-research-loop.webm"
+      alt="A dark stone reading desk with a stack of archival manuscript folios under a single warm brass lamp"
+    >
       <Kicker>
         {activeTag ? `${activeTag.tag} · research archive` : "Research archive"}
       </Kicker>
@@ -112,7 +119,9 @@ export default async function ResearchPage({
           </>
         ) : null}
       </p>
+    </HeroBand>
 
+    <Exhibit wide>
       <ResearchSearch posts={searchable}>
         {/* Tag filter chips — a chip is right here because these are a
             filter control, not content. */}
@@ -246,5 +255,6 @@ export default async function ResearchPage({
         )}
       </ResearchSearch>
     </Exhibit>
+    </>
   );
 }
