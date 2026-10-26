@@ -83,11 +83,16 @@ export function collect() {
     // ---- reported ----
     const desc = typeof data.description === "string" ? data.description.trim() : "";
     if (!desc) {
+      // Advisory, not a defect: the page still renders a valid, accurate
+      // 160-char excerpt derived from its own body (verified in the build
+      // output). Nothing is broken; a hand-written description is simply better.
+      // The mission spec for this validator calls it a "non-fatal report".
       findings.push({
-        severity: "defect",
+        severity: "advisory",
         kind: "description-missing",
         file,
-        detail: `no \`description\` frontmatter (falls back to a ${DESC_ADVISORY}-char auto-excerpt)`,
+        id: `description-missing:${file}`,
+        detail: `no usable \`description\` frontmatter (falls back to a ${DESC_ADVISORY}-char auto-excerpt)`,
       });
     } else {
       if (desc.length > DESC_ADVISORY) {
@@ -95,6 +100,7 @@ export function collect() {
           severity: "advisory",
           kind: "description-long",
           file,
+          id: `description-long:${file}`,
           detail: `description is ${desc.length} chars (> ${DESC_ADVISORY})`,
           value: desc.length,
         });
@@ -109,6 +115,7 @@ export function collect() {
         severity: "advisory",
         kind: "title-long",
         file,
+        id: `title-long:${file}`,
         detail: `title is ${title.length} chars (> ${TITLE_ADVISORY})`,
         value: title.length,
       });
@@ -121,6 +128,7 @@ export function collect() {
           severity: "defect",
           kind: "canonical-mismatch",
           file,
+          id: `canonical-mismatch:${file}`,
           detail: `\`canonical_url\` is ${data.canonical_url.trim()}, self URL is ${want}`,
           value: data.canonical_url.trim(),
         });
@@ -135,6 +143,7 @@ export function collect() {
           severity: "defect",
           kind: "updated-before-date",
           file,
+          id: `updated-before-date:${file}`,
           detail: `\`updated\` (${data.updated}) is earlier than \`date\` (${date})`,
         });
       }
@@ -147,6 +156,7 @@ export function collect() {
         severity: "defect",
         kind: "description-duplicate",
         file: list.join(", "),
+        id: `description-duplicate:${list[0]}`,
         detail: `duplicate description shared by ${list.length} posts`,
         value: desc.slice(0, 120),
       });

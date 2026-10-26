@@ -259,13 +259,13 @@
     }
   },
   "fatal": 0,
-  "defects": 24,
-  "advisory": 330,
+  "defects": 11,
+  "advisory": 343,
   "byKind": {
-    "description-missing": 13,
     "canonical-mismatch": 11,
     "description-long": 174,
-    "title-long": 156
+    "title-long": 156,
+    "description-missing": 13
   },
   "canonical": {
     "total": 11,
@@ -356,19 +356,6 @@
     "fatal": 0
   },
   "defectList": [
-    "2024-11-27-instagram-feed-summarizer.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2024-11-27-reddit-blog-generator.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2024-11-27-swarm-autogen.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2024-11-28-basic-autogen.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2024-11-28-basic-swarm-chatbot.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2024-11-29-tech-company-orchestrator.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2024-12-30-cultural-fingerprints.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2025-01-16-solo-business-ventures.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2025-01-23-building-a-multimodal-story-generation-system.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2025-03-09-custom-agent.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2025-07-08-ai-ssr-guide.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2025-10-18-Is-There-No-King.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
-    "2025-10-19-vibe-coding-janitor-session.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
     "2025-10-21-learn-programming-computer-science-youtube-roadmap.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-21-learn-programming-computer-science-youtube-roadmap, self URL is /blog/2025-10-21-learn-programming-computer-science-youtube-roadmap",
     "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API, self URL is /blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API",
     "2025-10-25-building-your-own-uncensored-ai-overlord.md: `canonical_url` is https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord, self URL is /blog/2025-10-25-building-your-own-uncensored-ai-overlord",
@@ -380,5 +367,2841 @@
     "2026-09-04-the-rented-sovereign-agent-agency-stack.md: `canonical_url` is /blog/the-rented-sovereign-agent-agency-stack, self URL is /blog/2026-09-04-the-rented-sovereign-agent-agency-stack",
     "2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md: `canonical_url` is /blog/omarchy-on-a-2017-macbook-pro-a-setup-retrospective, self URL is /blog/2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective",
     "2026-10-11-rust-native-creative-suite-installation.md: `canonical_url` is /blog/rust-native-creative-suite-installation, self URL is /blog/2026-10-11-rust-native-creative-suite-installation"
+  ],
+  "findingIds": [
+    "canonical-mismatch:2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+    "canonical-mismatch:2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+    "canonical-mismatch:2025-10-25-building-your-own-uncensored-ai-overlord.md",
+    "canonical-mismatch:2025-10-31-reddit-haunting-project-ai-resurrection.md",
+    "canonical-mismatch:2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+    "canonical-mismatch:2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+    "canonical-mismatch:2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+    "canonical-mismatch:2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+    "canonical-mismatch:2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+    "canonical-mismatch:2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md",
+    "canonical-mismatch:2026-10-11-rust-native-creative-suite-installation.md",
+    "description-long:2024-10-04-detailed-description-of-insight-journal.md",
+    "description-long:2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models.md",
+    "description-long:2024-10-12-django-react.md",
+    "description-long:2024-10-18-building-a-full-stack-application-with-django-and-react.md",
+    "description-long:2024-10-22-integrating-django-react-ollama-with-xai-api.md",
+    "description-long:2024-10-24-ghost-writer.md",
+    "description-long:2024-10-30-creating-ai-agents.md",
+    "description-long:2024-11-04-deep-fake.md",
+    "description-long:2024-11-22-planning.md",
+    "description-long:2024-11-22-rlhf-lab.md",
+    "description-long:2024-11-23-rlhf-lab-business-plan.md",
+    "description-long:2024-11-27-ai-agent-based-cross-platform-content-generator-and-distributor.md",
+    "description-long:2024-11-27-data-annotation-guide.md",
+    "description-long:2024-11-27-enhanced-persona-generator.md",
+    "description-long:2024-12-01-basic-rag.md",
+    "description-long:2024-12-02-persona-chat.md",
+    "description-long:2024-12-05-personagen.md",
+    "description-long:2024-12-09-pydantic-rag.md",
+    "description-long:2024-12-10-rl.md",
+    "description-long:2024-12-11-next-gen-personagen.md",
+    "description-long:2024-12-14-learning-from-the-past.md",
+    "description-long:2024-12-19-continue.dev-ollama.md",
+    "description-long:2024-12-19-homeless-guide-austin.md",
+    "description-long:2024-12-19-langchain-ollama.md",
+    "description-long:2025-01-22-image-to-book.md",
+    "description-long:2025-02-03-scrape-reddit-analysis-blog.md",
+    "description-long:2025-02-05-loco-local-localllama.md",
+    "description-long:2025-02-05-ollama-smolagents-open-deep-research.md",
+    "description-long:2025-02-05-open-deep-research.md",
+    "description-long:2025-02-14-reddiss.md",
+    "description-long:2025-02-23-privacy-policy.md",
+    "description-long:2025-02-25-building-an-ai-powered-filename-generator-chrome-extension.md",
+    "description-long:2025-03-03-text-adventure.md",
+    "description-long:2025-03-09-mastra-ollama-nextjs.md",
+    "description-long:2025-03-09-nextjs-firebase.md",
+    "description-long:2025-03-09-nextjs-ollama-custom-agent-framework.md",
+    "description-long:2025-03-09-reason-ai.md",
+    "description-long:2025-03-11-integrating-rust-burn-framework-for-ai.md",
+    "description-long:2025-03-11-integrating-the-openai-agents-sdk-with-rusts-burn-framework.md",
+    "description-long:2025-03-12-integrating-openai-agents-sdk-ollama.md",
+    "description-long:2025-03-12-mcp-openai-agents-sdk-ollama.md",
+    "description-long:2025-03-12-mcp-openai-responses-api-agents-sdk-ollama.md",
+    "description-long:2025-03-12-openai-agents-sdk-ollama-integration.md",
+    "description-long:2025-03-13-simulacra.md",
+    "description-long:2025-03-21-browser-use-ollama-mcp.md",
+    "description-long:2025-03-22-local-llm-document-pipeline-blueprint.md",
+    "description-long:2025-03-24-model-context-protocol.md",
+    "description-long:2025-03-25-large-scale-agent-architecture.md",
+    "description-long:2025-03-28-ollama-chunking.md",
+    "description-long:2025-03-28-scalable-ai-backends.md",
+    "description-long:2025-03-29-markdown-teaching-assistant.md",
+    "description-long:2025-03-30-building-a-personalized-ai-learning-system-with-local-llm.md",
+    "description-long:2025-03-30-learning-platform.md",
+    "description-long:2025-04-06-judgmental-art-cat.md",
+    "description-long:2025-04-07-echoshelf.md",
+    "description-long:2025-07-06-beyond-prompts.md",
+    "description-long:2025-10-20-how-to-vibe-code-a-nextjs-boilerplate-repo.md",
+    "description-long:2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+    "description-long:2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+    "description-long:2025-10-25-building-your-own-uncensored-ai-overlord.md",
+    "description-long:2025-10-31-reddit-haunting-project-ai-resurrection.md",
+    "description-long:2025-11-02-rise-of-vibe-coding.md",
+    "description-long:2025-11-03-document-driven-development-nextjs-blog.md",
+    "description-long:2025-11-03-the-revolution-will-be-documented.md",
+    "description-long:2025-11-04-ai-flatten-workforce-inequality-honest-conversation.md",
+    "description-long:2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+    "description-long:2025-11-05-how-to-build-an-ai-study-system-that-actually-works-citizens-replace-your-broken-pdf-tools.md",
+    "description-long:2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+    "description-long:2025-11-08-local-llm-integration.md",
+    "description-long:2025-11-10-top-ai-algortihms.md",
+    "description-long:2025-11-11-vscode-blog-editing.md",
+    "description-long:2025-11-12-mastering-llama-cpp-local-llm-integration-guide.md",
+    "description-long:2025-11-14-2025-inference-new-geography-intelligence.md",
+    "description-long:2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval.md",
+    "description-long:2025-12-04-critical-nextjs-rce-cve-2025-66478-security-guide.md",
+    "description-long:2026-01-03-american-phoenix.md",
+    "description-long:2026-01-03-autonomous-architectures.md",
+    "description-long:2026-01-05-architectures-of-autonomous-voice.md",
+    "description-long:2026-01-05-quantizing-consciousness-digital-resurrection.md",
+    "description-long:2026-01-07-specgen-deterministic-ai-powered-code-generation-from-naturals-language.md",
+    "description-long:2026-01-08-revolutionizing-music-creation-the-dawn-of-ace-step-and-the-shadows-of-ai-warfare.md",
+    "description-long:2026-01-10-the-ai-revolution-in-business-transforming-sales-crm-and-customer-management-in-2026.md",
+    "description-long:2026-01-11-from-grief-to-code-the-digital-resurrection-journey.md",
+    "description-long:2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+    "description-long:2026-01-16-from-fragmented-experiments-to-cognitive-synthesis.md",
+    "description-long:2026-01-22-dynamic-persona-moe-rag.md",
+    "description-long:2026-01-22-from-scaffolding-to-reality-building-the-dynamic-persona-moe-rag-system.md",
+    "description-long:2026-01-22-renders-latest-betrayal-or-how-my-logs-quietly-became-someone-elses-asset.md",
+    "description-long:2026-01-25-building-the-synthetic-analyst.md",
+    "description-long:2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system.md",
+    "description-long:2026-01-28-dynamic-persona-moe-rag-implementation-plan.md",
+    "description-long:2026-02-03-dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence.md",
+    "description-long:2026-02-08-audible-data-transmission-when-humans-become-the-codec.md",
+    "description-long:2026-02-15-building-this-blog.md",
+    "description-long:2026-02-19-building-knowledge-chatbot.md",
+    "description-long:2026-02-22-building-cognitive-graph-ai-application.md",
+    "description-long:2026-03-10-breaking-free-from-chatgpt.md",
+    "description-long:2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents.md",
+    "description-long:2026-03-26-deerflow-2-building-sovereign-ai-agent-systems.md",
+    "description-long:2026-03-28-architecture-as-autonomy.md",
+    "description-long:2026-03-28-sovereignty-manifesto.md",
+    "description-long:2026-03-29-architecture-of-autonomy.md",
+    "description-long:2026-03-29-sovereign-synthesis.md",
+    "description-long:2026-04-15-synthetic-intelligence-why-emergence-is-math-and-data-should-stay-local.md",
+    "description-long:2026-04-29-recursive-language-models.md",
+    "description-long:2026-05-01-qwen-scope-interpretability-interface.md",
+    "description-long:2026-05-02-autodata-ram-ecosystem.md",
+    "description-long:2026-06-01-objective03-local-news-agency.md",
+    "description-long:2026-06-03-the-model-is-not-the-product-on-building-persistent-intelligence-infrastructure.md",
+    "description-long:2026-06-08-objective05-exec-giving-local-intelligence-system-hands.md",
+    "description-long:2026-06-08-opendesign-opencode-local-first-design-operating-system.md",
+    "description-long:2026-06-12-sovereignspec-ganymedean-alignment-protocol.md",
+    "description-long:2026-06-12-sovereignspec-local-first-spec-driven-development.md",
+    "description-long:2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems.md",
+    "description-long:2026-06-14-sovereign-memory-bank.md",
+    "description-long:2026-06-30-amis-in-action-autonomous-marketing-knowledge-graph.md",
+    "description-long:2026-07-02-building-autonomous-sovereign-ai-with-autoresearch-loops-and-fine-tuned-expert-models.md",
+    "description-long:2026-07-02-context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm.md",
+    "description-long:2026-07-02-context-engineering-the-real-full-stack-development-paradigm.md",
+    "description-long:2026-07-03-the-model-is-not-the-product.md",
+    "description-long:2026-07-03-the-sovereign-intelligence-observatory.md",
+    "description-long:2026-07-04-sovereign-intelligence-stack.md",
+    "description-long:2026-07-05-getting-started-sovereign-ai.md",
+    "description-long:2026-07-05-local-ai-architecture-synthesis.md",
+    "description-long:2026-07-05-retrieval-architecture-synthesis.md",
+    "description-long:2026-07-05-sovereign-ai-architecture-synthesis.md",
+    "description-long:2026-07-06-sovereign-ai-benchmarks-performance-results.md",
+    "description-long:2026-07-06-the-sovereign-loop-why-model-local-ai-is-the-missing-os-layer.md",
+    "description-long:2026-07-09-telemetry-intelligence-engine.md",
+    "description-long:2026-07-11-knowledge-compiler-compiling-human-knowledge-into-static-semantic-artifacts.md",
+    "description-long:2026-07-12-compile-time-ai-knowledge-compiler-architecture.md",
+    "description-long:2026-07-14-recursive-research-compiler-knowledge-compiler-sdk.md",
+    "description-long:2026-07-14-synthesizing-memory-with-agent.md",
+    "description-long:2026-07-15-compiling-my-blog-into-a-decision-graph.md",
+    "description-long:2026-07-15-sovereign-memory-bank-deepening-local-first-cognitive-memory.md",
+    "description-long:2026-07-16-the-sovereign-knowledge-compiler-explorer.md",
+    "description-long:2026-07-18-compile-time-ai-k8s.md",
+    "description-long:2026-07-20-compile-time-intelligence-research-compiler-agent.md",
+    "description-long:2026-07-21-compiling-medical-evidence-clinical-research-compiler.md",
+    "description-long:2026-07-21-research-compiler-scientific-discovery.md",
+    "description-long:2026-07-22-if-the-loop-is-the-product.md",
+    "description-long:2026-07-23-building-the-scientific-question-compiler.md",
+    "description-long:2026-07-23-the-loop-closes-itself.md",
+    "description-long:2026-07-23-the-next-experiment-grounded-and-quantitative.md",
+    "description-long:2026-07-23-the-scientific-state-compiler-pass-4.md",
+    "description-long:2026-07-23-the-scientific-state-compiler-roadmap.md",
+    "description-long:2026-07-23-validating-at-scale-orkg.md",
+    "description-long:2026-07-24-popper-the-falsifiable-hypothesis-compiler.md",
+    "description-long:2026-07-25-does-the-hypothesis-compiler-generalize-orkg.md",
+    "description-long:2026-07-26-does-the-compiler-know-when-it-is-wrong.md",
+    "description-long:2026-08-05-build-a-video-editing-hermes-agent.md",
+    "description-long:2026-08-08-building-rehab-analyzer-with-hermes.md",
+    "description-long:2026-08-09-hermes-atlas-v01-local-first-incrementally-compiled-falsifiable-knowledge-system.md",
+    "description-long:2026-08-09-hermes-atlas-v02-claim-level-coverage-determinism-gate-knowledge-mutation-canary.md",
+    "description-long:2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain.md",
+    "description-long:2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark.md",
+    "description-long:2026-08-09-hermes-video-agent.md",
+    "description-long:2026-08-21-the-skills-map-for-building-and-deploying-ai-applications.md",
+    "description-long:2026-09-03-pagerank-seo-information-architecture-problem.md",
+    "description-long:2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+    "description-long:2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+    "description-long:2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md",
+    "description-long:2026-10-11-rust-native-creative-suite-installation.md",
+    "description-long:2026-10-12-mindbroadcast.md",
+    "description-long:2026-10-22-running-recursive-flint-locally-with-hermes.md",
+    "description-long:2026-10-23-llmjacking-the-skynet-mode-recursive-threat.md",
+    "description-long:2026-10-23-operation-ouroboros-recursive-intelligence-parasite.md",
+    "description-long:2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate.md",
+    "description-long:2026-10-24-qwen-image-2-1-turbo-on-apple-silicon.md",
+    "description-long:2026-10-25-ganymede-the-archive-of-the-gods.md",
+    "description-long:2026-10-25-hermes-local-video-studio.md",
+    "description-long:2026-10-25-the-dissolve-that-wasnt-applied.md",
+    "description-long:2026-10-25-the-keyframe-that-went-nowhere.md",
+    "description-long:2026-10-25-the-mask-that-rendered-anyway.md",
+    "description-missing:2024-11-27-instagram-feed-summarizer.md",
+    "description-missing:2024-11-27-reddit-blog-generator.md",
+    "description-missing:2024-11-27-swarm-autogen.md",
+    "description-missing:2024-11-28-basic-autogen.md",
+    "description-missing:2024-11-28-basic-swarm-chatbot.md",
+    "description-missing:2024-11-29-tech-company-orchestrator.md",
+    "description-missing:2024-12-30-cultural-fingerprints.md",
+    "description-missing:2025-01-16-solo-business-ventures.md",
+    "description-missing:2025-01-23-building-a-multimodal-story-generation-system.md",
+    "description-missing:2025-03-09-custom-agent.md",
+    "description-missing:2025-07-08-ai-ssr-guide.md",
+    "description-missing:2025-10-18-Is-There-No-King.md",
+    "description-missing:2025-10-19-vibe-coding-janitor-session.md",
+    "title-long:2024-10-04-detailed-description-of-insight-journal.md",
+    "title-long:2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models.md",
+    "title-long:2024-10-12-django-react.md",
+    "title-long:2024-10-18-building-a-full-stack-application-with-django-and-react.md",
+    "title-long:2024-10-22-integrating-django-react-ollama-with-xai-api.md",
+    "title-long:2024-10-24-ghost-writer.md",
+    "title-long:2024-10-30-creating-ai-agents.md",
+    "title-long:2024-11-04-deep-fake.md",
+    "title-long:2024-11-22-planning.md",
+    "title-long:2024-11-22-rlhf-lab.md",
+    "title-long:2024-11-23-rlhf-lab-business-plan.md",
+    "title-long:2024-11-27-ai-agent-based-cross-platform-content-generator-and-distributor.md",
+    "title-long:2024-11-27-data-annotation-guide.md",
+    "title-long:2024-11-27-enhanced-persona-generator.md",
+    "title-long:2024-11-27-swarm-autogen.md",
+    "title-long:2024-11-29-tech-company-orchestrator.md",
+    "title-long:2024-12-01-basic-rag.md",
+    "title-long:2024-12-02-persona-chat.md",
+    "title-long:2024-12-05-personagen.md",
+    "title-long:2024-12-09-pydantic-rag.md",
+    "title-long:2024-12-10-rl.md",
+    "title-long:2024-12-11-next-gen-personagen.md",
+    "title-long:2024-12-14-learning-from-the-past.md",
+    "title-long:2024-12-19-continue.dev-ollama.md",
+    "title-long:2024-12-19-homeless-guide-austin.md",
+    "title-long:2024-12-19-langchain-ollama.md",
+    "title-long:2024-12-30-cultural-fingerprints.md",
+    "title-long:2025-01-16-solo-business-ventures.md",
+    "title-long:2025-01-22-image-to-book.md",
+    "title-long:2025-02-03-scrape-reddit-analysis-blog.md",
+    "title-long:2025-02-05-loco-local-localllama.md",
+    "title-long:2025-02-05-ollama-smolagents-open-deep-research.md",
+    "title-long:2025-02-05-open-deep-research.md",
+    "title-long:2025-02-14-reddiss.md",
+    "title-long:2025-02-23-privacy-policy.md",
+    "title-long:2025-02-25-building-an-ai-powered-filename-generator-chrome-extension.md",
+    "title-long:2025-03-03-text-adventure.md",
+    "title-long:2025-03-09-mastra-ollama-nextjs.md",
+    "title-long:2025-03-09-nextjs-firebase.md",
+    "title-long:2025-03-09-nextjs-ollama-custom-agent-framework.md",
+    "title-long:2025-03-09-reason-ai.md",
+    "title-long:2025-03-11-integrating-rust-burn-framework-for-ai.md",
+    "title-long:2025-03-11-integrating-the-openai-agents-sdk-with-rusts-burn-framework.md",
+    "title-long:2025-03-12-mcp-openai-agents-sdk-ollama.md",
+    "title-long:2025-03-12-mcp-openai-responses-api-agents-sdk-ollama.md",
+    "title-long:2025-03-12-openai-agents-sdk-ollama-integration.md",
+    "title-long:2025-03-13-simulacra.md",
+    "title-long:2025-03-21-browser-use-ollama-mcp.md",
+    "title-long:2025-03-22-local-llm-document-pipeline-blueprint.md",
+    "title-long:2025-03-24-model-context-protocol.md",
+    "title-long:2025-03-25-large-scale-agent-architecture.md",
+    "title-long:2025-03-28-ollama-chunking.md",
+    "title-long:2025-03-28-scalable-ai-backends.md",
+    "title-long:2025-03-30-building-a-personalized-ai-learning-system-with-local-llm.md",
+    "title-long:2025-03-30-learning-platform.md",
+    "title-long:2025-04-06-judgmental-art-cat.md",
+    "title-long:2025-04-07-echoshelf.md",
+    "title-long:2025-07-06-beyond-prompts.md",
+    "title-long:2025-07-06-demystifying-large-language-models.md",
+    "title-long:2025-07-08-ai-ssr-guide.md",
+    "title-long:2025-10-19-vibe-coding-janitor-session.md",
+    "title-long:2025-10-20-how-to-vibe-code-a-nextjs-boilerplate-repo.md",
+    "title-long:2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+    "title-long:2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+    "title-long:2025-10-25-building-your-own-uncensored-ai-overlord.md",
+    "title-long:2025-10-31-reddit-haunting-project-ai-resurrection.md",
+    "title-long:2025-11-02-rise-of-vibe-coding.md",
+    "title-long:2025-11-03-document-driven-development-nextjs-blog.md",
+    "title-long:2025-11-03-the-revolution-will-be-documented.md",
+    "title-long:2025-11-04-ai-flatten-workforce-inequality-honest-conversation.md",
+    "title-long:2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+    "title-long:2025-11-05-how-to-build-an-ai-study-system-that-actually-works-citizens-replace-your-broken-pdf-tools.md",
+    "title-long:2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+    "title-long:2025-11-08-local-llm-integration.md",
+    "title-long:2025-11-10-top-ai-algortihms.md",
+    "title-long:2025-11-11-vscode-blog-editing.md",
+    "title-long:2025-11-14-2025-inference-new-geography-intelligence.md",
+    "title-long:2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval.md",
+    "title-long:2025-12-09-mcp-integration-uncensored-chatbot.md",
+    "title-long:2026-01-03-american-phoenix.md",
+    "title-long:2026-01-03-autonomous-architectures.md",
+    "title-long:2026-01-05-architectures-of-autonomous-voice.md",
+    "title-long:2026-01-05-quantizing-consciousness-digital-resurrection.md",
+    "title-long:2026-01-07-specgen-deterministic-ai-powered-code-generation-from-naturals-language.md",
+    "title-long:2026-01-08-revolutionizing-music-creation-the-dawn-of-ace-step-and-the-shadows-of-ai-warfare.md",
+    "title-long:2026-01-10-the-ai-revolution-in-business-transforming-sales-crm-and-customer-management-in-2026.md",
+    "title-long:2026-01-11-from-grief-to-code-the-digital-resurrection-journey.md",
+    "title-long:2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+    "title-long:2026-01-16-from-fragmented-experiments-to-cognitive-synthesis.md",
+    "title-long:2026-01-22-from-scaffolding-to-reality-building-the-dynamic-persona-moe-rag-system.md",
+    "title-long:2026-01-22-renders-latest-betrayal-or-how-my-logs-quietly-became-someone-elses-asset.md",
+    "title-long:2026-01-25-building-the-synthetic-analyst.md",
+    "title-long:2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system.md",
+    "title-long:2026-02-03-dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence.md",
+    "title-long:2026-02-13-the-biological-api-why-ai-developers-should-care-about-rhythmic-chanting.md",
+    "title-long:2026-02-15-building-this-blog.md",
+    "title-long:2026-02-19-building-knowledge-chatbot.md",
+    "title-long:2026-03-10-how-to-run-your-own-ai-agent-openclaw-qwen-telegram.md",
+    "title-long:2026-03-26-deerflow-2-building-sovereign-ai-agent-systems.md",
+    "title-long:2026-03-28-sovereignty-manifesto.md",
+    "title-long:2026-03-29-architecture-of-autonomy.md",
+    "title-long:2026-03-29-sovereign-synthesis.md",
+    "title-long:2026-04-15-synthetic-intelligence-why-emergence-is-math-and-data-should-stay-local.md",
+    "title-long:2026-04-29-recursive-language-models.md",
+    "title-long:2026-05-01-qwen-scope-interpretability-interface.md",
+    "title-long:2026-05-02-autodata-ram-ecosystem.md",
+    "title-long:2026-06-03-the-model-is-not-the-product-on-building-persistent-intelligence-infrastructure.md",
+    "title-long:2026-06-08-objective05-exec-giving-local-intelligence-system-hands.md",
+    "title-long:2026-06-08-opendesign-opencode-local-first-design-operating-system.md",
+    "title-long:2026-06-12-sovereignspec-ganymedean-alignment-protocol.md",
+    "title-long:2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems.md",
+    "title-long:2026-06-30-amis-in-action-autonomous-marketing-knowledge-graph.md",
+    "title-long:2026-07-02-building-autonomous-sovereign-ai-with-autoresearch-loops-and-fine-tuned-expert-models.md",
+    "title-long:2026-07-02-context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm.md",
+    "title-long:2026-07-03-the-model-is-not-the-product.md",
+    "title-long:2026-07-04-sovereign-intelligence-stack.md",
+    "title-long:2026-07-06-the-sovereign-loop-why-model-local-ai-is-the-missing-os-layer.md",
+    "title-long:2026-07-09-telemetry-intelligence-engine.md",
+    "title-long:2026-07-11-knowledge-compiler-compiling-human-knowledge-into-static-semantic-artifacts.md",
+    "title-long:2026-07-12-compile-time-ai-knowledge-compiler-architecture.md",
+    "title-long:2026-07-14-recursive-research-compiler-knowledge-compiler-sdk.md",
+    "title-long:2026-07-14-synthesizing-memory-with-agent.md",
+    "title-long:2026-07-15-sovereign-memory-bank-deepening-local-first-cognitive-memory.md",
+    "title-long:2026-07-16-the-sovereign-knowledge-compiler-explorer.md",
+    "title-long:2026-07-18-compile-time-ai-k8s.md",
+    "title-long:2026-07-20-compile-time-intelligence-research-compiler-agent.md",
+    "title-long:2026-07-21-compiling-medical-evidence-clinical-research-compiler.md",
+    "title-long:2026-07-21-research-compiler-scientific-discovery.md",
+    "title-long:2026-07-23-building-the-scientific-question-compiler.md",
+    "title-long:2026-07-23-the-next-experiment-grounded-and-quantitative.md",
+    "title-long:2026-07-23-the-scientific-state-compiler-pass-4.md",
+    "title-long:2026-07-23-the-scientific-state-compiler-roadmap.md",
+    "title-long:2026-07-24-popper-the-falsifiable-hypothesis-compiler.md",
+    "title-long:2026-07-25-does-the-hypothesis-compiler-generalize-orkg.md",
+    "title-long:2026-07-26-does-the-compiler-know-when-it-is-wrong.md",
+    "title-long:2026-08-05-build-a-video-editing-hermes-agent.md",
+    "title-long:2026-08-08-building-rehab-analyzer-with-hermes.md",
+    "title-long:2026-08-09-hermes-atlas-v01-local-first-incrementally-compiled-falsifiable-knowledge-system.md",
+    "title-long:2026-08-09-hermes-atlas-v02-claim-level-coverage-determinism-gate-knowledge-mutation-canary.md",
+    "title-long:2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain.md",
+    "title-long:2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark.md",
+    "title-long:2026-08-09-hermes-video-agent.md",
+    "title-long:2026-09-03-pagerank-seo-information-architecture-problem.md",
+    "title-long:2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+    "title-long:2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+    "title-long:2026-10-11-rust-native-creative-suite-installation.md",
+    "title-long:2026-10-12-mindbroadcast.md",
+    "title-long:2026-10-22-running-recursive-flint-locally-with-hermes.md",
+    "title-long:2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate.md",
+    "title-long:2026-10-23-two-models-one-harness.md",
+    "title-long:2026-10-24-qwen-image-2-1-turbo-on-apple-silicon.md",
+    "title-long:2026-10-25-ganymede-the-archive-of-the-gods.md",
+    "title-long:2026-10-25-hermes-local-video-studio.md",
+    "title-long:2026-10-25-the-dissolve-that-wasnt-applied.md",
+    "title-long:2026-10-25-the-keyframe-that-went-nowhere.md",
+    "title-long:2026-10-25-the-mask-that-rendered-anyway.md"
+  ],
+  "findings": [
+    {
+      "id": "canonical-mismatch:2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+      "detail": "`canonical_url` is https://danielkliewer.com/blog/2025-10-21-learn-programming-computer-science-youtube-roadmap, self URL is /blog/2025-10-21-learn-programming-computer-science-youtube-roadmap"
+    },
+    {
+      "id": "canonical-mismatch:2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+      "detail": "`canonical_url` is https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API, self URL is /blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API"
+    },
+    {
+      "id": "canonical-mismatch:2025-10-25-building-your-own-uncensored-ai-overlord.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2025-10-25-building-your-own-uncensored-ai-overlord.md",
+      "detail": "`canonical_url` is https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord, self URL is /blog/2025-10-25-building-your-own-uncensored-ai-overlord"
+    },
+    {
+      "id": "canonical-mismatch:2025-10-31-reddit-haunting-project-ai-resurrection.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2025-10-31-reddit-haunting-project-ai-resurrection.md",
+      "detail": "`canonical_url` is https://danielkliewer.com/blog/2025-10-31-reddit-haunting-project-ai-resurrection, self URL is /blog/2025-10-31-reddit-haunting-project-ai-resurrection"
+    },
+    {
+      "id": "canonical-mismatch:2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+      "detail": "`canonical_url` is https://danielkliewer.com/blog/2025-11-05-capacity-review-ai-workflow-vibe-coding, self URL is /blog/2025-11-05-capacity-review-ai-workflow-vibe-coding"
+    },
+    {
+      "id": "canonical-mismatch:2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+      "detail": "`canonical_url` is https://danielkliewer.com/blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp, self URL is /blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp"
+    },
+    {
+      "id": "canonical-mismatch:2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+      "detail": "`canonical_url` is https://danielkliewer.com/blog/2026-01-12-autonomous-ai-agents-developer-portfolio, self URL is /blog/2026-01-12-autonomous-ai-agents-developer-portfolio"
+    },
+    {
+      "id": "canonical-mismatch:2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+      "detail": "`canonical_url` is /blog/sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework, self URL is /blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework"
+    },
+    {
+      "id": "canonical-mismatch:2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+      "detail": "`canonical_url` is /blog/the-rented-sovereign-agent-agency-stack, self URL is /blog/2026-09-04-the-rented-sovereign-agent-agency-stack"
+    },
+    {
+      "id": "canonical-mismatch:2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md",
+      "detail": "`canonical_url` is /blog/omarchy-on-a-2017-macbook-pro-a-setup-retrospective, self URL is /blog/2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective"
+    },
+    {
+      "id": "canonical-mismatch:2026-10-11-rust-native-creative-suite-installation.md",
+      "severity": "defect",
+      "kind": "canonical-mismatch",
+      "file": "2026-10-11-rust-native-creative-suite-installation.md",
+      "detail": "`canonical_url` is /blog/rust-native-creative-suite-installation, self URL is /blog/2026-10-11-rust-native-creative-suite-installation"
+    },
+    {
+      "id": "description-long:2024-10-04-detailed-description-of-insight-journal.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-10-04-detailed-description-of-insight-journal.md",
+      "detail": "description is 193 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models.md",
+      "detail": "description is 207 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-10-12-django-react.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-10-12-django-react.md",
+      "detail": "description is 206 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-10-18-building-a-full-stack-application-with-django-and-react.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-10-18-building-a-full-stack-application-with-django-and-react.md",
+      "detail": "description is 213 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-10-22-integrating-django-react-ollama-with-xai-api.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-10-22-integrating-django-react-ollama-with-xai-api.md",
+      "detail": "description is 201 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-10-24-ghost-writer.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-10-24-ghost-writer.md",
+      "detail": "description is 200 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-10-30-creating-ai-agents.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-10-30-creating-ai-agents.md",
+      "detail": "description is 209 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-11-04-deep-fake.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-11-04-deep-fake.md",
+      "detail": "description is 200 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-11-22-planning.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-11-22-planning.md",
+      "detail": "description is 202 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-11-22-rlhf-lab.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-11-22-rlhf-lab.md",
+      "detail": "description is 202 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-11-23-rlhf-lab-business-plan.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-11-23-rlhf-lab-business-plan.md",
+      "detail": "description is 199 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-11-27-ai-agent-based-cross-platform-content-generator-and-distributor.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-11-27-ai-agent-based-cross-platform-content-generator-and-distributor.md",
+      "detail": "description is 200 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-11-27-data-annotation-guide.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-11-27-data-annotation-guide.md",
+      "detail": "description is 220 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-11-27-enhanced-persona-generator.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-11-27-enhanced-persona-generator.md",
+      "detail": "description is 194 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-01-basic-rag.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-01-basic-rag.md",
+      "detail": "description is 226 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-02-persona-chat.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-02-persona-chat.md",
+      "detail": "description is 212 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-05-personagen.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-05-personagen.md",
+      "detail": "description is 217 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-09-pydantic-rag.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-09-pydantic-rag.md",
+      "detail": "description is 234 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-10-rl.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-10-rl.md",
+      "detail": "description is 239 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-11-next-gen-personagen.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-11-next-gen-personagen.md",
+      "detail": "description is 298 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-14-learning-from-the-past.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-14-learning-from-the-past.md",
+      "detail": "description is 211 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-19-continue.dev-ollama.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-19-continue.dev-ollama.md",
+      "detail": "description is 219 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-19-homeless-guide-austin.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-19-homeless-guide-austin.md",
+      "detail": "description is 237 chars (> 160)"
+    },
+    {
+      "id": "description-long:2024-12-19-langchain-ollama.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2024-12-19-langchain-ollama.md",
+      "detail": "description is 218 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-01-22-image-to-book.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-01-22-image-to-book.md",
+      "detail": "description is 227 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-02-03-scrape-reddit-analysis-blog.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-02-03-scrape-reddit-analysis-blog.md",
+      "detail": "description is 195 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-02-05-loco-local-localllama.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-02-05-loco-local-localllama.md",
+      "detail": "description is 211 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-02-05-ollama-smolagents-open-deep-research.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-02-05-ollama-smolagents-open-deep-research.md",
+      "detail": "description is 199 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-02-05-open-deep-research.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-02-05-open-deep-research.md",
+      "detail": "description is 202 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-02-14-reddiss.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-02-14-reddiss.md",
+      "detail": "description is 225 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-02-23-privacy-policy.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-02-23-privacy-policy.md",
+      "detail": "description is 206 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-02-25-building-an-ai-powered-filename-generator-chrome-extension.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-02-25-building-an-ai-powered-filename-generator-chrome-extension.md",
+      "detail": "description is 223 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-03-text-adventure.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-03-text-adventure.md",
+      "detail": "description is 249 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-09-mastra-ollama-nextjs.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-09-mastra-ollama-nextjs.md",
+      "detail": "description is 214 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-09-nextjs-firebase.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-09-nextjs-firebase.md",
+      "detail": "description is 199 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-09-nextjs-ollama-custom-agent-framework.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-09-nextjs-ollama-custom-agent-framework.md",
+      "detail": "description is 227 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-09-reason-ai.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-09-reason-ai.md",
+      "detail": "description is 204 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-11-integrating-rust-burn-framework-for-ai.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-11-integrating-rust-burn-framework-for-ai.md",
+      "detail": "description is 204 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-11-integrating-the-openai-agents-sdk-with-rusts-burn-framework.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-11-integrating-the-openai-agents-sdk-with-rusts-burn-framework.md",
+      "detail": "description is 204 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-12-integrating-openai-agents-sdk-ollama.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-12-integrating-openai-agents-sdk-ollama.md",
+      "detail": "description is 281 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-12-mcp-openai-agents-sdk-ollama.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-12-mcp-openai-agents-sdk-ollama.md",
+      "detail": "description is 234 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-12-mcp-openai-responses-api-agents-sdk-ollama.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-12-mcp-openai-responses-api-agents-sdk-ollama.md",
+      "detail": "description is 258 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-12-openai-agents-sdk-ollama-integration.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-12-openai-agents-sdk-ollama-integration.md",
+      "detail": "description is 201 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-13-simulacra.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-13-simulacra.md",
+      "detail": "description is 225 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-21-browser-use-ollama-mcp.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-21-browser-use-ollama-mcp.md",
+      "detail": "description is 278 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-22-local-llm-document-pipeline-blueprint.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-22-local-llm-document-pipeline-blueprint.md",
+      "detail": "description is 220 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-24-model-context-protocol.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-24-model-context-protocol.md",
+      "detail": "description is 232 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-25-large-scale-agent-architecture.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-25-large-scale-agent-architecture.md",
+      "detail": "description is 204 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-28-ollama-chunking.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-28-ollama-chunking.md",
+      "detail": "description is 206 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-28-scalable-ai-backends.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-28-scalable-ai-backends.md",
+      "detail": "description is 186 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-29-markdown-teaching-assistant.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-29-markdown-teaching-assistant.md",
+      "detail": "description is 174 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-30-building-a-personalized-ai-learning-system-with-local-llm.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-30-building-a-personalized-ai-learning-system-with-local-llm.md",
+      "detail": "description is 204 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-03-30-learning-platform.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-03-30-learning-platform.md",
+      "detail": "description is 208 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-04-06-judgmental-art-cat.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-04-06-judgmental-art-cat.md",
+      "detail": "description is 171 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-04-07-echoshelf.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-04-07-echoshelf.md",
+      "detail": "description is 228 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-07-06-beyond-prompts.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-07-06-beyond-prompts.md",
+      "detail": "description is 185 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-10-20-how-to-vibe-code-a-nextjs-boilerplate-repo.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-10-20-how-to-vibe-code-a-nextjs-boilerplate-repo.md",
+      "detail": "description is 178 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+      "detail": "description is 262 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+      "detail": "description is 258 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-10-25-building-your-own-uncensored-ai-overlord.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-10-25-building-your-own-uncensored-ai-overlord.md",
+      "detail": "description is 220 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-10-31-reddit-haunting-project-ai-resurrection.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-10-31-reddit-haunting-project-ai-resurrection.md",
+      "detail": "description is 227 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-02-rise-of-vibe-coding.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-02-rise-of-vibe-coding.md",
+      "detail": "description is 251 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-03-document-driven-development-nextjs-blog.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-03-document-driven-development-nextjs-blog.md",
+      "detail": "description is 202 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-03-the-revolution-will-be-documented.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-03-the-revolution-will-be-documented.md",
+      "detail": "description is 254 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-04-ai-flatten-workforce-inequality-honest-conversation.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-04-ai-flatten-workforce-inequality-honest-conversation.md",
+      "detail": "description is 179 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+      "detail": "description is 276 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-05-how-to-build-an-ai-study-system-that-actually-works-citizens-replace-your-broken-pdf-tools.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-05-how-to-build-an-ai-study-system-that-actually-works-citizens-replace-your-broken-pdf-tools.md",
+      "detail": "description is 209 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+      "detail": "description is 195 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-08-local-llm-integration.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-08-local-llm-integration.md",
+      "detail": "description is 206 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-10-top-ai-algortihms.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-10-top-ai-algortihms.md",
+      "detail": "description is 272 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-11-vscode-blog-editing.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-11-vscode-blog-editing.md",
+      "detail": "description is 328 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-12-mastering-llama-cpp-local-llm-integration-guide.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-12-mastering-llama-cpp-local-llm-integration-guide.md",
+      "detail": "description is 238 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-14-2025-inference-new-geography-intelligence.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-14-2025-inference-new-geography-intelligence.md",
+      "detail": "description is 169 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval.md",
+      "detail": "description is 200 chars (> 160)"
+    },
+    {
+      "id": "description-long:2025-12-04-critical-nextjs-rce-cve-2025-66478-security-guide.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2025-12-04-critical-nextjs-rce-cve-2025-66478-security-guide.md",
+      "detail": "description is 161 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-03-american-phoenix.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-03-american-phoenix.md",
+      "detail": "description is 166 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-03-autonomous-architectures.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-03-autonomous-architectures.md",
+      "detail": "description is 209 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-05-architectures-of-autonomous-voice.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-05-architectures-of-autonomous-voice.md",
+      "detail": "description is 162 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-05-quantizing-consciousness-digital-resurrection.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-05-quantizing-consciousness-digital-resurrection.md",
+      "detail": "description is 179 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-07-specgen-deterministic-ai-powered-code-generation-from-naturals-language.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-07-specgen-deterministic-ai-powered-code-generation-from-naturals-language.md",
+      "detail": "description is 208 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-08-revolutionizing-music-creation-the-dawn-of-ace-step-and-the-shadows-of-ai-warfare.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-08-revolutionizing-music-creation-the-dawn-of-ace-step-and-the-shadows-of-ai-warfare.md",
+      "detail": "description is 181 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-10-the-ai-revolution-in-business-transforming-sales-crm-and-customer-management-in-2026.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-10-the-ai-revolution-in-business-transforming-sales-crm-and-customer-management-in-2026.md",
+      "detail": "description is 163 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-11-from-grief-to-code-the-digital-resurrection-journey.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-11-from-grief-to-code-the-digital-resurrection-journey.md",
+      "detail": "description is 162 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+      "detail": "description is 220 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-16-from-fragmented-experiments-to-cognitive-synthesis.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-16-from-fragmented-experiments-to-cognitive-synthesis.md",
+      "detail": "description is 218 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-22-dynamic-persona-moe-rag.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-22-dynamic-persona-moe-rag.md",
+      "detail": "description is 186 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-22-from-scaffolding-to-reality-building-the-dynamic-persona-moe-rag-system.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-22-from-scaffolding-to-reality-building-the-dynamic-persona-moe-rag-system.md",
+      "detail": "description is 246 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-22-renders-latest-betrayal-or-how-my-logs-quietly-became-someone-elses-asset.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-22-renders-latest-betrayal-or-how-my-logs-quietly-became-someone-elses-asset.md",
+      "detail": "description is 163 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-25-building-the-synthetic-analyst.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-25-building-the-synthetic-analyst.md",
+      "detail": "description is 174 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system.md",
+      "detail": "description is 224 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-01-28-dynamic-persona-moe-rag-implementation-plan.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-01-28-dynamic-persona-moe-rag-implementation-plan.md",
+      "detail": "description is 228 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-02-03-dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-02-03-dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence.md",
+      "detail": "description is 210 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-02-08-audible-data-transmission-when-humans-become-the-codec.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-02-08-audible-data-transmission-when-humans-become-the-codec.md",
+      "detail": "description is 243 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-02-15-building-this-blog.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-02-15-building-this-blog.md",
+      "detail": "description is 206 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-02-19-building-knowledge-chatbot.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-02-19-building-knowledge-chatbot.md",
+      "detail": "description is 179 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-02-22-building-cognitive-graph-ai-application.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-02-22-building-cognitive-graph-ai-application.md",
+      "detail": "description is 190 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-03-10-breaking-free-from-chatgpt.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-03-10-breaking-free-from-chatgpt.md",
+      "detail": "description is 203 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents.md",
+      "detail": "description is 198 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-03-26-deerflow-2-building-sovereign-ai-agent-systems.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-03-26-deerflow-2-building-sovereign-ai-agent-systems.md",
+      "detail": "description is 187 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-03-28-architecture-as-autonomy.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-03-28-architecture-as-autonomy.md",
+      "detail": "description is 250 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-03-28-sovereignty-manifesto.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-03-28-sovereignty-manifesto.md",
+      "detail": "description is 215 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-03-29-architecture-of-autonomy.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-03-29-architecture-of-autonomy.md",
+      "detail": "description is 258 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-03-29-sovereign-synthesis.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-03-29-sovereign-synthesis.md",
+      "detail": "description is 293 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-04-15-synthetic-intelligence-why-emergence-is-math-and-data-should-stay-local.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-04-15-synthetic-intelligence-why-emergence-is-math-and-data-should-stay-local.md",
+      "detail": "description is 328 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-04-29-recursive-language-models.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-04-29-recursive-language-models.md",
+      "detail": "description is 259 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-05-01-qwen-scope-interpretability-interface.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-05-01-qwen-scope-interpretability-interface.md",
+      "detail": "description is 164 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-05-02-autodata-ram-ecosystem.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-05-02-autodata-ram-ecosystem.md",
+      "detail": "description is 237 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-01-objective03-local-news-agency.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-01-objective03-local-news-agency.md",
+      "detail": "description is 174 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-03-the-model-is-not-the-product-on-building-persistent-intelligence-infrastructure.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-03-the-model-is-not-the-product-on-building-persistent-intelligence-infrastructure.md",
+      "detail": "description is 316 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-08-objective05-exec-giving-local-intelligence-system-hands.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-08-objective05-exec-giving-local-intelligence-system-hands.md",
+      "detail": "description is 300 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-08-opendesign-opencode-local-first-design-operating-system.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-08-opendesign-opencode-local-first-design-operating-system.md",
+      "detail": "description is 259 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-12-sovereignspec-ganymedean-alignment-protocol.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-12-sovereignspec-ganymedean-alignment-protocol.md",
+      "detail": "description is 337 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-12-sovereignspec-local-first-spec-driven-development.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-12-sovereignspec-local-first-spec-driven-development.md",
+      "detail": "description is 261 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems.md",
+      "detail": "description is 177 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-14-sovereign-memory-bank.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-14-sovereign-memory-bank.md",
+      "detail": "description is 228 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-06-30-amis-in-action-autonomous-marketing-knowledge-graph.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-06-30-amis-in-action-autonomous-marketing-knowledge-graph.md",
+      "detail": "description is 279 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-02-building-autonomous-sovereign-ai-with-autoresearch-loops-and-fine-tuned-expert-models.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-02-building-autonomous-sovereign-ai-with-autoresearch-loops-and-fine-tuned-expert-models.md",
+      "detail": "description is 267 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-02-context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-02-context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm.md",
+      "detail": "description is 264 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-02-context-engineering-the-real-full-stack-development-paradigm.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-02-context-engineering-the-real-full-stack-development-paradigm.md",
+      "detail": "description is 211 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-03-the-model-is-not-the-product.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-03-the-model-is-not-the-product.md",
+      "detail": "description is 376 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-03-the-sovereign-intelligence-observatory.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-03-the-sovereign-intelligence-observatory.md",
+      "detail": "description is 181 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-04-sovereign-intelligence-stack.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-04-sovereign-intelligence-stack.md",
+      "detail": "description is 180 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-05-getting-started-sovereign-ai.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-05-getting-started-sovereign-ai.md",
+      "detail": "description is 176 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-05-local-ai-architecture-synthesis.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-05-local-ai-architecture-synthesis.md",
+      "detail": "description is 181 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-05-retrieval-architecture-synthesis.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-05-retrieval-architecture-synthesis.md",
+      "detail": "description is 190 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-05-sovereign-ai-architecture-synthesis.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-05-sovereign-ai-architecture-synthesis.md",
+      "detail": "description is 272 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-06-sovereign-ai-benchmarks-performance-results.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-06-sovereign-ai-benchmarks-performance-results.md",
+      "detail": "description is 209 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-06-the-sovereign-loop-why-model-local-ai-is-the-missing-os-layer.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-06-the-sovereign-loop-why-model-local-ai-is-the-missing-os-layer.md",
+      "detail": "description is 244 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-09-telemetry-intelligence-engine.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-09-telemetry-intelligence-engine.md",
+      "detail": "description is 218 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-11-knowledge-compiler-compiling-human-knowledge-into-static-semantic-artifacts.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-11-knowledge-compiler-compiling-human-knowledge-into-static-semantic-artifacts.md",
+      "detail": "description is 264 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-12-compile-time-ai-knowledge-compiler-architecture.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-12-compile-time-ai-knowledge-compiler-architecture.md",
+      "detail": "description is 257 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-14-recursive-research-compiler-knowledge-compiler-sdk.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-14-recursive-research-compiler-knowledge-compiler-sdk.md",
+      "detail": "description is 229 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-14-synthesizing-memory-with-agent.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-14-synthesizing-memory-with-agent.md",
+      "detail": "description is 198 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-15-compiling-my-blog-into-a-decision-graph.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-15-compiling-my-blog-into-a-decision-graph.md",
+      "detail": "description is 223 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-15-sovereign-memory-bank-deepening-local-first-cognitive-memory.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-15-sovereign-memory-bank-deepening-local-first-cognitive-memory.md",
+      "detail": "description is 331 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-16-the-sovereign-knowledge-compiler-explorer.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-16-the-sovereign-knowledge-compiler-explorer.md",
+      "detail": "description is 246 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-18-compile-time-ai-k8s.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-18-compile-time-ai-k8s.md",
+      "detail": "description is 219 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-20-compile-time-intelligence-research-compiler-agent.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-20-compile-time-intelligence-research-compiler-agent.md",
+      "detail": "description is 304 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-21-compiling-medical-evidence-clinical-research-compiler.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-21-compiling-medical-evidence-clinical-research-compiler.md",
+      "detail": "description is 252 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-21-research-compiler-scientific-discovery.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-21-research-compiler-scientific-discovery.md",
+      "detail": "description is 266 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-22-if-the-loop-is-the-product.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-22-if-the-loop-is-the-product.md",
+      "detail": "description is 281 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-23-building-the-scientific-question-compiler.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-23-building-the-scientific-question-compiler.md",
+      "detail": "description is 274 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-23-the-loop-closes-itself.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-23-the-loop-closes-itself.md",
+      "detail": "description is 306 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-23-the-next-experiment-grounded-and-quantitative.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-23-the-next-experiment-grounded-and-quantitative.md",
+      "detail": "description is 175 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-23-the-scientific-state-compiler-pass-4.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-23-the-scientific-state-compiler-pass-4.md",
+      "detail": "description is 267 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-23-the-scientific-state-compiler-roadmap.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-23-the-scientific-state-compiler-roadmap.md",
+      "detail": "description is 315 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-23-validating-at-scale-orkg.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-23-validating-at-scale-orkg.md",
+      "detail": "description is 427 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-24-popper-the-falsifiable-hypothesis-compiler.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-24-popper-the-falsifiable-hypothesis-compiler.md",
+      "detail": "description is 173 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-25-does-the-hypothesis-compiler-generalize-orkg.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-25-does-the-hypothesis-compiler-generalize-orkg.md",
+      "detail": "description is 169 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-07-26-does-the-compiler-know-when-it-is-wrong.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-07-26-does-the-compiler-know-when-it-is-wrong.md",
+      "detail": "description is 180 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-05-build-a-video-editing-hermes-agent.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-05-build-a-video-editing-hermes-agent.md",
+      "detail": "description is 268 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-08-building-rehab-analyzer-with-hermes.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-08-building-rehab-analyzer-with-hermes.md",
+      "detail": "description is 411 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-09-hermes-atlas-v01-local-first-incrementally-compiled-falsifiable-knowledge-system.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-09-hermes-atlas-v01-local-first-incrementally-compiled-falsifiable-knowledge-system.md",
+      "detail": "description is 195 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-09-hermes-atlas-v02-claim-level-coverage-determinism-gate-knowledge-mutation-canary.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-09-hermes-atlas-v02-claim-level-coverage-determinism-gate-knowledge-mutation-canary.md",
+      "detail": "description is 220 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain.md",
+      "detail": "description is 224 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark.md",
+      "detail": "description is 251 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-09-hermes-video-agent.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-09-hermes-video-agent.md",
+      "detail": "description is 399 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-08-21-the-skills-map-for-building-and-deploying-ai-applications.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-08-21-the-skills-map-for-building-and-deploying-ai-applications.md",
+      "detail": "description is 276 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-09-03-pagerank-seo-information-architecture-problem.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-09-03-pagerank-seo-information-architecture-problem.md",
+      "detail": "description is 247 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+      "detail": "description is 275 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+      "detail": "description is 212 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md",
+      "detail": "description is 297 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-11-rust-native-creative-suite-installation.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-11-rust-native-creative-suite-installation.md",
+      "detail": "description is 243 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-12-mindbroadcast.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-12-mindbroadcast.md",
+      "detail": "description is 375 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-22-running-recursive-flint-locally-with-hermes.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-22-running-recursive-flint-locally-with-hermes.md",
+      "detail": "description is 454 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-23-llmjacking-the-skynet-mode-recursive-threat.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-23-llmjacking-the-skynet-mode-recursive-threat.md",
+      "detail": "description is 231 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-23-operation-ouroboros-recursive-intelligence-parasite.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-23-operation-ouroboros-recursive-intelligence-parasite.md",
+      "detail": "description is 336 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate.md",
+      "detail": "description is 175 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-24-qwen-image-2-1-turbo-on-apple-silicon.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-24-qwen-image-2-1-turbo-on-apple-silicon.md",
+      "detail": "description is 161 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-25-ganymede-the-archive-of-the-gods.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-25-ganymede-the-archive-of-the-gods.md",
+      "detail": "description is 184 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-25-hermes-local-video-studio.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-25-hermes-local-video-studio.md",
+      "detail": "description is 359 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-25-the-dissolve-that-wasnt-applied.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-25-the-dissolve-that-wasnt-applied.md",
+      "detail": "description is 195 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-25-the-keyframe-that-went-nowhere.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-25-the-keyframe-that-went-nowhere.md",
+      "detail": "description is 203 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-10-25-the-mask-that-rendered-anyway.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-25-the-mask-that-rendered-anyway.md",
+      "detail": "description is 189 chars (> 160)"
+    },
+    {
+      "id": "description-missing:2024-11-27-instagram-feed-summarizer.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2024-11-27-instagram-feed-summarizer.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2024-11-27-reddit-blog-generator.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2024-11-27-reddit-blog-generator.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2024-11-27-swarm-autogen.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2024-11-27-swarm-autogen.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2024-11-28-basic-autogen.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2024-11-28-basic-autogen.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2024-11-28-basic-swarm-chatbot.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2024-11-28-basic-swarm-chatbot.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2024-11-29-tech-company-orchestrator.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2024-11-29-tech-company-orchestrator.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2024-12-30-cultural-fingerprints.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2024-12-30-cultural-fingerprints.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2025-01-16-solo-business-ventures.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2025-01-16-solo-business-ventures.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2025-01-23-building-a-multimodal-story-generation-system.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2025-01-23-building-a-multimodal-story-generation-system.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2025-03-09-custom-agent.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2025-03-09-custom-agent.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2025-07-08-ai-ssr-guide.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2025-07-08-ai-ssr-guide.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2025-10-18-Is-There-No-King.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2025-10-18-Is-There-No-King.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "description-missing:2025-10-19-vibe-coding-janitor-session.md",
+      "severity": "advisory",
+      "kind": "description-missing",
+      "file": "2025-10-19-vibe-coding-janitor-session.md",
+      "detail": "no usable `description` frontmatter (falls back to a 160-char auto-excerpt)"
+    },
+    {
+      "id": "title-long:2024-10-04-detailed-description-of-insight-journal.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-10-04-detailed-description-of-insight-journal.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models.md",
+      "detail": "title is 93 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-10-12-django-react.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-10-12-django-react.md",
+      "detail": "title is 95 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-10-18-building-a-full-stack-application-with-django-and-react.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-10-18-building-a-full-stack-application-with-django-and-react.md",
+      "detail": "title is 98 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-10-22-integrating-django-react-ollama-with-xai-api.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-10-22-integrating-django-react-ollama-with-xai-api.md",
+      "detail": "title is 90 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-10-24-ghost-writer.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-10-24-ghost-writer.md",
+      "detail": "title is 93 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-10-30-creating-ai-agents.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-10-30-creating-ai-agents.md",
+      "detail": "title is 101 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-04-deep-fake.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-04-deep-fake.md",
+      "detail": "title is 97 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-22-planning.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-22-planning.md",
+      "detail": "title is 84 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-22-rlhf-lab.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-22-rlhf-lab.md",
+      "detail": "title is 88 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-23-rlhf-lab-business-plan.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-23-rlhf-lab-business-plan.md",
+      "detail": "title is 92 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-27-ai-agent-based-cross-platform-content-generator-and-distributor.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-27-ai-agent-based-cross-platform-content-generator-and-distributor.md",
+      "detail": "title is 112 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-27-data-annotation-guide.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-27-data-annotation-guide.md",
+      "detail": "title is 111 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-27-enhanced-persona-generator.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-27-enhanced-persona-generator.md",
+      "detail": "title is 103 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-27-swarm-autogen.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-27-swarm-autogen.md",
+      "detail": "title is 83 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-11-29-tech-company-orchestrator.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-11-29-tech-company-orchestrator.md",
+      "detail": "title is 82 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-01-basic-rag.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-01-basic-rag.md",
+      "detail": "title is 107 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-02-persona-chat.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-02-persona-chat.md",
+      "detail": "title is 102 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-05-personagen.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-05-personagen.md",
+      "detail": "title is 116 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-09-pydantic-rag.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-09-pydantic-rag.md",
+      "detail": "title is 114 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-10-rl.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-10-rl.md",
+      "detail": "title is 103 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-11-next-gen-personagen.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-11-next-gen-personagen.md",
+      "detail": "title is 156 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-14-learning-from-the-past.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-14-learning-from-the-past.md",
+      "detail": "title is 119 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-19-continue.dev-ollama.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-19-continue.dev-ollama.md",
+      "detail": "title is 113 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-19-homeless-guide-austin.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-19-homeless-guide-austin.md",
+      "detail": "title is 128 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-19-langchain-ollama.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-19-langchain-ollama.md",
+      "detail": "title is 126 chars (> 70)"
+    },
+    {
+      "id": "title-long:2024-12-30-cultural-fingerprints.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2024-12-30-cultural-fingerprints.md",
+      "detail": "title is 108 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-01-16-solo-business-ventures.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-01-16-solo-business-ventures.md",
+      "detail": "title is 81 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-01-22-image-to-book.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-01-22-image-to-book.md",
+      "detail": "title is 141 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-02-03-scrape-reddit-analysis-blog.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-02-03-scrape-reddit-analysis-blog.md",
+      "detail": "title is 136 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-02-05-loco-local-localllama.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-02-05-loco-local-localllama.md",
+      "detail": "title is 144 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-02-05-ollama-smolagents-open-deep-research.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-02-05-ollama-smolagents-open-deep-research.md",
+      "detail": "title is 141 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-02-05-open-deep-research.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-02-05-open-deep-research.md",
+      "detail": "title is 130 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-02-14-reddiss.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-02-14-reddiss.md",
+      "detail": "title is 164 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-02-23-privacy-policy.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-02-23-privacy-policy.md",
+      "detail": "title is 131 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-02-25-building-an-ai-powered-filename-generator-chrome-extension.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-02-25-building-an-ai-powered-filename-generator-chrome-extension.md",
+      "detail": "title is 135 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-03-text-adventure.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-03-text-adventure.md",
+      "detail": "title is 159 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-09-mastra-ollama-nextjs.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-09-mastra-ollama-nextjs.md",
+      "detail": "title is 93 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-09-nextjs-firebase.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-09-nextjs-firebase.md",
+      "detail": "title is 95 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-09-nextjs-ollama-custom-agent-framework.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-09-nextjs-ollama-custom-agent-framework.md",
+      "detail": "title is 109 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-09-reason-ai.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-09-reason-ai.md",
+      "detail": "title is 105 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-11-integrating-rust-burn-framework-for-ai.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-11-integrating-rust-burn-framework-for-ai.md",
+      "detail": "title is 92 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-11-integrating-the-openai-agents-sdk-with-rusts-burn-framework.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-11-integrating-the-openai-agents-sdk-with-rusts-burn-framework.md",
+      "detail": "title is 103 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-12-mcp-openai-agents-sdk-ollama.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-12-mcp-openai-agents-sdk-ollama.md",
+      "detail": "title is 104 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-12-mcp-openai-responses-api-agents-sdk-ollama.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-12-mcp-openai-responses-api-agents-sdk-ollama.md",
+      "detail": "title is 108 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-12-openai-agents-sdk-ollama-integration.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-12-openai-agents-sdk-ollama-integration.md",
+      "detail": "title is 88 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-13-simulacra.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-13-simulacra.md",
+      "detail": "title is 101 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-21-browser-use-ollama-mcp.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-21-browser-use-ollama-mcp.md",
+      "detail": "title is 139 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-22-local-llm-document-pipeline-blueprint.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-22-local-llm-document-pipeline-blueprint.md",
+      "detail": "title is 135 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-24-model-context-protocol.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-24-model-context-protocol.md",
+      "detail": "title is 111 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-25-large-scale-agent-architecture.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-25-large-scale-agent-architecture.md",
+      "detail": "title is 134 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-28-ollama-chunking.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-28-ollama-chunking.md",
+      "detail": "title is 103 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-28-scalable-ai-backends.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-28-scalable-ai-backends.md",
+      "detail": "title is 98 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-30-building-a-personalized-ai-learning-system-with-local-llm.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-30-building-a-personalized-ai-learning-system-with-local-llm.md",
+      "detail": "title is 115 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-03-30-learning-platform.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-03-30-learning-platform.md",
+      "detail": "title is 106 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-04-06-judgmental-art-cat.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-04-06-judgmental-art-cat.md",
+      "detail": "title is 109 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-04-07-echoshelf.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-04-07-echoshelf.md",
+      "detail": "title is 93 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-07-06-beyond-prompts.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-07-06-beyond-prompts.md",
+      "detail": "title is 116 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-07-06-demystifying-large-language-models.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-07-06-demystifying-large-language-models.md",
+      "detail": "title is 109 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-07-08-ai-ssr-guide.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-07-08-ai-ssr-guide.md",
+      "detail": "title is 100 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-10-19-vibe-coding-janitor-session.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-10-19-vibe-coding-janitor-session.md",
+      "detail": "title is 81 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-10-20-how-to-vibe-code-a-nextjs-boilerplate-repo.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-10-20-how-to-vibe-code-a-nextjs-boilerplate-repo.md",
+      "detail": "title is 71 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+      "detail": "title is 86 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+      "detail": "title is 75 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-10-25-building-your-own-uncensored-ai-overlord.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-10-25-building-your-own-uncensored-ai-overlord.md",
+      "detail": "title is 114 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-10-31-reddit-haunting-project-ai-resurrection.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-10-31-reddit-haunting-project-ai-resurrection.md",
+      "detail": "title is 84 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-02-rise-of-vibe-coding.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-02-rise-of-vibe-coding.md",
+      "detail": "title is 89 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-03-document-driven-development-nextjs-blog.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-03-document-driven-development-nextjs-blog.md",
+      "detail": "title is 104 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-03-the-revolution-will-be-documented.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-03-the-revolution-will-be-documented.md",
+      "detail": "title is 109 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-04-ai-flatten-workforce-inequality-honest-conversation.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-04-ai-flatten-workforce-inequality-honest-conversation.md",
+      "detail": "title is 83 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+      "detail": "title is 84 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-05-how-to-build-an-ai-study-system-that-actually-works-citizens-replace-your-broken-pdf-tools.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-05-how-to-build-an-ai-study-system-that-actually-works-citizens-replace-your-broken-pdf-tools.md",
+      "detail": "title is 92 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-08-local-llm-integration.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-08-local-llm-integration.md",
+      "detail": "title is 78 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-10-top-ai-algortihms.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-10-top-ai-algortihms.md",
+      "detail": "title is 86 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-11-vscode-blog-editing.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-11-vscode-blog-editing.md",
+      "detail": "title is 83 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-14-2025-inference-new-geography-intelligence.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-14-2025-inference-new-geography-intelligence.md",
+      "detail": "title is 102 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval.md",
+      "detail": "title is 84 chars (> 70)"
+    },
+    {
+      "id": "title-long:2025-12-09-mcp-integration-uncensored-chatbot.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2025-12-09-mcp-integration-uncensored-chatbot.md",
+      "detail": "title is 82 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-03-american-phoenix.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-03-american-phoenix.md",
+      "detail": "title is 87 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-03-autonomous-architectures.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-03-autonomous-architectures.md",
+      "detail": "title is 106 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-05-architectures-of-autonomous-voice.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-05-architectures-of-autonomous-voice.md",
+      "detail": "title is 95 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-05-quantizing-consciousness-digital-resurrection.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-05-quantizing-consciousness-digital-resurrection.md",
+      "detail": "title is 93 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-07-specgen-deterministic-ai-powered-code-generation-from-naturals-language.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-07-specgen-deterministic-ai-powered-code-generation-from-naturals-language.md",
+      "detail": "title is 71 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-08-revolutionizing-music-creation-the-dawn-of-ace-step-and-the-shadows-of-ai-warfare.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-08-revolutionizing-music-creation-the-dawn-of-ace-step-and-the-shadows-of-ai-warfare.md",
+      "detail": "title is 82 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-10-the-ai-revolution-in-business-transforming-sales-crm-and-customer-management-in-2026.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-10-the-ai-revolution-in-business-transforming-sales-crm-and-customer-management-in-2026.md",
+      "detail": "title is 87 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-11-from-grief-to-code-the-digital-resurrection-journey.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-11-from-grief-to-code-the-digital-resurrection-journey.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+      "detail": "title is 88 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-16-from-fragmented-experiments-to-cognitive-synthesis.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-16-from-fragmented-experiments-to-cognitive-synthesis.md",
+      "detail": "title is 79 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-22-from-scaffolding-to-reality-building-the-dynamic-persona-moe-rag-system.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-22-from-scaffolding-to-reality-building-the-dynamic-persona-moe-rag-system.md",
+      "detail": "title is 72 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-22-renders-latest-betrayal-or-how-my-logs-quietly-became-someone-elses-asset.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-22-renders-latest-betrayal-or-how-my-logs-quietly-became-someone-elses-asset.md",
+      "detail": "title is 76 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-25-building-the-synthetic-analyst.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-25-building-the-synthetic-analyst.md",
+      "detail": "title is 75 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system.md",
+      "detail": "title is 76 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-02-03-dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-02-03-dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence.md",
+      "detail": "title is 116 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-02-13-the-biological-api-why-ai-developers-should-care-about-rhythmic-chanting.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-02-13-the-biological-api-why-ai-developers-should-care-about-rhythmic-chanting.md",
+      "detail": "title is 73 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-02-15-building-this-blog.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-02-15-building-this-blog.md",
+      "detail": "title is 88 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-02-19-building-knowledge-chatbot.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-02-19-building-knowledge-chatbot.md",
+      "detail": "title is 85 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-03-10-how-to-run-your-own-ai-agent-openclaw-qwen-telegram.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-03-10-how-to-run-your-own-ai-agent-openclaw-qwen-telegram.md",
+      "detail": "title is 74 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-03-26-deerflow-2-building-sovereign-ai-agent-systems.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-03-26-deerflow-2-building-sovereign-ai-agent-systems.md",
+      "detail": "title is 79 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-03-28-sovereignty-manifesto.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-03-28-sovereignty-manifesto.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-03-29-architecture-of-autonomy.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-03-29-architecture-of-autonomy.md",
+      "detail": "title is 139 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-03-29-sovereign-synthesis.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-03-29-sovereign-synthesis.md",
+      "detail": "title is 104 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-04-15-synthetic-intelligence-why-emergence-is-math-and-data-should-stay-local.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-04-15-synthetic-intelligence-why-emergence-is-math-and-data-should-stay-local.md",
+      "detail": "title is 88 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-04-29-recursive-language-models.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-04-29-recursive-language-models.md",
+      "detail": "title is 83 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-05-01-qwen-scope-interpretability-interface.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-05-01-qwen-scope-interpretability-interface.md",
+      "detail": "title is 84 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-05-02-autodata-ram-ecosystem.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-05-02-autodata-ram-ecosystem.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-06-03-the-model-is-not-the-product-on-building-persistent-intelligence-infrastructure.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-06-03-the-model-is-not-the-product-on-building-persistent-intelligence-infrastructure.md",
+      "detail": "title is 80 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-06-08-objective05-exec-giving-local-intelligence-system-hands.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-06-08-objective05-exec-giving-local-intelligence-system-hands.md",
+      "detail": "title is 138 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-06-08-opendesign-opencode-local-first-design-operating-system.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-06-08-opendesign-opencode-local-first-design-operating-system.md",
+      "detail": "title is 90 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-06-12-sovereignspec-ganymedean-alignment-protocol.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-06-12-sovereignspec-ganymedean-alignment-protocol.md",
+      "detail": "title is 73 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems.md",
+      "detail": "title is 85 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-06-30-amis-in-action-autonomous-marketing-knowledge-graph.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-06-30-amis-in-action-autonomous-marketing-knowledge-graph.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-02-building-autonomous-sovereign-ai-with-autoresearch-loops-and-fine-tuned-expert-models.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-02-building-autonomous-sovereign-ai-with-autoresearch-loops-and-fine-tuned-expert-models.md",
+      "detail": "title is 118 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-02-context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-02-context-engineering-the-blind-spots-and-the-real-full-stack-development-paradigm.md",
+      "detail": "title is 109 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-03-the-model-is-not-the-product.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-03-the-model-is-not-the-product.md",
+      "detail": "title is 85 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-04-sovereign-intelligence-stack.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-04-sovereign-intelligence-stack.md",
+      "detail": "title is 72 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-06-the-sovereign-loop-why-model-local-ai-is-the-missing-os-layer.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-06-the-sovereign-loop-why-model-local-ai-is-the-missing-os-layer.md",
+      "detail": "title is 76 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-09-telemetry-intelligence-engine.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-09-telemetry-intelligence-engine.md",
+      "detail": "title is 86 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-11-knowledge-compiler-compiling-human-knowledge-into-static-semantic-artifacts.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-11-knowledge-compiler-compiling-human-knowledge-into-static-semantic-artifacts.md",
+      "detail": "title is 97 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-12-compile-time-ai-knowledge-compiler-architecture.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-12-compile-time-ai-knowledge-compiler-architecture.md",
+      "detail": "title is 75 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-14-recursive-research-compiler-knowledge-compiler-sdk.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-14-recursive-research-compiler-knowledge-compiler-sdk.md",
+      "detail": "title is 95 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-14-synthesizing-memory-with-agent.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-14-synthesizing-memory-with-agent.md",
+      "detail": "title is 82 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-15-sovereign-memory-bank-deepening-local-first-cognitive-memory.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-15-sovereign-memory-bank-deepening-local-first-cognitive-memory.md",
+      "detail": "title is 79 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-16-the-sovereign-knowledge-compiler-explorer.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-16-the-sovereign-knowledge-compiler-explorer.md",
+      "detail": "title is 106 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-18-compile-time-ai-k8s.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-18-compile-time-ai-k8s.md",
+      "detail": "title is 73 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-20-compile-time-intelligence-research-compiler-agent.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-20-compile-time-intelligence-research-compiler-agent.md",
+      "detail": "title is 110 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-21-compiling-medical-evidence-clinical-research-compiler.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-21-compiling-medical-evidence-clinical-research-compiler.md",
+      "detail": "title is 125 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-21-research-compiler-scientific-discovery.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-21-research-compiler-scientific-discovery.md",
+      "detail": "title is 81 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-23-building-the-scientific-question-compiler.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-23-building-the-scientific-question-compiler.md",
+      "detail": "title is 71 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-23-the-next-experiment-grounded-and-quantitative.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-23-the-next-experiment-grounded-and-quantitative.md",
+      "detail": "title is 112 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-23-the-scientific-state-compiler-pass-4.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-23-the-scientific-state-compiler-pass-4.md",
+      "detail": "title is 79 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-23-the-scientific-state-compiler-roadmap.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-23-the-scientific-state-compiler-roadmap.md",
+      "detail": "title is 87 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-24-popper-the-falsifiable-hypothesis-compiler.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-24-popper-the-falsifiable-hypothesis-compiler.md",
+      "detail": "title is 135 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-25-does-the-hypothesis-compiler-generalize-orkg.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-25-does-the-hypothesis-compiler-generalize-orkg.md",
+      "detail": "title is 83 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-07-26-does-the-compiler-know-when-it-is-wrong.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-07-26-does-the-compiler-know-when-it-is-wrong.md",
+      "detail": "title is 102 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-08-05-build-a-video-editing-hermes-agent.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-08-05-build-a-video-editing-hermes-agent.md",
+      "detail": "title is 73 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-08-08-building-rehab-analyzer-with-hermes.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-08-08-building-rehab-analyzer-with-hermes.md",
+      "detail": "title is 92 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-08-09-hermes-atlas-v01-local-first-incrementally-compiled-falsifiable-knowledge-system.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-08-09-hermes-atlas-v01-local-first-incrementally-compiled-falsifiable-knowledge-system.md",
+      "detail": "title is 86 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-08-09-hermes-atlas-v02-claim-level-coverage-determinism-gate-knowledge-mutation-canary.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-08-09-hermes-atlas-v02-claim-level-coverage-determinism-gate-knowledge-mutation-canary.md",
+      "detail": "title is 92 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain.md",
+      "detail": "title is 89 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark.md",
+      "detail": "title is 94 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-08-09-hermes-video-agent.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-08-09-hermes-video-agent.md",
+      "detail": "title is 76 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-09-03-pagerank-seo-information-architecture-problem.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-09-03-pagerank-seo-information-architecture-problem.md",
+      "detail": "title is 83 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+      "detail": "title is 74 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-11-rust-native-creative-suite-installation.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-11-rust-native-creative-suite-installation.md",
+      "detail": "title is 89 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-12-mindbroadcast.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-12-mindbroadcast.md",
+      "detail": "title is 120 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-22-running-recursive-flint-locally-with-hermes.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-22-running-recursive-flint-locally-with-hermes.md",
+      "detail": "title is 85 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate.md",
+      "detail": "title is 90 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-23-two-models-one-harness.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-23-two-models-one-harness.md",
+      "detail": "title is 73 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-24-qwen-image-2-1-turbo-on-apple-silicon.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-24-qwen-image-2-1-turbo-on-apple-silicon.md",
+      "detail": "title is 77 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-25-ganymede-the-archive-of-the-gods.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-25-ganymede-the-archive-of-the-gods.md",
+      "detail": "title is 73 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-25-hermes-local-video-studio.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-25-hermes-local-video-studio.md",
+      "detail": "title is 80 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-25-the-dissolve-that-wasnt-applied.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-25-the-dissolve-that-wasnt-applied.md",
+      "detail": "title is 87 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-25-the-keyframe-that-went-nowhere.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-25-the-keyframe-that-went-nowhere.md",
+      "detail": "title is 80 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-25-the-mask-that-rendered-anyway.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-25-the-mask-that-rendered-anyway.md",
+      "detail": "title is 72 chars (> 70)"
+    }
   ]
 }

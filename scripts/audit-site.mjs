@@ -212,27 +212,53 @@ export function build() {
     /* The defect list is the thing to diff: it is small enough to review and
        it is what actually changes when content is edited. */
     defectList: defects.map((d) => `${d.file}: ${d.detail}`).sort(),
+    /* Stable identifiers, so a finding can be referenced in a review or an
+       issue without its text having to match exactly. */
+    findingIds: [...defects, ...advisory].map((f) => f.id).filter(Boolean).sort(),
+    /* Full findings for the human-readable report. */
+    findings: [...defects, ...advisory]
+      .map((f) => ({ id: f.id, severity: f.severity, kind: f.kind, file: f.file, detail: f.detail }))
+      .sort((a, b) => a.id.localeCompare(b.id)),
   };
 }
 
-/** Compare a report against the committed baseline. */
+/**
+ * Compare a report against the committed baseline.
+ *
+ * A regression gate must distinguish a newly introduced defect from an
+ * improvement that needs the baseline updated. Failing on a FIXED finding makes
+ * remediation look like a regression, which teaches people to ignore the gate.
+ * So this returns the two separately: `regressions` fail the run, `improvements`
+ * are reported and are how you know the baseline needs a deliberate update.
+ */
 export function diff(base, next) {
-  const out = [];
-  if (base.fatal !== next.fatal) out.push(`fatal: ${base.fatal} -> ${next.fatal}`);
-  if (base.defects !== next.defects) out.push(`defects: ${base.defects} -> ${next.defects}`);
-  if (base.advisory !== next.advisory) out.push(`advisory: ${base.advisory} -> ${next.advisory}`);
+  const regressions = [];
+  const improvements = [];
+
+  if (next.fatal > base.fatal) regressions.push(`fatal: ${base.fatal} -> ${next.fatal}`);
+  else if (next.fatal < base.fatal) improvements.push(`fatal: ${base.fatal} -> ${next.fatal}`);
+
+  if (next.defects > base.defects) regressions.push(`defects: ${base.defects} -> ${next.defects}`);
+  else if (next.defects < base.defects) improvements.push(`defects: ${base.defects} -> ${next.defects}`);
+
+  if (next.advisory > base.advisory) regressions.push(`advisory: ${base.advisory} -> ${next.advisory}`);
+  else if (next.advisory < base.advisory) improvements.push(`advisory: ${base.advisory} -> ${next.advisory}`);
 
   const a = new Set(base.defectList);
   const b = new Set(next.defectList);
-  for (const d of b) if (!a.has(d)) out.push(`NEW defect  ${d}`);
-  for (const d of a) if (!b.has(d)) out.push(`FIXED      ${d}`);
+  for (const d of b) if (!a.has(d)) regressions.push(`NEW defect  ${d}`);
+  for (const d of a) if (!b.has(d)) improvements.push(`FIXED      ${d}`);
 
   const bc = base.canonical?.byCategory ?? {};
   const nc = next.canonical?.byCategory ?? {};
   for (const k of new Set([...Object.keys(bc), ...Object.keys(nc)])) {
-    if (bc[k] !== nc[k]) out.push(`canonical ${k}: ${bc[k] ?? 0} -> ${nc[k] ?? 0}`);
+    const from = bc[k] ?? 0;
+    const to = nc[k] ?? 0;
+    if (from === to) continue;
+    (to > from ? regressions : improvements).push(`canonical ${k}: ${from} -> ${to}`);
   }
-  return out;
+
+  return { regressions, improvements };
 }
 
 /* ── CLI ─────────────────────────────────────────────────────────────────── */
@@ -242,25 +268,87 @@ const isEntry = process.argv[1] && import.meta.url === pathToFileURL(process.arg
 if (isEntry) {
   const report = build();
   const check = process.argv.includes("--check");
+  const updateBaseline = process.argv.includes("--update-baseline");
 
   if (process.argv.includes("--json")) {
     console.log(JSON.stringify(report, null, 2));
   }
 
-  if (check) {
+  /* Compact human-readable report: what to fix, in priority order, with the
+     stable id for each finding. Advisory items are counted, not listed — 330
+     length warnings is noise, and the point of this report is to be readable. */
+  if (process.argv.includes("--summary")) {
+    const defects = report.findings.filter((f) => f.severity === "defect");
+    const advisory = report.findings.filter((f) => f.severity === "advisory");
+
+    console.log("SITE AUDIT SUMMARY\n");
+    console.log(`  posts ${report.counts.posts} · content URLs ${report.counts.contentUrls} · redirects ${report.counts.redirects}`);
+    console.log(`  fatal ${report.fatal} · defects ${defects.length} · advisory ${advisory.length}`);
+    console.log(`  relation edges ${Object.values(report.relations.counts).reduce((a, b) => a + b, 0)} (0 dangling)`);
+    console.log("");
+
+    if (defects.length) {
+      console.log(`DEFECTS (${defects.length}) — fix these:\n`);
+      for (const f of defects) console.log(`  ${f.id}\n    ${f.detail}`);
+      console.log("");
+    } else {
+      console.log("DEFECTS (0) — no live defects.\n");
+    }
+
+    if (report.canonical.total) {
+      console.log(
+        `CANONICAL MISMATCHES (${report.canonical.total}) — dead frontmatter, nothing reads it today:\n`
+      );
+      for (const c of report.canonical.items) {
+        console.log(`  [${c.category}] ${c.file}`);
+        console.log(`    ${c.value}`);
+      }
+      console.log("");
+    }
+
+    const missing = advisory.filter((f) => f.kind === "description-missing");
+    const long = advisory.filter((f) => f.kind === "description-long" || f.kind === "title-long");
+    console.log(`ADVISORY (${advisory.length}) — not defects, counted for completeness:\n`);
+    console.log(`  ${missing.length} posts use the auto-excerpt (renders an accurate description)`);
+    console.log(`  ${long.length} overlong title/description warnings`);
+    console.log(`  ${report.relations.absent.join(", ")} — relation types with no data source, not invented`);
+    process.exit(0);
+  }
+
+  if (check || updateBaseline) {
     if (!fs.existsSync(OUT)) {
-      console.error(`no baseline at ${path.relative(repo, OUT)} — run without --check first`);
+      console.error(`no baseline at ${path.relative(repo, OUT)} — run \`npm run audit\` first`);
       process.exit(2);
     }
     const base = JSON.parse(fs.readFileSync(OUT, "utf8"));
-    const changes = diff(base, report);
-    if (changes.length) {
-      console.error(`SITE AUDIT CHANGED (${changes.length}):\n`);
-      for (const c of changes) console.error("  " + c);
+    const { regressions, improvements } = diff(base, report);
+
+    if (improvements.length) {
+      console.log(`improvements (${improvements.length}) — baseline needs a deliberate update:\n`);
+      for (const c of improvements) console.log("  " + c);
+      console.log("");
+    }
+
+    if (check && regressions.length) {
+      console.error(`SITE AUDIT REGRESSION (${regressions.length}):\n`);
+      for (const c of regressions) console.error("  " + c);
+      console.error(
+        "\nA new defect is a regression. If this is an intentional change, run `npm run audit -- --update-baseline`."
+      );
       process.exit(1);
     }
+
+    if (updateBaseline) {
+      fs.writeFileSync(OUT, JSON.stringify(report, null, 2) + "\n");
+      console.log(`baseline updated — ${path.relative(repo, OUT)}`);
+      console.log(
+        `  ${report.fatal} fatal, ${report.defects} defects, ${report.advisory} advisory`
+      );
+      process.exit(0);
+    }
+
     console.log(
-      `site audit UNCHANGED — ${report.defects} defects, ${report.advisory} advisory, ${report.fatal} fatal`
+      `site audit OK — ${report.fatal} fatal, ${report.defects} defects, ${report.advisory} advisory (no regressions)`
     );
     process.exit(0);
   }

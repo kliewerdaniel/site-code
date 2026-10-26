@@ -59,38 +59,63 @@ const base = {
 };
 
 test("diff: an identical report produces no changes", () => {
-  assert.deepEqual(diff(base, structuredClone(base)), []);
+  const { regressions, improvements } = diff(base, structuredClone(base));
+  assert.deepEqual(regressions, []);
+  assert.deepEqual(improvements, []);
 });
 
-test("diff: a new defect is reported as NEW, a resolved one as FIXED", () => {
+test("diff: a new defect is a REGRESSION, a resolved one is an IMPROVEMENT", () => {
   const next = structuredClone(base);
   next.defectList = ["a.md: x", "c.md: z"];
-  const changes = diff(base, next);
-  assert.ok(changes.some((c) => c.startsWith("NEW defect") && c.includes("c.md")), changes.join("\n"));
-  assert.ok(changes.some((c) => c.startsWith("FIXED") && c.includes("b.md")), changes.join("\n"));
-});
-
-test("diff: a rising defect count is reported even when the list is unchanged", () => {
-  const next = structuredClone(base);
-  next.defects = 3;
-  assert.ok(diff(base, next).some((c) => c.startsWith("defects: 2 -> 3")));
-});
-
-test("diff: a new canonical category is reported", () => {
-  const next = structuredClone(base);
-  next.canonical.byCategory = { "apex-vs-www": 1, "cross-domain": 1, "dead-short-slug": 4 };
-  const changes = diff(base, next);
+  const { regressions, improvements } = diff(base, next);
   assert.ok(
-    changes.some((c) => c.includes("dead-short-slug: 0 -> 4")),
-    changes.join("\n")
+    regressions.some((c) => c.startsWith("NEW defect") && c.includes("c.md")),
+    regressions.join("\n")
+  );
+  assert.ok(
+    improvements.some((c) => c.startsWith("FIXED") && c.includes("b.md")),
+    improvements.join("\n")
   );
 });
 
-test("diff: a category dropping to zero is reported too", () => {
+test("diff: fixing a defect alone must NOT be reported as a regression", () => {
+  // The previous behaviour failed the gate on any change, which meant a
+  // remediation looked like a regression. That teaches people to ignore the gate.
   const next = structuredClone(base);
-  next.canonical.byCategory = { "apex-vs-www": 1 };
-  assert.ok(diff(base, next).some((c) => c.includes("cross-domain: 1 -> 0")));
+  next.defectList = ["a.md: x"]; // b.md fixed
+  next.defects = 1;
+  const { regressions } = diff(base, next);
+  assert.deepEqual(regressions, []);
 });
+
+test("diff: a rising defect count is a regression even when the list is unchanged", () => {
+  const next = structuredClone(base);
+  next.defects = 3;
+  assert.ok(diff(base, next).regressions.some((c) => c.startsWith("defects: 2 -> 3")));
+});
+
+test("diff: a falling advisory count is an improvement, not a regression", () => {
+  const next = structuredClone(base);
+  next.advisory = 3;
+  const { regressions, improvements } = diff(base, next);
+  assert.deepEqual(regressions, []);
+  assert.ok(improvements.some((c) => c.startsWith("advisory: 5 -> 3")));
+});
+
+test("diff: a rising canonical category is a regression, a falling one an improvement", () => {
+  const up = structuredClone(base);
+  up.canonical.byCategory = { "apex-vs-www": 1, "cross-domain": 1, "dead-short-slug": 4 };
+  assert.ok(
+    diff(base, up).regressions.some((c) => c.includes("dead-short-slug: 0 -> 4")),
+    diff(base, up).regressions.join("\n")
+  );
+
+  const down = structuredClone(base);
+  down.canonical.byCategory = { "apex-vs-www": 1 };
+  assert.ok(diff(base, down).improvements.some((c) => c.includes("cross-domain: 1 -> 0")));
+  assert.deepEqual(diff(base, down).regressions, []);
+});
+
 
 // ---- typed relation graph -----------------------------------------------
 

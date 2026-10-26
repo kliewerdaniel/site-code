@@ -54,6 +54,42 @@ Beyond the build gates, three checks run over the content and the built output:
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.
+- `npm run audit` (`scripts/audit-site.mjs`) — the deterministic auditor. It runs
+  the two validators, adds the route table and a categorised canonical report,
+  classifies every finding as **fatal / defect / advisory**, and writes
+  `data/audit-report.json`.
+
+## Site audit workflow
+
+The auditor turns a one-off review into a repeatable gate.
+
+```bash
+npm run audit                    # write data/audit-report.json
+npm run audit -- --summary       # compact human-readable report
+npm run audit -- --check         # diff against the committed baseline
+npm run audit -- --update-baseline
+```
+
+Severity model:
+
+| Level | Meaning | Fails CI |
+|---|---|---|
+| `fatal` | the build or a page is broken | yes |
+| `defect` | wrong data or a broken page a change could surface | yes, if new |
+| `advisory` | suboptimal but not broken (length drift, auto-excerpt) | no |
+
+`--check` fails only on **regressions**: a new defect, or a rising count.
+Fixing a defect is reported as an *improvement* and exits 0 — a gate that fails on
+remediation teaches people to ignore it. When improvements accumulate, run
+`--update-baseline` deliberately so the baseline move is a reviewed commit rather
+than a silent drift.
+
+Every finding carries a stable id (`kind:file`), so it can be referenced in a
+review or an issue without quoting its text.
+
+Current baseline: 0 fatal · 11 defects (all inert `canonical_url` frontmatter) ·
+343 advisory · 55 relation edges with 0 dangling references.
+
 
 ## Deploy
 
