@@ -61,7 +61,78 @@ const REMOVED_SECTION_REDIRECTS: [string, string][] = [
   ["/fleet/decision-graphs", "/concepts/graph-retrieval"],
 ];
 
+/* ── Content-Security-Policy ────────────────────────────────────────────────
+   Built from what this site actually loads, not from a template:
+
+   - `script-src 'self' 'unsafe-inline'` — 'self' covers the Turbopack chunks
+     and Vercel Analytics (which loads `/_vercel/insights/script.js`
+     same-origin in production). `'unsafe-inline'` is required because Next
+     injects the RSC flight payload as inline `self.__next_f.push(...)`
+     bootstrap scripts (4 inline script tags on `/` alone). A nonce would mean
+     rendering that payload per request, which turns every static page dynamic
+     and destroys the CDN cache — so the trade is inline scripts accepted, in
+     exchange for `object-src 'none'`, `base-uri 'self'`, `frame-ancestors
+     'none'` and a locked-down `default-src`. The JSON-LD
+     `<script type="application/ld+json">` blocks are not executable and are
+     unaffected by script-src.
+   - `img-src 'self' data: blob:` — next/image emits a base64 `data:` blur
+     placeholder; `blob:` covers WebGL/canvas textures. Plus exactly the two
+     remote hosts markdown images reference (see the grep below).
+   - `media-src 'self'` — the only real `<video>`/`<source>` elements are
+     HeroFilm's own hero loops under /images/hero/. Raw `<video>` and
+     `<iframe>` tags inside post markdown are NOT rendered: there is no
+     rehype-raw plugin, so react-markdown escapes them, and the YouTube/Vimeo
+     embeds in posts render as visible text.
+   - `frame-src` is deliberately unset, so it falls back to `default-src
+     'self'` and no third-party frame can load.
+
+   Verified by grepping content/ for remote image hosts: i.imgur.com (8) and
+   img.shields.io (6) are the only ones. Re-run that grep before shipping a
+   host here that no post uses. */
+const CSP = [
+  "default-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://i.imgur.com https://img.shields.io",
+  "font-src 'self'",
+  "media-src 'self'",
+  "connect-src 'self'",
+].join("; ");
+
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+
+  /* ── Security headers ────────────────────────────────────────────────────
+     There was no `headers()` and no `poweredByHeader: false`, so responses
+     carried `X-Powered-By: Next.js` and none of the browser-side hardening
+     headers. Everything below is safe to enforce on its own; the CSP is built
+     from what this site actually loads (see the constant above).
+
+     HSTS is deliberately NOT set here: Vercel adds it at the edge, and
+     hard-coding `max-age` in the app config cannot be verified from the repo.
+     See docs/SECURITY.md. */
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "DENY" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          },
+          { key: "Content-Security-Policy", value: CSP },
+        ],
+      },
+    ];
+  },
+
   // Keep defaults; images served from /public/images (same-origin).
   async redirects() {
     return [...LEGACY_SLUG_REDIRECTS, ...REMOVED_SECTION_REDIRECTS].map(
