@@ -68,6 +68,13 @@ jobs:
       - name: Validate build
         run: npm run validate:build
 
+      # Deterministic audit: aggregates the validators, categorises canonical
+      # mismatches, and fails if the defect list has grown since the baseline.
+      - name: Audit site
+        run: npm run audit
+      - name: Audit baseline
+        run: npm run audit -- --check
+
       # Route parity: every URL in the manifest resolves, and every removed
       # section still 308s to its replacement. Starts its own server and always
       # kills it, so CI never leaks a process.

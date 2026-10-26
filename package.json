@@ -41,6 +41,7 @@
     "prebuild": "npm run prenode && node scripts/image-dimensions.mjs && node scripts/check-images.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:build": "node scripts/validate-build.mjs",
+    "audit": "node scripts/audit-site.mjs",
     "check:routes": "node scripts/check-routes.mjs"
   },
   "version": "2.0.0"

@@ -1,0 +1,384 @@
+{
+  "generatedBy": "scripts/audit-site.mjs",
+  "counts": {
+    "posts": 195,
+    "contentUrls": 229,
+    "sitemapUrls": 229,
+    "builtPages": 228,
+    "redirects": 34
+  },
+  "relations": {
+    "counts": {
+      "implements": 27,
+      "documents": 16,
+      "prerequisite_for": 12
+    },
+    "absent": [
+      "extends",
+      "validates"
+    ],
+    "edges": {
+      "implements": [
+        {
+          "from": "/projects/sovereign-agent-stack",
+          "to": "/concepts/governed-execution"
+        },
+        {
+          "from": "/projects/sovereign-agent-stack",
+          "to": "/concepts/reproducibility"
+        },
+        {
+          "from": "/projects/sovereign-intelligence-stack",
+          "to": "/concepts/local-first"
+        },
+        {
+          "from": "/projects/sovereign-intelligence-stack",
+          "to": "/concepts/knowledge-compilation"
+        },
+        {
+          "from": "/projects/sovereign-intelligence-observatory",
+          "to": "/concepts/local-first"
+        },
+        {
+          "from": "/projects/sovereign-intelligence-observatory",
+          "to": "/concepts/provenance"
+        },
+        {
+          "from": "/projects/ganymede",
+          "to": "/concepts/knowledge-compilation"
+        },
+        {
+          "from": "/projects/ganymede",
+          "to": "/concepts/provenance"
+        },
+        {
+          "from": "/projects/ganymede",
+          "to": "/concepts/graph-retrieval"
+        },
+        {
+          "from": "/projects/konradfreeman-rag",
+          "to": "/concepts/graph-retrieval"
+        },
+        {
+          "from": "/projects/konradfreeman-rag",
+          "to": "/concepts/local-first"
+        },
+        {
+          "from": "/projects/konradfreeman-rag",
+          "to": "/concepts/creative-automation"
+        },
+        {
+          "from": "/projects/hermes-local-video-studio",
+          "to": "/concepts/creative-automation"
+        },
+        {
+          "from": "/projects/hermes-local-video-studio",
+          "to": "/concepts/reproducibility"
+        },
+        {
+          "from": "/projects/hermes-local-video-studio",
+          "to": "/concepts/governed-execution"
+        },
+        {
+          "from": "/projects/artcraft",
+          "to": "/concepts/creative-automation"
+        },
+        {
+          "from": "/projects/artcraft",
+          "to": "/concepts/local-first"
+        },
+        {
+          "from": "/projects/qwen-image-studio",
+          "to": "/concepts/local-first"
+        },
+        {
+          "from": "/projects/qwen-image-studio",
+          "to": "/concepts/creative-automation"
+        },
+        {
+          "from": "/projects/pagerank-seo",
+          "to": "/concepts/evaluation"
+        },
+        {
+          "from": "/projects/pagerank-seo",
+          "to": "/concepts/graph-retrieval"
+        },
+        {
+          "from": "/projects/sovereignspec",
+          "to": "/concepts/governed-execution"
+        },
+        {
+          "from": "/projects/sovereignspec",
+          "to": "/concepts/reproducibility"
+        },
+        {
+          "from": "/projects/mindbroadcast",
+          "to": "/concepts/local-first"
+        },
+        {
+          "from": "/projects/mindbroadcast",
+          "to": "/concepts/reproducibility"
+        },
+        {
+          "from": "/projects/chris-game",
+          "to": "/concepts/governed-execution"
+        },
+        {
+          "from": "/projects/chris-game",
+          "to": "/concepts/creative-automation"
+        }
+      ],
+      "documents": [
+        {
+          "from": "/blog/2026-10-25-hermes-local-video-studio",
+          "to": "/projects/sovereign-agent-stack"
+        },
+        {
+          "from": "/blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+          "to": "/projects/sovereign-agent-stack"
+        },
+        {
+          "from": "/blog/2026-07-04-sovereign-intelligence-stack",
+          "to": "/projects/sovereign-intelligence-stack"
+        },
+        {
+          "from": "/blog/2026-07-03-the-sovereign-intelligence-observatory",
+          "to": "/projects/sovereign-intelligence-observatory"
+        },
+        {
+          "from": "/blog/2026-10-25-ganymede-the-archive-of-the-gods",
+          "to": "/projects/ganymede"
+        },
+        {
+          "from": "/blog/2026-10-25-hermes-local-video-studio",
+          "to": "/projects/hermes-local-video-studio"
+        },
+        {
+          "from": "/blog/2026-10-25-the-dissolve-that-wasnt-applied",
+          "to": "/projects/hermes-local-video-studio"
+        },
+        {
+          "from": "/blog/2026-10-25-the-keyframe-that-went-nowhere",
+          "to": "/projects/hermes-local-video-studio"
+        },
+        {
+          "from": "/blog/2026-10-25-the-mask-that-rendered-anyway",
+          "to": "/projects/hermes-local-video-studio"
+        },
+        {
+          "from": "/blog/2026-10-11-rust-native-creative-suite-installation",
+          "to": "/projects/artcraft"
+        },
+        {
+          "from": "/blog/2026-10-25-ganymede-the-archive-of-the-gods",
+          "to": "/projects/artcraft"
+        },
+        {
+          "from": "/blog/2026-10-24-qwen-image-2-1-turbo-on-apple-silicon",
+          "to": "/projects/qwen-image-studio"
+        },
+        {
+          "from": "/blog/2026-09-03-pagerank-seo-information-architecture-problem",
+          "to": "/projects/pagerank-seo"
+        },
+        {
+          "from": "/blog/2026-06-12-sovereignspec-local-first-spec-driven-development",
+          "to": "/projects/sovereignspec"
+        },
+        {
+          "from": "/blog/2026-06-12-sovereignspec-ganymedean-alignment-protocol",
+          "to": "/projects/sovereignspec"
+        },
+        {
+          "from": "/blog/2026-10-12-mindbroadcast",
+          "to": "/projects/mindbroadcast"
+        }
+      ],
+      "prerequisite_for": [
+        {
+          "from": "local-first",
+          "to": "2026-10-24-qwen-image-2-1-turbo-on-apple-silicon",
+          "via": "/paths/local-first-to-governed-agents"
+        },
+        {
+          "from": "2026-10-24-qwen-image-2-1-turbo-on-apple-silicon",
+          "to": "governed-execution",
+          "via": "/paths/local-first-to-governed-agents"
+        },
+        {
+          "from": "governed-execution",
+          "to": "2026-10-23-two-models-one-harness",
+          "via": "/paths/local-first-to-governed-agents"
+        },
+        {
+          "from": "2026-10-23-two-models-one-harness",
+          "to": "reproducibility",
+          "via": "/paths/local-first-to-governed-agents"
+        },
+        {
+          "from": "knowledge-compilation",
+          "to": "graph-retrieval",
+          "via": "/paths/knowledge-compilation-end-to-end"
+        },
+        {
+          "from": "graph-retrieval",
+          "to": "provenance",
+          "via": "/paths/knowledge-compilation-end-to-end"
+        },
+        {
+          "from": "provenance",
+          "to": "2026-10-25-ganymede-the-archive-of-the-gods",
+          "via": "/paths/knowledge-compilation-end-to-end"
+        },
+        {
+          "from": "2026-10-25-ganymede-the-archive-of-the-gods",
+          "to": "evaluation",
+          "via": "/paths/knowledge-compilation-end-to-end"
+        },
+        {
+          "from": "creative-automation",
+          "to": "2026-10-11-rust-native-creative-suite-installation",
+          "via": "/paths/verified-creative-workflows"
+        },
+        {
+          "from": "2026-10-11-rust-native-creative-suite-installation",
+          "to": "2026-10-25-the-dissolve-that-wasnt-applied",
+          "via": "/paths/verified-creative-workflows"
+        },
+        {
+          "from": "2026-10-25-the-dissolve-that-wasnt-applied",
+          "to": "2026-10-25-the-keyframe-that-went-nowhere",
+          "via": "/paths/verified-creative-workflows"
+        },
+        {
+          "from": "2026-10-25-the-keyframe-that-went-nowhere",
+          "to": "2026-10-25-hermes-local-video-studio",
+          "via": "/paths/verified-creative-workflows"
+        }
+      ]
+    }
+  },
+  "fatal": 0,
+  "defects": 24,
+  "advisory": 330,
+  "byKind": {
+    "description-missing": 13,
+    "canonical-mismatch": 11,
+    "description-long": 174,
+    "title-long": 156
+  },
+  "canonical": {
+    "total": 11,
+    "byCategory": {
+      "apex-vs-www": 6,
+      "cross-domain": 1,
+      "dead-short-slug": 4
+    },
+    "items": [
+      {
+        "file": "2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
+        "value": "https://danielkliewer.com/blog/2025-10-21-learn-programming-computer-science-youtube-roadmap",
+        "self": "/blog/2025-10-21-learn-programming-computer-science-youtube-roadmap",
+        "category": "apex-vs-www"
+      },
+      {
+        "file": "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
+        "value": "https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API",
+        "self": "/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API",
+        "category": "apex-vs-www"
+      },
+      {
+        "file": "2025-10-25-building-your-own-uncensored-ai-overlord.md",
+        "value": "https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord",
+        "self": "/blog/2025-10-25-building-your-own-uncensored-ai-overlord",
+        "category": "cross-domain"
+      },
+      {
+        "file": "2025-10-31-reddit-haunting-project-ai-resurrection.md",
+        "value": "https://danielkliewer.com/blog/2025-10-31-reddit-haunting-project-ai-resurrection",
+        "self": "/blog/2025-10-31-reddit-haunting-project-ai-resurrection",
+        "category": "apex-vs-www"
+      },
+      {
+        "file": "2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
+        "value": "https://danielkliewer.com/blog/2025-11-05-capacity-review-ai-workflow-vibe-coding",
+        "self": "/blog/2025-11-05-capacity-review-ai-workflow-vibe-coding",
+        "category": "apex-vs-www"
+      },
+      {
+        "file": "2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
+        "value": "https://danielkliewer.com/blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp",
+        "self": "/blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp",
+        "category": "apex-vs-www"
+      },
+      {
+        "file": "2026-01-12-autonomous-ai-agents-developer-portfolio.md",
+        "value": "https://danielkliewer.com/blog/2026-01-12-autonomous-ai-agents-developer-portfolio",
+        "self": "/blog/2026-01-12-autonomous-ai-agents-developer-portfolio",
+        "category": "apex-vs-www"
+      },
+      {
+        "file": "2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md",
+        "value": "/blog/sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+        "self": "/blog/sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+        "category": "dead-short-slug"
+      },
+      {
+        "file": "2026-09-04-the-rented-sovereign-agent-agency-stack.md",
+        "value": "/blog/the-rented-sovereign-agent-agency-stack",
+        "self": "/blog/the-rented-sovereign-agent-agency-stack",
+        "category": "dead-short-slug"
+      },
+      {
+        "file": "2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md",
+        "value": "/blog/omarchy-on-a-2017-macbook-pro-a-setup-retrospective",
+        "self": "/blog/omarchy-on-a-2017-macbook-pro-a-setup-retrospective",
+        "category": "dead-short-slug"
+      },
+      {
+        "file": "2026-10-11-rust-native-creative-suite-installation.md",
+        "value": "/blog/rust-native-creative-suite-installation",
+        "self": "/blog/rust-native-creative-suite-installation",
+        "category": "dead-short-slug"
+      }
+    ]
+  },
+  "routes": {
+    "contentUrls": 229,
+    "handlers": 1,
+    "redirects": 34,
+    "not200": 0
+  },
+  "build": {
+    "sitemapUrls": 229,
+    "checked": 228,
+    "builtPages": 228,
+    "fatal": 0
+  },
+  "defectList": [
+    "2024-11-27-instagram-feed-summarizer.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2024-11-27-reddit-blog-generator.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2024-11-27-swarm-autogen.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2024-11-28-basic-autogen.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2024-11-28-basic-swarm-chatbot.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2024-11-29-tech-company-orchestrator.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2024-12-30-cultural-fingerprints.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2025-01-16-solo-business-ventures.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2025-01-23-building-a-multimodal-story-generation-system.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2025-03-09-custom-agent.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2025-07-08-ai-ssr-guide.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2025-10-18-Is-There-No-King.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2025-10-19-vibe-coding-janitor-session.md: no `description` frontmatter (falls back to a 160-char auto-excerpt)",
+    "2025-10-21-learn-programming-computer-science-youtube-roadmap.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-21-learn-programming-computer-science-youtube-roadmap, self URL is /blog/2025-10-21-learn-programming-computer-science-youtube-roadmap",
+    "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API, self URL is /blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API",
+    "2025-10-25-building-your-own-uncensored-ai-overlord.md: `canonical_url` is https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord, self URL is /blog/2025-10-25-building-your-own-uncensored-ai-overlord",
+    "2025-10-31-reddit-haunting-project-ai-resurrection.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-31-reddit-haunting-project-ai-resurrection, self URL is /blog/2025-10-31-reddit-haunting-project-ai-resurrection",
+    "2025-11-05-capacity-review-ai-workflow-vibe-coding.md: `canonical_url` is https://danielkliewer.com/blog/2025-11-05-capacity-review-ai-workflow-vibe-coding, self URL is /blog/2025-11-05-capacity-review-ai-workflow-vibe-coding",
+    "2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md: `canonical_url` is https://danielkliewer.com/blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp, self URL is /blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp",
+    "2026-01-12-autonomous-ai-agents-developer-portfolio.md: `canonical_url` is https://danielkliewer.com/blog/2026-01-12-autonomous-ai-agents-developer-portfolio, self URL is /blog/2026-01-12-autonomous-ai-agents-developer-portfolio",
+    "2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework.md: `canonical_url` is /blog/sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework, self URL is /blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+    "2026-09-04-the-rented-sovereign-agent-agency-stack.md: `canonical_url` is /blog/the-rented-sovereign-agent-agency-stack, self URL is /blog/2026-09-04-the-rented-sovereign-agent-agency-stack",
+    "2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective.md: `canonical_url` is /blog/omarchy-on-a-2017-macbook-pro-a-setup-retrospective, self URL is /blog/2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective",
+    "2026-10-11-rust-native-creative-suite-installation.md: `canonical_url` is /blog/rust-native-creative-suite-installation, self URL is /blog/2026-10-11-rust-native-creative-suite-installation"
+  ]
+}
