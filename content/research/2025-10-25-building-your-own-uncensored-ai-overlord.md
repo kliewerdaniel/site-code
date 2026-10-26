@@ -1,7 +1,7 @@
 ---
 author: Daniel Kliewer
 book_reference: true
-canonical_url: https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord
+canonical_url: /blog/2025-10-25-building-your-own-uncensored-ai-overlord
 categories:
 - AI
 - Tutorial

@@ -259,19 +259,18 @@
     }
   },
   "fatal": 0,
-  "defects": 11,
+  "defects": 10,
   "advisory": 343,
   "byKind": {
-    "canonical-mismatch": 11,
+    "canonical-mismatch": 10,
     "description-long": 174,
     "title-long": 156,
     "description-missing": 13
   },
   "canonical": {
-    "total": 11,
+    "total": 10,
     "byCategory": {
       "apex-vs-www": 6,
-      "cross-domain": 1,
       "dead-short-slug": 4
     },
     "items": [
@@ -286,12 +285,6 @@
         "value": "https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API",
         "self": "/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API",
         "category": "apex-vs-www"
-      },
-      {
-        "file": "2025-10-25-building-your-own-uncensored-ai-overlord.md",
-        "value": "https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord",
-        "self": "/blog/2025-10-25-building-your-own-uncensored-ai-overlord",
-        "category": "cross-domain"
       },
       {
         "file": "2025-10-31-reddit-haunting-project-ai-resurrection.md",
@@ -358,7 +351,6 @@
   "defectList": [
     "2025-10-21-learn-programming-computer-science-youtube-roadmap.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-21-learn-programming-computer-science-youtube-roadmap, self URL is /blog/2025-10-21-learn-programming-computer-science-youtube-roadmap",
     "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API, self URL is /blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API",
-    "2025-10-25-building-your-own-uncensored-ai-overlord.md: `canonical_url` is https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord, self URL is /blog/2025-10-25-building-your-own-uncensored-ai-overlord",
     "2025-10-31-reddit-haunting-project-ai-resurrection.md: `canonical_url` is https://danielkliewer.com/blog/2025-10-31-reddit-haunting-project-ai-resurrection, self URL is /blog/2025-10-31-reddit-haunting-project-ai-resurrection",
     "2025-11-05-capacity-review-ai-workflow-vibe-coding.md: `canonical_url` is https://danielkliewer.com/blog/2025-11-05-capacity-review-ai-workflow-vibe-coding, self URL is /blog/2025-11-05-capacity-review-ai-workflow-vibe-coding",
     "2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md: `canonical_url` is https://danielkliewer.com/blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp, self URL is /blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp",
@@ -371,7 +363,6 @@
   "findingIds": [
     "canonical-mismatch:2025-10-21-learn-programming-computer-science-youtube-roadmap.md",
     "canonical-mismatch:2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
-    "canonical-mismatch:2025-10-25-building-your-own-uncensored-ai-overlord.md",
     "canonical-mismatch:2025-10-31-reddit-haunting-project-ai-resurrection.md",
     "canonical-mismatch:2025-11-05-capacity-review-ai-workflow-vibe-coding.md",
     "canonical-mismatch:2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp.md",
@@ -738,13 +729,6 @@
       "kind": "canonical-mismatch",
       "file": "2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API.md",
       "detail": "`canonical_url` is https://danielkliewer.com/blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API, self URL is /blog/2025-10-21-ultimate-guide-export-your-reddit-data-to-markdown-using-python-and-PRAW-API"
-    },
-    {
-      "id": "canonical-mismatch:2025-10-25-building-your-own-uncensored-ai-overlord.md",
-      "severity": "defect",
-      "kind": "canonical-mismatch",
-      "file": "2025-10-25-building-your-own-uncensored-ai-overlord.md",
-      "detail": "`canonical_url` is https://kliewerdaniel.com/blog/2025-10-25-building-your-own-uncensored-ai-overlord, self URL is /blog/2025-10-25-building-your-own-uncensored-ai-overlord"
     },
     {
       "id": "canonical-mismatch:2025-10-31-reddit-haunting-project-ai-resurrection.md",
