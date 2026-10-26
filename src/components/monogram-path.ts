@@ -1,0 +1,26 @@
+// Generated from Fraunces Black (wght 900, opsz 144, SOFT 0, WONK 0).
+// Regenerate with tools/make-monogram.py — do not hand-edit the path.
+//
+// The mark is the real letterform from the site's display face, so it can never
+// drift from the type it sits beside. At 16px there is room for one shape, so
+// there is exactly one: no container, no second colour, no second idea.
+
+export const MONOGRAM_PATH = "M546 568 990 1015Q1066 1092 1088.5 1166.5Q1111 1241 1084.0 1297.5Q1057 1354 982 1376L962 1382Q955 1384 952.5 1386.0Q950 1388 950 1392Q950 1395 952.5 1397.5Q955 1400 960 1400H1456Q1461 1400 1463.5 1398.0Q1466 1396 1466 1393Q1466 1388 1462.5 1386.0Q1459 1384 1454 1382Q1426 1369 1393.0 1348.0Q1360 1327 1312.5 1288.0Q1265 1249 1195.0 1183.5Q1125 1118 1022 1014L556 544ZM689 702 997 1004 1428 111Q1453 60 1468.5 39.0Q1484 18 1512 16Q1517 15 1519.5 13.0Q1522 11 1522 8Q1522 4 1519.0 2.0Q1516 0 1511 0H911Q906 0 903.0 2.5Q900 5 900 9Q900 14 903.5 15.5Q907 17 912 18L959 26Q970 28 975.0 41.0Q980 54 963 91ZM608 58Q608 46 620.0 39.0Q632 32 654 28L710 18Q719 17 722.5 15.0Q726 13 726 8Q726 5 723.0 2.5Q720 0 714 0H74Q68 0 65.0 2.5Q62 5 62 8Q62 15 78 18L134 28Q157 32 168.5 39.0Q180 46 180 58V1342Q180 1354 168.5 1361.0Q157 1368 134 1372L78 1382Q62 1385 62 1392Q62 1395 65.0 1397.5Q68 1400 74 1400H714Q720 1400 723.0 1397.5Q726 1395 726 1392Q726 1385 710 1382L654 1372Q632 1368 620.0 1361.0Q608 1354 608 1342Z";
+
+export const GLYPH = { xMin: 62, yMax: 1400, width: 1460, height: 1400 };
+
+// Bare mark (header, footer, paper): K fills 42 of the 48-unit box.
+export const BARE = {
+  box: 48,
+  scale: 0.028767,
+  tx: 3.000,
+  ty: 3.863,
+};
+
+// Boxed mark (favicon): same glyph, inset to 36 units on a void field.
+export const BOXED = {
+  box: 48,
+  scale: 0.024658,
+  tx: 6.000,
+  ty: 6.740,
+};

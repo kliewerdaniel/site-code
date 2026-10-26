@@ -1,51 +1,52 @@
-// Logotype v2 — "The Sovereign Machine" monogram.
-// Derived from the book cover's geometry: a navy field, a gold keyline,
-// and three ascending towers joined by a circuit line with node dots.
-// A machine you can read at a glance: build height, networked, owned.
+// The monogram is the Fraunces Black "K" — the site's own display face, used
+// verbatim. It replaces "The Sovereign Machine": a rounded navy square holding
+// three ascending gold bars, a circuit line, three node dots and a blue
+// baseline. That was four ideas and three colours in 48px; at 16px it was mush,
+// and ascending bars read as an analytics startup, not as an author's mark.
+//
+// A colophon is the right form for a site built on editorial typography: one
+// shape, one colour, drawn from the type it sits beside.
+
+import { BARE, BOXED, GLYPH, MONOGRAM_PATH } from "./monogram-path";
 
 interface MarkProps {
   size?: number;
   className?: string;
   title?: string;
+  /** Void field behind the glyph. Needed where the mark sits on an unknown
+   *  background (tab bars); the header mark is bare so it reads as a colophon
+   *  rather than an app icon. */
+  boxed?: boolean;
 }
 
-export function SovereignMark({ size = 40, className, title }: MarkProps) {
+export function Monogram({
+  size = 34,
+  className,
+  title,
+  boxed = false,
+}: MarkProps) {
+  const g = boxed ? BOXED : BARE;
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 48 48"
-      fill="none"
+      viewBox={`0 0 ${g.box} ${g.box}`}
       role="img"
-      aria-label={title ?? "Daniel Kliewer monogram"}
-      className={className}
+      aria-label={title ?? "Daniel Kliewer"}
+      className={["text-gold", className].filter(Boolean).join(" ")}
     >
-      {/* field */}
-      <rect x="1.5" y="1.5" width="45" height="45" rx="7" fill="#1a2332" />
-      <rect
-        x="1.5"
-        y="1.5"
-        width="45"
-        height="45"
-        rx="7"
-        stroke="#d9a648"
-        strokeWidth="2.5"
+      {boxed ? <rect width={g.box} height={g.box} fill="#01040a" /> : null}
+      <path
+        transform={`translate(${g.tx} ${g.ty}) scale(${g.scale} ${-g.scale}) translate(${-GLYPH.xMin} ${-GLYPH.yMax})`}
+        d={MONOGRAM_PATH}
+        fill="currentColor"
       />
-      {/* circuit line across the towers' tops */}
-      <line x1="9" y1="11" x2="39" y2="11" stroke="#d9a648" strokeWidth="2" />
-      {/* node dots */}
-      <circle cx="9" cy="11" r="2.6" fill="#d9a648" />
-      <circle cx="39" cy="11" r="2.6" fill="#d9a648" />
-      <circle cx="24" cy="11" r="2.6" fill="#0b1119" stroke="#d9a648" strokeWidth="2" />
-      {/* three ascending towers */}
-      <rect x="12" y="26" width="5" height="12" fill="#d9a648" />
-      <rect x="21.5" y="19" width="5" height="19" fill="#d9a648" />
-      <rect x="31" y="12.5" width="5" height="25.5" fill="#d9a648" />
-      {/* baselines */}
-      <line x1="9" y1="38" x2="39" y2="38" stroke="#5b7ba3" strokeWidth="2" />
     </svg>
   );
 }
+
+/** @deprecated kept so older imports keep compiling; use Monogram. */
+export const SovereignMark = Monogram;
 
 interface LogotypeProps {
   markSize?: number;
@@ -54,19 +55,24 @@ interface LogotypeProps {
 }
 
 export function Logotype({
-  markSize = 34,
+  markSize = 26,
   className,
   wordmarkClassName,
 }: LogotypeProps) {
   return (
     <span className={`inline-flex items-center gap-3 ${className ?? ""}`}>
-      <SovereignMark size={markSize} />
+      <Monogram size={markSize} />
+      {/* Fraunces, not mono. The mark is drawn from this face, so setting the
+          wordmark in it makes the lockup a masthead instead of a serif letter
+          dropped beside typewriter text. Size and tracking chosen against
+          rendered variants: 26px mark with 19px wordmark is the point where
+          neither element overpowers the other. */}
       <span
-        className={`font-mono text-sm font-semibold tracking-[0.28em] text-ink ${
+        className={`font-display whitespace-nowrap text-[19px] uppercase tracking-[0.10em] text-ink ${
           wordmarkClassName ?? ""
         }`}
       >
-        DANIEL&nbsp;KLIEWER
+        Daniel Kliewer
       </span>
     </span>
   );
