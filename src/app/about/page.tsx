@@ -7,7 +7,7 @@ import { seo } from "@/lib/seo";
 export const metadata = seo({
   title: "About Daniel Kliewer",
   description:
-    "Daniel Kliewer is an AI engineer in Austin, Texas. Ten years in search relevance at Amazon, a computer science degree from MIT, twenty years of painting and animation, and local-first AI systems built on hardware he owns.",
+    "Daniel Kliewer is an AI engineer in Austin, Texas. Ten years in search relevance at Amazon, a self-directed computer science education through MIT OpenCourseWare, twenty years of painting and animation, and local-first AI systems built on hardware he owns.",
   path: "/about",
   openGraph: {
     title: "About Daniel Kliewer",
@@ -77,8 +77,8 @@ const history: Entry[] = [
   },
   {
     year: "2017",
-    title: "Computer science at MIT",
-    desc: "Bachelor of Science in Computer Science, 2017–2021, 4.0. Taken while working, because the systems I wanted to build had stopped being things you could reason about from the outside.",
+    title: "The MIT curriculum, without the enrollment",
+    desc: "MIT publishes its course materials free through OpenCourseWare. From 2017 to 2021 I worked through the computer science curriculum that way — lectures, problem sets, exams — at the depth of a degree and with none of the credential. No enrollment, no credit, no degree. The material is what I was after; the credential would have been someone else's signature on my work.",
   },
   {
     year: "2024",
