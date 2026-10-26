@@ -35,6 +35,8 @@ const MAX_DELAY = 0.06;
 const DURATION = 0.4;
 /** framer's `viewport={{ margin: "-70px" }}` shrinks all four sides. */
 const ROOT_MARGIN = "-70px -70px -70px -70px";
+/** The same inset as a positive number, for the synchronous in-view fast path. */
+const MARGIN_PX = 70;
 
 export function Reveal({
   children,
@@ -55,6 +57,17 @@ export function Reveal({
     // No observer (very old engine, or a test environment): show rather than
     // leave the block permanently invisible.
     if (!el || typeof IntersectionObserver === "undefined") {
+      setShown(true);
+      return;
+    }
+    // Fast path: an element already inside the trigger zone at mount reveals
+    // immediately. framer-motion does the same (it animates from `initial` on
+    // mount when the target is already in view), and doing it here means the
+    // reveal never depends on an observer callback being delivered — if the
+    // callback is late or never arrives for an already-visible block, the block
+    // is still shown. The zone matches ROOT_MARGIN: inset by 70px on each side.
+    const rect = el.getBoundingClientRect();
+    if (rect.bottom > MARGIN_PX && rect.top < window.innerHeight - MARGIN_PX) {
       setShown(true);
       return;
     }
