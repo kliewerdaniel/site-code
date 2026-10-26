@@ -119,6 +119,13 @@ export default async function HomePage() {
           aria-hidden="true"
           className="absolute inset-0 -z-10 bg-gradient-to-t from-void via-void/80 to-void/20 md:bg-gradient-to-r md:from-void md:via-void/30 md:to-transparent"
         />
+        {/* Top scrim: only the band the header occupies is darkened. Without it
+            the rightmost nav items sit directly on the plate's brightest tile
+            (~149/255) while the header is transparent at rest. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 -z-10 h-44 bg-gradient-to-b from-void via-void/70 to-transparent"
+        />
 
         <Container className="relative flex min-h-[540px] flex-col justify-center py-14 md:min-h-[620px] md:py-16">
           <Kicker>Local-first AI systems</Kicker>

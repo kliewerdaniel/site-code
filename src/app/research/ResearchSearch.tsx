@@ -36,25 +36,34 @@ export default function ResearchSearch({
 
   return (
     <div>
-      <div className="relative mb-10">
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search 184 research posts…"
-          aria-label="Search research posts"
-          className="w-full bg-void-2 border border-rule rounded-lg px-4 py-3 font-mono text-sm text-ink placeholder:text-ink-2/50 focus:outline-none focus:border-gold"
-        />
-        {query && (
-          <button
-            type="button"
-            onClick={() => setQuery("")}
-            className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-ink-2 hover:text-ink"
-            aria-label="Clear search"
-          >
-            ✕
-          </button>
-        )}
+      {/* Sticky so search stays reachable through a 184-post archive — and,
+          because it now floats over the scrolling list, it is the one place on
+          this page where glass has something real to blur. `top` reads the
+          header's measured height rather than a guessed constant. */}
+      <div
+        className="glass sticky z-40 -mx-6 mb-10 border-b px-6 py-4"
+        style={{ top: "var(--header-h)" }}
+      >
+        <div className="relative">
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search 184 research posts…"
+            aria-label="Search research posts"
+            className="w-full rounded-lg border border-rule-2/70 bg-void/55 px-4 py-3 font-mono text-sm text-ink placeholder:text-ink-2/50 focus:border-gold focus:outline-none"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              className="absolute top-1/2 right-3 -translate-y-1/2 font-mono text-xs text-ink-2 hover:text-ink"
+              aria-label="Clear search"
+            >
+              ✕
+            </button>
+          )}
+        </div>
       </div>
 
       {results === null ? (

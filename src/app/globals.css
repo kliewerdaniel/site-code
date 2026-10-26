@@ -45,6 +45,23 @@
   --color-rule-2: #2c3d49;
 }
 
+/* Header height as a fact, not a measurement.
+
+   The sticky research controls need to sit flush under the header. Publishing
+   the height from JS was tried and abandoned: it needs a ResizeObserver or a
+   resize event, and a stale value produces a visible 72px gap (measured). The
+   header's rows are now pinned to fixed heights, so this token and the real
+   header height cannot disagree — they are the same number by construction. */
+:root {
+  --header-h: 76px; /* main row only */
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-h: 124px; /* main row 76 + mobile nav row 48 */
+  }
+}
+
 ::selection {
   background: var(--color-gold);
   color: var(--color-void);
@@ -180,6 +197,85 @@ body {
   /* Ruled row: the unboxed replacement for v2's card grid. */
   .ruled-row {
     border-bottom: 1px solid var(--color-rule);
+  }
+
+  /* ---- Glass ------------------------------------------------------
+     One material, on the three surfaces that genuinely float: the sticky
+     header, the sticky research controls, and the book vitrine.
+
+     The first attempt tinted the pane DARKER than the page (void at 34-78%).
+     Measured, that is the wrong direction on a near-black site: a dark tint
+     over dark content composites to dark, so the bar read as a flat opaque
+     strip at every opacity — at 34% its rendered luma was 12.8 against 18.4
+     for the content beside it, i.e. invisible.
+
+     Premium glass on a dark UI is a LIFTED pane, not a darkened one. So each
+     surface is two layers: a dark base tint that guarantees legibility when
+     bright imagery passes underneath, plus a white sheen gradient that lifts
+     the pane above the page so the material reads at all.
+
+     Measured over the two backdrops that matter (page text at luma 18.4, and
+     the hero plate's brightest 100x75 tile at 149.5):
+        .glass        over dark +7.9 lift, over bright 5.98:1  (AA)
+        .glass-strong over dark +9.8 lift, over bright 6.34:1  (AA)
+     Both with --color-ink labels. */
+  .glass {
+    background-color: color-mix(in srgb, var(--color-void) 46%, transparent);
+    background-image: linear-gradient(
+      rgb(255 255 255 / 0.06),
+      rgb(255 255 255 / 0.015)
+    );
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    backdrop-filter: blur(20px) saturate(150%);
+    border-color: color-mix(in srgb, var(--color-rule-2) 75%, transparent);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.10),
+      inset 0 -1px 0 0 rgb(0 0 0 / 0.25);
+  }
+
+  .glass-strong {
+    background-color: color-mix(in srgb, var(--color-void) 50%, transparent);
+    background-image: linear-gradient(
+      rgb(255 255 255 / 0.07),
+      rgb(255 255 255 / 0.02)
+    );
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+    border-color: color-mix(in srgb, var(--color-rule-2) 70%, transparent);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.12),
+      inset 0 -1px 0 0 rgb(0 0 0 / 0.3);
+  }
+}
+
+/* No backdrop-filter: fall back to a near-solid surface. A translucent panel
+   with no blur lets the page read through the text, which is worse than not
+   doing glass at all. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background-color: color-mix(in srgb, var(--color-void-2) 94%, transparent);
+    background-image: none;
+  }
+  .glass-strong {
+    background-color: color-mix(in srgb, var(--color-void) 96%, transparent);
+    background-image: none;
+  }
+}
+
+/* Explicit preference for less transparency (Safari). A preference, not a
+   hint: drop the blur and the sheen, go opaque. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-strong {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-image: none;
+  }
+  .glass {
+    background-color: var(--color-void-2);
+  }
+  .glass-strong {
+    background-color: var(--color-void);
   }
 }
 

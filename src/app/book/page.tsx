@@ -118,25 +118,37 @@ export default function BookPage() {
         <Container className="py-16 md:py-24">
           <div className="grid items-center gap-12 md:grid-cols-[1fr_1.2fr]">
             <div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={BOOK.coverFront}
-                alt="Computational Sovereignty — hardcover front cover"
-                className="mx-auto w-full max-w-[300px] rounded-[2px] shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
-              />
-              <div className="mt-6 flex items-center justify-center gap-4">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={BOOK.coverSpine}
-                  alt="Book spine"
-                  className="h-24 w-auto rounded-[2px] shadow-lg"
+              {/* Vitrine: the cover is a physical object, so it gets a display
+                  case rather than sitting loose on the page. The glass here has
+                  the warm radial behind it — without that, transparency over a
+                  flat void shows nothing and the panel just reads as a card. */}
+              <div className="glass relative overflow-hidden rounded-lg border p-8 md:p-10">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(255,195,112,0.10),transparent_70%)]"
                 />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={BOOK.coverBack}
-                  alt="Book back cover"
-                  className="h-24 w-auto rounded-[2px] shadow-lg"
-                />
+                <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={BOOK.coverFront}
+                    alt="Computational Sovereignty — hardcover front cover"
+                    className="mx-auto w-full max-w-[300px] rounded-[2px] shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
+                  />
+                  <div className="mt-6 flex items-center justify-center gap-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={BOOK.coverSpine}
+                      alt="Book spine"
+                      className="h-24 w-auto rounded-[2px] shadow-lg"
+                    />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={BOOK.coverBack}
+                      alt="Book back cover"
+                      className="h-24 w-auto rounded-[2px] shadow-lg"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div>

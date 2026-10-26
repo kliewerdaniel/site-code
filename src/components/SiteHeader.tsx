@@ -27,13 +27,11 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-[100] transition-colors duration-300 ${
-        scrolled
-          ? "border-b border-rule bg-void/75 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+      className={`sticky top-0 z-[100] border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+        scrolled ? "glass-strong" : "border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5">
+      <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-4 px-6">
         <Link
           href="/"
           aria-label="Daniel Kliewer — home"
@@ -46,7 +44,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="label transition-colors hover:text-gold"
+              className="label text-ink transition-colors hover:text-gold"
             >
               {item.label}
             </Link>
@@ -64,7 +62,7 @@ export function SiteHeader() {
         aria-label="Primary mobile"
         className={`md:hidden ${scrolled ? "border-t border-rule" : "border-t border-transparent"}`}
       >
-        <div className="mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-6 py-2">
+        <div className="mx-auto flex h-12 max-w-6xl items-center gap-6 overflow-x-auto px-6">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -72,7 +70,7 @@ export function SiteHeader() {
               /* py-2 raises the tappable box from 17px to ~33px. Measured in a
                  390px viewport: the label alone was below the 24px minimum
                  target size, and this row is the only navigation on a phone. */
-              className="label inline-flex min-h-[44px] items-center whitespace-nowrap py-2 transition-colors hover:text-gold"
+              className="label inline-flex min-h-[44px] items-center whitespace-nowrap py-2 text-ink transition-colors hover:text-gold"
             >
               {item.label}
             </Link>
