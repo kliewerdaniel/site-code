@@ -48,7 +48,10 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/kliewerdaniel/sovereign-agent-stack",
     signals: { lastCommit: "2026-09-11", testFiles: 139 },
     concepts: ["governed-execution", "reproducibility"],
-    articles: ["2026-10-25-hermes-local-video-studio"],
+    articles: [
+      "2026-10-25-hermes-local-video-studio",
+      "2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+    ],
   },
   {
     slug: "sovereign-intelligence-stack",
@@ -66,7 +69,7 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/kliewerdaniel/sovereign-intelligence-stack",
     signals: { lastCommit: "2026-07-06", testFiles: 557 },
     concepts: ["local-first", "knowledge-compilation"],
-    articles: [],
+    articles: ["2026-07-04-sovereign-intelligence-stack"],
   },
   {
     slug: "sovereign-intelligence-observatory",
@@ -84,7 +87,7 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/kliewerdaniel/sovereign-intelligence-observatory",
     signals: { lastCommit: "2026-07-06", testFiles: 679 },
     concepts: ["local-first", "provenance"],
-    articles: [],
+    articles: ["2026-07-03-the-sovereign-intelligence-observatory"],
   },
   {
     slug: "ganymede",
@@ -201,7 +204,7 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/kliewerdaniel/pagerank-seo",
     signals: { lastCommit: "2026-09-03", testFiles: 9 },
     concepts: ["evaluation", "graph-retrieval"],
-    articles: [],
+    articles: ["2026-09-03-pagerank-seo-information-architecture-problem"],
   },
   {
     slug: "sovereignspec",
@@ -219,7 +222,10 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/kliewerdaniel/sovereignspec",
     signals: { lastCommit: "2026-06-13", testFiles: 25 },
     concepts: ["governed-execution", "reproducibility"],
-    articles: [],
+    articles: [
+      "2026-06-12-sovereignspec-local-first-spec-driven-development",
+      "2026-06-12-sovereignspec-ganymedean-alignment-protocol",
+    ],
   },
   {
     slug: "mindbroadcast",
