@@ -210,7 +210,8 @@ export function bookSchema(): string {
     description: BOOK.promise,
     author: { "@id": `${SITE.url}/#daniel`, "@type": "Person", name: SITE.name },
     publisher: { "@id": `${SITE.url}/#organization` },
-    numberOfPages: Number(BOOK.pages),
+    isbn: "979-8162014881",
+    datePublished: "2026-10-12",
     bookFormat: "https://schema.org/Hardcover",
     offers: {
       "@type": "Offer",
