@@ -74,6 +74,11 @@ function StudioEnvironment() {
     tex.colorSpace = THREE.SRGBColorSpace;
     const pmrem = new THREE.PMREMGenerator(gl);
     const env = pmrem.fromEquirectangular(tex).texture;
+    // `scene` is the live three.js scene object handed to this component by
+    // react-three-fiber; assigning its environment is the idiomatic three.js
+    // pattern and the only way to apply the generated PMREM. The hook-immutability
+    // rule exists for React state, which this is not.
+    // eslint-disable-next-line react-hooks/immutability
     scene.environment = env;
     scene.environmentIntensity = 0.42;
     return () => {
