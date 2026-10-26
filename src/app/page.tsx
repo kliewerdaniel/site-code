@@ -101,7 +101,12 @@ export default async function HomePage() {
           The thesis, not a slogan. The book is one artifact inside this, so it
           no longer occupies the only scene on the site. */}
       <Scene>
-        <Kicker>Systems · Research · Writing</Kicker>
+        {/* Single descriptor, not a list. The previous kicker read
+            "Systems · Research · Writing" — three nouns, bullet-separated, in
+            the same uppercase mono as the nav directly above it. It looked like
+            a tab bar and invited clicks it could not accept. Every other Kicker
+            on the site labels one thing; this one now does too. */}
+        <Kicker>Local-first AI systems</Kicker>
         <h1 className="display-hero mt-8 max-w-4xl">
           Systems that run on your hardware, and can prove what they did.
         </h1>
