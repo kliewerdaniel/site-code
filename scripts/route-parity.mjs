@@ -25,7 +25,11 @@ const MANIFEST = path.join(ROOT, "data", "route-manifest.json");
 const STATUS_FILE = path.join(ROOT, "data", "route-status.json");
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
-const urls = [...manifest.static, ...manifest.blog, ...manifest.fleet];
+// Every URL that must answer 200. `dynamic` replaced the old `fleet` group:
+// /fleet/* no longer exists as pages (they are permanent redirects), and the
+// projects/concepts/paths index pages are static, so the only dynamic segments
+// left are those three.
+const urls = [...manifest.static, ...manifest.blog, ...manifest.dynamic, ...(manifest.handlers ?? [])];
 
 async function statusOf(url) {
   try {
@@ -73,11 +77,35 @@ for (const { source, destination } of manifest.legacyRedirects) {
 }
 console.log(`  ${manifest.legacyRedirects.length - redirBad}/${manifest.legacyRedirects.length} correct`);
 
+// removed sections (/mission, /paper, /press, /fleet, /fleet/*): also permanent
+// redirects. These are the URLs that used to be pages, so they must 308 rather
+// than resolve — a 200 here means a page came back to life.
+const removed = manifest.removedSectionRedirects ?? [];
+console.log(`\nremoved sections (${removed.length}):`);
+let removedBad = 0;
+for (const { source, destination } of removed) {
+  try {
+    const res = await fetch(base + source, { redirect: "manual" });
+    const loc = res.headers.get("location") ?? "";
+    const ok = (res.status === 308 || res.status === 301) && loc.endsWith(destination);
+    if (!ok) {
+      removedBad++;
+      console.log(`    FAIL ${res.status} ${source} -> ${loc || "(none)"} (want ${destination})`);
+    }
+  } catch (e) {
+    removedBad++;
+    console.log(`    ERR ${source}: ${e.message}`);
+  }
+}
+console.log(`  ${removed.length - removedBad}/${removed.length} correct`);
+
+const redirectTotal = redirBad + removedBad;
+
 if (save) {
   fs.mkdirSync(path.dirname(STATUS_FILE), { recursive: true });
   fs.writeFileSync(STATUS_FILE, JSON.stringify(results, null, 2) + "\n");
   console.log(`\nwrote baseline ${path.relative(ROOT, STATUS_FILE)}`);
-  process.exit(bad.length || redirBad ? 1 : 0);
+  process.exit(bad.length || redirectTotal ? 1 : 0);
 }
 
 if (check) {
@@ -101,4 +129,4 @@ if (check) {
   process.exit(0);
 }
 
-process.exit(bad.length || redirBad ? 1 : 0);
+process.exit(bad.length || redirectTotal ? 1 : 0);

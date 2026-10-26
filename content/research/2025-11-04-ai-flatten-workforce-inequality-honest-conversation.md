@@ -51,7 +51,7 @@ I'm not saying empathy and creativity don't matter—they matter immensely in sp
 
 The people who are genuinely creative, who do form authentic connections, who solve novel problems—they're not afraid of AI. They're intrigued by it. The fear comes from somewhere else.
 
-![](/images/elite-vs-grinder-ai-tools.png)
+![Illustration of four people working at office desks beneath two floating workstations, a metaphor for AI-assisted work layered over ordinary jobs](/images/elite-vs-grinder-ai-tools.png)
 
 ## The Learning Problem Nobody Wants to Name
 
@@ -93,7 +93,7 @@ And now, when AI threatens to flatten some of those barriers, the cognitive diss
 
 I have sympathy for this, even as I think it needs to be challenged. We're all trying to make meaning from our lives, to believe that our successes reflect something essential about us rather than fortunate circumstance. AI isn't just changing the job market—it's challenging our narratives about ourselves.
 
-![](/images/open-source-ai-accessibility.png)
+![Illustration of people in business clothing scattered across broken floating platforms above a distant city, a metaphor for a fragmented job market](/images/open-source-ai-accessibility.png)
 
 ## The Six Actually Useful Steps (Without the Macho Posturing)
 
@@ -149,7 +149,7 @@ I know which future I'm working toward.
 - Individual adaptation is necessary but insufficient; we need systemic solutions for systemic disruption
 - The question isn't whether AI will change work—it's whether we'll be honest enough to navigate that change justly
 
-![](/images/ai-job-market.png)
+![Illustration of business figures standing across a glowing network of connected nodes, a metaphor for a connected but shifting job market](/images/ai-job-market.png)
 
 ## Questions Worth Wrestling With
 

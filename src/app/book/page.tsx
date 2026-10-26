@@ -6,6 +6,7 @@ import { CHAPTERS, PARTS } from "@/lib/chapters";
 import { Figure, FigureRow, Kicker } from "@/components/Archetypes";
 import { AmazonCta } from "@/components/AmazonCta";
 import { BOOK } from "@/config";
+import { getAllPosts } from "@/lib/posts";
 import { bookSchema, seo } from "@/lib/seo";
 
 export const metadata = seo({
@@ -16,12 +17,22 @@ export const metadata = seo({
     title: `${BOOK.title} — the full 24-chapter stack`,
     description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
     type: "website",
-    images: [BOOK.coverFront],
+    // The cover is a 1837×3050 portrait. Declaring its real aspect stops the
+    // social preview from being silently cropped to the 1200×630 default.
+    images: [
+      {
+        url: BOOK.coverFront,
+        width: 1837,
+        height: 3050,
+        alt: `${BOOK.title}: ${BOOK.subtitle} — hardcover cover`,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: `${BOOK.title} — the full 24-chapter stack`,
     description: `Models, retrieval, knowledge graphs, governed agents — built on your machine, measured honestly. Hardcover, ${BOOK.price}.`,
+    images: [BOOK.coverFront],
   },
 });
 
@@ -84,15 +95,15 @@ const faq = [
   },
   {
     q: "How is this different from the blog?",
-    a: "The 184 research posts are the laboratory: experiments, measurements, dead ends. The book is the compiled artifact — the reasoning done once, organized so you don&apos;t have to rediscover it across three years of archives.",
+    a: `The ${getAllPosts().length} research posts are the laboratory: experiments, measurements, dead ends. The book is the compiled artifact — the reasoning done once, organized so you don&apos;t have to rediscover it across three years of archives.`,
   },
   {
     q: "Ebook or paperback?",
-    a: "Hardcover. 214 pages, 6×9, built to live on a desk next to the machine it describes. There is no DRM to strip because there is no DRM.",
+    a: `Hardcover only. ${BOOK.pages} pages, ${BOOK.trim}, built to live on a desk next to the machine it describes. There is no DRM to strip because there is no DRM.`,
   },
   {
     q: "When does it ship?",
-    a: "The manuscript is complete and reviewed — 24 chapters, ~46,000 words. The Amazon listing opens at launch; the button below goes live the moment it does.",
+    a: `The manuscript is complete and reviewed — ${BOOK.chapters} chapters, ${BOOK.words} words. The hardcover is live on Amazon now, so the button below is the real listing, not a placeholder.`,
   },
 ];
 

@@ -4,36 +4,63 @@ import { Exhibit, Kicker } from "@/components/Archetypes";
 import { HeroBand } from "@/components/HeroBand";
 import { getAllPosts, getAllTags, tagSlug } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
-import { seo } from "@/lib/seo";
+import { collectionPageSchema, seo } from "@/lib/seo";
 import ResearchSearch from "./ResearchSearch";
 
 interface PageProps {
   searchParams: Promise<{ page?: string; tag?: string }>;
 }
 
+/** Canonical path for a research view. Mirrors `pageHref` below so the
+ *  canonical a page declares is exactly the URL the pagination links emit. */
+function canonicalPath(page: number, tag?: string): string {
+  const params = new URLSearchParams();
+  if (page > 1) params.set("page", String(page));
+  if (tag) params.set("tag", tag);
+  const qs = params.toString();
+  return qs ? `/research?${qs}` : "/research";
+}
+
+/** Below this a tag view is a near-empty page: it exists to be reachable and
+ *  to link its one or two posts, not to occupy index space. */
+const MIN_TAG_POSTS_FOR_INDEXING = 3;
+
 export async function generateMetadata({
   searchParams,
 }: PageProps): Promise<Metadata> {
-  const { tag } = await searchParams;
+  const { page: pageParam, tag } = await searchParams;
+  const page = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
+
+  const allPosts = getAllPosts();
+  const allTags = getAllTags();
   const activeTag = tag
-    ? getAllTags().find((t) => t.slug === tagSlug(tag))
+    ? allTags.find((t) => t.slug === tagSlug(tag))
     : undefined;
-  if (activeTag) {
-    const allPosts = getAllPosts();
-    const count = allPosts.filter((p) =>
-      p.tags.some((t) => tagSlug(t) === activeTag.slug)
-    ).length;
-    return seo({
-      title: `${activeTag.tag} research — ${count} posts`,
-      description: `Research posts tagged ${activeTag.tag}: ${count} essays on local-first AI, deterministic pipelines, and computational sovereignty.`,
-      path: `/research?tag=${activeTag.slug}`,
-    });
-  }
+  const count = activeTag
+    ? allPosts.filter((p) =>
+        p.tags.some((t) => tagSlug(t) === activeTag.slug)
+      ).length
+    : allPosts.length;
+
+  const isPaged = page >= 2;
+  const title = activeTag
+    ? `${activeTag.tag} research — ${count} posts${isPaged ? ` — Page ${page}` : ""}`
+    : isPaged
+      ? `Research — Page ${page}`
+      : "Research";
+  const description = activeTag
+    ? `Research posts tagged ${activeTag.tag}: ${count} essays on local-first AI, deterministic pipelines, and computational sovereignty.`
+    : "The full research archive — local-first AI systems, deterministic pipelines, and computational sovereignty.";
+
   return seo({
-    title: "Research",
-    description:
-      "The full research archive — local-first AI systems, deterministic pipelines, and computational sovereignty.",
-    path: "/research",
+    title,
+    description: isPaged ? `${description} Page ${page} of the archive.` : description,
+    // Self-referential even when paginated: `/research?page=3` used to
+    // canonicalise to page 1, telling crawlers the pagination did not exist.
+    path: canonicalPath(page, activeTag?.slug),
+    ...(activeTag && count < MIN_TAG_POSTS_FOR_INDEXING
+      ? { robots: { index: false, follow: true } }
+      : {}),
   });
 }
 
@@ -86,6 +113,10 @@ export default async function ResearchPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: collectionPageSchema() }}
+      />
     <HeroBand
       poster="/images/hero/hero-research.jpg"
       srcMp4="/images/hero/hero-research-loop.mp4"
@@ -122,7 +153,7 @@ export default async function ResearchPage({
     </HeroBand>
 
     <Exhibit wide>
-      <ResearchSearch posts={searchable}>
+      <ResearchSearch posts={searchable} total={allPosts.length}>
         {/* Tag filter chips — a chip is right here because these are a
             filter control, not content. */}
         <div className="mb-14 flex flex-wrap gap-2">
@@ -177,11 +208,11 @@ export default async function ResearchPage({
         </ul>
 
         {/* Complete archive. Every post link is present in the DOM inside a
-            <details>, so crawlers reach all 184 posts in one hop from the home
-            page (home → research → post) instead of burying 164 of them behind
-            pagination at depth 4+. The disclosure keeps the UI clean without
-            hiding content from crawlers — <details> renders in the HTML whether
-            or not it is open. */}
+            <details>, so crawlers reach all {allPosts.length} posts in one hop
+            from the research hub instead of burying the tail behind pagination
+            at depth 4+. The disclosure keeps the UI clean without hiding
+            content from crawlers — <details> renders in the HTML whether or
+            not it is open. */}
         <details className="mt-16 border-t border-rule pt-10">
           <summary className="label cursor-pointer text-gold hover:underline underline-offset-4">
             Full archive — all {allPosts.length} posts

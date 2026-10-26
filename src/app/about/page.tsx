@@ -3,10 +3,11 @@ import { HeroBand } from "@/components/HeroBand";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { BOOK, OLD_BOOK } from "@/config";
-import { seo } from "@/lib/seo";
+import { getAllPosts } from "@/lib/posts";
+import { profilePageSchema, seo } from "@/lib/seo";
 
 export const metadata = seo({
-  title: "About Daniel Kliewer",
+  title: "About",
   description:
     "Daniel Kliewer is an AI engineer in Austin, Texas. Ten years in search relevance at Amazon, a self-directed computer science education through MIT OpenCourseWare, twenty years of painting and animation, and local-first AI systems built on hardware he owns.",
   path: "/about",
@@ -17,7 +18,7 @@ export const metadata = seo({
     type: "profile",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "About Daniel Kliewer",
     description:
       "AI engineer in Austin. Search relevance, local-first systems, and twenty years of painting.",
@@ -28,6 +29,8 @@ export const metadata = seo({
    public LinkedIn record, repository counts from the GitHub API, publication
    counts from the build. Nothing here is inferred, and no capability is claimed
    that does not have code or a dated artifact behind it. */
+
+const POST_COUNT = getAllPosts().length;
 
 const current = [
   {
@@ -40,7 +43,7 @@ const current = [
   },
   {
     title: "Writing it down",
-    body: `The synthesis is ${BOOK.title}: ${BOOK.chapters} chapters on building systems you can own, audit and reproduce. The working notes are the research log — 195 posts published as the work happened, including the parts that failed.`,
+    body: `The synthesis is ${BOOK.title}: ${BOOK.chapters} chapters on building systems you can own, audit and reproduce. The working notes are the research log — ${POST_COUNT} posts published as the work happened, including the parts that failed.`,
   },
 ];
 
@@ -111,6 +114,10 @@ const beliefs = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: profilePageSchema() }}
+      />
       {/* HEAD */}
       <HeroBand
         poster="/images/hero/hero-about.jpg"

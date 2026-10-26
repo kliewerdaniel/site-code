@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-10-23-two-models-one-harness
 date: 10-23-2026
-description: "A complete, verified log of choosing a new local model to drive Hermes on an Apple M4 Pro, and getting it to coexist with the model already running. Covers surveying what actually exists on Hugging Face, verifying a GGUF header before a 17 GB download, the two llama-server flags gemma4 refuses to run without, an out-of-memory wall that turned every request into a 500, why a 4B dense model can cost more GPU memory than a 26B mixture-of-experts, a speed measurement that broke my own claim, and the launchd switch that lets both models stay available. Every command was run. Every number came off real output."
+description: "Choosing a local model for Hermes on an M4 Pro and making it coexist with the running one: GGUF checks, the flags gemma4 needs, and the launchd switch."
 image: /images/two-models-one-harness.png
 layout: post
 title: "Two Models, One Harness: Swapping Flint for Gemma 4 Without Losing Either"

@@ -22,7 +22,10 @@ export const BOOK = {
   coverSpine: "/images/book-spine.png",
   coverBack: "/images/book-back.png",
   pages: "214",
+  /** Binding + trim, for the specifications table. */
   format: "Hardcover · 6×9 in",
+  /** Trim alone, for prose ("214 pages, 6×9 in") where "format" would repeat the binding. */
+  trim: "6×9 in",
   chapters: 24,
   words: "~46,000",
 } as const;
@@ -44,9 +47,10 @@ export const SOCIAL = {
 
 /* Primary navigation leads with the WORK, not the book. The book is one
    artifact inside a larger program; putting it first made the whole site read
-   as a book landing page. /sample and /press stay live and are linked from
-   /book and the footer — removing them from the nav is a navigation change,
-   not a route change. */
+   as a book landing page. /sample stays live and is linked from /book and the
+   footer — removing it from the nav is a navigation change, not a route change.
+   /press no longer exists: it is a permanent redirect to /about (see
+   REMOVED_SECTION_REDIRECTS in next.config.ts). */
 export const NAV_ITEMS = [
   { label: "Projects", href: "/projects" },
   { label: "Research", href: "/research" },

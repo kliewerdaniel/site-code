@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Exhibit, Kicker, Figure, FigureRow, RuledRow } from "@/components/Archetypes";
 import { formatDate } from "@/lib/formatDate";
-import { seo } from "@/lib/seo";
+import { breadcrumbSchema, seo, softwareSourceCodeSchema } from "@/lib/seo";
 import {
   PROJECTS,
   MATURITY_LABEL,
@@ -41,7 +41,44 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <>
+      {/* SoftwareSourceCode asserts only what taxonomy.ts states: name, role,
+          repo URL, an unambiguous language from `stack`, and the author
+          reference. No version, rating, download count or date is invented. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: softwareSourceCodeSchema({
+            slug: project.slug,
+            name: project.name,
+            role: project.role,
+            stack: project.stack,
+            repo: project.repo,
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Projects", path: "/projects" },
+            { name: project.name, path: `/projects/${project.slug}` },
+          ]),
+        }}
+      />
       <Exhibit>
+        {/* Breadcrumb — matches the BreadcrumbList schema above. */}
+        <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-2 mb-8">
+          <Link href="/" className="hover:text-gold transition-colors">
+            Home
+          </Link>
+          <span className="mx-2">/</span>
+          <Link href="/projects" className="hover:text-gold transition-colors">
+            Projects
+          </Link>
+          <span className="mx-2">/</span>
+          <span>{project.name}</span>
+        </nav>
         <Kicker>
           {MATURITY_LABEL[project.maturity]} · {project.signals.lastCommit}
         </Kicker>

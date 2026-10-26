@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-07-24-popper-the-falsifiable-hypothesis-compiler
 date: 07-24-2026
-description: "The last experiment proved a knowledge-graph compiler survives scale. This one asks a harder question: are its hypotheses scientifically meaningful, or only linguistically convincing? Popper stops trying to make the compiler smarter and starts making it falsifiable — a strict hypothesis schema, source-level provenance, three negative controls, and a historical rediscovery benchmark where the discovery paper is removed and the system must reconstruct the leap from prior literature alone. Run locally on a 35B model: the compiler scored 0.89–0.97 composite against 0.00 for ungrounded generation, and reconstructed the CTLA-4 checkpoint-blockade and nucleoside-modified-mRNA discoveries from their prior literature — while honestly failing on CRISPR and refusing to confidently rebuild phlogiston."
+description: "Popper makes the compiler falsifiable: strict schema, source-level provenance, three negative controls, a rediscovery benchmark. 0.89–0.97 composite against 0.00 ungrounded."
 draft: false
 tags:
   - ai-agents

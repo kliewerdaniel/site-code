@@ -4,7 +4,7 @@ import { SOCIAL } from "@/config";
 import { seo } from "@/lib/seo";
 
 export const metadata = seo({
-  title: "Contact — Daniel Kliewer",
+  title: "Contact",
   description:
     "Contact Daniel Kliewer: email, X, GitHub, LinkedIn. No contact form — pick the channel that fits.",
   path: "/contact",

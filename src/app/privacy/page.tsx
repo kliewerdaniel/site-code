@@ -14,14 +14,14 @@ const sections = [
     heading: "What This Site Collects",
     body: [
       "This site uses Vercel Analytics to measure basic traffic and performance. Vercel Analytics is privacy-first — it does not use cookies, does not track users across sites, and collects only anonymized, aggregated data.",
-      "If you consent to analytics, PostHog is loaded to collect richer behavioral data — page views, clicks, session duration, and scroll depth. PostHog is self-hosted or privacy-compliant cloud-hosted. No data is shared with third parties. You can opt out at any time via the cookie banner.",
+      "No other analytics load, and there is no consent banner. Nothing here asks permission to track you, because nothing here tracks you beyond the aggregate numbers above.",
       "No personal data is collected. There are no advertising cookies and no user accounts.",
     ],
   },
   {
     heading: "Cookies",
     body: [
-      "This site uses no essential cookies. If you consent to analytics, PostHog may set a cookie to recognize returning visitors. If you consent to marketing, Google AdSense may set cookies for personalized ads. You can change your preferences at any time via the cookie banner. Google's ads.txt is also served for ads.txt verification purposes.",
+      "This site sets no cookies at all — no essential cookies, no analytics cookies, no advertising cookies, no marketing cookies. There is no consent mechanism and no preference to change. An ads.txt file is served for ads.txt verification, but this site sells no advertising and runs no ad network.",
     ],
   },
   {

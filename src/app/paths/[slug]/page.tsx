@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Exhibit, Kicker } from "@/components/Archetypes";
-import { seo } from "@/lib/seo";
+import { breadcrumbSchema, seo } from "@/lib/seo";
 import { PATHS, getPath, resolveStep } from "@/lib/taxonomy";
 
 interface Props {
@@ -31,7 +31,29 @@ export default async function PathPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Paths", path: "/paths" },
+            { name: path.name, path: `/paths/${path.slug}` },
+          ]),
+        }}
+      />
       <Exhibit>
+        {/* Breadcrumb — matches the BreadcrumbList schema above. */}
+        <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-2 mb-8">
+          <Link href="/" className="hover:text-gold transition-colors">
+            Home
+          </Link>
+          <span className="mx-2">/</span>
+          <Link href="/paths" className="hover:text-gold transition-colors">
+            Paths
+          </Link>
+          <span className="mx-2">/</span>
+          <span>{path.name}</span>
+        </nav>
         <Kicker>Learning path · {steps.length} steps</Kicker>
         <h1 className="display-lg mt-6 max-w-3xl">{path.name}</h1>
         <p className="display-md mt-6 max-w-2xl text-ink-2 italic">{path.promise}</p>

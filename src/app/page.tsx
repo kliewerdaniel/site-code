@@ -23,12 +23,14 @@ export const metadata = seo({
   description:
     "Engineering work on local-first AI: agent runtimes that separate proposal from permission, knowledge compilers that keep claims traceable to evidence, and creative tooling that verifies what it rendered rather than trusting an exit code.",
   path: "/",
+  // The title is already a full headline; the layout template's
+  // "%s — Daniel Kliewer" suffix would push it past a search-result slot.
+  absoluteTitle: true,
   openGraph: {
     title: "Daniel Kliewer — local-first AI systems",
     description:
       "Twelve systems built on one constraint: if a system cannot account for itself, it is not trustworthy, however capable it looks.",
     type: "website",
-    images: ["/images/og-home.jpg"],
   },
   twitter: {
     card: "summary_large_image",

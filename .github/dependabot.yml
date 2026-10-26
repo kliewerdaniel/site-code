@@ -1,0 +1,20 @@
+# Weekly npm dependency updates.
+#
+# Runtime floor: `.nvmrc` pins Node 22.23.4 and `npm run prenode` fails the build
+# on anything older. `engines.node` is "22.x" so Vercel selects the 22 line;
+# if Vercel's available 22.x is older than the gate requires, the build fails
+# closed rather than deploying on a vulnerable runtime.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: sunday
+      time: "06:00"
+      timezone: "America/Chicago"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+    labels:
+      - dependencies

@@ -1,22 +1,22 @@
 {
   "generatedFrom": "scripts/route-manifest.mjs",
   "counts": {
-    "static": 13,
-    "blogPosts": 184,
-    "fleetDomains": 8,
+    "static": 11,
+    "blogPosts": 195,
+    "dynamicRoutes": 23,
+    "handlers": 1,
+    "removedRoutes": 12,
     "legacyRedirects": 22
   },
   "static": [
     "/",
     "/about",
     "/book",
+    "/concepts",
     "/contact",
-    "/feed.xml",
-    "/fleet",
-    "/mission",
-    "/paper",
-    "/press",
+    "/paths",
     "/privacy",
+    "/projects",
     "/research",
     "/sample",
     "/terms"
@@ -205,9 +205,49 @@
     "/blog/2026-09-04-the-rented-sovereign-agent-agency-stack",
     "/blog/2026-09-26-omarchy-on-a-2017-macbook-pro-a-setup-retrospective",
     "/blog/2026-10-11-rust-native-creative-suite-installation",
-    "/blog/2026-10-12-mindbroadcast"
+    "/blog/2026-10-12-mindbroadcast",
+    "/blog/2026-10-22-running-recursive-flint-locally-with-hermes",
+    "/blog/2026-10-23-llmjacking-the-skynet-mode-recursive-threat",
+    "/blog/2026-10-23-operation-ouroboros-recursive-intelligence-parasite",
+    "/blog/2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate",
+    "/blog/2026-10-23-two-models-one-harness",
+    "/blog/2026-10-24-qwen-image-2-1-turbo-on-apple-silicon",
+    "/blog/2026-10-25-ganymede-the-archive-of-the-gods",
+    "/blog/2026-10-25-hermes-local-video-studio",
+    "/blog/2026-10-25-the-dissolve-that-wasnt-applied",
+    "/blog/2026-10-25-the-keyframe-that-went-nowhere",
+    "/blog/2026-10-25-the-mask-that-rendered-anyway"
   ],
-  "fleet": [
+  "dynamic": [
+    "/concepts/creative-automation",
+    "/concepts/evaluation",
+    "/concepts/governed-execution",
+    "/concepts/graph-retrieval",
+    "/concepts/knowledge-compilation",
+    "/concepts/local-first",
+    "/concepts/provenance",
+    "/concepts/reproducibility",
+    "/paths/knowledge-compilation-end-to-end",
+    "/paths/local-first-to-governed-agents",
+    "/paths/verified-creative-workflows",
+    "/projects/artcraft",
+    "/projects/chris-game",
+    "/projects/ganymede",
+    "/projects/hermes-local-video-studio",
+    "/projects/konradfreeman-rag",
+    "/projects/mindbroadcast",
+    "/projects/pagerank-seo",
+    "/projects/qwen-image-studio",
+    "/projects/sovereign-agent-stack",
+    "/projects/sovereign-intelligence-observatory",
+    "/projects/sovereign-intelligence-stack",
+    "/projects/sovereignspec"
+  ],
+  "handlers": [
+    "/feed.xml"
+  ],
+  "removed": [
+    "/fleet",
     "/fleet/cognitive-memory",
     "/fleet/compile-time-ai",
     "/fleet/decision-graphs",
@@ -215,7 +255,10 @@
     "/fleet/knowledge-representation",
     "/fleet/local-first-ai",
     "/fleet/research-automation",
-    "/fleet/scientific-knowledge-systems"
+    "/fleet/scientific-knowledge-systems",
+    "/mission",
+    "/paper",
+    "/press"
   ],
   "legacyRedirects": [
     {
@@ -305,6 +348,56 @@
     {
       "source": "/blog/vibe-coding-janitor-session",
       "destination": "/blog/2025-10-19-vibe-coding-janitor-session"
+    }
+  ],
+  "removedSectionRedirects": [
+    {
+      "source": "/paper",
+      "destination": "/book"
+    },
+    {
+      "source": "/mission",
+      "destination": "/about"
+    },
+    {
+      "source": "/press",
+      "destination": "/about"
+    },
+    {
+      "source": "/fleet",
+      "destination": "/concepts"
+    },
+    {
+      "source": "/fleet/knowledge-compilation",
+      "destination": "/concepts/knowledge-compilation"
+    },
+    {
+      "source": "/fleet/compile-time-ai",
+      "destination": "/concepts/knowledge-compilation"
+    },
+    {
+      "source": "/fleet/scientific-knowledge-systems",
+      "destination": "/concepts/knowledge-compilation"
+    },
+    {
+      "source": "/fleet/local-first-ai",
+      "destination": "/concepts/local-first"
+    },
+    {
+      "source": "/fleet/cognitive-memory",
+      "destination": "/concepts/graph-retrieval"
+    },
+    {
+      "source": "/fleet/research-automation",
+      "destination": "/concepts/creative-automation"
+    },
+    {
+      "source": "/fleet/knowledge-representation",
+      "destination": "/concepts/provenance"
+    },
+    {
+      "source": "/fleet/decision-graphs",
+      "destination": "/concepts/graph-retrieval"
     }
   ]
 }

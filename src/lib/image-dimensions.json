@@ -1,0 +1,746 @@
+{
+  "/images/hero/hero-about.jpg": {
+    "width": 2304,
+    "height": 960
+  },
+  "/images/profile.jpeg": {
+    "width": 460,
+    "height": 460
+  },
+  "/images/og-home.jpg": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hero/hero-archive.jpg": {
+    "width": 2304,
+    "height": 960
+  },
+  "/images/hero/hero-projects.jpg": {
+    "width": 2304,
+    "height": 960
+  },
+  "/images/hero/hero-research.jpg": {
+    "width": 2304,
+    "height": 960
+  },
+  "/images/book-front.png": {
+    "width": 1837,
+    "height": 3050
+  },
+  "/images/book-back.png": {
+    "width": 1838,
+    "height": 3050
+  },
+  "/images/book-spine.png": {
+    "width": 201,
+    "height": 3050
+  },
+  "/images/ComfyUI_00186_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00188_.png": {
+    "width": 800,
+    "height": 600
+  },
+  "/images/ComfyUI_00189_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00190_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00191_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00192_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00193_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00194_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00195_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00196_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00197_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00198_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00199_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00200_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00201_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00202_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00203_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00204_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00205_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00206_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00207_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00208_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00209_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00210_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00211_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/101801.png": {
+    "width": 588,
+    "height": 1290
+  },
+  "/images/101802.png": {
+    "width": 3456,
+    "height": 2234
+  },
+  "/images/101803.png": {
+    "width": 1206,
+    "height": 626
+  },
+  "/images/101804.png": {
+    "width": 2826,
+    "height": 1958
+  },
+  "/images/101805.png": {
+    "width": 2826,
+    "height": 1958
+  },
+  "/images/101806.png": {
+    "width": 580,
+    "height": 1128
+  },
+  "/images/101807.png": {
+    "width": 2420,
+    "height": 1650
+  },
+  "/images/101808.png": {
+    "width": 2420,
+    "height": 1650
+  },
+  "/images/101809.png": {
+    "width": 2822,
+    "height": 1918
+  },
+  "/images/101810.png": {
+    "width": 2822,
+    "height": 1918
+  },
+  "/images/101811.png": {
+    "width": 566,
+    "height": 948
+  },
+  "/images/101812.png": {
+    "width": 2732,
+    "height": 1692
+  },
+  "/images/101813.png": {
+    "width": 584,
+    "height": 782
+  },
+  "/images/101814.png": {
+    "width": 2516,
+    "height": 1626
+  },
+  "/images/101816.png": {
+    "width": 584,
+    "height": 1202
+  },
+  "/images/101815.png": {
+    "width": 2516,
+    "height": 1626
+  },
+  "/images/101817.png": {
+    "width": 584,
+    "height": 1202
+  },
+  "/images/101818.png": {
+    "width": 2736,
+    "height": 1696
+  },
+  "/images/101819.png": {
+    "width": 2736,
+    "height": 1696
+  },
+  "/images/1018001.png": {
+    "width": 1504,
+    "height": 1504
+  },
+  "/images/1019001.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1019010.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1019011.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1019002.png": {
+    "width": 2388,
+    "height": 1572
+  },
+  "/images/1019003.png": {
+    "width": 2388,
+    "height": 1572
+  },
+  "/images/1019004.png": {
+    "width": 2388,
+    "height": 1572
+  },
+  "/images/1019005.png": {
+    "width": 2388,
+    "height": 1572
+  },
+  "/images/1019006.png": {
+    "width": 2388,
+    "height": 1572
+  },
+  "/images/1019007.png": {
+    "width": 2388,
+    "height": 1572
+  },
+  "/images/1019008.png": {
+    "width": 2388,
+    "height": 1572
+  },
+  "/images/1019012.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1019009.png": {
+    "width": 1684,
+    "height": 1538
+  },
+  "/images/1019013.png": {
+    "width": 1684,
+    "height": 1538
+  },
+  "/images/1019014.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1019020.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1020001.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1020002.png": {
+    "width": 2264,
+    "height": 1706
+  },
+  "/images/1020003.png": {
+    "width": 2392,
+    "height": 1600
+  },
+  "/images/1020004.png": {
+    "width": 1532,
+    "height": 1400
+  },
+  "/images/1020005.png": {
+    "width": 2392,
+    "height": 1594
+  },
+  "/images/1020006.png": {
+    "width": 2392,
+    "height": 1594
+  },
+  "/images/1020007.png": {
+    "width": 2392,
+    "height": 1594
+  },
+  "/images/1020008.png": {
+    "width": 2392,
+    "height": 1758
+  },
+  "/images/1020010.png": {
+    "width": 800,
+    "height": 600
+  },
+  "/images/1020011.png": {
+    "width": 800,
+    "height": 600
+  },
+  "/images/1021001.png": {
+    "width": 1340,
+    "height": 1314
+  },
+  "/images/1021003.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021004.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021005.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021006.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021007.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021008.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021009.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021010.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021011.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021012.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021013.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021014.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021015.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021016.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021017.png": {
+    "width": 400,
+    "height": 300
+  },
+  "/images/1021018.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1025002.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1025003.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1025004.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/chris-is-risen.png": {
+    "width": 800,
+    "height": 600
+  },
+  "/images/1101002.png": {
+    "width": 2892,
+    "height": 1824
+  },
+  "/images/1101003.png": {
+    "width": 2892,
+    "height": 1824
+  },
+  "/images/1101006.png": {
+    "width": 1726,
+    "height": 1060
+  },
+  "/images/1103001.png": {
+    "width": 3040,
+    "height": 2142
+  },
+  "/images/1103002.png": {
+    "width": 3040,
+    "height": 2142
+  },
+  "/images/1103003.png": {
+    "width": 3040,
+    "height": 2142
+  },
+  "/images/1103004.png": {
+    "width": 3040,
+    "height": 2142
+  },
+  "/images/1103005.png": {
+    "width": 3040,
+    "height": 2142
+  },
+  "/images/1103006.png": {
+    "width": 2216,
+    "height": 1604
+  },
+  "/images/1103007.png": {
+    "width": 2216,
+    "height": 1604
+  },
+  "/images/1103008.png": {
+    "width": 2216,
+    "height": 1604
+  },
+  "/images/1103009.png": {
+    "width": 2216,
+    "height": 1604
+  },
+  "/images/1103011.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1103012.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/elite-vs-grinder-ai-tools.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/open-source-ai-accessibility.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ai-job-market.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/capacity-workflow-automation-diagram.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/capacity-knowledge-base-integration.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/capacity-platform-features-overview.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/capacity-api-integration-workflow.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/capacity-document-driven-development-example.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/recursive-agent-core-architecture-diagram.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/ai-study-system-workflow-illustration.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/pdf-chunking-strategy-visual-aid.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/ai-study-tools-comparison-infographic.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11082025/local-llm-tabular-data-guide.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11082025/fluid-abstract-art-movement.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11082025/contemporary-abstract-design-elements.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11082025/innovative-abstract-geometric-composition.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11102025/ai-machine-learning-algorithms-infographic.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11102025/clustering-k-means-algorithm-illustration.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11102025/neural-network-deep-learning-diagram.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11102025/decision-tree-random-forest-visualization.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11102025/reinforcement-learning-agent-environment-chart.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11112025/file-organization-for-bloggers-diagram.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11112025/mcp-integration-vscode-illustration.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11112025/ai-assisted-technical-writing-workflow.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11112025/seo-optimization-blog-post-process.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11122025/llama-cpp-local-llm-integration-architecture-diagram.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11122025/gguf-quantization-model-format-illustration.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11122025/performance-optimization-llama-cpp-tuning-guide.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11122025/deployment-docker-llama-server-setup.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11122025/security-best-practices-local-ai-protection.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11132025/inference-geography-hero.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11132025/inference-compute-distribution.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11132025/energy-infrastructure-ai.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11132025/open-source-ai-timeline.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11132025/compute-capitalism-model.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11152025/neo4j-knowledge-graph-setup.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11152025/hybrid-retrieval-system.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11152025/persona-driven-responses.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11152025/vero-eval-testing-framework.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11152025/ollama-local-llm-integration.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12042025/nextjs-app-router-rce-exploit.png": {
+    "width": 500,
+    "height": 1536
+  },
+  "/images/12042025/nextjs-cve-2025-66478-ai-phishing-security.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12042025/nextjs-react-server-components-security.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12042025/nextjs-server-actions-security-vulnerability.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12042025/nextjs-rce-cve-2025-66478-vulnerability.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12042025/nextjs-rce-vulnerability.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12092025/uncensored-ai-chatbot-architecture-diagram.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12092025/notebooklm-rag-uncensored-ai-setup.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12092025/ai-persona-extraction-system-diagram.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/12092025/persona-driven-ai-chatbot-ui-interface.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ComfyUI_00240_.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/ai-workforce-inequality.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/digital-resurrection-ai.png": {
+    "width": 870,
+    "height": 1426
+  },
+  "/images/phoenix.jpg": {
+    "width": 1440,
+    "height": 1440
+  },
+  "/images/11052025/ai-collaboration-partnership-mcp-protocol.jpg": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/11052025/vibe-coding-workflow-mcp-ai-context.jpg": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/1103010.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/demo.gif": {
+    "width": 640,
+    "height": 360
+  },
+  "/images/hva-landing.png": {
+    "width": 1280,
+    "height": 690
+  },
+  "/images/hva-visuals.png": {
+    "width": 1280,
+    "height": 633
+  },
+  "/images/hva-narration.png": {
+    "width": 1280,
+    "height": 633
+  },
+  "/images/ai-eng-iteration-loop.png": {
+    "width": 1400,
+    "height": 900
+  },
+  "/images/ai-eng-grounding-tree.png": {
+    "width": 1300,
+    "height": 1020
+  },
+  "/images/photocraft.png": {
+    "width": 1456,
+    "height": 910
+  },
+  "/images/ganymede-archive-hero.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/images/ganymede-archive-contact-sheet.jpg": {
+    "width": 1200,
+    "height": 540
+  },
+  "/images/hlvs-lighthouse-hero.jpg": {
+    "width": 1024,
+    "height": 576
+  },
+  "/images/last-human-story-contact-sheet.jpg": {
+    "width": 1556,
+    "height": 964
+  },
+  "/images/last-human-closing-card.jpg": {
+    "width": 1536,
+    "height": 864
+  },
+  "/images/2001-documentary-contact-sheet.jpg": {
+    "width": 1200,
+    "height": 1782
+  },
+  "/images/impossible-shot-hero.jpg": {
+    "width": 1536,
+    "height": 864
+  },
+  "/images/impossible-shot-contact-sheet.jpg": {
+    "width": 1200,
+    "height": 1212
+  }
+}

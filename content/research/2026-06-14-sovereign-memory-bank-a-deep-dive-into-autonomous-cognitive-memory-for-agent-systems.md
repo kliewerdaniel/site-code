@@ -3,9 +3,7 @@ author: Daniel Kliewer
 book_reference: true
 canonical_url: /blog/2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems
 date: 06-14-2026
-description: A deep dive into Sovereign Memory Bank, an autonomous cognitive memory
-  system that transforms markdown documents into a continuously evolving seven-layer
-  memory architecture optimized for agent reasoning and knowledge synthesis.
+description: "Sovereign Memory Bank's full architecture: the seven-layer memory model, tripartite storage, the autonomous evolution engine, and the FastAPI agent interface with hybrid recall."
 image: /images/1103010.png
 layout: post
 og:description: A deep dive into Sovereign Memory Bank, an autonomous cognitive memory
