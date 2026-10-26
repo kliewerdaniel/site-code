@@ -4,6 +4,7 @@ import { Exhibit, Kicker, RuledRow } from "@/components/Archetypes";
 import { HeroBand } from "@/components/HeroBand";
 import { seo } from "@/lib/seo";
 import { PROJECTS, MATURITY_LABEL, type Maturity } from "@/lib/taxonomy";
+import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = seo({
   title: "Projects",
@@ -15,6 +16,7 @@ export const metadata: Metadata = seo({
 const ORDER: Maturity[] = ["implementation", "prototype", "research"];
 
 export default function ProjectsPage() {
+  const postCount = getAllPosts().length;
   return (
     <>
       <HeroBand
@@ -89,7 +91,7 @@ export default function ProjectsPage() {
           {[
             { href: "/concepts", label: "Concepts", note: "The ideas the projects share." },
             { href: "/paths", label: "Learning paths", note: "Ordered routes through the work." },
-            { href: "/research", label: "Research", note: "195 articles, 2024 to now." },
+            { href: "/research", label: "Research", note: `${postCount} articles, 2024 to now.` },
             { href: "/book", label: "The book", note: "Computational Sovereignty." },
           ].map((item) => (
             <Link

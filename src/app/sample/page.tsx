@@ -217,7 +217,7 @@ export default function SamplePage() {
           </article>
 
           <p className="mt-10 border-t border-rule pt-6 font-mono text-[11px] tracking-[0.2em] text-ink-3 uppercase">
-            End of excerpt · Chapter 1 of 24 · {BOOK.words} words total
+            End of excerpt · Chapter 1 of {BOOK.chapters} · {BOOK.words} words total
           </p>
         </Container>
       </section>
@@ -226,10 +226,10 @@ export default function SamplePage() {
         <Container className="py-16 text-center md:py-20">
           <Reveal>
             <p className="mb-4 font-mono text-[11px] tracking-[0.28em] text-gold uppercase">
-              {BOOK.title} · Hardcover · 214 pages
+              {BOOK.title} · {BOOK.format} · {BOOK.pages} pages
             </p>
             <h2 className="display-lg mx-auto mb-4 max-w-2xl">
-              Twenty-three chapters where that came from.
+              {Number(BOOK.chapters) - 1} chapters where that came from.
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-ink-2">
               Models, retrieval, knowledge graphs, governed agents — built on

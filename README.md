@@ -1,12 +1,16 @@
 # danielkliewer.com v2 — the sovereign workshop
 
-Dark-first, book-first rebuild of [danielkliewer.com](https://www.danielkliewer.com),
-selling _Computational Sovereignty: Building Local-First AI Systems_.
+Dark-first rebuild of [danielkliewer.com](https://www.danielkliewer.com), selling
+_Computational Sovereignty: Building Local-First AI Systems_.
+
+There is no light theme: the machine runs at night. Dark is the only mode, and
+there is no `ThemeToggle`, no `dk-theme` key and no pre-hydration theme script.
 
 ## Stack
 
-- Next.js 16 · React 19 · Tailwind CSS v4 (TypeScript)
-- `@vercel/analytics` — the only tracker. No PostHog, no pixels, no third-party scripts.
+- Next.js 16 (App Router, Turbopack) · React 19 · Tailwind CSS v4 · TypeScript
+- `@vercel/analytics` — the only tracker. No PostHog, no pixels, no third-party
+  scripts, no cookies, no consent banner, no accounts.
 
 ## Develop
 
@@ -15,7 +19,7 @@ nvm use          # reads .nvmrc — Node 22.23.4, the 2026-10-21 security releas
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # production build (runs both gates first; must pass clean)
-npm run test     # 20 tests over the runtime security gate
+npm run test     # node --test — the runtime security gate + the SEO/feed logic
 npm run lint
 ```
 
@@ -35,34 +39,42 @@ Runtime floor: Node **22.23.4** / 24.22.1 / 26.12.1 (see `.nvmrc`). Bump
 
 Full write-up: **<https://danielkliewer.com/blog/2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate>**
 
+## Validation
+
+Beyond the build gates, three checks run over the content and the built output:
+
+- `npm run validate:content` (`scripts/validate-content.mjs`) — every post must
+  parse: ISO `date`, non-empty `title`, array `tags`, and an `image` that exists.
+  Length, duplicate-description and `canonical_url`-mismatch findings are reported
+  as warnings so editorial drift cannot break the deploy.
+- `npm run validate:build` (`scripts/validate-build.mjs`, run after `next build`) —
+  asserts over the prerendered HTML: exactly one `<h1>`, a self-referential
+  canonical on every sitemap URL, complete OG/Twitter metadata, parseable
+  JSON-LD, and no unintended `noindex`.
+- `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
+  production server, and diffs `data/route-status.json` against the committed
+  baseline. The baseline reflects the intended state: removed sections are 308.
+
 ## Deploy
 
-Push to GitHub, import into Vercel. No env vars required.
-
-## Launch TODOs (Daniel)
-
-- `src/config.ts`: `BOOK.amazonUrl` (currently `"#"`), `BOOK.price` (`$39.99` — confirm),
-  `EMAIL.buttondownEndpoint` (paste Buttondown form endpoint).
-- Email capture renders a disabled placeholder until the Buttondown endpoint is set.
-- `npm run lint` reports 1 pre-existing `react-hooks/immutability` error in
-  `src/components/BookScene.tsx` (unrelated to the security work).
+Push to GitHub, import into Vercel. No env vars required. `.github/workflows/ci.yml`
+runs the full gate locally-equivalent on every push.
 
 ## Architecture
 
-- `src/config.ts` — central launch config (site, book, old book, email, social, nav).
+- `src/config.ts` — central launch config (site, book, old book, social, nav).
   Sibling page agents read from here; do not hardcode these values elsewhere.
-- `src/app/layout.tsx` — fonts (next/font/google), metadata, theme init script,
-  `<Analytics/>`, `<SiteHeader/>` / `<SiteFooter/>` shell.
-- `src/components/` — shared primitives: `SiteHeader`, `SiteFooter`, `ThemeToggle`,
-  `EmailCapture`, `Container`, `SectionHeading`, `BookCover`, `Prose`.
-- `public/images/` — blog assets copied from the a10 source (163 files, dated subdirs)
-  plus `book-cover.png` (front cover rendered at 300dpi from the hardcover print wrap PDF).
-- `scripts/` — build-time gates (`check-node-version.mjs`, `check-images.mjs`) and
-  route tooling (`route-manifest.mjs`, `route-parity.mjs`).
-- `tests/` — `node --test` suites for the gates. Zero extra dependencies by design.
-
-## Theme
-
-Dark is the default. `ThemeToggle` flips `documentElement.classList` (`light` | absent)
-and persists to `localStorage` key `dk-theme`. A pre-hydration inline script in
-`layout.tsx` applies the stored theme before first paint.
+- `src/app/layout.tsx` — fonts (next/font/google), metadata, `<Analytics/>`,
+  `<SiteHeader/>` / `<SiteFooter/>` shell, skip link.
+- `src/lib/seo.ts` + `src/lib/seo-core.ts` — the metadata layer. `seo-core.ts` is
+  the alias-free pure half (merge, JSON-LD escaping, `updated` fallback, RSS
+  rendering) so `node --test` can reach it without a build.
+- `src/components/` — shared primitives: `SiteHeader`, `SiteFooter`, `Container`,
+  `SectionHeading`, `Prose`, `Archetypes`, `HeroBand`, `HeroFilm`, `HeroBook`,
+  `Reveal`, `AmazonCta`, `Logotype`, `BoundaryDiagram`.
+- `public/images/` — editorial assets (blog figures, hero plates and loops) plus
+  the book cover set (`book-front.png`, `book-spine.png`, `book-back.png`).
+- `scripts/` — build-time gates (`check-node-version.mjs`, `check-images.mjs`),
+  validators (`validate-content.mjs`, `validate-build.mjs`) and route tooling
+  (`route-manifest.mjs`, `route-parity.mjs`).
+- `tests/` — `node --test` suites. Zero extra dependencies by design.

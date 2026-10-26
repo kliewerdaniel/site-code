@@ -3,6 +3,7 @@ import { HeroBand } from "@/components/HeroBand";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { BOOK, OLD_BOOK } from "@/config";
+import { getAllPosts } from "@/lib/posts";
 import { profilePageSchema, seo } from "@/lib/seo";
 
 export const metadata = seo({
@@ -29,6 +30,8 @@ export const metadata = seo({
    counts from the build. Nothing here is inferred, and no capability is claimed
    that does not have code or a dated artifact behind it. */
 
+const POST_COUNT = getAllPosts().length;
+
 const current = [
   {
     title: "Local-first AI systems",
@@ -40,7 +43,7 @@ const current = [
   },
   {
     title: "Writing it down",
-    body: `The synthesis is ${BOOK.title}: ${BOOK.chapters} chapters on building systems you can own, audit and reproduce. The working notes are the research log — 195 posts published as the work happened, including the parts that failed.`,
+    body: `The synthesis is ${BOOK.title}: ${BOOK.chapters} chapters on building systems you can own, audit and reproduce. The working notes are the research log — ${POST_COUNT} posts published as the work happened, including the parts that failed.`,
   },
 ];
 
