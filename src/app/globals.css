@@ -114,8 +114,12 @@ body {
   .display-hero {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(2.75rem, 8.5vw, 8.5rem);
-    line-height: 0.95;
+    /* Capped at 5rem, not 8.5rem. The hero plate is 1536x640; a section taller
+       than ~640px forces object-cover to upscale it. At 88px the headline pushed
+       the band to 856px (1.34x upscale, visibly soft). At 80px the band lands at
+       ~648px, which renders the plate at 1.01x — native sharpness. */
+    font-size: clamp(2.5rem, 5.6vw, 5rem);
+    line-height: 0.98;
     letter-spacing: -0.03em;
   }
 

@@ -10,6 +10,8 @@ import {
   Scene,
 } from "@/components/Archetypes";
 import { BoundaryDiagram } from "@/components/BoundaryDiagram";
+import { Container } from "@/components/Container";
+import { HeroFilm } from "@/components/HeroFilm";
 import { BOOK } from "@/config";
 import { formatDate } from "@/lib/formatDate";
 import { getAllPosts } from "@/lib/posts";
@@ -97,54 +99,70 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: orgWebsiteGraph() }}
       />
 
-      {/* ============ A. SCENE — one per page ============
-          The thesis, not a slogan. The book is one artifact inside this, so it
-          no longer occupies the only scene on the site. */}
-      <Scene>
-        {/* Single descriptor, not a list. The previous kicker read
-            "Systems · Research · Writing" — three nouns, bullet-separated, in
-            the same uppercase mono as the nav directly above it. It looked like
-            a tab bar and invited clicks it could not accept. Every other Kicker
-            on the site labels one thing; this one now does too. */}
-        <Kicker>Local-first AI systems</Kicker>
-        <h1 className="display-hero mt-8 max-w-4xl">
-          Systems that run on your hardware, and can prove what they did.
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-2">
-          I build local-first AI systems: agent runtimes that separate what a
-          model proposes from what the machine is permitted to do, knowledge
-          compilers that keep every claim traceable to its evidence, and creative
-          tooling that verifies what it actually rendered instead of trusting an
-          exit code.
-        </p>
-        <p className="mt-5 max-w-2xl leading-relaxed text-ink-3">
-          The projects look unrelated — a video pipeline, a claim graph, an agent
-          stack. They are the same problem in different materials: a system that
-          cannot account for itself is not trustworthy, however capable it looks.
-        </p>
+      {/* ============ A. SCENE — the cinematic plate ============
+          The thesis over the archive. The still is the hero; the 13-second film
+          (archive -> graph -> instrument -> archive) layers on top only when the
+          visitor has not asked for reduced motion and is not on a metered
+          connection. Measured: the plate's left third is pure black (mean
+          luminance 0.0), so the type column sits on true void and needs no
+          scrim on desktop. The scrim below exists for narrow viewports, where
+          object-cover pushes the lit archive under the text. */}
+      <section className="relative isolate overflow-hidden border-b border-rule">
+        <HeroFilm
+          poster="/images/hero/hero-archive.jpg"
+          srcMp4="/images/hero/hero-loop.mp4"
+          srcWebm="/images/hero/hero-loop.webm"
+          alt="A monumental archive of dark metal plates receding into blackness, lit by a single warm amber light"
+          className="absolute inset-0 -z-10"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-t from-void via-void/80 to-void/20 md:bg-gradient-to-r md:from-void md:via-void/30 md:to-transparent"
+        />
 
-        <FigureRow>
-          <Figure value={String(PROJECTS.length)} label="Systems in the index" />
-          <Figure value={String(posts.length)} label="Published articles" />
-          <Figure value={String(CONCEPTS.length)} label="Concepts they share" />
-          <Figure value={String(BOOK.chapters)} label="Chapters in the book" />
-        </FigureRow>
+        <Container className="relative flex min-h-[540px] flex-col justify-center py-14 md:min-h-[620px] md:py-16">
+          <Kicker>Local-first AI systems</Kicker>
+          <h1 className="display-hero mt-8 max-w-3xl">
+            Systems that run on your hardware, and can prove what they did.
+          </h1>
+          <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-2">
+            I build local-first AI systems: agent runtimes that separate what a
+            model proposes from what the machine is permitted to do, knowledge
+            compilers that keep every claim traceable to its evidence, and
+            creative tooling that verifies what it actually rendered instead of
+            trusting an exit code.
+          </p>
 
-        <div className="mt-12 flex flex-wrap items-center gap-4">
-          <Link
-            href="/projects"
-            className="label border border-gold px-6 py-4 text-gold transition-colors hover:bg-gold hover:text-void"
-          >
-            Explore the systems
-          </Link>
-          <Link
-            href="/paths"
-            className="label border border-rule-2 px-6 py-4 text-ink-2 transition-colors hover:border-gold hover:text-gold"
-          >
-            Follow a learning path
-          </Link>
-        </div>
-      </Scene>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Link
+              href="/projects"
+              className="label border border-gold px-6 py-4 text-gold transition-colors hover:bg-gold hover:text-void"
+            >
+              Explore the systems
+            </Link>
+            <Link
+              href="/research"
+              className="label border border-rule-2 px-6 py-4 text-ink-2 transition-colors hover:border-gold hover:text-gold"
+            >
+              Read the research
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* The counts, out of the cinematic frame. They are evidence, not decor,
+          and the hero brief was explicit: no statistics competing with the
+          headline. */}
+      <section className="border-b border-rule bg-void-2">
+        <Container className="py-8">
+          <FigureRow>
+            <Figure value={String(PROJECTS.length)} label="Systems in the index" />
+            <Figure value={String(posts.length)} label="Published articles" />
+            <Figure value={String(CONCEPTS.length)} label="Concepts they share" />
+            <Figure value={String(BOOK.chapters)} label="Chapters in the book" />
+          </FigureRow>
+        </Container>
+      </section>
 
       {/* ============ B. EXHIBIT — why this is one body of work ============ */}
       <Exhibit wide>
@@ -335,6 +353,79 @@ export default async function HomePage() {
           </Link>
         </div>
       </Exhibit>
+
+      {/* ============ C. INSTRUMENT — who is behind it ============
+          The brief asks the homepage to answer "can a professional evaluate this
+          person quickly". Every line below is sourced: Amazon and the art work
+          from the employment record, the counts from this build, the repos from
+          GitHub. Nothing here is inferred. */}
+      <Instrument>
+        <Kicker>06 — The engineer</Kicker>
+        <h2 className="display-lg mt-5 max-w-3xl">
+          Ten years of search relevance, twenty of painting, and the same question
+          in both.
+        </h2>
+        <div className="mt-10 grid gap-12 md:grid-cols-[1.15fr_0.85fr]">
+          <div className="space-y-5 text-base leading-relaxed text-ink-2">
+            <p>
+              I spent 2010 to 2020 at Amazon in Austin measuring whether
+              information actually satisfied the query — relevance as a
+              measurable property rather than a vibe. Before that and throughout,
+              I painted: figurative oil work, then two-hour films made by wiring
+              televisions through modulators to refurbished computers, one of
+              which screened at Austin Film Society in 2012.
+            </p>
+            <p>
+              The AI work is the same question one level up. A search result
+              either deserves to be surfaced or it does not. A generated claim
+              either survives its evidence or it does not. Both are answered by
+              inspection, not by confidence — which is why these projects publish
+              their tests, their measurements and their failures.
+            </p>
+            <p className="text-ink-3">
+              Self-directed computer science through MIT OpenCourseWare, 2017 to
+              2021 — the curriculum, not the credential.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <div>
+              <p className="label mb-3 text-ink-3">Find the code</p>
+              <a
+                href="https://github.com/kliewerdaniel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display text-lg text-gold transition-colors hover:text-ink"
+              >
+                github.com/kliewerdaniel ↗
+              </a>
+              <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
+                221 public repositories since 2014
+              </p>
+            </div>
+            <div>
+              <p className="label mb-3 text-ink-3">What I work on</p>
+              <ul className="space-y-1.5 text-sm text-ink-2">
+                <li>Local inference and owned execution environments</li>
+                <li>Deterministic governance around model output</li>
+                <li>Knowledge compilation, provenance and claim graphs</li>
+                <li>Evaluation that measures instead of asserting</li>
+              </ul>
+            </div>
+            <div>
+              <p className="label mb-3 text-ink-3">Elsewhere</p>
+              <div className="flex flex-wrap gap-x-5 gap-y-2">
+                <Link href="/about" className="text-sm text-gold transition-colors hover:text-ink">
+                  Full background →
+                </Link>
+                <Link href="/contact" className="text-sm text-gold transition-colors hover:text-ink">
+                  Get in touch →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Instrument>
     </>
   );
 }
