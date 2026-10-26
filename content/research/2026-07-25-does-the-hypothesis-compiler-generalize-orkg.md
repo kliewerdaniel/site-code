@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-07-25-does-the-hypothesis-compiler-generalize-orkg
 date: 07-25-2026
-description: "Popper beat its controls on five hand-curated benchmark literatures — but I built those corpora, so the result could be an artifact of clean data. This experiment removes that objection: the identical pipeline, byte-for-byte, run on a corpus I did not build — the Open Research Knowledge Graph, 6.3 million triples across 65,689 papers and seven scientific disciplines. Same schema, same rubric, same four-way controls; the only independent variable is the corpus. The compiler still wins (0.85 composite vs 0.56 keyword vs 0.00 ungrounded), an ablation proves the architecture is load-bearing (remove graph reasoning and it collapses to zero), and the grounding audit finds zero hallucinated citations across 265 evidence items. It also fails honestly: exact temporal rediscovery is near-zero, and it confidently rebuilds Lamarckian inheritance. Run locally on a 35B model."
+description: "Popper, run byte-for-byte on a corpus I did not build — 6.3M ORKG triples across 65,689 papers. It still wins, and an ablation shows the graph reasoning is load-bearing."
 draft: false
 tags:
   - ai-agents

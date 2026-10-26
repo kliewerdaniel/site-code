@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-10-25-the-keyframe-that-went-nowhere
 date: 10-25-2026
-description: "A complete, verified log of turning one selfie into a 3:42 film: ten stills from Qwen-Image-2.1-Turbo, a cloned voice reading a 615-word monologue, and a FilmCraft headless edit. Covers the dimension rule that rejects exact 16:9, a vox venv that does not exist under the name everyone uses, and three NLE failures that all reported success — a keyframe time in the wrong space, a quality flag that is silently ignored, and a loudness setting that nests. Every command was run. Every number came off real output."
+description: "One selfie into a 3:42 film: ten stills, a cloned voice, a headless edit. Three NLE failures all reported success — a keyframe in the wrong time space, an ignored quality flag, a nested loudness setting."
 image: /images/2001-documentary-frame-10.jpg
 layout: post
 title: "The Keyframe That Went Nowhere: Building a 3:42 Film Out of Ten Generated Frames"

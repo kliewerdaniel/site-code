@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-10-25-the-dissolve-that-wasnt-applied
 date: 10-25-2026
-description: "A complete, verified log of building a 2:57 short film with six Rust reimplementations of the Adobe suite: Qwen-Image-2.1-Turbo for fifteen stills, a zero-shot cloned voice, a synthesised score, and a headless edit. The real story is four failures that each reported success — a transition API with two id namespaces, a caption track that exports an SRT but never renders, a grade that silently no-ops without an explicit selection, and two shots frozen for ten seconds. Every command was run. Every number came off real output."
+description: "A 2:57 short film from six Rust reimplementations of the Adobe suite. Four failures reported success — a transition API with two id namespaces, a caption track that never renders, a silent grade."
 image: /images/last-human-in-the-loop-hero.jpg
 layout: post
 title: "The Dissolve That Wasn't Applied: Six Rust Tools, Four Silent Failures, and a 2:57 Film"

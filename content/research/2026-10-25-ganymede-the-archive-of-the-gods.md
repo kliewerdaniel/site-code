@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-10-25-ganymede-the-archive-of-the-gods
 date: 10-25-2026
-description: "A complete, reproducible account of building a 3:08 mythological science-fiction film with local models and Rust creative tools: twenty environments from Qwen-Image-2.1-Turbo, six reusable effect templates, a 2.5D compositing rig, a cloned voice, a four-bed synthesised score, and a twenty-check artifact report. Includes the full repository layout, every data contract between stages, and the seven audio attempts it took to stop a broken export stage from clipping the mix."
+description: "A 3:08 mythological science-fiction film built with local models and Rust creative tools: twenty environments, six effect templates, a cloned voice, and a twenty-check artifact report."
 image: /images/ganymede-archive-hero.jpg
 layout: post
 title: "Ganymede, the Archive of the Gods: A Film Pipeline an Agent Can Replicate"

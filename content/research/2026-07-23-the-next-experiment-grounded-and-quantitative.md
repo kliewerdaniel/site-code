@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-07-23-the-next-experiment-grounded-and-quantitative
 date: 07-23-2026
-description: "Today we proved the Scientific Question & State Compiler survives scale — 6.3M ORKG RDF triples distilled into a 300-document corpus, 881 claims, 13 ranked questions, a versioned state of the field, all compiled locally on a 35B model. But surviving scale is not the same as being correct. This post records what we built, what we learned, the four bugs that only appeared at scale (including one that shipped Alzheimer's data into the live ORKG demo), and a fully-specified next experiment: source-level traceability, a grounding audit with a groundedness rate, a negative control, a fixed versioning layer, an explicit distillation method, an external-validity check against survey papers, and a move to quantitative domains (COVID-19 observatory or materials science) where contradictions are measured, not just defined."
+description: "The compiler survives scale — 6.3M ORKG triples into 300 documents and 881 claims — but surviving scale is not being correct. Four bugs, and a fully-specified next experiment."
 draft: false
 tags:
   - ai-agents

@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate
 date: 10-23-2026
-description: "A complete, verified log of responding to the October 2026 security advisory: the eMudhra certificate compromise, the Node.js security release, and PHP2Shell. Covers mapping a hosting-provider advisory onto a real stack, the grep that lies about certificate trust stores, proving a runtime is vulnerable by decoding its bundled roots, pinning a Node version, a fail-closed build-time gate that refuses to compile on an unpatched runtime, a 20-test suite that is mutation-checked, and the critical Next.js RCE hiding in a routine npm install. Every command was run. Every number came off real output."
+description: "Responding to the October 2026 eMudhra certificate compromise: mapping a provider advisory onto a real stack, decoding a runtime's bundled roots, and a fail-closed build gate."
 image: /images/emudhra-nodejs-security.png
 layout: post
 title: "The Trust Store Nobody Patched: A Log of Patching eMudhra, Node.js, and a Lie in npm Audit"

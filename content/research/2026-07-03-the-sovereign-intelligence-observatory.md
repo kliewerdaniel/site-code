@@ -2,7 +2,7 @@
 book_reference: true
 canonical_url: /blog/2026-07-03-the-sovereign-intelligence-observatory
 date: 07-03-2026
-description: "A technical deep dive into the Sovereign Intelligence Observatory: a six-component, local-first pipeline that turns every agent run into a versioned recipe, routes evaluation by confidence tier, detects capability drift with KS and PSI statistics, extracts tacit expert judgment into decision trees, and manages the supervised-to-autonomous transition. With architecture diagrams, code from the actual repo, and the case for why observability -- not the model -- is the real product."
+description: "The Sovereign Intelligence Observatory: a six-component local-first pipeline that versions agent runs as recipes, routes evaluation by confidence tier, and detects capability drift."
 image: /images/ComfyUI_00204_.png
 layout: post
 title: 'The Loop Is the Product: Inside the Sovereign Intelligence Observatory'

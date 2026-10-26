@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-10-25-the-mask-that-rendered-anyway
 date: 10-25-2026
-description: "A complete, verified log of building a 2:22 film about a space that should not be possible: fifteen stills from Qwen-Image-2.1-Turbo, a 2.5D parallax rig that fakes a camera move with four masked copies of one image, and a headless edit. The real story is a mask API that accepts a rect, ignores it, and reports success — every mask in the film was a default centred shape until I read the vertices back out of the engine. Every command was run. Every number came off real output."
+description: "A 2:22 film about impossible space, built from fifteen stills and a 2.5D parallax rig. A mask API accepted a rect, ignored it, and reported success — every mask was a default centred shape."
 image: /images/impossible-shot-hero.jpg
 layout: post
 title: "The Mask That Rendered Anyway: One 2:22 Film Through an Impossible Space"

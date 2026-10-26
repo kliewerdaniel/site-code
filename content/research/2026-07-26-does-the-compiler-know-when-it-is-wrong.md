@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-07-26-does-the-compiler-know-when-it-is-wrong
 date: 07-26-2026
-description: "Popper-ORKG ended with two honest failures: temporal rediscovery was near-zero, and the compiler confidently rebuilt Lamarckian inheritance. v4 exists to ask whether those are fixable weaknesses or fundamental limits — by adding measurement, not by tuning the scorer. The answer turned out to be one of each. Mechanism-level semantic matching shows rediscovery was a measurement artifact all along (0.63 vs 0.005 exact-match, flat across temporal gaps). But a falsification-awareness consensus check could not downgrade Lamarckism or caloric: the ORKG index contains no detectable refutation edges, so the near-miss is a genuine limit of the knowledge substrate. Everything in popper/ and orkg/ stayed byte-for-byte frozen, md5-verified. Run locally on a 35B model."
+description: "Popper-ORKG ended with two honest failures. v4 adds measurement, not tuning: rediscovery was an artifact, but Lamarckism still cannot be downgraded — a real limit of the substrate."
 draft: false
 tags:
   - ai-agents

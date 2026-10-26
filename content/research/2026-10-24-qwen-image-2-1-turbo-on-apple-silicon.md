@@ -2,7 +2,7 @@
 author: Daniel Kliewer
 canonical_url: /blog/2026-10-24-qwen-image-2-1-turbo-on-apple-silicon
 date: 10-24-2026
-description: "A complete, verified log of getting Qwen-Image-2.1-Turbo to run on an Apple M4 Pro. Covers the CUDA quickstart that cannot work on arm64 macOS and how to find the MLX conversion instead, choosing weights by free disk rather than by the model card, a Pillow pin that fails like a broken install, a 17.8 GB download that stalls and then fails with a misleading error, building a browser studio over the pipeline, a thread-affinity bug that passed every test I wrote, the swap wall that makes a job look hung, and the exact recipe so an agent can replicate it. Every command was run. Every number came off real output."
+description: "Getting Qwen-Image-2.1-Turbo running on an Apple M4 Pro: the MLX path, a 17.8 GB download that fails misleadingly, a thread-affinity bug, and the working recipe."
 image: /images/qwen-image-yacht-edit.png
 layout: post
 title: "The Checkpoint That Couldn't Run: Getting Qwen-Image-2.1-Turbo Onto an M4 Pro"
