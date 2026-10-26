@@ -5,36 +5,20 @@ import { PROJECTS, CONCEPTS, PATHS } from "@/lib/taxonomy";
 
 const SITE_URL = SITE.url;
 
-const FLEET_DOMAINS = [
-  "knowledge-compilation",
-  "compile-time-ai",
-  "scientific-knowledge-systems",
-  "local-first-ai",
-  "cognitive-memory",
-  "research-automation",
-  "knowledge-representation",
-  "decision-graphs",
-];
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     "/",
     "/book",
     "/about",
     "/research",
-    "/press",
     "/contact",
     "/sample",
-    "/mission",
-    "/fleet",
     "/projects",
     "/concepts",
     "/paths",
     ...PROJECTS.map((p) => `/projects/${p.slug}`),
     ...CONCEPTS.map((c) => `/concepts/${c.slug}`),
     ...PATHS.map((p) => `/paths/${p.slug}`),
-    ...FLEET_DOMAINS.map((d) => `/fleet/${d}`),
-    "/paper",
     "/privacy",
     "/terms",
   ].map((route) => ({

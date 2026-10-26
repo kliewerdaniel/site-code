@@ -49,11 +49,8 @@ export default function ContactPage() {
           all welcome.
         </p>
         <p className="mb-12 max-w-xl text-base leading-relaxed text-ink-2">
-          Press goes through the{" "}
-          <a href="/press" className="text-gold transition-colors hover:text-ink">
-            press kit
-          </a>
-          .
+          Interviews and review copies go to the same address — it reaches me
+          directly, and I read all of it.
         </p>
         <Reveal>
           <div className="grid gap-px border border-rule bg-rule sm:grid-cols-2">

@@ -33,14 +33,44 @@ const LEGACY_SLUG_REDIRECTS: [string, string][] = [
   ["/blog/vibe-coding-janitor-session", "/blog/2025-10-19-vibe-coding-janitor-session"],
 ];
 
+/**
+ * Removed sections.
+ *
+ * These five routes were deleted on request. They are redirected rather than
+ * left to 404 because they had inbound links: /fleet was linked from /paper and
+ * /mission, /press from /contact, and all four are in Google's index. A 301
+ * preserves what link equity exists and sends readers to the surviving page
+ * that now carries the content.
+ *
+ * /fleet's eight domains were consolidated into /concepts, which had become a
+ * second taxonomy covering the same ideas under different names. Each domain
+ * maps to the concept that absorbed it.
+ */
+const REMOVED_SECTION_REDIRECTS: [string, string][] = [
+  ["/paper", "/book"],
+  ["/mission", "/about"],
+  ["/press", "/about"],
+  ["/fleet", "/concepts"],
+  ["/fleet/knowledge-compilation", "/concepts/knowledge-compilation"],
+  ["/fleet/compile-time-ai", "/concepts/knowledge-compilation"],
+  ["/fleet/scientific-knowledge-systems", "/concepts/knowledge-compilation"],
+  ["/fleet/local-first-ai", "/concepts/local-first"],
+  ["/fleet/cognitive-memory", "/concepts/graph-retrieval"],
+  ["/fleet/research-automation", "/concepts/creative-automation"],
+  ["/fleet/knowledge-representation", "/concepts/provenance"],
+  ["/fleet/decision-graphs", "/concepts/graph-retrieval"],
+];
+
 const nextConfig: NextConfig = {
   // Keep defaults; images served from /public/images (same-origin).
   async redirects() {
-    return LEGACY_SLUG_REDIRECTS.map(([source, destination]) => ({
-      source,
-      destination,
-      permanent: true,
-    }));
+    return [...LEGACY_SLUG_REDIRECTS, ...REMOVED_SECTION_REDIRECTS].map(
+      ([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      }),
+    );
   },
 };
 

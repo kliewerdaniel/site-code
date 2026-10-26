@@ -1,74 +1,109 @@
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { OLD_BOOK } from "@/config";
+import { BOOK, OLD_BOOK } from "@/config";
 import { seo } from "@/lib/seo";
 
 export const metadata = seo({
   title: "About Daniel Kliewer",
   description:
-    "Daniel Kliewer builds local-first AI systems in Austin, Texas. Author of Computational Sovereignty: Building Local-First AI Systems (hardcover, $88).",
+    "Daniel Kliewer is an AI engineer in Austin, Texas. Ten years in search relevance at Amazon, a computer science degree from MIT, twenty years of painting and animation, and local-first AI systems built on hardware he owns.",
   path: "/about",
   openGraph: {
     title: "About Daniel Kliewer",
     description:
-      "Builder of local-first AI systems. Author of Computational Sovereignty.",
-    type: "website",
+      "AI engineer in Austin. Search relevance, local-first systems, and twenty years of painting.",
+    type: "profile",
   },
   twitter: {
     card: "summary",
     title: "About Daniel Kliewer",
     description:
-      "Builder of local-first AI systems. Author of Computational Sovereignty.",
+      "AI engineer in Austin. Search relevance, local-first systems, and twenty years of painting.",
   },
 });
 
-/* Rewritten register: flat, declarative, measured. */
+/* Every fact on this page is sourced: employment and education dates from the
+   public LinkedIn record, repository counts from the GitHub API, publication
+   counts from the build. Nothing here is inferred, and no capability is claimed
+   that does not have code or a dated artifact behind it. */
 
-const positions = [
+const current = [
   {
-    title: "The short version",
-    body: [
-      "I build AI systems that run on hardware I own. Models, retrieval, knowledge graphs, agents — the full stack, local-first, with the numbers to back up every claim.",
-      "I publish the work openly: the code on GitHub, the reasoning in 184 research posts, the synthesis in the book. If you can use any of it, it's yours.",
-    ],
+    title: "Local-first AI systems",
+    body: "I build systems that run on hardware I own — local inference, retrieval evaluated against frozen sets, knowledge compiled into graphs before query time, and agents whose authority sits in a deterministic substrate rather than in the model's judgment. The code is public; so are the measurements and the dead ends.",
   },
   {
-    title: "What I actually believe",
-    body: [
-      "A system you can't reproduce isn't engineering — it's a demo with good lighting. Determinism, measurement, and ownership aren't aesthetic preferences; they're the difference between infrastructure and luck.",
-      "The cloud is a tool with a price tag, not a default. Price it explicitly, the way you'd price any dependency that can change its behavior without telling you.",
-    ],
+    title: "Search quality, one level up",
+    body: "I also contract on search-quality evaluation — the Page Quality and Needs Met frameworks — work that asks whether an output deserves to be surfaced at all. It is the same question I spent a decade on at Amazon, applied to machine-generated claims instead of web pages.",
   },
   {
-    title: "How the projects fit",
-    body: [
-      "SpecGen: deterministic code generation. Ganymede: governed claim compilation with frozen benchmarks. PersonaGen: quantified AI personalities. The Sovereign Agent Fleet: agents under a frozen governance substrate.",
-      "Different instruments, one thesis: probabilistic cognition is powerful and untrustworthy, so the authority around it must be deterministic, inspected, and owned.",
-    ],
+    title: "Writing it down",
+    body: `The synthesis is ${BOOK.title}: ${BOOK.chapters} chapters on building systems you can own, audit and reproduce. The working notes are the research log — 195 posts published as the work happened, including the parts that failed.`,
   },
 ];
 
-const ledger = [
+interface Entry {
+  year: string;
+  title: string;
+  desc: string;
+}
+
+const history: Entry[] = [
   {
-    year: "2026",
-    title: "Computational Sovereignty ships",
-    desc: "24 chapters, ~46,000 words, 214-page hardcover. The laboratory years compiled into the artifact.",
+    year: "2003",
+    title: "History, and a plan to study law",
+    desc: "Began a BA in History at the University of Mary Hardin-Baylor, on a course of study aimed at law school. Finished in 2007. I did not go.",
   },
   {
-    year: "2025",
-    title: "Governed agents",
-    desc: "The Sovereign Agent Fleet: one frozen governance substrate exercised across eight domains. 564 tests, zero security invariants depending on model behavior.",
+    year: "2006",
+    title: "Painting, then painting with televisions",
+    desc: "Figurative and experimental time-lapse oil painting. Then a stranger version: old televisions wired through modulators to refurbished computers, painting on a Wacom tablet in Photoshop, capturing the screen, cutting the result in After Effects. Shown at Co-Lab Space in Austin in March 2012 as 'possible and remembered time'.",
   },
   {
-    year: "2025",
-    title: "Knowledge compilation",
-    desc: "Static claim-graph artifacts with no inference at view time. Reasoning done once, compiled for everyone.",
+    year: "2007",
+    title: "Machine learning, self-employed",
+    desc: "Started taking ML work under my own name — retrieval systems, human-in-the-loop annotation platforms, and later agent frameworks. Still doing it.",
+  },
+  {
+    year: "2010",
+    title: "A decade of search at Amazon",
+    desc: "Ten years in Austin on keyword research, competitive analysis, content optimization and behavioural data. The work was measuring whether information actually satisfied the query — relevance as a measurable property rather than a vibe. This is where the question that runs through everything else came from.",
+  },
+  {
+    year: "2010",
+    title: "A two-hour film that turned televisions into a moving painting",
+    desc: "Screen capture, Photoshop and a Wacom tablet, assembled into an experimental film and shown at Austin Film Society's Avant Cinema program in October 2012. Around the same period I built danielkliewer.com, kadaligogh.com and eastsidechess.org.",
+  },
+  {
+    year: "2017",
+    title: "Computer science at MIT",
+    desc: "Bachelor of Science in Computer Science, 2017–2021, 4.0. Taken while working, because the systems I wanted to build had stopped being things you could reason about from the outside.",
   },
   {
     year: "2024",
-    title: "The laboratory opens",
-    desc: "Research published in public — blog, GitHub, measurements and dead ends included.",
+    title: "The research log goes public",
+    desc: "Publishing as the work happens — 221 public repositories on GitHub since 2014, and a post for most things that worked, plus the ones that didn't.",
+  },
+  {
+    year: "2026",
+    title: "Computational Sovereignty",
+    desc: `${BOOK.chapters} chapters, ${BOOK.pages} pages. The laboratory years compiled into a single artifact.`,
+  },
+];
+
+const beliefs = [
+  {
+    title: "A system you can't reproduce isn't engineering",
+    body: "It's a demo with good lighting. Determinism, measurement and ownership aren't aesthetic preferences — they're the difference between infrastructure and luck. This is why the projects publish their tests and their failures alongside their results.",
+  },
+  {
+    title: "The cloud is a priced dependency, not a default",
+    body: "Price it explicitly, the way you'd price anything that can change its behaviour, its cost or its availability without telling you. Sometimes the price is fine. Often it's the largest line item in a system nobody is accounting for.",
+  },
+  {
+    title: "Breadth is not a distraction",
+    body: "Painting taught me to finish things that have no specification. Search taught me to measure whether a thing was worth surfacing. Machine learning taught me that both of those are the same problem wearing different clothes.",
   },
 ];
 
@@ -87,35 +122,32 @@ export default function AboutPage() {
             />
           </div>
           <div className="text-center md:text-left">
-            <h1 className="display-lg mb-3">
-              Daniel Kliewer
-            </h1>
-            <p className="mb-2 font-display text-xl text-gold italic">
-              Local-first AI, measured and owned.
+            <h1 className="display-lg mb-3">Daniel Kliewer</h1>
+            <p className="mb-3 font-display text-xl text-gold italic">
+              AI engineer. Search relevance, local-first systems, and twenty
+              years of painting.
             </p>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-ink-3 uppercase">
-              Austin, TX
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+              Austin, Texas · 2006 — present
             </p>
           </div>
         </Container>
       </section>
 
-      {/* POSITIONS */}
+      {/* NOW */}
       <section className="border-b border-rule">
         <Container className="max-w-3xl py-16 md:py-24">
-          <SectionHeading kicker="Positions" title="Stated plainly" />
+          <SectionHeading kicker="Currently" title="What I actually do" />
           <div className="mt-10 space-y-12">
-            {positions.map((s) => (
+            {current.map((s) => (
               <Reveal key={s.title}>
                 <div>
                   <h3 className="mb-4 font-display text-2xl font-medium text-ink">
                     {s.title}
                   </h3>
-                  <div className="space-y-4 text-base leading-relaxed text-ink-2">
-                    {s.body.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </div>
+                  <p className="text-base leading-relaxed text-ink-2">
+                    {s.body}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -123,12 +155,12 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* LEDGER */}
+      {/* HISTORY */}
       <section className="border-b border-rule bg-void-2">
         <Container className="max-w-3xl py-16 md:py-24">
-          <SectionHeading kicker="Record" title="The ledger" />
+          <SectionHeading kicker="Record" title="How I got here" />
           <div className="mt-10 space-y-8">
-            {ledger.map((t) => (
+            {history.map((t) => (
               <Reveal key={`${t.year}-${t.title}`}>
                 <div className="flex gap-5">
                   <div className="w-16 shrink-0 text-right">
@@ -150,19 +182,40 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* BELIEFS */}
+      <section className="border-b border-rule">
+        <Container className="max-w-3xl py-16 md:py-24">
+          <SectionHeading kicker="Positions" title="What I believe" />
+          <div className="mt-10 space-y-12">
+            {beliefs.map((s) => (
+              <Reveal key={s.title}>
+                <div>
+                  <h3 className="mb-4 font-display text-2xl font-medium text-ink">
+                    {s.title}
+                  </h3>
+                  <p className="text-base leading-relaxed text-ink-2">
+                    {s.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* ALSO BY */}
       <section>
         <Container className="max-w-3xl py-16 md:py-24">
           <SectionHeading kicker="Earlier work" title="Also by Daniel Kliewer" />
           <Reveal>
             <div className="mt-10 border border-rule bg-slate p-8">
-              <p className="mb-3 font-mono text-[11px] tracking-[0.2em] text-ink-3 uppercase">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
                 {OLD_BOOK.format}
               </p>
               <h3 className="mb-2 font-display text-2xl font-medium text-ink">
                 {OLD_BOOK.title}
               </h3>
-              <p className="mb-5 font-display text-lg text-ink-2 italic">
+              <p className="mb-5 font-display text-lg italic text-ink-2">
                 {OLD_BOOK.subtitle}
               </p>
               <div className="flex flex-wrap items-center gap-6">
@@ -171,7 +224,7 @@ export default function AboutPage() {
                   href={OLD_BOOK.amazonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[12px] tracking-[0.16em] text-gold uppercase transition-colors hover:text-ink"
+                  className="font-mono text-[12px] uppercase tracking-[0.16em] text-gold transition-colors hover:text-ink"
                 >
                   Buy on Amazon ↗
                 </a>
