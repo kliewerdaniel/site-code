@@ -59,9 +59,23 @@ body {
   color: var(--color-ink);
 }
 
-/* Focus visibility: sovereignty includes keyboard users. */
+/* Focus visibility: sovereignty includes keyboard users.
+
+   Tailwind's preflight declares `outline: auto 1px` on :focus-visible. Written
+   as longhands with an element list, this rule outranks it and needs no var()
+   substitution, so the ring cannot fail to resolve. A focus ring is a safety
+   affordance and should not depend on a custom property.
+
+   Verified with CDP `CSS.getComputedStyleForNode` under forced :focus-visible:
+   outline-color rgb(255,195,112), style solid, width 2px, offset 3px. Note that
+   reading the same values through getComputedStyle inside the page returned the
+   element's currentColor instead — the engine disagreed with itself, and the
+   CDP value is the authoritative one. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible,
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: #ffc370; /* --color-gold */
   outline-offset: 3px;
 }
 
@@ -91,6 +105,17 @@ body {
     font-weight: 400;
     font-size: clamp(3.5rem, 9vw, 8.5rem);
     line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+
+  /* Hero display. Same drama on desktop as .display-xl, but the mobile floor
+     is 2.75rem instead of 3.5rem: a 7-line 56px headline on a 390px viewport
+     pushes everything below the fold. */
+  .display-hero {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.75rem, 8.5vw, 8.5rem);
+    line-height: 0.95;
     letter-spacing: -0.03em;
   }
 
@@ -174,4 +199,21 @@ body {
   .grain::after {
     opacity: 0.02;
   }
+}
+
+/* ---- Technical figures -------------------------------------------------
+   A diagram with labels inside a viewBox shrinks its type with the figure.
+   At a 390px viewport the boundary diagram's 10-14px labels render at ~6px.
+   Scroll the figure horizontally instead of shrinking it below legibility. */
+.figure-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.figure-scroll > svg {
+  min-width: 660px;
+}
+
+.figure-scroll::-webkit-scrollbar {
+  height: 6px;
 }

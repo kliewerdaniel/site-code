@@ -42,16 +42,24 @@ export const SOCIAL = {
   linkedin: "https://www.linkedin.com/in/daniel-kliewer-42691944/",
 } as const;
 
+/* Primary navigation leads with the WORK, not the book. The book is one
+   artifact inside a larger program; putting it first made the whole site read
+   as a book landing page. /sample and /press stay live and are linked from
+   /book and the footer — removing them from the nav is a navigation change,
+   not a route change. */
 export const NAV_ITEMS = [
-  { label: "Book", href: "/book" },
+  { label: "Projects", href: "/projects" },
   { label: "Research", href: "/research" },
-  { label: "Sample", href: "/sample" },
+  { label: "Concepts", href: "/concepts" },
+  { label: "Paths", href: "/paths" },
+  { label: "Book", href: "/book" },
   { label: "About", href: "/about" },
-  { label: "Press", href: "/press" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export const SECONDARY_NAV = [
+  { label: "Sample", href: "/sample" },
+  { label: "Press", href: "/press" },
   { label: "Mission", href: "/mission" },
   { label: "Fleet", href: "/fleet" },
   { label: "Whitepaper", href: "/paper" },

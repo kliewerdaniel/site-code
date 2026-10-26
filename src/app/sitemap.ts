@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/config";
 import { getAllPosts } from "@/lib/posts";
+import { PROJECTS, CONCEPTS, PATHS } from "@/lib/taxonomy";
 
 const SITE_URL = SITE.url;
 
@@ -26,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/sample",
     "/mission",
     "/fleet",
+    "/projects",
+    "/concepts",
+    "/paths",
+    ...PROJECTS.map((p) => `/projects/${p.slug}`),
+    ...CONCEPTS.map((c) => `/concepts/${c.slug}`),
+    ...PATHS.map((p) => `/paths/${p.slug}`),
     ...FLEET_DOMAINS.map((d) => `/fleet/${d}`),
     "/paper",
     "/privacy",
