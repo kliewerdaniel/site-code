@@ -1,12 +1,1 @@
-# Node.js 22.23.4 (LTS "Jod") — the 2026-10-21 security release.
-#
-# Why pinned: that release (1) removes the compromised eMudhra/emSign roots
-# from the bundled trust store (CVE-2026-111943 — eight intermediate keys
-# generated with weak randomness, recoverable from public data) and (2) patches
-# TLS certificate hostname-check bypasses and a Brotli decoder RCE.
-#
-# Node 22.23.1 still ships 4 emSign roots; 22.23.4 ships 1.
-# `npm run prenode` (scripts/check-node-version.mjs) fails the build otherwise.
-#
-# Verify with: node -v   (must print v22.23.4 or later, same major)
 22.23.4

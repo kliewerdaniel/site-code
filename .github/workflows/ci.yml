@@ -31,9 +31,18 @@ jobs:
 
       # Node version comes from .nvmrc so CI and local cannot drift. The
       # prebuild prenode gate then fails closed on anything older than 22.23.4.
+      # Extract only the version line rather than `cat .nvmrc`: the file is
+      # machine-read by nvm, Vercel and setup-node, and a comment block in it
+      # breaks every cat-based reader — GitHub Actions parses the `#` lines as
+      # malformed key=value entries and fails with `Invalid format '#'`.
+      # The rationale for the pin lives in scripts/check-node-version.mjs, next
+      # to the check that enforces it.
       - name: Read .nvmrc
         id: nvmrc
-        run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+        run: |
+          VERSION="$(grep -E '^[0-9]' .nvmrc | tail -1 | tr -d '[:space:]')"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Node from .nvmrc: $VERSION"
 
       - uses: actions/setup-node@v4
         with:
