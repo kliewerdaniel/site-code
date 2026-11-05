@@ -591,16 +591,16 @@ That is the difference between a model that appears intelligent and a system tha
 
 ### Benchmarking and evaluation
 
-- StateBench — Allen Institute for AI, long-document state-tracking evaluation.
+- [StateBench](https://allenai.org/blog/statebench) — Allen Institute for AI, long-document state-tracking evaluation (dataset and code on Hugging Face).
 - [FrontierMat](https://arxiv.org/abs/2610.41162) — Evaluation of AI capabilities on real-world materials research problems.
-- CWE-bench v2 — Reproducible cybersecurity vulnerability evaluation.
+- [CWE-bench v2](https://cwe-bench.com/) — Collinear AI, reproducible cybersecurity vulnerability evaluation (dataset on [Hugging Face](https://huggingface.co/datasets/collinear-ai/cwe-bench)).
 
 ### Computational infrastructure
 
-- TorchNeuron — Native PyTorch support for AWS Trainium.
-- TorchTPU — Native PyTorch support for TPU accelerators.
+- [TorchNeuron](https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium/) — Native PyTorch support for AWS Trainium (open-source backend; [GitHub](https://github.com/aws-neuron/torch-neuronx)).
+- [TorchTPU](https://pytorch.org/blog/introducing-torchtpu/) — Native PyTorch support for TPU accelerators (open-source backend; [GitHub](https://github.com/pytorch/torch-tpu)).
 - PyTorch 2.15 MPS — Apple Silicon acceleration and Metal kernel improvements.
-- VocabX — Vocabulary specialization and inference-cost optimization.
+- [VocabX](https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization) — Dharma AI, vocabulary specialization and inference-cost optimization (77% measured cost reduction).
 - Granite Switch 4.1.1 — Modular adapters and cache-efficient model updates.
 
 ### Related conceptual foundations
