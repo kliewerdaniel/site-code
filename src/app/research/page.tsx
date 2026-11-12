@@ -1,8 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Exhibit, Kicker } from "@/components/Archetypes";
+import { BookContextCta } from "@/components/BookContextCta";
 import { HeroBand } from "@/components/HeroBand";
+import { BOOK } from "@/config";
 import { getAllPosts, getAllTags, tagSlug } from "@/lib/posts";
+import { CONCEPTS, PROJECTS } from "@/lib/taxonomy";
 import { formatDate } from "@/lib/formatDate";
 import { collectionPageSchema, seo } from "@/lib/seo";
 import ResearchSearch from "./ResearchSearch";
@@ -285,6 +288,13 @@ export default async function ResearchPage({
           </nav>
         )}
       </ResearchSearch>
+    </Exhibit>
+
+    <Exhibit>
+      <BookContextCta
+        subject="The research archive"
+        reason={`${allPosts.length} articles, ${PROJECTS.length} systems and ${CONCEPTS.length} concepts — one program. The book compiles it into ${BOOK.chapters} chapters.`}
+      />
     </Exhibit>
     </>
   );

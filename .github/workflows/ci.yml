@@ -77,6 +77,11 @@ jobs:
       - name: Validate build
         run: npm run validate:build
 
+      # Agent knowledge interface: the six generated resources exist, parse,
+      # carry canonical URLs, match the book config, and have no dangling edges.
+      - name: Validate agent resources
+        run: npm run validate:agents
+
       # Deterministic audit: aggregates the validators, categorises canonical
       # mismatches, and fails if the defect list has grown since the baseline.
       - name: Audit site

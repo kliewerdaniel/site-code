@@ -98,7 +98,10 @@ function redirectBlock(name) {
   }));
 }
 
-const legacyRedirects = redirectBlock("LEGACY_SLUG_REDIRECTS");
+const legacyRedirects = [
+  ...redirectBlock("LEGACY_SLUG_REDIRECTS"),
+  ...redirectBlock("AGENT_ALIAS_REDIRECTS"),
+];
 const removedSections = redirectBlock("REMOVED_SECTION_REDIRECTS");
 
 const staticRts = staticRoutes().sort();

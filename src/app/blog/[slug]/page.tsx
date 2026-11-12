@@ -16,6 +16,10 @@ import {
   tagSlug,
 } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
+import { BookContextCta } from "@/components/BookContextCta";
+import { BOOK } from "@/config";
+import { CHAPTERS } from "@/lib/chapters";
+import { linksForArticle } from "@/lib/book-links";
 import {
   DEFAULT_OG_IMAGE,
   articleSchema,
@@ -171,6 +175,9 @@ export default async function BlogPostPage({
   // block can never disagree. Rendered only when the post genuinely belongs to
   // something — a post that is not about a project gets no empty section.
   const partOfProjects = projectsForPost(slug);
+  const bookLinks = linksForArticle(slug);
+  const chapterTitle = (n: number) =>
+    CHAPTERS.find((c) => c.n === n)?.title ?? "";
   const partOfConcepts: Concept[] = [];
   for (const project of partOfProjects) {
     for (const concept of conceptsForProject(project)) {
@@ -326,6 +333,25 @@ export default async function BlogPostPage({
             )}
           </section>
         )}
+
+        {/* The book, in context. A chapter recommendation when the manuscript
+            names this article as further reading; otherwise the project the
+            article belongs to. Never the generic button. */}
+        {bookLinks.length > 0 ? (
+          <BookContextCta
+            className="mt-16"
+            subject={`Chapter ${bookLinks[0].chapter}: ${chapterTitle(
+              bookLinks[0].chapter
+            )}`}
+            reason={bookLinks[0].reason}
+          />
+        ) : partOfProjects.length > 0 ? (
+          <BookContextCta
+            className="mt-16"
+            subject={partOfProjects[0].name}
+            reason={`${partOfProjects[0].role} The book is the compiled long-form treatment of the same program — ${BOOK.chapters} chapters.`}
+          />
+        ) : null}
 
         {/* Related posts */}
         {related.length > 0 && (

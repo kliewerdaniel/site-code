@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Exhibit, Kicker } from "@/components/Archetypes";
+import { BookContextCta } from "@/components/BookContextCta";
+import { BOOK } from "@/config";
 import { breadcrumbSchema, seo } from "@/lib/seo";
 import { PATHS, getPath, resolveStep } from "@/lib/taxonomy";
 
@@ -88,6 +90,13 @@ export default async function PathPage({ params }: Props) {
           </ol>
         </div>
       </section>
+
+      <Exhibit>
+        <BookContextCta
+          subject={path.name}
+          reason={`${path.promise} The book is the compiled treatment of the same material — ${BOOK.chapters} chapters in the order the ideas depend on each other.`}
+        />
+      </Exhibit>
 
       <Exhibit>
         <div className="flex flex-wrap gap-6">

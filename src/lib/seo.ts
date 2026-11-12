@@ -199,7 +199,11 @@ export function collectionPageSchema(): string {
   });
 }
 
-/* Book / Product schema for the book page. */
+/* Book / Product schema for the book page.
+   `availability` is deliberately NOT asserted: it is a live stock claim that
+   cannot be verified from the repo, and the brief forbids inventing product
+   attributes. The price is the configured list price from `BOOK.price`, not a
+   verified live Amazon price. */
 export function bookSchema(): string {
   return jsonLd({
     "@context": "https://schema.org",
@@ -210,16 +214,31 @@ export function bookSchema(): string {
     description: BOOK.promise,
     author: { "@id": `${SITE.url}/#daniel`, "@type": "Person", name: SITE.name },
     publisher: { "@id": `${SITE.url}/#organization` },
-    isbn: "979-8162014881",
-    datePublished: "2026-10-12",
+    ...(BOOK.isbn ? { isbn: BOOK.isbn } : {}),
+    ...(BOOK.datePublished ? { datePublished: BOOK.datePublished } : {}),
     bookFormat: "https://schema.org/Hardcover",
     offers: {
       "@type": "Offer",
       url: BOOK.amazonUrl,
       priceCurrency: "USD",
       price: BOOK.price.replace("$", ""),
-      availability: "https://schema.org/InStock",
     },
+  });
+}
+
+/* WebPage for /agents — the corpus as a document an agent can read. */
+export function agentPageSchema(): string {
+  return jsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": canonical("/agents"),
+    url: canonical("/agents"),
+    name: "For agents — the danielkliewer.com knowledge corpus",
+    description:
+      "A statically compiled, machine-readable research corpus: articles, projects, concepts, learning paths, a typed relation graph, and the book they compile into.",
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": `${SITE.url}/#daniel` },
+    inLanguage: "en",
   });
 }
 
