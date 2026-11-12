@@ -1,21 +1,31 @@
 {
   "generatedBy": "scripts/audit-site.mjs",
   "counts": {
-    "posts": 195,
-    "contentUrls": 229,
-    "sitemapUrls": 229,
-    "builtPages": 228,
-    "redirects": 34
+    "posts": 198,
+    "articles": 198,
+    "projects": 12,
+    "concepts": 8,
+    "chapters": 24,
+    "verifiedChapterLinks": 0,
+    "contentUrls": 233,
+    "sitemapUrls": 233,
+    "builtPages": 232,
+    "redirects": 35
   },
   "relations": {
     "counts": {
       "implements": 27,
       "documents": 16,
-      "prerequisite_for": 12
+      "prerequisite_for": 12,
+      "chapter_covers": 0,
+      "recommends_reading": 43
     },
     "absent": [
       "extends",
-      "validates"
+      "validates",
+      "explains",
+      "expands_on",
+      "related_product"
     ],
     "edges": {
       "implements": [
@@ -255,16 +265,287 @@
           "to": "2026-10-25-hermes-local-video-studio",
           "via": "/paths/verified-creative-workflows"
         }
+      ],
+      "chapter_covers": [],
+      "recommends_reading": [
+        {
+          "from": "/blog/2026-03-10-breaking-free-from-chatgpt",
+          "to": "chapter:1",
+          "reason": "Chapter 1 §1.1 prices the five liabilities of a hosted API; this article is the same argument from the author's own migration."
+        },
+        {
+          "from": "/blog/2026-09-04-the-rented-sovereign-agent-agency-stack",
+          "to": "chapter:1",
+          "reason": "Chapter 1 §1.4 prices what sovereignty costs against what renting costs; the article is that ledger applied to an agency stack."
+        },
+        {
+          "from": "/blog/2026-03-28-sovereignty-manifesto",
+          "to": "chapter:2",
+          "reason": "Chapter 2 §2.1 lays out the seven layers of the stack; the manifesto states the thesis those layers implement."
+        },
+        {
+          "from": "/blog/2026-07-05-sovereign-ai-architecture-synthesis",
+          "to": "chapter:2",
+          "reason": "Chapter 2 §2.4 maps the book onto the stack; this synthesis is the same mapping in running prose."
+        },
+        {
+          "from": "/blog/2025-11-08-local-llm-integration",
+          "to": "chapter:3",
+          "reason": "Chapter 3 §3.1–3.3 installs a first local model and does the VRAM math; the article is the author's working integration note."
+        },
+        {
+          "from": "/blog/2025-07-06-demystifying-large-language-models",
+          "to": "chapter:4",
+          "reason": "Chapter 4 §4.1–4.3 covers tokenization, context budgeting and sampling; the article is the conceptual groundwork."
+        },
+        {
+          "from": "/blog/2025-11-14-2025-inference-new-geography-intelligence",
+          "to": "chapter:5",
+          "reason": "Chapter 5 §5.1–5.5 is about reading benchmarks and choosing a model; the article is the market geography behind that choice."
+        },
+        {
+          "from": "/blog/2025-11-12-mastering-llama-cpp-local-llm-integration-guide",
+          "to": "chapter:6",
+          "reason": "Chapter 6 §6.1–6.3 covers GGUF, llama-server flags and KV-cache sizing; the article is the hands-on guide to the same server."
+        },
+        {
+          "from": "/blog/2026-10-23-two-models-one-harness",
+          "to": "chapter:6",
+          "reason": "Chapter 6 §6.5 compares serving runtimes; the article measures two models behind one execution boundary."
+        },
+        {
+          "from": "/blog/2025-03-28-ollama-chunking",
+          "to": "chapter:7",
+          "reason": "Chapter 7 §7.3 treats chunking as the decision that decides retrieval quality; the article is that decision worked through on Ollama."
+        },
+        {
+          "from": "/blog/2025-10-19-building-a-local-llm-powered-knowledge-graph",
+          "to": "chapter:7",
+          "reason": "Chapter 7 §7.2 chooses an embedding model; the article records the local embedding pipeline the chapter generalises."
+        },
+        {
+          "from": "/blog/2024-12-01-basic-rag",
+          "to": "chapter:8",
+          "reason": "Chapter 8 §8.1–8.4 builds the local RAG pipeline end to end; the article is the first working version of that pipeline."
+        },
+        {
+          "from": "/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
+          "to": "chapter:9",
+          "reason": "Chapter 9 §9.1–9.4 builds a gold set and reports misses; the article is a retrieved-assistant evaluation with the same discipline."
+        },
+        {
+          "from": "/blog/2026-07-06-sovereign-ai-benchmarks-performance-results",
+          "to": "chapter:9",
+          "reason": "Chapter 9 §9.6 makes evaluation a regression run; the article publishes measured results rather than assertions."
+        },
+        {
+          "from": "/blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents",
+          "to": "chapter:10",
+          "reason": "Chapter 10 §10.2 designs a schema of claims, evidence and provenance; the article builds that schema with local agents."
+        },
+        {
+          "from": "/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
+          "to": "chapter:11",
+          "reason": "Chapter 11 §11.1–11.3 separates local and global graph search; the article is a GraphRAG assistant measured against both."
+        },
+        {
+          "from": "/blog/2026-10-25-ganymede-the-archive-of-the-gods",
+          "to": "chapter:11",
+          "reason": "Chapter 11 §11.5 debugs GraphRAG as a worked diagnosis; the article is the project that diagnosis came out of."
+        },
+        {
+          "from": "/blog/2026-07-11-knowledge-compiler-compiling-human-knowledge-into-static-semantic-artifacts",
+          "to": "chapter:12",
+          "reason": "Chapter 12 §12.1–12.3 introduces the staged compile pipeline; the article is where that pipeline was first published."
+        },
+        {
+          "from": "/blog/2026-07-12-compile-time-ai-knowledge-compiler-architecture",
+          "to": "chapter:12",
+          "reason": "Chapter 12 §12.2–12.3 describes the artifact and the build pipeline; the article specifies that architecture."
+        },
+        {
+          "from": "/blog/2026-07-15-compiling-my-blog-into-a-decision-graph",
+          "to": "chapter:12",
+          "reason": "Chapter 12 §12.4 is a capstone compiling notes into a graph; the article compiles the blog itself into a decision graph."
+        },
+        {
+          "from": "/blog/2026-07-16-the-sovereign-knowledge-compiler-explorer",
+          "to": "chapter:12",
+          "reason": "Chapter 12 §12.6 says to verify the artifact rather than trust it; the article is the explorer built to inspect one."
+        },
+        {
+          "from": "/blog/2025-03-24-model-context-protocol",
+          "to": "chapter:13",
+          "reason": "Chapter 13 §13.5 treats MCP as the tool interface layer; the article is the author's MCP integration record."
+        },
+        {
+          "from": "/blog/2025-11-05-the-ghost-in-the-machine-is-finally-allowed-to-see-a-beginners-guide-to-mcp",
+          "to": "chapter:13",
+          "reason": "Chapter 13 §13.1–13.3 covers tool-call failure modes and schema design for weak models; the article works the same ground for MCP."
+        },
+        {
+          "from": "/blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+          "to": "chapter:14",
+          "reason": "Chapter 14 §14.2–14.5 makes the agent a state machine that replays; the article is the governed runtime implementing that shape."
+        },
+        {
+          "from": "/blog/2026-10-29-frozen-spine-reference-model-enforcement",
+          "to": "chapter:14",
+          "reason": "Chapter 14 §14.3 uses a claim lifecycle as the worked machine; the article enforces a frozen reference model the same way."
+        },
+        {
+          "from": "/blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+          "to": "chapter:15",
+          "reason": "Chapter 15 §15.4 puts a policy gate in front of execution, failing closed; the article is that gate implemented."
+        },
+        {
+          "from": "/blog/2026-08-09-hermes-atlas-v03-evidence-ledger-claim-lifecycle-explain",
+          "to": "chapter:15",
+          "reason": "Chapter 15 §15.2–15.3 audits claims by exact-match and contradiction; the article is the evidence ledger that carries that lifecycle."
+        },
+        {
+          "from": "/blog/2026-01-22-dynamic-persona-moe-rag",
+          "to": "chapter:16",
+          "reason": "Chapter 16 §16.2–16.4 extracts a persona as a comparable object; the article is the dynamic persona system built on that idea."
+        },
+        {
+          "from": "/blog/2026-01-25-building-the-synthetic-analyst",
+          "to": "chapter:16",
+          "reason": "Chapter 16 §16.3 turns features into behaviour; the article is a quantified persona put to work."
+        },
+        {
+          "from": "/blog/2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system",
+          "to": "chapter:17",
+          "reason": "Chapter 17 §17.1–17.3 routes between specialists and evaluates the router; the article is a mixture-of-experts persona router."
+        },
+        {
+          "from": "/blog/2026-01-28-dynamic-persona-moe-rag-implementation-plan",
+          "to": "chapter:18",
+          "reason": "Chapter 18 §18.1–18.4 handles consistency, regression testing and drift; the article is the implementation plan for a production persona system."
+        },
+        {
+          "from": "/blog/2026-02-03-dynamic-persona-moe-rag-building-memory-driven-synthetic-intelligence",
+          "to": "chapter:18",
+          "reason": "Chapter 18 §18.6 manages the persona lifecycle; the article is the memory-driven system that lifecycle governs."
+        },
+        {
+          "from": "/blog/2026-10-23-llmjacking-the-skynet-mode-recursive-threat",
+          "to": "chapter:19",
+          "reason": "Chapter 19 §19.1–19.3 shapes a principled refusal and a detector that did not ship; the article is the threat that refusal answers."
+        },
+        {
+          "from": "/blog/2026-10-23-operation-ouroboros-recursive-intelligence-parasite",
+          "to": "chapter:19",
+          "reason": "Chapter 19 §19.5 refuses in the sovereign context; the article is the recursive-infrastructure case that context was drawn from."
+        },
+        {
+          "from": "/blog/2026-07-26-does-the-compiler-know-when-it-is-wrong",
+          "to": "chapter:20",
+          "reason": "Chapter 20 §20.1–20.3 runs contradiction detection as a pipeline and measures it; the article asks whether the compiler knows it is wrong."
+        },
+        {
+          "from": "/blog/2026-10-25-ganymede-the-archive-of-the-gods",
+          "to": "chapter:20",
+          "reason": "Chapter 20 §20.4 integrates contradiction detection with the auditor; the article is the claim graph that integration runs on."
+        },
+        {
+          "from": "/blog/2026-07-06-sovereign-ai-benchmarks-performance-results",
+          "to": "chapter:21",
+          "reason": "Chapter 21 §21.1–21.4 freezes the corpus and versions the gold set; the article is a published, frozen benchmark run."
+        },
+        {
+          "from": "/blog/2026-08-09-hermes-atlas-v04-evidence-lifecycle-gold-benchmark",
+          "to": "chapter:21",
+          "reason": "Chapter 21 §21.6 builds gold sets for generative tasks; the article specifies an evidence-lifecycle gold benchmark."
+        },
+        {
+          "from": "/blog/2026-10-23-patching-the-trust-store-emudhra-nodejs-and-the-build-gate",
+          "to": "chapter:22",
+          "reason": "Chapter 22 §22.5 covers supply-chain hygiene and §22.7 the audit you will actually do; the article is a compromised root found by that audit."
+        },
+        {
+          "from": "/blog/2025-12-04-critical-nextjs-rce-cve-2025-66478-security-guide",
+          "to": "chapter:22",
+          "reason": "Chapter 22 §22.1–22.2 writes the threat model and denies by default; the article is a framework RCE handled under that model."
+        },
+        {
+          "from": "/blog/2026-10-12-mindbroadcast",
+          "to": "chapter:23",
+          "reason": "Chapter 23 §23.1–23.4 is about one-command builds, offline distribution and the UX lesson; the article is a cross-platform build pipeline."
+        },
+        {
+          "from": "/blog/2026-03-29-sovereign-synthesis",
+          "to": "chapter:24",
+          "reason": "Chapter 24 §24.2 states the ongoing discipline; the article is the synthesis that discipline produced."
+        },
+        {
+          "from": "/blog/2026-07-05-getting-started-sovereign-ai",
+          "to": "chapter:24",
+          "reason": "Chapter 24 §24.1 caps the book with one complete system; the article is the on-ramp to building it."
+        }
       ]
-    }
+    },
+    "dangling": 0
+  },
+  "agent": {
+    "resources": [
+      {
+        "path": "/llms.txt",
+        "bytes": 3071,
+        "contentType": "text/plain; charset=utf-8"
+      },
+      {
+        "path": "/llms-full.txt",
+        "bytes": 129035,
+        "contentType": "text/plain; charset=utf-8"
+      },
+      {
+        "path": "/agents/index.json",
+        "bytes": 2550,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "path": "/agents/catalog.json",
+        "bytes": 187207,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "path": "/agents/graph.json",
+        "bytes": 19028,
+        "contentType": "application/json; charset=utf-8"
+      },
+      {
+        "path": "/agents/book.json",
+        "bytes": 18077,
+        "contentType": "application/json; charset=utf-8"
+      }
+    ],
+    "counts": {
+      "articles": 198,
+      "projects": 12,
+      "concepts": 8,
+      "chapters": 24,
+      "verifiedChapterLinks": 0,
+      "recommendedReading": 43
+    },
+    "graphCounts": {
+      "implements": 27,
+      "documents": 16,
+      "prerequisite_for": 12,
+      "chapter_covers": 0,
+      "recommends_reading": 43
+    },
+    "dangling": 0,
+    "fatal": 0,
+    "findings": 0
   },
   "fatal": 0,
   "defects": 10,
-  "advisory": 343,
+  "advisory": 349,
   "byKind": {
     "canonical-mismatch": 10,
-    "description-long": 174,
-    "title-long": 156,
+    "description-long": 177,
+    "title-long": 159,
     "description-missing": 13
   },
   "canonical": {
@@ -337,15 +618,15 @@
     ]
   },
   "routes": {
-    "contentUrls": 229,
-    "handlers": 1,
-    "redirects": 34,
+    "contentUrls": 233,
+    "handlers": 7,
+    "redirects": 35,
     "not200": 0
   },
   "build": {
-    "sitemapUrls": 229,
-    "checked": 228,
-    "builtPages": 228,
+    "sitemapUrls": 233,
+    "checked": 232,
+    "builtPages": 232,
     "fatal": 0
   },
   "defectList": [
@@ -545,6 +826,9 @@
     "description-long:2026-10-25-the-dissolve-that-wasnt-applied.md",
     "description-long:2026-10-25-the-keyframe-that-went-nowhere.md",
     "description-long:2026-10-25-the-mask-that-rendered-anyway.md",
+    "description-long:2026-10-29-frozen-spine-reference-model-enforcement.md",
+    "description-long:2026-11-04-architecture-of-reliable-intelligence.md",
+    "description-long:2026-11-04-boundaries-of-intelligence.md",
     "description-missing:2024-11-27-instagram-feed-summarizer.md",
     "description-missing:2024-11-27-reddit-blog-generator.md",
     "description-missing:2024-11-27-swarm-autogen.md",
@@ -713,7 +997,10 @@
     "title-long:2026-10-25-hermes-local-video-studio.md",
     "title-long:2026-10-25-the-dissolve-that-wasnt-applied.md",
     "title-long:2026-10-25-the-keyframe-that-went-nowhere.md",
-    "title-long:2026-10-25-the-mask-that-rendered-anyway.md"
+    "title-long:2026-10-25-the-mask-that-rendered-anyway.md",
+    "title-long:2026-10-29-frozen-spine-reference-model-enforcement.md",
+    "title-long:2026-11-04-architecture-of-reliable-intelligence.md",
+    "title-long:2026-11-04-boundaries-of-intelligence.md"
   ],
   "findings": [
     {
@@ -2005,6 +2292,27 @@
       "detail": "description is 189 chars (> 160)"
     },
     {
+      "id": "description-long:2026-10-29-frozen-spine-reference-model-enforcement.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-10-29-frozen-spine-reference-model-enforcement.md",
+      "detail": "description is 281 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-11-04-architecture-of-reliable-intelligence.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-11-04-architecture-of-reliable-intelligence.md",
+      "detail": "description is 406 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-11-04-boundaries-of-intelligence.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-11-04-boundaries-of-intelligence.md",
+      "detail": "description is 206 chars (> 160)"
+    },
+    {
       "id": "description-missing:2024-11-27-instagram-feed-summarizer.md",
       "severity": "advisory",
       "kind": "description-missing",
@@ -3186,6 +3494,27 @@
       "kind": "title-long",
       "file": "2026-10-25-the-mask-that-rendered-anyway.md",
       "detail": "title is 72 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-10-29-frozen-spine-reference-model-enforcement.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-10-29-frozen-spine-reference-model-enforcement.md",
+      "detail": "title is 75 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-11-04-architecture-of-reliable-intelligence.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-11-04-architecture-of-reliable-intelligence.md",
+      "detail": "title is 120 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-11-04-boundaries-of-intelligence.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-11-04-boundaries-of-intelligence.md",
+      "detail": "title is 100 chars (> 70)"
     }
   ]
 }

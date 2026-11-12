@@ -61,6 +61,12 @@ const REMOVED_SECTION_REDIRECTS: [string, string][] = [
   ["/fleet/decision-graphs", "/concepts/graph-retrieval"],
 ];
 
+/* Agent-interface aliases. `/agents` is canonical; `/for-agents` is the name
+   used in some agent conventions, so it resolves permanently rather than 404s. */
+const AGENT_ALIAS_REDIRECTS: [string, string][] = [
+  ["/for-agents", "/agents"],
+];
+
 /* ── Content-Security-Policy ────────────────────────────────────────────────
    Built from what this site actually loads, not from a template:
 
@@ -135,13 +141,15 @@ const nextConfig: NextConfig = {
 
   // Keep defaults; images served from /public/images (same-origin).
   async redirects() {
-    return [...LEGACY_SLUG_REDIRECTS, ...REMOVED_SECTION_REDIRECTS].map(
-      ([source, destination]) => ({
-        source,
-        destination,
-        permanent: true,
-      }),
-    );
+    return [
+      ...LEGACY_SLUG_REDIRECTS,
+      ...REMOVED_SECTION_REDIRECTS,
+      ...AGENT_ALIAS_REDIRECTS,
+    ].map(([source, destination]) => ({
+      source,
+      destination,
+      permanent: true,
+    }));
   },
 };
 

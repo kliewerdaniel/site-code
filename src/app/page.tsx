@@ -262,7 +262,7 @@ export default async function HomePage() {
           Start from the idea, the system, or the argument.
         </h2>
 
-        <div className="mt-16 grid gap-px border border-rule bg-rule sm:grid-cols-2">
+        <div className="mt-16 grid gap-px border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               href: "/concepts",
@@ -278,6 +278,11 @@ export default async function HomePage() {
               href: "/research",
               title: "Research archive",
               body: `${posts.length} articles from 2024 to now, including the post-mortems where things failed and what that changed.`,
+            },
+            {
+              href: "/agents",
+              title: "For agents",
+              body: "The same corpus as machine-readable resources: a catalog, a typed relation graph, and the book record. Generated at build time.",
             },
             {
               href: "/book",

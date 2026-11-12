@@ -30,6 +30,10 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { collect as collectContent } from "./validate-content.mjs";
 import { collect as collectBuild } from "./validate-build.mjs";
+import { buildRelationGraph, danglingEdges } from "../src/lib/relations-core.ts";
+import { BOOK_LINKS } from "../src/lib/book-links.ts";
+import { CHAPTERS } from "../src/lib/chapters.ts";
+import { collect as collectAgents } from "./validate-agents.mjs";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, "..");
@@ -39,12 +43,15 @@ const OUT = path.join(repo, "data", "audit-report.json");
 const DATE_PREFIX = /^\d{4}-\d{2}-\d{2}-/;
 
 /* ── Typed relation graph ───────────────────────────────────────────────────
-   The roadmap proposed relations like `implements`, `documents`, `extends`,
-   `validates` and `prerequisite_for`. The site already carries the first two
-   and the last one as data in taxonomy.ts; `extends` and `validates` have no
-   source, so they are reported as absent rather than invented. The rule this
-   codebase lives by is that every relationship is computed or verified, never
-   invented — so this derives the graph from the declared data and says so. */
+   The edge vocabulary and its semantics live in `src/lib/relations-core.ts`,
+   the same module `/agents/graph.json` is generated from. This function only
+   extracts the declared data from taxonomy.ts (the archive is read from disk
+   here rather than imported, because `taxonomy.ts` uses extensionless relative
+   imports that a bare `node` run cannot resolve) and hands it to the core.
+
+   The rule this codebase lives by is that every relationship is computed or
+   verified, never invented. Relation types with no data source are reported in
+   `absent` by the core rather than fabricated here. */
 
 /**
  * Parse one array-of-strings field out of a taxonomy.ts entry.
@@ -56,10 +63,9 @@ function arrayOf(src, field) {
   return [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]);
 }
 
-/** Derive the relation graph from taxonomy.ts. */
+/** Derive the relation graph from taxonomy.ts and book-links.ts. */
 export function relationGraph() {
   const src = fs.readFileSync(path.join(repo, "src", "lib", "taxonomy.ts"), "utf8");
-
   const blockOf = (slug) => {
     const escaped = slug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     // A taxonomy entry ends at a two-space-indented `},`. Matching `\n\s*]`
@@ -70,49 +76,64 @@ export function relationGraph() {
     return m ? m[1] : "";
   };
 
-  const counts = {
-    implements: 0, // project -> concept
-    documents: 0, // post -> project
-    prerequisite_for: 0, // path step -> next step
-  };
-  const edges = { implements: [], documents: [], prerequisite_for: [] };
-  const absent = ["extends", "validates"]; // no data source in the repo
-
   // projects -> concepts, and posts -> projects
   const projectSlugs = [...src.matchAll(/slug:\s*"([a-z0-9-]+)",\s*\n\s*name:/g)].map((m) => m[1]);
-  for (const slug of projectSlugs) {
-    const block = blockOf(slug);
-    for (const c of arrayOf(block, "concepts")) {
-      counts.implements++;
-      edges.implements.push({ from: `/projects/${slug}`, to: `/concepts/${c}` });
-    }
-    for (const a of arrayOf(block, "articles")) {
-      counts.documents++;
-      edges.documents.push({ from: `/blog/${a}`, to: `/projects/${slug}` });
-    }
-  }
+  const projects = projectSlugs.map((slug) => ({
+    slug,
+    concepts: arrayOf(blockOf(slug), "concepts"),
+    articles: arrayOf(blockOf(slug), "articles"),
+  }));
+
+  const conceptsStart = src.indexOf("export const CONCEPTS");
+  const pathsStart = src.indexOf("export const PATHS");
+  const conceptSlugs = [
+    ...src.slice(conceptsStart, pathsStart).matchAll(/slug:\s*"([a-z0-9-]+)"/g),
+  ].map((m) => m[1]);
+  const concepts = conceptSlugs.map((slug) => ({ slug }));
 
   // learning paths: each step prepares the reader for the next. Steps are
-  // `{ kind, ref, note }` objects, so the relation is between consecutive refs.
-  const pathsStart = src.indexOf("export const PATHS");
-  const pathsSrc = pathsStart === -1 ? "" : src.slice(pathsStart);
-  const pathSlugs = [...pathsSrc.matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]);
-  for (const slug of pathSlugs) {
+  // `{ kind, ref, note }` objects; the core chains consecutive refs.
+  const pathSlugs = [...src.slice(pathsStart).matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]);
+  const paths = pathSlugs.map((slug) => {
     const block = blockOf(slug);
     const stepsMatch = block.match(/steps:\s*\[([\s\S]*?)\n    \]/);
-    if (!stepsMatch) continue;
-    const refs = [...stepsMatch[1].matchAll(/ref:\s*"([^"]+)"/g)].map((m) => m[1]);
-    for (let i = 0; i + 1 < refs.length; i++) {
-      counts.prerequisite_for++;
-      edges.prerequisite_for.push({
-        from: refs[i],
-        to: refs[i + 1],
-        via: `/paths/${slug}`,
-      });
-    }
-  }
+    const refs = stepsMatch
+      ? [...stepsMatch[1].matchAll(/ref:\s*"([^"]+)"/g)].map((m) => m[1])
+      : [];
+    return { slug, steps: refs.map((ref) => ({ kind: "article", ref })) };
+  });
 
-  return { counts, edges, absent };
+  return buildRelationGraph({ projects, concepts, paths, bookLinks: BOOK_LINKS });
+}
+
+/** The nodes the source-derived graph may reference. */
+function auditNodes() {
+  const postsDir = path.join(repo, "content", "research");
+  const posts = new Set(
+    fs
+      .readdirSync(postsDir)
+      .filter((f) => f.endsWith(".md") && f !== "temp.md")
+      .map((f) => f.replace(/\.md$/, ""))
+  );
+  const src = fs.readFileSync(path.join(repo, "src", "lib", "taxonomy.ts"), "utf8");
+  const conceptsStart = src.indexOf("export const CONCEPTS");
+  const pathsStart = src.indexOf("export const PATHS");
+  const projects = new Set(
+    [...src.slice(0, conceptsStart).matchAll(/slug:\s*"([a-z0-9-]+)",\s*\n\s*name:/g)].map(
+      (m) => m[1]
+    )
+  );
+  const concepts = new Set(
+    [...src.slice(conceptsStart, pathsStart).matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map(
+      (m) => m[1]
+    )
+  );
+  return { posts, projects, concepts, chapters: new Set(CHAPTERS.map((c) => c.n)) };
+}
+
+/** Edges in the source-derived graph that do not resolve. Empty is the invariant. */
+export function relationDangling() {
+  return danglingEdges(relationGraph(), auditNodes());
 }
 
 
@@ -179,18 +200,43 @@ export function build() {
   }
 
   const relations = relationGraph();
+  const relationDanglingCount = relationDangling().length;
+  const agents = collectAgents();
 
   return {
     generatedBy: "scripts/audit-site.mjs",
     counts: {
       posts: content.posts,
+      articles: agents?.counts.articles ?? content.posts,
+      projects: agents?.counts.projects ?? null,
+      concepts: agents?.counts.concepts ?? null,
+      chapters: agents?.counts.chapters ?? null,
+      verifiedChapterLinks: agents?.counts.verifiedChapterLinks ?? null,
       contentUrls: routes?.contentUrls ?? null,
       sitemapUrls: buildRes?.sitemapUrls ?? null,
       builtPages: buildRes?.builtPages ?? null,
       redirects: routes?.redirects ?? null,
     },
-    relations: { counts: relations.counts, absent: relations.absent },
-    fatal: content.fatal.length + (buildRes?.fatal.length ?? 0),
+    relations: {
+      counts: relations.counts,
+      absent: relations.absent,
+      edges: relations.edges,
+      dangling: relationDanglingCount,
+    },
+    agent: agents
+      ? {
+          resources: agents.resources,
+          counts: agents.counts,
+          graphCounts: agents.graphCounts,
+          dangling: agents.dangling,
+          fatal: agents.fatal.length,
+          findings: agents.findings.length,
+        }
+      : null,
+    fatal:
+      content.fatal.length +
+      (buildRes?.fatal.length ?? 0) +
+      (agents?.fatal.length ?? 0),
     defects: defects.length,
     advisory: advisory.length,
     byKind: byKind([...defects, ...advisory]),
@@ -200,7 +246,6 @@ export function build() {
       items: canonical,
     },
     routes,
-    relations: { counts: relations.counts, absent: relations.absent, edges: relations.edges },
     build: buildRes
       ? {
           sitemapUrls: buildRes.sitemapUrls,
@@ -244,6 +289,16 @@ export function diff(base, next) {
   if (next.advisory > base.advisory) regressions.push(`advisory: ${base.advisory} -> ${next.advisory}`);
   else if (next.advisory < base.advisory) improvements.push(`advisory: ${base.advisory} -> ${next.advisory}`);
 
+  const bf = base.agent?.fatal ?? 0;
+  const nf = next.agent?.fatal ?? 0;
+  if (nf > bf) regressions.push(`agent fatal: ${bf} -> ${nf}`);
+  else if (nf < bf) improvements.push(`agent fatal: ${bf} -> ${nf}`);
+
+  const bd = base.relations?.dangling ?? 0;
+  const nd = next.relations?.dangling ?? 0;
+  if (nd > bd) regressions.push(`dangling relations: ${bd} -> ${nd}`);
+  else if (nd < bd) improvements.push(`dangling relations: ${bd} -> ${nd}`);
+
   const a = new Set(base.defectList);
   const b = new Set(next.defectList);
   for (const d of b) if (!a.has(d)) regressions.push(`NEW defect  ${d}`);
@@ -284,7 +339,17 @@ if (isEntry) {
     console.log("SITE AUDIT SUMMARY\n");
     console.log(`  posts ${report.counts.posts} · content URLs ${report.counts.contentUrls} · redirects ${report.counts.redirects}`);
     console.log(`  fatal ${report.fatal} · defects ${defects.length} · advisory ${advisory.length}`);
-    console.log(`  relation edges ${Object.values(report.relations.counts).reduce((a, b) => a + b, 0)} (0 dangling)`);
+    console.log(
+      `  relation edges ${Object.values(report.relations.counts).reduce((a, b) => a + b, 0)} (${report.relations.dangling} dangling)`
+    );
+    if (report.agent) {
+      console.log(
+        `  agent resources ${report.agent.resources.length} · articles ${report.agent.counts.articles} · chapters ${report.agent.counts.chapters} · verified chapter links ${report.agent.counts.verifiedChapterLinks}`
+      );
+      for (const r of report.agent.resources) {
+        console.log(`    ${(r.bytes / 1024).toFixed(1).padStart(7)} KB  ${r.path}`);
+      }
+    }
     console.log("");
 
     if (defects.length) {
