@@ -16,8 +16,18 @@ export const BOOK = {
   promise:
     "Run serious AI on hardware you own — full applications, no cloud, no exfiltration.",
   price: "$88", // Hardcover price — decided 2026-10-13. Not a TODO.
-  // Live Amazon listing — confirmed 2026-10-13.
+  /**
+   * Configured list price, NOT a live Amazon price. The Amazon listing is
+   * authoritative for current pricing and availability; machine-readable
+   * records must not present this as a verified live price or as stock state.
+   */
+  priceNote: "Configured list price. The Amazon listing is authoritative for the live price.",
+  asin: "B0HMWFR6G7",
+  /** Live Amazon listing — confirmed 2026-10-13. */
   amazonUrl: "https://www.amazon.com/dp/B0HMWFR6G7",
+  isbn: "979-8162014881",
+  datePublished: "2026-10-12",
+  sampleUrl: "/sample",
   coverFront: "/images/book-front.png",
   coverSpine: "/images/book-spine.png",
   coverBack: "/images/book-back.png",
@@ -63,6 +73,7 @@ export const NAV_ITEMS = [
 
 export const SECONDARY_NAV = [
   { label: "Sample", href: "/sample" },
+  { label: "For agents", href: "/agents" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
 ] as const;

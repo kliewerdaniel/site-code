@@ -1,16 +1,17 @@
 {
   "generatedFrom": "scripts/route-manifest.mjs",
   "counts": {
-    "static": 11,
-    "blogPosts": 195,
+    "static": 12,
+    "blogPosts": 198,
     "dynamicRoutes": 23,
-    "handlers": 1,
+    "handlers": 7,
     "removedRoutes": 12,
-    "legacyRedirects": 22
+    "legacyRedirects": 23
   },
   "static": [
     "/",
     "/about",
+    "/agents",
     "/book",
     "/concepts",
     "/contact",
@@ -216,7 +217,10 @@
     "/blog/2026-10-25-hermes-local-video-studio",
     "/blog/2026-10-25-the-dissolve-that-wasnt-applied",
     "/blog/2026-10-25-the-keyframe-that-went-nowhere",
-    "/blog/2026-10-25-the-mask-that-rendered-anyway"
+    "/blog/2026-10-25-the-mask-that-rendered-anyway",
+    "/blog/2026-10-29-frozen-spine-reference-model-enforcement",
+    "/blog/2026-11-04-architecture-of-reliable-intelligence",
+    "/blog/2026-11-04-boundaries-of-intelligence"
   ],
   "dynamic": [
     "/concepts/creative-automation",
@@ -244,7 +248,13 @@
     "/projects/sovereignspec"
   ],
   "handlers": [
-    "/feed.xml"
+    "/agents/book.json",
+    "/agents/catalog.json",
+    "/agents/graph.json",
+    "/agents/index.json",
+    "/feed.xml",
+    "/llms-full.txt",
+    "/llms.txt"
   ],
   "removed": [
     "/fleet",
@@ -348,6 +358,10 @@
     {
       "source": "/blog/vibe-coding-janitor-session",
       "destination": "/blog/2025-10-19-vibe-coding-janitor-session"
+    },
+    {
+      "source": "/for-agents",
+      "destination": "/agents"
     }
   ],
   "removedSectionRedirects": [

@@ -509,6 +509,14 @@ export function articlesForConcept(concept: Concept): Post[] {
   );
 }
 
+/** Concepts whose tag aliases this post carries. The reverse of the derived
+ *  join above, so a post's concept list can never disagree with a concept's
+ *  article list. */
+export function conceptsForPost(post: Post): Concept[] {
+  const tags = new Set(post.tags.map((t) => t.toLowerCase()));
+  return CONCEPTS.filter((c) => c.tags.some((t) => tags.has(t.toLowerCase())));
+}
+
 export function postsBySlug(slugs: string[]): Post[] {
   const all = getAllPosts();
   const bySlug = new Map(all.map((p) => [p.slug, p]));

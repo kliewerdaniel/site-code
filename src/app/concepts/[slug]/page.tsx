@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Exhibit, Kicker, RuledRow } from "@/components/Archetypes";
+import { BookContextCta } from "@/components/BookContextCta";
+import { BOOK } from "@/config";
 import { formatDate } from "@/lib/formatDate";
 import { breadcrumbSchema, seo } from "@/lib/seo";
 import {
@@ -75,6 +77,11 @@ export default async function ConceptPage({ params }: Props) {
             </p>
           ))}
         </div>
+        <BookContextCta
+          className="mt-12"
+          subject={concept.name}
+          reason={`${concept.oneLiner} The book compiles this and the rest of the program into ${BOOK.chapters} chapters, each one ending with something running on your machine.`}
+        />
       </Exhibit>
 
       {projects.length > 0 && (

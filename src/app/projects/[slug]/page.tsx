@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Exhibit, Kicker, Figure, FigureRow, RuledRow } from "@/components/Archetypes";
+import { BookContextCta } from "@/components/BookContextCta";
+import { BOOK } from "@/config";
 import { formatDate } from "@/lib/formatDate";
 import { breadcrumbSchema, seo, softwareSourceCodeSchema } from "@/lib/seo";
 import {
@@ -204,6 +206,13 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      <Exhibit>
+        <BookContextCta
+          subject={project.name}
+          reason={`${project.role} The book is the compiled long-form treatment of the same program — ${BOOK.chapters} chapters, each ending with something running on your machine.`}
+        />
+      </Exhibit>
 
       <Exhibit>
         <Link href="/projects" className="label text-gold hover:underline">

@@ -51,6 +51,11 @@ Beyond the build gates, three checks run over the content and the built output:
   asserts over the prerendered HTML: exactly one `<h1>`, a self-referential
   canonical on every sitemap URL, complete OG/Twitter metadata, parseable
   JSON-LD, and no unintended `noindex`.
+- `npm run validate:agents` (`scripts/validate-agents.mjs`, run after
+  `next build`) — the agent knowledge interface: all six resources exist and
+  parse, every canonical URL is on the site origin, the book record matches
+  `src/config.ts`, no invented availability/rating, no dangling graph edge, and
+  the index's byte sizes match the built bodies.
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.
@@ -87,9 +92,30 @@ than a silent drift.
 Every finding carries a stable id (`kind:file`), so it can be referenced in a
 review or an issue without quoting its text.
 
-Current baseline: 0 fatal · 11 defects (all inert `canonical_url` frontmatter) ·
-343 advisory · 55 relation edges with 0 dangling references.
+Current baseline: 0 fatal · 10 defects (all inert `canonical_url` frontmatter) ·
+349 advisory · 98 relation edges with 0 dangling references · 6 agent resources.
 
+## Agent interface
+
+The site is a statically compiled knowledge corpus, not a blog with an API
+bolted on. Six resources are generated at build time from the same source the
+pages render — see **[docs/AGENT-RESOURCES.md](docs/AGENT-RESOURCES.md)**:
+
+| Path | Purpose |
+|---|---|
+| `/llms.txt` | Entry point: identity, domains, navigation, book, pointers. |
+| `/llms-full.txt` | Full catalog as text (~126 KB, not the 6.8 MB of bodies). |
+| `/agents` | Human guide to the corpus and its graph. |
+| `/agents/index.json` | Master index with byte sizes and content types. |
+| `/agents/catalog.json` | Articles, projects, concepts, paths, chapters. |
+| `/agents/graph.json` | Typed relation graph with provenance. |
+| `/agents/book.json` | The book as a product record (no invented availability). |
+
+Relationships are computed or verified, never invented. `chapter_covers` is
+withheld rather than inferred from keyword overlap — the manuscript does not
+reproduce individual articles — and the remaining unused relation types are
+reported as `absent`. Traffic and bandwidth policy:
+**[docs/TRAFFIC.md](docs/TRAFFIC.md)**.
 
 ## Deploy
 
