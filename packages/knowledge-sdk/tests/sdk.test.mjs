@@ -181,6 +181,38 @@ const CLAIMS = {
       authoritative: true,
       provenance: { source: "taxonomy.ts", generator: "test", fingerprint: "a" },
     },
+    {
+      id: "claim:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      statement: "The article is the write-up for Example Project",
+      source: "taxonomy.ts",
+      sourceSpan: "documents",
+      category: "relation",
+      assessment: "supported",
+      verification: "demonstrated",
+      supportingEvidence: [
+        "ev:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      ],
+      contradictoryEvidence: [],
+      relationships: [
+        "documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      ],
+      authoritative: true,
+      provenance: { source: "taxonomy.ts", generator: "test", fingerprint: "b" },
+    },
+    {
+      id: "claim:related_to:2026-01-01-deterministic-authorization->2026-01-03-knowledge-compilation",
+      statement: "Two articles are related by shared tags",
+      source: "propose.ts",
+      sourceSpan: "shares 2 tags",
+      category: "relation",
+      assessment: "proposed",
+      verification: "hypothesized",
+      supportingEvidence: [],
+      contradictoryEvidence: [],
+      relationships: [],
+      authoritative: false,
+      provenance: { source: "propose.ts", generator: "test", fingerprint: "c" },
+    },
   ],
 };
 
@@ -192,6 +224,14 @@ const EVIDENCE = {
       source: "taxonomy.ts",
       span: "implements",
       contentHash: "abc",
+      verification: { status: "verified", method: "curated" },
+    },
+    {
+      id: "ev:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      type: "source_span",
+      source: "taxonomy.ts",
+      span: "documents",
+      contentHash: "def",
       verification: { status: "verified", method: "curated" },
     },
   ],
@@ -389,4 +429,112 @@ test("parseMirror: reads the frontmatter and body", () => {
 test("unknown article throws a typed error", async () => {
   const corpus = await connect();
   await assert.rejects(() => corpus.getArticle("nope"), KnowledgeError);
+});
+
+test("getClaims: filters by document and by authoritativeness", async () => {
+  const corpus = await connect();
+  const forDoc = corpus.getClaims({ documentId: "2026-01-01-deterministic-authorization" });
+  assert.equal(forDoc.length, 1);
+  assert.match(forDoc[0].id, /^claim:documents:/);
+
+  const proposed = corpus.getClaims({ authoritative: false });
+  assert.equal(proposed.length, 1);
+  assert.equal(proposed[0].assessment, "proposed");
+  assert.equal(proposed[0].authoritative, false);
+
+  const authoritative = corpus.getClaims({ authoritative: true });
+  assert.equal(authoritative.length, 2);
+});
+
+test("getClaim: resolves one claim and throws on an unknown id", async () => {
+  const corpus = await connect();
+  const claim = corpus.getClaim(
+    "claim:implements:/projects/example-project->/concepts/governed-execution"
+  );
+  assert.equal(claim.category, "relation");
+  assert.throws(() => corpus.getClaim("claim:nope"), KnowledgeError);
+});
+
+test("getEvidence: accepts a claim id or a set of ids", async () => {
+  const corpus = await connect();
+  const one = await corpus.getEvidence(
+    "claim:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project"
+  );
+  assert.equal(one.length, 1);
+
+  const many = await corpus.getEvidence({
+    claimIds: [
+      "claim:implements:/projects/example-project->/concepts/governed-execution",
+      "claim:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+    ],
+  });
+  assert.equal(many.length, 2);
+});
+
+test("getConcept: returns the concept, its projects, articles and edges", async () => {
+  const corpus = await connect();
+  const detail = corpus.getConcept("governed-execution");
+  assert.equal(detail.concept.name, "Governed execution");
+  assert.equal(detail.projects.length, 1);
+  assert.equal(detail.articles.length, 1);
+  assert.equal(detail.relationships.length, 1);
+  assert.equal(detail.relationships[0].type, "implements");
+  assert.throws(() => corpus.getConcept("nope"), KnowledgeError);
+});
+
+test("getProject: returns the project, its articles, edges and evidence", async () => {
+  const corpus = await connect();
+  const detail = corpus.getProject("example-project");
+  assert.equal(detail.project.name, "Example Project");
+  assert.equal(detail.articles.length, 1);
+  assert.equal(detail.relationships.length, 2);
+  assert.equal(detail.evidence.length, 2);
+  assert.throws(() => corpus.getProject("nope"), KnowledgeError);
+});
+
+test("traverse: multi-start, typed and depth-bounded", async () => {
+  const corpus = await connect();
+  const result = corpus.traverse({
+    startingNodes: ["/projects/example-project"],
+    relations: ["implements"],
+    maxDepth: 1,
+  });
+  const ids = result.nodes.map((n) => n.id);
+  assert.ok(ids.includes("/concepts/governed-execution"));
+  assert.ok(!ids.includes("/blog/2026-01-01-deterministic-authorization"));
+});
+
+test("getRelatedWork: resolves the documents reachable from a node", async () => {
+  const corpus = await connect();
+  const related = corpus.getRelatedWork("/projects/example-project", { maxDepth: 2 });
+  assert.ok(related.nodes.some((n) => n.id === "/concepts/governed-execution"));
+  assert.equal(related.documents.length, 1);
+});
+
+test("verifyCitation: resolves documents, spans and claims", async () => {
+  const corpus = await connect();
+  const slug = "2026-01-01-deterministic-authorization";
+
+  const bySlug = await corpus.verifyCitation({ slug });
+  assert.equal(bySlug.ok, true);
+  assert.equal(bySlug.url, `https://example.com/blog/${slug}`);
+
+  const byUrl = await corpus.verifyCitation({ url: `https://example.com/blog/${slug}` });
+  assert.equal(byUrl.ok, true);
+
+  const goodSpan = await corpus.verifyCitation({ slug, span: "A model proposes" });
+  assert.equal(goodSpan.ok, true);
+  assert.ok(goodSpan.contentHash);
+
+  const badSpan = await corpus.verifyCitation({ slug, span: "this is not in the body" });
+  assert.equal(badSpan.ok, false);
+  assert.match(badSpan.reason, /not present/);
+
+  const byClaim = await corpus.verifyCitation({
+    claimId: "claim:implements:/projects/example-project->/concepts/governed-execution",
+  });
+  assert.equal(byClaim.ok, true);
+
+  const unknown = await corpus.verifyCitation({ slug: "nope" });
+  assert.equal(unknown.ok, false);
 });

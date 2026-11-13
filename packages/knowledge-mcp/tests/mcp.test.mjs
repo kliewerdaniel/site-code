@@ -61,10 +61,29 @@ function mirror(slug) {
 
 const CATALOG = {
   site: { name: "Test Author", url: "https://example.com" },
-  counts: { articles: 1, projects: 0, concepts: 0, paths: 1, chapters: 1 },
+  counts: { articles: 1, projects: 1, concepts: 1, paths: 1, chapters: 1 },
   articles: ARTICLES,
-  projects: [],
-  concepts: [],
+  projects: [
+    {
+      slug: "example-project",
+      url: "https://example.com/projects/example-project",
+      name: "Example Project",
+      role: "A governed execution layer.",
+      maturity: "implementation",
+      concepts: ["governed-execution"],
+      articles: ["2026-01-01-deterministic-authorization"],
+    },
+  ],
+  concepts: [
+    {
+      slug: "governed-execution",
+      url: "https://example.com/concepts/governed-execution",
+      name: "Governed execution",
+      oneLiner: "The model proposes; a deterministic layer decides.",
+      tags: ["agent-architecture", "deterministic"],
+      projects: ["example-project"],
+    },
+  ],
   paths: [
     {
       slug: "example-path",
@@ -86,10 +105,34 @@ const CATALOG = {
 };
 
 const GRAPH = {
-  vocabulary: ["recommends_reading"],
-  counts: { recommends_reading: 0 },
+  vocabulary: ["implements", "documents", "recommends_reading"],
+  counts: { implements: 1, documents: 1, recommends_reading: 0 },
   absent: [],
-  edges: { recommends_reading: [] },
+  edges: {
+    implements: [
+      {
+        id: "implements:/projects/example-project->/concepts/governed-execution",
+        from: "/projects/example-project",
+        to: "/concepts/governed-execution",
+        type: "implements",
+        status: "declared",
+        verification: "verified",
+        provenance: { source: "taxonomy.ts", generator: "test", fingerprint: "a" },
+      },
+    ],
+    documents: [
+      {
+        id: "documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+        from: "/blog/2026-01-01-deterministic-authorization",
+        to: "/projects/example-project",
+        type: "documents",
+        status: "declared",
+        verification: "verified",
+        provenance: { source: "taxonomy.ts", generator: "test", fingerprint: "b" },
+      },
+    ],
+    recommends_reading: [],
+  },
   proposed: [],
 };
 
@@ -109,6 +152,24 @@ const CLAIMS = {
       authoritative: true,
       provenance: { source: "test.ts", generator: "test", fingerprint: "f" },
     },
+    {
+      id: "claim:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      statement: "The article is the write-up for Example Project",
+      source: "taxonomy.ts",
+      sourceSpan: "documents",
+      category: "relation",
+      assessment: "supported",
+      verification: "demonstrated",
+      supportingEvidence: [
+        "ev:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      ],
+      contradictoryEvidence: [],
+      relationships: [
+        "documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      ],
+      authoritative: true,
+      provenance: { source: "taxonomy.ts", generator: "test", fingerprint: "b" },
+    },
   ],
 };
 
@@ -120,6 +181,14 @@ const EVIDENCE = {
       source: "test.ts",
       span: "test",
       contentHash: "abc",
+      verification: { status: "verified", method: "curated" },
+    },
+    {
+      id: "ev:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      type: "source_span",
+      source: "taxonomy.ts",
+      span: "documents",
+      contentHash: "def",
       verification: { status: "verified", method: "curated" },
     },
   ],
@@ -258,16 +327,21 @@ test("MCP: initialize reports the server and tool capability", async () => {
   assert.ok(init.result.capabilities.tools);
 });
 
-test("MCP: tools/list exposes the six corpus tools", async () => {
+test("MCP: tools/list exposes the eleven corpus tools", async () => {
   const res = await request("tools/list");
   const names = res.result.tools.map((t) => t.name).sort();
   assert.deepEqual(names, [
     "get_article",
     "get_book_context",
+    "get_claim",
+    "get_concept",
     "get_evidence",
     "get_learning_path",
+    "get_project",
+    "get_related_work",
     "search_knowledge",
     "traverse_graph",
+    "verify_citation",
   ]);
 });
 
@@ -333,4 +407,76 @@ test("MCP: a tool failure returns an error result, not a crash", async () => {
   });
   assert.equal(res.result.isError, true);
   assert.match(res.result.content[0].text, /unknown article/);
+});
+
+test("MCP: get_concept returns projects, articles and relationships", async () => {
+  const res = await request("tools/call", {
+    name: "get_concept",
+    arguments: { slug: "governed-execution" },
+  });
+  const detail = parseText(res.result);
+  assert.equal(detail.concept.name, "Governed execution");
+  assert.equal(detail.projects.length, 1);
+  assert.equal(detail.articles.length, 1);
+  assert.equal(detail.relationships[0].type, "implements");
+});
+
+test("MCP: get_project returns articles, relationships and evidence", async () => {
+  const res = await request("tools/call", {
+    name: "get_project",
+    arguments: { slug: "example-project" },
+  });
+  const detail = parseText(res.result);
+  assert.equal(detail.project.name, "Example Project");
+  assert.equal(detail.articles.length, 1);
+  assert.equal(detail.relationships.length, 2);
+  assert.equal(detail.evidence.length, 1);
+});
+
+test("MCP: get_claim returns the assessment and optional evidence", async () => {
+  const res = await request("tools/call", {
+    name: "get_claim",
+    arguments: {
+      claimId: "claim:documents:/blog/2026-01-01-deterministic-authorization->/projects/example-project",
+      includeEvidence: true,
+    },
+  });
+  const result = parseText(res.result);
+  assert.equal(result.claim.assessment, "supported");
+  assert.equal(result.claim.authoritative, true);
+  assert.equal(result.evidence.length, 1);
+});
+
+test("MCP: verify_citation resolves a document and checks a span", async () => {
+  const slug = "2026-01-01-deterministic-authorization";
+  const ok = parseText(
+    (
+      await request("tools/call", {
+        name: "verify_citation",
+        arguments: { slug, span: "A model proposes" },
+      })
+    ).result
+  );
+  assert.equal(ok.ok, true);
+  assert.ok(ok.contentHash);
+
+  const bad = parseText(
+    (
+      await request("tools/call", {
+        name: "verify_citation",
+        arguments: { slug, span: "not in the body" },
+      })
+    ).result
+  );
+  assert.equal(bad.ok, false);
+});
+
+test("MCP: get_related_work follows relations in both directions", async () => {
+  const res = await request("tools/call", {
+    name: "get_related_work",
+    arguments: { node: "/projects/example-project", maxDepth: 2 },
+  });
+  const related = parseText(res.result);
+  assert.ok(related.nodes.some((n) => n.id === "/concepts/governed-execution"));
+  assert.equal(related.documents.length, 1);
 });
