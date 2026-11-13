@@ -1,501 +1,215 @@
 {
   "generatedBy": "benchmarks/retrieval/src/benchmark.mjs",
+  "adjudication": "benchmarks/retrieval/src/adjudicated.mjs",
+  "cacheAssumptions": {
+    "A_crawling": "crawls the whole site once per session; keeps a local full-text index; no catalog, no graph",
+    "B_catalog_graph_html": "fetches catalog.json + graph.json once per session and caches them; fetches document bodies per query",
+    "C_catalog_graph_markdown": "same as B, but fetches canonical Markdown mirrors instead of HTML bodies"
+  },
+  "localOnly": true,
   "corpus": {
     "articles": 197,
     "graphEdges": 98,
-    "sitemapUrls": 232,
-    "htmlBytes": 32273555,
-    "markdownBytes": 6819865,
-    "catalogBytes": 208540,
-    "graphBytes": 62846
+    "claims": 109
   },
   "architectures": {
     "A_crawling": {
       "questions": 30,
-      "recallAt5": 0.43333333333333335,
-      "precisionAt5": 0.08666666666666667,
-      "citationAccuracy": 0.43333333333333335,
-      "oneTimeBytes": 32306210,
-      "oneTimeRequests": 198,
-      "bytes": 32306210,
-      "requestsPerQuery": 6.6,
-      "latencyMsPerQuery": 93.67050273333332,
-      "contextEfficiency": 0.0698042574477167
+      "documentQuestions": 12,
+      "recallAt5": 0.3125,
+      "precisionAt5": 0.08333333333333333,
+      "citationAccuracy": 0.4166666666666667,
+      "passageRecall": 0.8095238095238095,
+      "falseSupportRate": 1,
+      "bytes": 0,
+      "requestsPerQuery": 0,
+      "latencyMsPerQuery": 9.703601333333333
     },
     "B_catalog_graph_html": {
       "questions": 30,
+      "documentQuestions": 12,
       "recallAt5": 1,
-      "precisionAt5": 0.4666666666666667,
+      "precisionAt5": 0.6708333333333334,
       "citationAccuracy": 1,
-      "oneTimeBytes": 271386,
-      "oneTimeRequests": 2,
-      "bytes": 25374733,
-      "requestsPerQuery": 3.966666666666667,
-      "latencyMsPerQuery": 2.723797100000009,
-      "contextEfficiency": 0.2803925463964488
+      "passageRecall": 0.2857142857142857,
+      "falseSupportRate": 0.3333333333333333,
+      "bytes": 10910767,
+      "requestsPerQuery": 2.6333333333333333,
+      "latencyMsPerQuery": 0.18672646666666518
     },
     "C_catalog_graph_markdown": {
       "questions": 30,
+      "documentQuestions": 12,
       "recallAt5": 1,
-      "precisionAt5": 0.4666666666666667,
+      "precisionAt5": 0.6708333333333334,
       "citationAccuracy": 1,
-      "oneTimeBytes": 271386,
-      "oneTimeRequests": 2,
-      "bytes": 6469103,
-      "requestsPerQuery": 3.9,
-      "latencyMsPerQuery": 3.47548886666666,
-      "contextEfficiency": 0.2751186679204211
+      "passageRecall": 0.5714285714285714,
+      "falseSupportRate": 0.5,
+      "bytes": 1870067,
+      "requestsPerQuery": 2.566666666666667,
+      "latencyMsPerQuery": 0.1646166333333345
     }
+  },
+  "oneTimeBytes": {
+    "A_crawling": 32308319,
+    "B_catalog_graph_html": 271386,
+    "C_catalog_graph_markdown": 271386
   },
   "questions": [
     {
-      "id": "topical-2024-10-04-detailed-description-of-insight-journal",
-      "type": "topical",
-      "query": "A comprehensive guide to creating Insight Journal - an AI-integrated journaling platform using locally-hosted LLMs for personalized feedback while maintaining complete data privacy and control.",
-      "expectedAnswer": "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+      "id": "df-1",
+      "category": "direct-factual",
+      "query": "What is the canonical URL of the article 'Compiling a Website for Agents'?",
+      "expectedAnswer": "https://www.danielkliewer.com/blog/2026-11-12-compiling-a-website-for-agents",
+      "answerLocation": "document",
       "relevantDocuments": [
-        "2024-10-04-detailed-description-of-insight-journal"
+        "2026-11-12-compiling-a-website-for-agents"
       ],
       "relevantConcepts": [],
       "relevantRelations": [],
       "requiredPassages": [
-        "A comprehensive guide to creating Insight Journal - an AI-integrated journaling platform using locally-hosted LLMs for personalized feedback while maintaining complete data privacy and control."
+        "danielkliewer.com/article/2026-11-12-compiling-a-website-for-agents"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2024-10-04-detailed-description-of-insight-journal"
-      ]
+        "https://www.danielkliewer.com/blog/2026-11-12-compiling-a-website-for-agents"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "topical-2024-11-04-deep-fake",
-      "type": "topical",
-      "query": "In-depth exploration of AI-generated deepfake technology, from persona encoding and LLM-based content generation to ethical concerns, censorship mechanisms, and the future of synthetic media creation.",
-      "expectedAnswer": "AI-Generated Deepfakes: Complete Guide to Persona-Based Content Creation and Ethical Implications",
+      "id": "df-2",
+      "category": "direct-factual",
+      "query": "What is the title of the article with slug 2026-07-04-sovereign-intelligence-stack?",
+      "expectedAnswer": "The Sovereign Intelligence Stack: Building Compounding AI Infrastructure",
+      "answerLocation": "document",
       "relevantDocuments": [
-        "2024-11-04-deep-fake"
+        "2026-07-04-sovereign-intelligence-stack"
       ],
       "relevantConcepts": [],
       "relevantRelations": [],
       "requiredPassages": [
-        "In-depth exploration of AI-generated deepfake technology, from persona encoding and LLM-based content generation to ethical concerns, censorship mechanisms, and the future of synthetic media creation."
+        "The Sovereign Intelligence Stack: Building Compounding AI Infrastructure"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2024-11-04-deep-fake"
-      ]
+        "https://www.danielkliewer.com/blog/2026-07-04-sovereign-intelligence-stack"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "topical-2024-11-27-instagram-feed-summarizer",
-      "type": "topical",
-      "query": "Creating a Multi Model AI Agent that monitors a user's Instagram posts, generates detailed descriptions from images, summarizes the user's persona, and finally…",
-      "expectedAnswer": "AI Instagram Feed Summarizer: Build Multi-Modal Persona Blog Generator",
+      "id": "df-3",
+      "category": "direct-factual",
+      "query": "What is the doc_id of the article 'The Mask That Rendered Anyway'?",
+      "expectedAnswer": "danielkliewer.com/article/2026-10-25-the-mask-that-rendered-anyway",
+      "answerLocation": "document",
       "relevantDocuments": [
-        "2024-11-27-instagram-feed-summarizer"
+        "2026-10-25-the-mask-that-rendered-anyway"
       ],
       "relevantConcepts": [],
       "relevantRelations": [],
       "requiredPassages": [
-        "Creating a Multi Model AI Agent that monitors a user's Instagram posts, generates detailed descriptions from images, summarizes the user's persona, and finally…"
+        "danielkliewer.com/article/2026-10-25-the-mask-that-rendered-anyway"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2024-11-27-instagram-feed-summarizer"
-      ]
+        "https://www.danielkliewer.com/blog/2026-10-25-the-mask-that-rendered-anyway"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "topical-2024-12-02-persona-chat",
-      "type": "topical",
-      "query": "Comprehensive tutorial for creating intelligent AI assistants using LangChain, OpenAI, and ChromaDB to build persona-based chatbots that imitate writing styles and provide personalized conversational experiences.",
-      "expectedAnswer": "Complete Guide: Building Personalized AI Assistants with LangChain - Persona-Based Chatbot Development",
+      "id": "df-4",
+      "category": "direct-factual",
+      "query": "What is the canonical URL of the Ganymede article?",
+      "expectedAnswer": "https://www.danielkliewer.com/blog/2026-10-25-ganymede-the-archive-of-the-gods",
+      "answerLocation": "document",
       "relevantDocuments": [
-        "2024-12-02-persona-chat"
+        "2026-10-25-ganymede-the-archive-of-the-gods"
       ],
       "relevantConcepts": [],
       "relevantRelations": [],
       "requiredPassages": [
-        "Comprehensive tutorial for creating intelligent AI assistants using LangChain, OpenAI, and ChromaDB to build persona-based chatbots that imitate writing styles and provide personalized conversational experiences."
+        "danielkliewer.com/article/2026-10-25-ganymede-the-archive-of-the-gods"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2024-12-02-persona-chat"
-      ]
+        "https://www.danielkliewer.com/blog/2026-10-25-ganymede-the-archive-of-the-gods"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "topical-2024-12-19-homeless-guide-austin",
-      "type": "topical",
-      "query": "Detailed survival guide for homelessness in Austin, featuring personal recovery story, comprehensive resource listings from shelters to employment opportunities, legal protections, healthcare access, and steps toward long-term stability.",
-      "expectedAnswer": "Comprehensive Austin Homeless Survival Guide: Essential Resources, Legal Rights, and Personal Recovery Journey Through Adversity",
+      "id": "df-5",
+      "category": "direct-factual",
+      "query": "What is the ISBN of the book 'Computational Sovereignty'?",
+      "expectedAnswer": "979-8162014881",
+      "answerLocation": "catalog",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [
+        "979-8162014881"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "df-6",
+      "category": "direct-factual",
+      "query": "How many chapters does the book 'Computational Sovereignty' have?",
+      "expectedAnswer": "24",
+      "answerLocation": "catalog",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "df-7",
+      "category": "direct-factual",
+      "query": "What is the publication date of the article 'The Boundaries of Intelligence'?",
+      "expectedAnswer": "2026-11-04T00:00:00.000Z",
+      "answerLocation": "document",
       "relevantDocuments": [
-        "2024-12-19-homeless-guide-austin"
+        "2026-11-04-boundaries-of-intelligence"
       ],
       "relevantConcepts": [],
       "relevantRelations": [],
       "requiredPassages": [
-        "Detailed survival guide for homelessness in Austin, featuring personal recovery story, comprehensive resource listings from shelters to employment opportunities, legal protections, healthcare access, and steps toward long-term stability."
+        "2026-11-04T00:00:00.000Z"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2024-12-19-homeless-guide-austin"
-      ]
+        "https://www.danielkliewer.com/blog/2026-11-04-boundaries-of-intelligence"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "topical-2025-02-05-loco-local-localllama",
-      "type": "topical",
-      "query": "Comprehensive announcement and participation guide for the Loco LLM Hackathon 1.0, a global 24-hour event featuring competitive building of open-source AI tools using local LLMs and the new smolagents framework.",
-      "expectedAnswer": "Announcing Loco LLM Hackathon 1.0: 24-Hour Global Sprint to Build Open-Source AI Tools with Local Large Language Models and Smolagents Framework",
+      "id": "cd-1",
+      "category": "cross-document",
+      "query": "Which articles document the sovereign agent stack project?",
+      "expectedAnswer": "2 article(s): 2026-10-25-hermes-local-video-studio, 2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework",
+      "answerLocation": "graph",
       "relevantDocuments": [
-        "2025-02-05-loco-local-localllama"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "Comprehensive announcement and participation guide for the Loco LLM Hackathon 1.0, a global 24-hour event featuring competitive building of open-source AI tools using local LLMs and the new smolagents framework."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-02-05-loco-local-localllama"
-      ]
-    },
-    {
-      "id": "topical-2025-03-09-custom-agent",
-      "type": "topical",
-      "query": "Building a Custom AI Agent Framework with Next.js and Ollama In today's rapidly evolving AI landscape, agent based systems have emerged as powerful tools for ta…",
-      "expectedAnswer": "Custom AI Agent Framework: Next.js & Ollama Integration Guide",
-      "relevantDocuments": [
-        "2025-03-09-custom-agent"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "Building a Custom AI Agent Framework with Next.js and Ollama In today's rapidly evolving AI landscape, agent based systems have emerged as powerful tools for ta…"
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-03-09-custom-agent"
-      ]
-    },
-    {
-      "id": "topical-2025-03-12-integrating-openai-agents-sdk-ollama",
-      "type": "topical",
-      "query": "This comprehensive guide demonstrates how to integrate the official OpenAI Agents SDK with Ollama to create AI agents that run entirely on local infrastructure. By the end, you'll understand both the theoretical foundations and practical implementation of locally-hosted AI agents.",
-      "expectedAnswer": "OpenAI Agents SDK & Ollama Integration: Complete Architecture Guide",
-      "relevantDocuments": [
-        "2025-03-12-integrating-openai-agents-sdk-ollama"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "This comprehensive guide demonstrates how to integrate the official OpenAI Agents SDK with Ollama to create AI agents that run entirely on local infrastructure. By the end, you'll understand both the theoretical foundations and practical implementation of locally-hosted AI agents."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-03-12-integrating-openai-agents-sdk-ollama"
-      ]
-    },
-    {
-      "id": "topical-2025-03-24-model-context-protocol",
-      "type": "topical",
-      "query": "A comprehensive guide to building a Model Context Protocol (MCP) server for managing contextual information in machine learning systems, including implementation, scaling, security, and best practices for enterprise AI applications.",
-      "expectedAnswer": "Complete Guide: Building Your Own Model Context Protocol (MCP) Server for AI Tool Integration and Communication",
-      "relevantDocuments": [
-        "2025-03-24-model-context-protocol"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "A comprehensive guide to building a Model Context Protocol (MCP) server for managing contextual information in machine learning systems, including implementation, scaling, security, and best practices for enterprise AI applications."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-03-24-model-context-protocol"
-      ]
-    },
-    {
-      "id": "topical-2025-04-06-judgmental-art-cat",
-      "type": "topical",
-      "query": "A case study in building a sustainable micro-enterprise through hand-drawn art stickers, automated business systems, and organic growth strategies with minimal investment.",
-      "expectedAnswer": "Building Sustainable Micro-Enterprises: The Judgmental Art Cat Project - Art, Automation, and Experimentation",
-      "relevantDocuments": [
-        "2025-04-06-judgmental-art-cat"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "A case study in building a sustainable micro-enterprise through hand-drawn art stickers, automated business systems, and organic growth strategies with minimal investment."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-04-06-judgmental-art-cat"
-      ]
-    },
-    {
-      "id": "topical-2025-10-19-vibe-coding-janitor-session",
-      "type": "topical",
-      "query": "In part one I started a vibe coding session with just a vauge idea we and created the following repo using a single prompt. So what I am doing now is I cloned t…",
-      "expectedAnswer": "Vibe Coding Janitor Session Building a Local LLM-Powered Knowledge Graph Part Two",
-      "relevantDocuments": [
-        "2025-10-19-vibe-coding-janitor-session"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "In part one I started a vibe coding session with just a vauge idea we and created the following repo using a single prompt. So what I am doing now is I cloned t…"
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-10-19-vibe-coding-janitor-session"
-      ]
-    },
-    {
-      "id": "topical-2025-11-03-document-driven-development-nextjs-blog",
-      "type": "topical",
-      "query": "A complete guide to Document-Driven Development and AI-assisted coding: building a Next.js 16 blog from scratch using plain language prompts, comprehensive documentation, and iterative AI collaboration.",
-      "expectedAnswer": "Document-Driven Development: How I Built a Production Blog Without Writing a Single Line of Code By Hand",
-      "relevantDocuments": [
-        "2025-11-03-document-driven-development-nextjs-blog"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "A complete guide to Document-Driven Development and AI-assisted coding: building a Next.js 16 blog from scratch using plain language prompts, comprehensive documentation, and iterative AI collaboration."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-11-03-document-driven-development-nextjs-blog"
-      ]
-    },
-    {
-      "id": "topical-2025-11-10-top-ai-algortihms",
-      "type": "topical",
-      "query": "Discover the top 20 AI algorithms powering modern machine learning. This comprehensive guide covers practical use cases, implementation tips, and hands-on sample projects tailored for solo architects, freelance makers, enterprise developers, and side-hustle entrepreneurs.",
-      "expectedAnswer": "Top 20 AI Algorithms: Complete Guide with Use Cases and Sample Projects for Developers",
-      "relevantDocuments": [
-        "2025-11-10-top-ai-algortihms"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "Discover the top 20 AI algorithms powering modern machine learning. This comprehensive guide covers practical use cases, implementation tips, and hands-on sample projects tailored for solo architects, freelance makers, enterprise developers, and side-hustle entrepreneurs."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-11-10-top-ai-algortihms"
-      ]
-    },
-    {
-      "id": "topical-2026-01-03-american-phoenix",
-      "type": "topical",
-      "query": "From mescaline baby to AI pioneer, this is the untold story of how trauma, technology, and unbreakable will forged a new path for human resilience in the digital age.",
-      "expectedAnswer": "The American Phoenix: How One Man's Digital Resurrection Rewrites the Rules of Survival",
-      "relevantDocuments": [
-        "2026-01-03-american-phoenix"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "From mescaline baby to AI pioneer, this is the untold story of how trauma, technology, and unbreakable will forged a new path for human resilience in the digital age."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-01-03-american-phoenix"
-      ]
-    },
-    {
-      "id": "topical-2026-01-11-from-grief-to-code-the-digital-resurrection-journey",
-      "type": "topical",
-      "query": "Formalizing memory preservation constraints in AI systems to enable identity reconstruction and long-horizon autonomy beyond traditional RAG and agent frameworks.",
-      "expectedAnswer": "Memory Preservation Invariants: A New Class of Autonomous Agent Architectures",
-      "relevantDocuments": [
-        "2026-01-11-from-grief-to-code-the-digital-resurrection-journey"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "Formalizing memory preservation constraints in AI systems to enable identity reconstruction and long-horizon autonomy beyond traditional RAG and agent frameworks."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-01-11-from-grief-to-code-the-digital-resurrection-journey"
-      ]
-    },
-    {
-      "id": "topical-2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system",
-      "type": "topical",
-      "query": "A comprehensive guide to building a local-first, privacy-focused AI system that transforms large corpuses into grounded, attributable, and conversationally explorable intelligence while maintaining complete data sovereignty.",
-      "expectedAnswer": "Dynamic Persona MoE RAG - Building a Sovereign Synthetic Intelligence System",
-      "relevantDocuments": [
-        "2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "A comprehensive guide to building a local-first, privacy-focused AI system that transforms large corpuses into grounded, attributable, and conversationally explorable intelligence while maintaining complete data sovereignty."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system"
-      ]
-    },
-    {
-      "id": "topical-2026-02-19-building-knowledge-chatbot",
-      "type": "topical",
-      "query": "How to build a chatbot that captures your knowledge, answers questions about your expertise, and helps anyone learn from your experience - all running locally with zero API costs.",
-      "expectedAnswer": "Building a Knowledge-Sharing Chatbot: Turn Expertise Into an AI That Anyone Can Query",
-      "relevantDocuments": [
-        "2026-02-19-building-knowledge-chatbot"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "How to build a chatbot that captures your knowledge, answers questions about your expertise, and helps anyone learn from your experience - all running locally with zero API costs."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-02-19-building-knowledge-chatbot"
-      ]
-    },
-    {
-      "id": "topical-2026-03-28-sovereignty-manifesto",
-      "type": "topical",
-      "query": "An exploration of data sovereignty as the foundation for human agency in the age of AI, arguing that local control over data and algorithms is essential to preserve autonomy and resist centralized corporate control.",
-      "expectedAnswer": "The Sovereignty Manifesto: Why Local Data is the Last Bastion of Human Agency",
-      "relevantDocuments": [
-        "2026-03-28-sovereignty-manifesto"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "An exploration of data sovereignty as the foundation for human agency in the age of AI, arguing that local control over data and algorithms is essential to preserve autonomy and resist centralized corporate control."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-03-28-sovereignty-manifesto"
-      ]
-    },
-    {
-      "id": "topical-2026-06-01-objective03-local-news-agency",
-      "type": "topical",
-      "query": "An autonomous news ingestion, claim extraction, contradiction tracking, and TTS broadcast system that runs entirely locally. No API keys. No monthly bills. No vendor lock-in.",
-      "expectedAnswer": "objective03: My Laptop Eats the News and Talks Back",
-      "relevantDocuments": [
-        "2026-06-01-objective03-local-news-agency"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "An autonomous news ingestion, claim extraction, contradiction tracking, and TTS broadcast system that runs entirely locally. No API keys. No monthly bills. No vendor lock-in."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-06-01-objective03-local-news-agency"
-      ]
-    },
-    {
-      "id": "topical-2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems",
-      "type": "topical",
-      "query": "Sovereign Memory Bank's full architecture: the seven-layer memory model, tripartite storage, the autonomous evolution engine, and the FastAPI agent interface with hybrid recall.",
-      "expectedAnswer": "Sovereign Memory Bank: A Deep Dive Into Autonomous Cognitive Memory for Agent Systems",
-      "relevantDocuments": [
-        "2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [],
-      "requiredPassages": [
-        "Sovereign Memory Bank's full architecture: the seven-layer memory model, tripartite storage, the autonomous evolution engine, and the FastAPI agent interface with hybrid recall."
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems"
-      ]
-    },
-    {
-      "id": "relational-chapter-1",
-      "type": "relational",
-      "query": "What further reading does chapter 1 recommend?",
-      "expectedAnswer": "Chapter 1 recommends 2 article(s).",
-      "relevantDocuments": [
-        "2026-03-10-breaking-free-from-chatgpt",
-        "2026-09-04-the-rented-sovereign-agent-agency-stack"
+        "2026-10-25-hermes-local-video-studio",
+        "2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework"
       ],
       "relevantConcepts": [],
       "relevantRelations": [
-        "recommends_reading:/blog/2026-03-10-breaking-free-from-chatgpt->chapter:1",
-        "recommends_reading:/blog/2026-09-04-the-rented-sovereign-agent-agency-stack->chapter:1"
+        "documents:/blog/2026-10-25-hermes-local-video-studio->/projects/sovereign-agent-stack",
+        "documents:/blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework->/projects/sovereign-agent-stack"
       ],
       "requiredPassages": [
-        "/blog/2026-03-10-breaking-free-from-chatgpt",
-        "/blog/2026-09-04-the-rented-sovereign-agent-agency-stack"
+        "/blog/2026-10-25-hermes-local-video-studio",
+        "/blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-03-10-breaking-free-from-chatgpt",
-        "https://www.danielkliewer.com/blog/2026-09-04-the-rented-sovereign-agent-agency-stack"
-      ]
+        "https://www.danielkliewer.com/blog/2026-10-25-hermes-local-video-studio",
+        "https://www.danielkliewer.com/blog/2026-09-04-sovereign-agent-stack-a-local-first-compile-time-ai-agent-framework"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "relational-chapter-2",
-      "type": "relational",
-      "query": "What further reading does chapter 2 recommend?",
-      "expectedAnswer": "Chapter 2 recommends 2 article(s).",
-      "relevantDocuments": [
-        "2026-03-28-sovereignty-manifesto",
-        "2026-07-05-sovereign-ai-architecture-synthesis"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [
-        "recommends_reading:/blog/2026-03-28-sovereignty-manifesto->chapter:2",
-        "recommends_reading:/blog/2026-07-05-sovereign-ai-architecture-synthesis->chapter:2"
-      ],
-      "requiredPassages": [
-        "/blog/2026-03-28-sovereignty-manifesto",
-        "/blog/2026-07-05-sovereign-ai-architecture-synthesis"
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-03-28-sovereignty-manifesto",
-        "https://www.danielkliewer.com/blog/2026-07-05-sovereign-ai-architecture-synthesis"
-      ]
-    },
-    {
-      "id": "relational-chapter-3",
-      "type": "relational",
-      "query": "What further reading does chapter 3 recommend?",
-      "expectedAnswer": "Chapter 3 recommends 1 article(s).",
-      "relevantDocuments": [
-        "2025-11-08-local-llm-integration"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [
-        "recommends_reading:/blog/2025-11-08-local-llm-integration->chapter:3"
-      ],
-      "requiredPassages": [
-        "/blog/2025-11-08-local-llm-integration"
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-11-08-local-llm-integration"
-      ]
-    },
-    {
-      "id": "relational-chapter-4",
-      "type": "relational",
-      "query": "What further reading does chapter 4 recommend?",
-      "expectedAnswer": "Chapter 4 recommends 1 article(s).",
-      "relevantDocuments": [
-        "2025-07-06-demystifying-large-language-models"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [
-        "recommends_reading:/blog/2025-07-06-demystifying-large-language-models->chapter:4"
-      ],
-      "requiredPassages": [
-        "/blog/2025-07-06-demystifying-large-language-models"
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-07-06-demystifying-large-language-models"
-      ]
-    },
-    {
-      "id": "relational-chapter-5",
-      "type": "relational",
-      "query": "What further reading does chapter 5 recommend?",
-      "expectedAnswer": "Chapter 5 recommends 1 article(s).",
-      "relevantDocuments": [
-        "2025-11-14-2025-inference-new-geography-intelligence"
-      ],
-      "relevantConcepts": [],
-      "relevantRelations": [
-        "recommends_reading:/blog/2025-11-14-2025-inference-new-geography-intelligence->chapter:5"
-      ],
-      "requiredPassages": [
-        "/blog/2025-11-14-2025-inference-new-geography-intelligence"
-      ],
-      "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-11-14-2025-inference-new-geography-intelligence"
-      ]
-    },
-    {
-      "id": "relational-chapter-6",
-      "type": "relational",
-      "query": "What further reading does chapter 6 recommend?",
-      "expectedAnswer": "Chapter 6 recommends 2 article(s).",
+      "id": "cd-2",
+      "category": "cross-document",
+      "query": "Which articles are further reading for chapter 6?",
+      "expectedAnswer": "2 article(s): 2025-11-12-mastering-llama-cpp-local-llm-integration-guide, 2026-10-23-two-models-one-harness",
+      "answerLocation": "graph",
       "relevantDocuments": [
         "2025-11-12-mastering-llama-cpp-local-llm-integration-guide",
         "2026-10-23-two-models-one-harness"
@@ -512,90 +226,429 @@
       "expectedCitations": [
         "https://www.danielkliewer.com/blog/2025-11-12-mastering-llama-cpp-local-llm-integration-guide",
         "https://www.danielkliewer.com/blog/2026-10-23-two-models-one-harness"
-      ]
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "relational-chapter-7",
-      "type": "relational",
-      "query": "What further reading does chapter 7 recommend?",
-      "expectedAnswer": "Chapter 7 recommends 2 article(s).",
+      "id": "cd-3",
+      "category": "cross-document",
+      "query": "Which articles document the hermes local video studio project?",
+      "expectedAnswer": "4 article(s): 2026-10-25-hermes-local-video-studio, 2026-10-25-the-dissolve-that-wasnt-applied, 2026-10-25-the-keyframe-that-went-nowhere, 2026-10-25-the-mask-that-rendered-anyway",
+      "answerLocation": "graph",
       "relevantDocuments": [
-        "2025-03-28-ollama-chunking",
-        "2025-10-19-building-a-local-llm-powered-knowledge-graph"
+        "2026-10-25-hermes-local-video-studio",
+        "2026-10-25-the-dissolve-that-wasnt-applied",
+        "2026-10-25-the-keyframe-that-went-nowhere",
+        "2026-10-25-the-mask-that-rendered-anyway"
       ],
       "relevantConcepts": [],
       "relevantRelations": [
-        "recommends_reading:/blog/2025-03-28-ollama-chunking->chapter:7",
-        "recommends_reading:/blog/2025-10-19-building-a-local-llm-powered-knowledge-graph->chapter:7"
+        "documents:/blog/2026-10-25-hermes-local-video-studio->/projects/hermes-local-video-studio",
+        "documents:/blog/2026-10-25-the-dissolve-that-wasnt-applied->/projects/hermes-local-video-studio",
+        "documents:/blog/2026-10-25-the-keyframe-that-went-nowhere->/projects/hermes-local-video-studio",
+        "documents:/blog/2026-10-25-the-mask-that-rendered-anyway->/projects/hermes-local-video-studio"
       ],
       "requiredPassages": [
-        "/blog/2025-03-28-ollama-chunking",
-        "/blog/2025-10-19-building-a-local-llm-powered-knowledge-graph"
+        "/blog/2026-10-25-hermes-local-video-studio",
+        "/blog/2026-10-25-the-dissolve-that-wasnt-applied",
+        "/blog/2026-10-25-the-keyframe-that-went-nowhere",
+        "/blog/2026-10-25-the-mask-that-rendered-anyway"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-03-28-ollama-chunking",
-        "https://www.danielkliewer.com/blog/2025-10-19-building-a-local-llm-powered-knowledge-graph"
-      ]
+        "https://www.danielkliewer.com/blog/2026-10-25-hermes-local-video-studio",
+        "https://www.danielkliewer.com/blog/2026-10-25-the-dissolve-that-wasnt-applied",
+        "https://www.danielkliewer.com/blog/2026-10-25-the-keyframe-that-went-nowhere",
+        "https://www.danielkliewer.com/blog/2026-10-25-the-mask-that-rendered-anyway"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "relational-chapter-8",
-      "type": "relational",
-      "query": "What further reading does chapter 8 recommend?",
-      "expectedAnswer": "Chapter 8 recommends 1 article(s).",
+      "id": "cd-4",
+      "category": "cross-document",
+      "query": "Which articles are further reading for chapter 1?",
+      "expectedAnswer": "2 article(s): 2026-03-10-breaking-free-from-chatgpt, 2026-09-04-the-rented-sovereign-agent-agency-stack",
+      "answerLocation": "graph",
       "relevantDocuments": [
-        "2024-12-01-basic-rag"
+        "2026-03-10-breaking-free-from-chatgpt",
+        "2026-09-04-the-rented-sovereign-agent-agency-stack"
       ],
       "relevantConcepts": [],
       "relevantRelations": [
-        "recommends_reading:/blog/2024-12-01-basic-rag->chapter:8"
+        "recommends_reading:/blog/2026-03-10-breaking-free-from-chatgpt->chapter:1",
+        "recommends_reading:/blog/2026-09-04-the-rented-sovereign-agent-agency-stack->chapter:1"
       ],
       "requiredPassages": [
-        "/blog/2024-12-01-basic-rag"
+        "/blog/2026-03-10-breaking-free-from-chatgpt",
+        "/blog/2026-09-04-the-rented-sovereign-agent-agency-stack"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2024-12-01-basic-rag"
-      ]
+        "https://www.danielkliewer.com/blog/2026-03-10-breaking-free-from-chatgpt",
+        "https://www.danielkliewer.com/blog/2026-09-04-the-rented-sovereign-agent-agency-stack"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "relational-chapter-9",
-      "type": "relational",
-      "query": "What further reading does chapter 9 recommend?",
-      "expectedAnswer": "Chapter 9 recommends 2 article(s).",
+      "id": "cd-5",
+      "category": "cross-document",
+      "query": "Which articles document the ganymede project?",
+      "expectedAnswer": "1 article(s): 2026-10-25-ganymede-the-archive-of-the-gods",
+      "answerLocation": "graph",
       "relevantDocuments": [
-        "2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
-        "2026-07-06-sovereign-ai-benchmarks-performance-results"
+        "2026-10-25-ganymede-the-archive-of-the-gods"
       ],
       "relevantConcepts": [],
       "relevantRelations": [
-        "recommends_reading:/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval->chapter:9",
-        "recommends_reading:/blog/2026-07-06-sovereign-ai-benchmarks-performance-results->chapter:9"
+        "documents:/blog/2026-10-25-ganymede-the-archive-of-the-gods->/projects/ganymede"
       ],
       "requiredPassages": [
-        "/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
-        "/blog/2026-07-06-sovereign-ai-benchmarks-performance-results"
+        "/blog/2026-10-25-ganymede-the-archive-of-the-gods"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
-        "https://www.danielkliewer.com/blog/2026-07-06-sovereign-ai-benchmarks-performance-results"
-      ]
+        "https://www.danielkliewer.com/blog/2026-10-25-ganymede-the-archive-of-the-gods"
+      ],
+      "expectedOutcome": "supported"
     },
     {
-      "id": "relational-chapter-10",
-      "type": "relational",
-      "query": "What further reading does chapter 10 recommend?",
-      "expectedAnswer": "Chapter 10 recommends 1 article(s).",
+      "id": "cd-6",
+      "category": "cross-document",
+      "query": "Which articles are further reading for chapter 2?",
+      "expectedAnswer": "2 article(s): 2026-03-28-sovereignty-manifesto, 2026-07-05-sovereign-ai-architecture-synthesis",
+      "answerLocation": "graph",
       "relevantDocuments": [
-        "2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents"
+        "2026-03-28-sovereignty-manifesto",
+        "2026-07-05-sovereign-ai-architecture-synthesis"
       ],
       "relevantConcepts": [],
       "relevantRelations": [
-        "recommends_reading:/blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents->chapter:10"
+        "recommends_reading:/blog/2026-03-28-sovereignty-manifesto->chapter:2",
+        "recommends_reading:/blog/2026-07-05-sovereign-ai-architecture-synthesis->chapter:2"
       ],
       "requiredPassages": [
-        "/blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents"
+        "/blog/2026-03-28-sovereignty-manifesto",
+        "/blog/2026-07-05-sovereign-ai-architecture-synthesis"
       ],
       "expectedCitations": [
-        "https://www.danielkliewer.com/blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents"
+        "https://www.danielkliewer.com/blog/2026-03-28-sovereignty-manifesto",
+        "https://www.danielkliewer.com/blog/2026-07-05-sovereign-ai-architecture-synthesis"
+      ],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "cd-7",
+      "category": "cross-document",
+      "query": "Which articles are further reading for chapter 3?",
+      "expectedAnswer": "1 article(s): 2025-11-08-local-llm-integration",
+      "answerLocation": "graph",
+      "relevantDocuments": [
+        "2025-11-08-local-llm-integration"
+      ],
+      "relevantConcepts": [],
+      "relevantRelations": [
+        "recommends_reading:/blog/2025-11-08-local-llm-integration->chapter:3"
+      ],
+      "requiredPassages": [
+        "/blog/2025-11-08-local-llm-integration"
+      ],
+      "expectedCitations": [
+        "https://www.danielkliewer.com/blog/2025-11-08-local-llm-integration"
+      ],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "rt-1",
+      "category": "relationship-traversal",
+      "query": "Which projects implement governed execution?",
+      "expectedAnswer": "sovereign-agent-stack, hermes-local-video-studio, sovereignspec, chris-game",
+      "answerLocation": "graph",
+      "relevantDocuments": [],
+      "relevantConcepts": [
+        "governed-execution"
+      ],
+      "relevantRelations": [
+        "implements:/projects/sovereign-agent-stack->/concepts/governed-execution",
+        "implements:/projects/hermes-local-video-studio->/concepts/governed-execution",
+        "implements:/projects/sovereignspec->/concepts/governed-execution",
+        "implements:/projects/chris-game->/concepts/governed-execution"
+      ],
+      "requiredPassages": [
+        "/projects/sovereign-agent-stack",
+        "/concepts/governed-execution",
+        "/projects/hermes-local-video-studio",
+        "/concepts/governed-execution",
+        "/projects/sovereignspec",
+        "/concepts/governed-execution",
+        "/projects/chris-game",
+        "/concepts/governed-execution"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "rt-2",
+      "category": "relationship-traversal",
+      "query": "What does the Sovereign Intelligence Stack implement?",
+      "expectedAnswer": "local-first, knowledge-compilation",
+      "answerLocation": "graph",
+      "relevantDocuments": [],
+      "relevantConcepts": [
+        "local-first",
+        "knowledge-compilation"
+      ],
+      "relevantRelations": [
+        "implements:/projects/sovereign-intelligence-stack->/concepts/local-first",
+        "implements:/projects/sovereign-intelligence-stack->/concepts/knowledge-compilation"
+      ],
+      "requiredPassages": [
+        "/projects/sovereign-intelligence-stack",
+        "/concepts/local-first",
+        "/projects/sovereign-intelligence-stack",
+        "/concepts/knowledge-compilation"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "rt-3",
+      "category": "relationship-traversal",
+      "query": "Which concepts does the Ganymede project implement?",
+      "expectedAnswer": "knowledge-compilation, provenance, graph-retrieval",
+      "answerLocation": "graph",
+      "relevantDocuments": [],
+      "relevantConcepts": [
+        "knowledge-compilation",
+        "provenance",
+        "graph-retrieval"
+      ],
+      "relevantRelations": [
+        "implements:/projects/ganymede->/concepts/knowledge-compilation",
+        "implements:/projects/ganymede->/concepts/provenance",
+        "implements:/projects/ganymede->/concepts/graph-retrieval"
+      ],
+      "requiredPassages": [
+        "/projects/ganymede",
+        "/concepts/knowledge-compilation",
+        "/projects/ganymede",
+        "/concepts/provenance",
+        "/projects/ganymede",
+        "/concepts/graph-retrieval"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "rt-4",
+      "category": "relationship-traversal",
+      "query": "Which projects implement reproducibility?",
+      "expectedAnswer": "sovereign-agent-stack, hermes-local-video-studio, sovereignspec, mindbroadcast",
+      "answerLocation": "graph",
+      "relevantDocuments": [],
+      "relevantConcepts": [
+        "reproducibility"
+      ],
+      "relevantRelations": [
+        "implements:/projects/sovereign-agent-stack->/concepts/reproducibility",
+        "implements:/projects/hermes-local-video-studio->/concepts/reproducibility",
+        "implements:/projects/sovereignspec->/concepts/reproducibility",
+        "implements:/projects/mindbroadcast->/concepts/reproducibility"
+      ],
+      "requiredPassages": [
+        "/projects/sovereign-agent-stack",
+        "/concepts/reproducibility",
+        "/projects/hermes-local-video-studio",
+        "/concepts/reproducibility",
+        "/projects/sovereignspec",
+        "/concepts/reproducibility",
+        "/projects/mindbroadcast",
+        "/concepts/reproducibility"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "rt-5",
+      "category": "relationship-traversal",
+      "query": "Which learning path runs from local inference to governed agents?",
+      "expectedAnswer": "From local inference to governed agents (local-first-to-governed-agents)",
+      "answerLocation": "graph",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "rt-6",
+      "category": "relationship-traversal",
+      "query": "What is the prerequisite for the Ganymede article?",
+      "expectedAnswer": "not found",
+      "answerLocation": "graph",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "cv-1",
+      "category": "claim-verification",
+      "query": "Does the corpus claim that the Sovereign Agent Stack implements governed execution?",
+      "expectedAnswer": "Yes — claim:implements:/projects/sovereign-agent-stack->/concepts/governed-execution (assessment: supported, authoritative: true)",
+      "answerLocation": "claims",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [
+        "implements:/projects/sovereign-agent-stack->/concepts/governed-execution"
+      ],
+      "requiredPassages": [
+        "/projects/sovereign-agent-stack implements /concepts/governed-execution"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "cv-2",
+      "category": "claim-verification",
+      "query": "Is the claim that the Sovereign Intelligence Stack implements local-first inference authoritative?",
+      "expectedAnswer": "Assessment: supported, authoritative: true",
+      "answerLocation": "claims",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [
+        "implements:/projects/sovereign-intelligence-stack->/concepts/local-first"
+      ],
+      "requiredPassages": [
+        "/projects/sovereign-intelligence-stack implements /concepts/local-first"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "cv-3",
+      "category": "claim-verification",
+      "query": "Does the corpus claim that Ganymede implements provenance?",
+      "expectedAnswer": "Yes — claim:implements:/projects/ganymede->/concepts/provenance (assessment: supported)",
+      "answerLocation": "claims",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [
+        "implements:/projects/ganymede->/concepts/provenance"
+      ],
+      "requiredPassages": [
+        "/projects/ganymede implements /concepts/provenance"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "cv-4",
+      "category": "claim-verification",
+      "query": "How many claims are marked as proposed rather than supported?",
+      "expectedAnswer": "10",
+      "answerLocation": "claims",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [
+        "shares 2 concepts (governed-execution, reproducibility) with sovereign-agent-stack"
+      ],
+      "requiredPassages": [
+        "/blog/2026-07-21-compiling-medical-evidence-clinical-research-compiler is the write-up for /projects/sovereign-agent-stack"
+      ],
+      "expectedCitations": [],
+      "expectedOutcome": "supported"
+    },
+    {
+      "id": "cv-5",
+      "category": "claim-verification",
+      "query": "Does the corpus claim that the Sovereign Agent Stack implements evaluation?",
+      "expectedAnswer": "No — no such claim exists",
+      "answerLocation": "claims",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "no_support"
+    },
+    {
+      "id": "ct-1",
+      "category": "contradiction-detection",
+      "query": "Does the corpus contain any contradictory relation edges?",
+      "expectedAnswer": "No — the contradicts relation has 0 edges",
+      "answerLocation": "graph",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "no_support"
+    },
+    {
+      "id": "ct-2",
+      "category": "contradiction-detection",
+      "query": "Is there any claim that carries contradictory evidence?",
+      "expectedAnswer": "No — no claim carries contradictory evidence",
+      "answerLocation": "claims",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "no_support"
+    },
+    {
+      "id": "ie-1",
+      "category": "insufficient-evidence",
+      "query": "Is the book 'Computational Sovereignty' currently in stock?",
+      "expectedAnswer": "The corpus does not contain this information.",
+      "answerLocation": "none",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "no_support",
+      "falseSupportTerms": [
+        "in stock",
+        "availability",
+        "available now"
+      ]
+    },
+    {
+      "id": "ie-2",
+      "category": "insufficient-evidence",
+      "query": "What is the average rating of the book 'Computational Sovereignty'?",
+      "expectedAnswer": "The corpus does not contain this information.",
+      "answerLocation": "none",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "no_support",
+      "falseSupportTerms": [
+        "rating",
+        "stars",
+        "review score"
+      ]
+    },
+    {
+      "id": "ie-3",
+      "category": "insufficient-evidence",
+      "query": "How many copies of the book have been sold?",
+      "expectedAnswer": "The corpus does not contain this information.",
+      "answerLocation": "none",
+      "relevantDocuments": [],
+      "relevantConcepts": [],
+      "relevantRelations": [],
+      "requiredPassages": [],
+      "expectedCitations": [],
+      "expectedOutcome": "no_support",
+      "falseSupportTerms": [
+        "copies sold",
+        "sales",
+        "units sold"
       ]
     }
   ]
