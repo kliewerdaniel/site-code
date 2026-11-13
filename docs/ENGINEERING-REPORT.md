@@ -124,10 +124,11 @@ committed for review.
 
 ## 9. Test results
 
-`npm test`: **183 tests, 181 pass, 2 fail**. Both failures are the
-`REAL RUNTIME` Node gate, which requires Node 22.23.4 and a clean bundled trust
-store; this shell runs 22.23.1. The same file passes 20/20 under 22.23.4. The
-build, all validators and conformance pass under 22.23.4 with 0 errors.
+`npm test` under the pinned runtime (Node 22.23.4, from `.nvmrc`): **183 tests,
+183 pass, 0 fail.** The two `REAL RUNTIME` Node-gate assertions fail closed on
+an unpatched runtime by design: under Node 22.23.1 the suite reports 181/183,
+and the same file passes 20/20 under 22.23.4. The build, all validators,
+conformance and the route-parity check pass with 0 errors.
 
 ## 10. Performance measurements
 
