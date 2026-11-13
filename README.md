@@ -174,6 +174,10 @@ Next.js runtime:
   [its README](packages/knowledge-compiler/README.md) and the
   [extraction evaluation](docs/KNOWLEDGE-COMPILER-EXTRACTION.md).
 
+The SDK and MCP are audited against the integration requirements in
+**[docs/SDK-AND-MCP-AUDIT.md](docs/SDK-AND-MCP-AUDIT.md)**: both already
+satisfy the interface, so no overlapping package was created.
+
 ## Deploy
 
 Push to GitHub, import into Vercel. No env vars required. `.github/workflows/ci.yml`
