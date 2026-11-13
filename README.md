@@ -74,10 +74,14 @@ Beyond the build gates, three checks run over the content and the built output:
   non-zero on any structural violation.
 - `npm run smoke:production` (`scripts/smoke-production.mjs`) — deployment smoke
   test against the live site: HTTP status, content type, caching, ETag/304,
-  byte counts, content hashes and a sample of the Markdown mirrors, compared
-  with the local build. Runs after a deploy (see
-  `.github/workflows/smoke.yml`). **Currently passes with 0 errors** —
-  production and the local build are byte-identical.
+  byte counts and content hashes for **all nine resources**, master-index
+  completeness, claim/evidence referential integrity, proposal exclusion from
+  the authoritative graph, and **every** Markdown mirror, compared with the
+  local build. Findings are split into deployment drift (`errors`), local
+  build problems (`compileErrors`) and non-fatal warnings. Runs after a deploy
+  (see `.github/workflows/smoke.yml`, which also triggers automatically after
+  a successful CI run). **Currently passes with 0 errors** — production and
+  the local build are byte-identical.
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.

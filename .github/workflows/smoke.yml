@@ -2,13 +2,22 @@
 #
 # This does NOT run on pull requests: production always lags the commit under
 # review, so a smoke test against it would fail on every legitimate change.
-# It runs on demand (workflow_dispatch) and on a daily schedule, after the
-# deploy that the push triggers. It compares the live corpus against the
-# artifacts built from the same commit: HTTP status, content type, caching,
-# ETag handling, byte counts and content hashes, plus a sample of the
-# canonical Markdown mirrors.
+#
+# It runs:
+#   - on demand (workflow_dispatch),
+#   - daily, off the hour, after the usual deploy window,
+#   - automatically after a successful CI run on main — i.e. after the deploy
+#     that the push triggers. It checks out the exact commit CI ran on
+#     (github.event.workflow_run.head_sha), waits for the deploy to propagate,
+#     then compares the live corpus against the artifacts built from that same
+#     commit: HTTP status, content type, caching, ETag handling, byte counts
+#     and content hashes for all nine resources, index completeness,
+#     claim/evidence integrity, proposal exclusion from the graph, and every
+#     canonical Markdown mirror.
 #
 # A failure here means production is not serving the commit it claims to.
+# No secrets or deployment credentials are involved: the workflow only reads
+# the public site and the repository.
 
 name: Production smoke
 
@@ -17,17 +26,28 @@ on:
   schedule:
     # 06:17 UTC daily — off the hour, after the usual deploy window.
     - cron: "17 6 * * *"
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
 
 jobs:
   smoke:
+    # A failed CI run means the deploy did not happen; the smoke test would
+    # only report the drift that the failed run explains.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
+      # For workflow_run, check out the exact commit the completed CI run
+      # tested — not whatever main points at by now.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Read .nvmrc
         id: nvmrc
@@ -45,6 +65,27 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # The deploy is triggered by the push, not by CI, so it may still be in
+      # flight when CI finishes. Poll the public index until its hash matches
+      # the local build, then smoke it.
+      - name: Wait for the deploy to propagate
+        run: |
+          set -e
+          LOCAL=$(node -e "console.log(require('crypto').createHash('sha256').update(require('fs').readFileSync('.next/server/app/agents/index.json.body')).digest('hex'))")
+          echo "waiting for production index sha ${LOCAL:0:12}…"
+          for i in $(seq 1 30); do
+            ACTUAL=$(curl -sf https://www.danielkliewer.com/agents/index.json \
+              | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>console.log(require('crypto').createHash('sha256').update(d).digest('hex')))" \
+              || true)
+            if [ "$ACTUAL" = "$LOCAL" ]; then
+              echo "deploy propagated (index hash matches)"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "deploy did not propagate within 300s" >&2
+          exit 1
 
       - name: Smoke test production
         run: npm run smoke:production
