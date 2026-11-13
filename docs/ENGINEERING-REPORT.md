@@ -102,8 +102,10 @@ cannot force a caller to treat it as non-authoritative.
 catalog retrieves at Recall@5 1.000 and citation accuracy 1.000 against a
 crawler's 0.313 / 0.417, at 265 KB one-time cost against 30.8 MB.
 
-**Agent** (`npm run benchmark:agent`, local `lfm3-omni:latest`, temperature 0,
-256-token budget, cold and warm passes). Cold results:
+**Agent** (`npm run benchmark:agent`, local models, temperature 0, 256-token
+budget, cold and warm passes). Cold results, two model families:
+
+*lfm3-omni:latest*
 
 | Architecture | Rule-correct | Citation | Abstain on no-support | Unsupported claim | Fabricated citation | Tokens/query | Latency/query |
 |---|---|---|---|---|---|---|---|
@@ -112,14 +114,25 @@ crawler's 0.313 / 0.417, at 265 KB one-time cost against 30.8 MB.
 | C · + Markdown | 63.3% | 26.7% | **100%** | **0.0%** | 3.3% | 15,456 | 4,922 ms |
 | D · parametric | 23.3% | 0.0% | 0.0% | 16.7% | 6.7% | 66 | 186 ms |
 
-What this supports: the compiled catalog+graph answers more questions correctly
-than crawling or the parametric control; crawling never produces a canonical
-citation and fabricates URLs; Markdown improves epistemic discipline (100%
-abstention, zero unsupported claims) at 1.8× the tokens and latency of B.
+*llama3.2:3b*
+
+| Architecture | Rule-correct | Citation | Abstain on no-support | Unsupported claim | Fabricated citation | Tokens/query | Latency/query |
+|---|---|---|---|---|---|---|---|
+| A · crawling | 20.0% | 0.0% | 83.3% | 16.7% | 26.7% | 6,023 | 7,332 ms |
+| B · catalog + graph | **70.0%** | **30.0%** | 83.3% | 16.7% | 6.7% | 8,109 | 10,086 ms |
+| C · + Markdown | 60.0% | 26.7% | 33.3% | 33.3% | 0.0% | 14,684 | 15,157 ms |
+| D · parametric | 20.0% | 0.0% | 66.7% | 16.7% | 0.0% | 80 | 298 ms |
+
+What this supports: across both families the compiled catalog + graph (B) is the
+most robust representation — highest rule-correct and citation accuracy, lowest
+fabricated citations. Crawling (A) never produces a canonical citation and
+fabricates the most. Markdown (C) improves the stronger model's epistemic
+discipline (100% abstention, zero unsupported claims) but the weaker model is
+confused by the longer context.
 
 What it does not support: a claim that the architecture improves reasoning in
-general. The correctness metric is rule-based, one model family was available,
-and B hallucinated on one claim question and mangled one slug. Raw answers are
+general. Two local model families, one machine, one corpus, a rule-based
+correctness metric, and one hallucinated claim from B. Raw answers are
 committed for review.
 
 ## 9. Test results
@@ -149,7 +162,8 @@ conformance and the route-parity check pass with 0 errors.
   revocation, or identity provider.
 - Only markdown and JSON adapters exist; documentation websites, Git
   repositories, research archives and book manuscripts are not implemented.
-- The agent benchmark used one local model family. No remote inference was used.
+- The agent benchmark used two local model families (`lfm3-omni`, `llama3.2`),
+  not a frontier model. No remote inference was used.
 - `chapter_covers` remains empty by evidence; the benchmark's correctness
   grader is rule-based, not human-adjudicated.
 - The MCP server is verified over the stdio protocol but is not yet wired into

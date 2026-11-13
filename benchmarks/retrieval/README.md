@@ -151,9 +151,34 @@ along with the exact prompt, temperature and token budget. Cold and warm passes
 are reported separately. Raw answers are committed in
 `data/agent-experiment-report.json` for human review.
 
-**Limitation:** only one model family was available on this machine. The
-results do not establish that the architecture improves reasoning, only what
-this model did with each representation.
+### Two model families
+
+The experiment was run twice: `lfm3-omni:latest` (2.4 GB) and `llama3.2:3b`
+(2.0 GB), both local, temperature 0, 256-token budget. Cold-pass percentages:
+
+| Architecture | lfm3-omni rule / cite / abstain / unsup | llama3.2:3b rule / cite / abstain / unsup |
+|---|---|---|
+| A · crawling | 33.3 / 0.0 / 100 / 0.0 | 20.0 / 0.0 / 83.3 / 16.7 |
+| B · catalog + graph | 66.7 / 26.7 / 83.3 / 33.3 | **70.0 / 30.0** / 83.3 / 16.7 |
+| C · + Markdown | 63.3 / 26.7 / **100** / **0.0** | 60.0 / 26.7 / 33.3 / 33.3 |
+| D · parametric | 23.3 / 0.0 / 0.0 / 16.7 | 20.0 / 0.0 / 66.7 / 16.7 |
+
+`rule` = rule-correct, `cite` = citation accuracy, `abstain` = abstention on
+no-support questions, `unsup` = unsupported-claim rate.
+
+Across both families, the compiled catalog + graph (B) is the most robust
+representation: highest rule-correct and citation accuracy, lowest fabricated
+citation rate. Crawling (A) never produces a canonical citation and fabricates
+the most. Markdown bodies (C) improve the stronger model's epistemic
+discipline (100% abstention, zero unsupported claims) but the weaker model is
+confused by the longer context — a representation/length trade-off, not a
+universal win.
+
+**Limitation:** two local model families, one machine, one corpus. The results
+do not establish that the architecture improves reasoning in general; they
+show what these two models did with each representation. Correctness is
+rule-based, not human-adjudicated, and the raw answers are committed for
+review.
 
 ## Files
 

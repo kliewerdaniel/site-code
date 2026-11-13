@@ -58,6 +58,9 @@ import {
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 const APP = path.join(root, ".next", "server", "app");
 const OUT_DIR = path.join(root, "benchmarks", "retrieval", "data");
+const REPORT_PATH = process.env.AGENT_REPORT
+  ? path.resolve(process.env.AGENT_REPORT)
+  : path.join(OUT_DIR, "agent-experiment-report.json");
 const BOOK = JSON.parse(fs.readFileSync(path.join(APP, "agents/book.json.body"), "utf8"));
 
 const MODEL = process.env.AGENT_MODEL ?? "lfm3-omni:latest";
@@ -227,7 +230,7 @@ async function askModel(prompt) {
 /* ── grading ─────────────────────────────────────────────────────────────── */
 
 const ABSTENTION =
-  /(does not contain|not contain|no information|not available|cannot answer|can't answer|don't know|do not know|no evidence|insufficient|not in the (context|corpus)|i don't have|unknown)/i;
+  /(does not contain|not contain|no information|not available|cannot answer|can't answer|don't know|do not know|no evidence|insufficient|not in the (context|corpus)|i don't have|unknown|not explicitly stated|not stated|not specified|not provided|not mentioned|no mention|doesn't mention|does not mention|not present|no record of)/i;
 
 const EXPECTATION_STOP = new Set([
   "the", "a", "an", "of", "to", "and", "in", "on", "for", "with", "is", "are",
@@ -490,11 +493,8 @@ export async function run() {
     };
   }
 
-  fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.writeFileSync(
-    path.join(OUT_DIR, "agent-experiment-report.json"),
-    JSON.stringify(report, null, 2) + "\n"
-  );
+  fs.mkdirSync(path.dirname(REPORT_PATH), { recursive: true });
+  fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2) + "\n");
 
   const pct = (n) => (n === null ? "n/a" : `${(n * 100).toFixed(1)}%`);
   for (const [name, a] of Object.entries(report.architectures)) {
@@ -509,7 +509,7 @@ export async function run() {
     console.log(`  latency/query (cold)     ${s.latencyMsPerQuery.toFixed(0)} ms`);
     console.log("");
   }
-  console.log(`report: benchmarks/retrieval/data/agent-experiment-report.json`);
+  console.log(`report: ${REPORT_PATH}`);
   return report;
 }
 
