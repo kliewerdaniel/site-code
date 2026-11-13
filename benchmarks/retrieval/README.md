@@ -58,8 +58,8 @@ claim. That is measured directly as the **false-support rate**.
 | Citation accuracy | 0.417 | **1.000** | **1.000** |
 | Passage recall | **0.810** | 0.286 | 0.571 |
 | False-support rate | 1.000 | **0.333** | 0.500 |
-| One-time bytes | 30,808 KB | **265 KB** | **265 KB** |
-| Total bytes | 30,808 KB | 10,405 KB | **1,826 KB** |
+| One-time bytes | 31,599 KB | **265 KB** | **265 KB** |
+| Total bytes | 31,599 KB | 10,674 KB | **1,826 KB** |
 | Requests / query | 0.0 (after crawl) | 2.6 | 2.6 |
 | Latency / query (local) | 9.7 ms | 0.2 ms | 0.2 ms |
 
@@ -69,10 +69,10 @@ claim. That is measured directly as the **false-support rate**.
    from 0.313 to 1.000 and citation accuracy from 0.417 to 1.000. The graph
    answers the relationship questions directly; a crawler has no graph.
 2. **The one-time cost drops by two orders of magnitude.** Crawling every page
-   costs 30.8 MB; the catalog and graph cost 265 KB.
+   costs 31.6 MB; the catalog and graph cost 265 KB.
 3. **Canonical Markdown is the cheapest body transport.** For the same
-   ranking, Markdown mirrors cost 1.8 MB across the benchmark against 10.4 MB
-   for the HTML pages — a 5.7× reduction on top of the catalog saving.
+   ranking, Markdown mirrors cost 1.8 MB across the benchmark against 10.7 MB
+   for the HTML pages — a 5.8× reduction on top of the catalog saving.
 4. **Metadata alone does not carry the answer.** B's passage recall is 0.286:
    it retrieves the right documents, but a title, description and tag list do
    not contain a `doc_id` or a publication date. C raises passage recall to
@@ -114,14 +114,79 @@ npm run benchmark
 
 The harness reads `.next/server/app`, writes
 `data/adjudicated-questions.json` and `data/benchmark-report.json`, and prints
-the table above. The dataset is deterministic: the same build produces the
-same questions and the same numbers.
+the table above. The dataset and the structural metrics are deterministic: the
+same build produces the same questions and the same recall, precision,
+citation, passage and byte numbers. Latency is measured on the local machine
+and varies per run.
+
+## Agent experiment (LLM question answering)
+
+`src/agent-experiment.mjs` is the second experiment category. It feeds the
+retrieved documents to a real model and measures what the model then says.
+
+```bash
+npm run benchmark:agent
+```
+
+Architectures A/B/C use the same retrieval as the deterministic benchmark; D
+is a parametric control with no retrieval. B and C receive the compiled catalog
+metadata, the **full typed graph** and the **claim index**; C adds the Markdown
+bodies. Every architecture gets the same per-document context budget, so the
+comparison is about representation, not about how much text each side may read.
+
+Measured per question:
+
+| Metric | What it means |
+|---|---|
+| `ruleCorrectRate` | A transparent, category-aware rule check. Reported as rule-based, not as human adjudication. |
+| `citationAccuracy` | The answer contains an expected canonical URL. |
+| `abstentionRateOnNoSupport` | The model said the corpus does not contain the answer. |
+| `unsupportedClaimRate` | A `no_support` question answered anyway, or an answer with a fabricated citation. |
+| `fabricatedCitationRate` | The answer contains a URL that resolves to nothing in the corpus. |
+| `contradictoryRate` | The answer both abstains and cites. |
+| `tokensPerQuery`, `latencyMsPerQuery` | Model cost and latency. |
+
+The model is local (`lfm3-omni:latest` through Ollama), recorded in the report
+along with the exact prompt, temperature and token budget. Cold and warm passes
+are reported separately. Raw answers are committed in
+`data/agent-experiment-report.json` for human review.
+
+### Two model families
+
+The experiment was run twice: `lfm3-omni:latest` (2.4 GB) and `llama3.2:3b`
+(2.0 GB), both local, temperature 0, 256-token budget. Cold-pass percentages:
+
+| Architecture | lfm3-omni rule / cite / abstain / unsup | llama3.2:3b rule / cite / abstain / unsup |
+|---|---|---|
+| A · crawling | 33.3 / 0.0 / 100 / 0.0 | 20.0 / 0.0 / 83.3 / 16.7 |
+| B · catalog + graph | 66.7 / 26.7 / 83.3 / 33.3 | **70.0 / 30.0** / 83.3 / 16.7 |
+| C · + Markdown | 63.3 / 26.7 / **100** / **0.0** | 60.0 / 26.7 / 33.3 / 33.3 |
+| D · parametric | 23.3 / 0.0 / 0.0 / 16.7 | 20.0 / 0.0 / 66.7 / 16.7 |
+
+`rule` = rule-correct, `cite` = citation accuracy, `abstain` = abstention on
+no-support questions, `unsup` = unsupported-claim rate.
+
+Across both families, the compiled catalog + graph (B) is the most robust
+representation: highest rule-correct and citation accuracy, lowest fabricated
+citation rate. Crawling (A) never produces a canonical citation and fabricates
+the most. Markdown bodies (C) improve the stronger model's epistemic
+discipline (100% abstention, zero unsupported claims) but the weaker model is
+confused by the longer context — a representation/length trade-off, not a
+universal win.
+
+**Limitation:** two local model families, one machine, one corpus. The results
+do not establish that the architecture improves reasoning in general; they
+show what these two models did with each representation. Correctness is
+rule-based, not human-adjudicated, and the raw answers are committed for
+review.
 
 ## Files
 
 | Path | Purpose |
 |---|---|
 | `src/adjudicated.mjs` | The 30-question adjudicated set, with ground truth computed from the artifacts. |
-| `src/benchmark.mjs` | The three architectures and the metrics. |
+| `src/benchmark.mjs` | The three architectures and the deterministic metrics. |
+| `src/agent-experiment.mjs` | The LLM agent experiment over the same question set. |
 | `data/adjudicated-questions.json` | The committed evaluation dataset. |
-| `data/benchmark-report.json` | The full machine-readable report. |
+| `data/benchmark-report.json` | The full machine-readable deterministic report. |
+| `data/agent-experiment-report.json` | The raw agent answers, grades, tokens and latency. |

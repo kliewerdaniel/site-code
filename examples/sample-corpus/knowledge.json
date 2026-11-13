@@ -1,0 +1,20 @@
+{
+  "documents": [
+    {
+      "id": "json:architecture",
+      "path": "knowledge/architecture.json",
+      "title": "Architecture notes",
+      "published": "2026-01-05",
+      "tags": ["agent-architecture", "deterministic"],
+      "body": "# Architecture notes\n\nA layered architecture separates probabilistic interpretation from deterministic authorization.\n"
+    },
+    {
+      "id": "json:evaluation",
+      "path": "knowledge/evaluation.json",
+      "title": "Evaluation notes",
+      "published": "2026-01-06",
+      "tags": ["evaluation", "provenance"],
+      "body": "# Evaluation notes\n\nEvaluation measures whether the right document was retrieved, not whether an answer is correct.\n"
+    }
+  ]
+}

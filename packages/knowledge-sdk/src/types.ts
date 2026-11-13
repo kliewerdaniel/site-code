@@ -250,6 +250,63 @@ export interface BookContextResult {
   citation: string;
 }
 
+export interface GetClaimsOptions {
+  /** Restrict to claims whose source or relationships touch this article slug. */
+  documentId?: string;
+  /** Restrict by authoritativeness. Omit for both. */
+  authoritative?: boolean;
+}
+
+export interface GetEvidenceOptions {
+  /** One or more claim ids; the union of their evidence is returned. */
+  claimIds: string[];
+}
+
+export interface ConceptDetail {
+  concept: CatalogConcept;
+  articles: CatalogArticle[];
+  projects: CatalogProject[];
+  relationships: RelationEdge[];
+}
+
+export interface ProjectDetail {
+  project: CatalogProject;
+  articles: CatalogArticle[];
+  relationships: RelationEdge[];
+  evidence: Evidence[];
+}
+
+export interface CitationInput {
+  slug?: string;
+  url?: string;
+  /** A claim id, when the citation is to a claim rather than a document. */
+  claimId?: string;
+  /** A source span that must appear in the document body. */
+  span?: string;
+}
+
+export interface CitationVerification {
+  ok: boolean;
+  slug?: string;
+  url?: string;
+  span?: string;
+  contentHash?: string;
+  reason?: string;
+}
+
+export interface TraverseManyOptions {
+  startingNodes: string[];
+  relations?: string[];
+  maxDepth?: number;
+}
+
+export interface RelatedWorkResult {
+  node: string;
+  nodes: GraphNode[];
+  edges: RelationEdge[];
+  documents: CatalogArticle[];
+}
+
 export class KnowledgeError extends Error {
   status?: number;
   path?: string;

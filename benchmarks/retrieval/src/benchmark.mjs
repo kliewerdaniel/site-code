@@ -355,6 +355,22 @@ export function run() {
   return report;
 }
 
+export {
+  allEdges,
+  articleBySlug,
+  buildCrawlIndex,
+  catalog,
+  claims,
+  documentText,
+  htmlBytes,
+  markdownBytes,
+  markdownText,
+  runCompiled,
+  runCrawl,
+  scoreMetadata,
+  terms,
+};
+
 const isEntry =
   process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (isEntry) run();

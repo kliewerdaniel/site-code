@@ -11,8 +11,9 @@
 //   KNOWLEDGE_CACHE_DIR  optional on-disk body cache
 //
 // Protocol: MCP (2024-11-05). Tools:
-//   search_knowledge, get_article, traverse_graph, get_evidence,
-//   get_learning_path, get_book_context
+//   search_knowledge, get_article, get_concept, get_project,
+//   get_claim, get_evidence, verify_citation, traverse_graph,
+//   get_related_work, get_learning_path, get_book_context
 
 import readline from "node:readline";
 import { pathToFileURL } from "node:url";
@@ -95,11 +96,18 @@ const TOOLS = [
   },
   {
     name: "get_evidence",
-    description: "Return the supporting and contradictory evidence for one claim.",
+    description:
+      "Return the supporting and contradictory evidence for one claim, or for several claims at once.",
     inputSchema: {
       type: "object",
-      properties: { claimId: { type: "string" } },
-      required: ["claimId"],
+      properties: {
+        claimId: { type: "string", description: "One claim id." },
+        claimIds: {
+          type: "array",
+          items: { type: "string" },
+          description: "Several claim ids; the union of their evidence is returned.",
+        },
+      },
     },
   },
   {
@@ -119,6 +127,70 @@ const TOOLS = [
       type: "object",
       properties: { slug: { type: "string" } },
       required: ["slug"],
+    },
+  },
+  {
+    name: "get_concept",
+    description:
+      "Return a concept with its associated projects, articles and typed relationships.",
+    inputSchema: {
+      type: "object",
+      properties: { slug: { type: "string", description: "Concept slug." } },
+      required: ["slug"],
+    },
+  },
+  {
+    name: "get_project",
+    description:
+      "Return a project with its documentation, related articles, relationships and the evidence for them.",
+    inputSchema: {
+      type: "object",
+      properties: { slug: { type: "string", description: "Project slug." } },
+      required: ["slug"],
+    },
+  },
+  {
+    name: "get_claim",
+    description:
+      "Retrieve a claim and its assessment. A proposed claim is returned as proposed; it is never presented as authoritative.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        claimId: { type: "string" },
+        includeEvidence: {
+          type: "boolean",
+          description: "Also return the evidence records for the claim.",
+        },
+      },
+      required: ["claimId"],
+    },
+  },
+  {
+    name: "verify_citation",
+    description:
+      "Check whether a citation resolves to a real document and, when a span is supplied, that the span is present in the hash-verified body.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        slug: { type: "string" },
+        url: { type: "string" },
+        claimId: { type: "string" },
+        span: { type: "string", description: "A source span that must appear in the body." },
+      },
+    },
+  },
+  {
+    name: "get_related_work",
+    description:
+      "Identify related systems, concepts and research reachable from a node, following typed relationships in both directions.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        node: { type: "string", description: "Node id, e.g. /projects/ganymede." },
+        types: { type: "array", items: { type: "string" } },
+        maxDepth: { type: "number", description: "Maximum depth (≤ 4)." },
+      },
+      required: ["node"],
     },
   },
 ];
@@ -151,8 +223,34 @@ async function callTool(name: string, args: Record<string, unknown>): Promise<un
         truncated: result.nodes.length > LIMITS.maxNodes,
       };
     }
-    case "get_evidence":
-      return c.getEvidence(String(args.claimId ?? ""));
+    case "get_evidence": {
+      const claimIds = (args.claimIds as string[] | undefined) ?? [];
+      const ids = claimIds.length > 0 ? claimIds : [String(args.claimId ?? "")];
+      return c.getEvidence({ claimIds: ids });
+    }
+    case "get_claim": {
+      const claim = c.getClaim(String(args.claimId ?? ""));
+      if (args.includeEvidence) {
+        return { claim, evidence: await c.getEvidence(claim.id) };
+      }
+      return claim;
+    }
+    case "verify_citation":
+      return c.verifyCitation({
+        slug: args.slug as string | undefined,
+        url: args.url as string | undefined,
+        claimId: args.claimId as string | undefined,
+        span: args.span as string | undefined,
+      });
+    case "get_concept":
+      return c.getConcept(String(args.slug ?? ""));
+    case "get_project":
+      return c.getProject(String(args.slug ?? ""));
+    case "get_related_work":
+      return c.getRelatedWork(String(args.node ?? ""), {
+        types: (args.types as string[] | undefined) ?? [],
+        maxDepth: clamp(args.maxDepth, 1, LIMITS.maxDepth),
+      });
     case "get_learning_path":
       return c.getLearningPath(String(args.slug ?? ""));
     case "get_book_context":

@@ -45,13 +45,19 @@ const expansion = await corpus.expand({
 | Metadata filtering | `search({ concepts, projects, tags })`. |
 | Search and ranking | Deterministic term weighting over title, tags, description and slug. |
 | Graph traversal | `traverseGraph({ from, types, maxDepth })`, breadth-first with a depth limit. |
+| Multi-start traversal | `traverse({ startingNodes, relations, maxDepth })`. |
 | Document expansion | `expand({ documents, relations, maxDepth, maxBytes })`. |
+| Concept lookup | `getConcept(slug)` — the concept, its projects, articles and edges. |
+| Project lookup | `getProject(slug)` — the project, its articles, edges and evidence. |
+| Claim retrieval | `getClaims({ documentId, authoritative })`, `getClaim(id)`. |
+| Related work | `getRelatedWork(node, { types, maxDepth })`, bidirectional. |
+| Citation verification | `verifyCitation({ slug, url, claimId, span })` — resolves the document and checks the span against the hash-verified body. |
 | Byte-budget enforcement | `search`/`expand` stop before `maxBytes` and report `truncated`. |
 | Conditional HTTP | `If-None-Match` with cached ETags; a `304` reuses the body. |
 | Local caching | In memory always; on disk when `cacheDir` is set. |
 | Content hash verification | Every Markdown mirror is verified against the `sha256` in its frontmatter. |
 | Provenance preservation | Claims, evidence and relation edges carry their source and fingerprint. |
-| Citation generation | `getArticle().citation` and `cite()`. |
+| Citation generation | `getArticle().citation` and `citation(metadata)`. |
 
 ## API
 
@@ -89,9 +95,44 @@ types and depth. Nodes carry the depth and the edge they were reached by.
 Returns the article's metadata, verified Markdown body, content hash, related
 claims and relation edges, and a ready-to-use citation.
 
-### `getEvidence(claimId)`
+### `getEvidence(claimId)` / `getEvidence({ claimIds })`
 
-Returns the supporting and contradictory evidence for one claim.
+Returns the supporting and contradictory evidence for one claim, or the union
+for several claims at once.
+
+### `getClaims(options)` / `getClaim(id)`
+
+`getClaims({ documentId, authoritative })` filters the claim set by the article
+it touches and by authoritativeness. A proposed claim is returned with
+`authoritative: false`; the caller decides whether to treat it as fact.
+
+### `getConcept(slug)`
+
+Returns the concept, its projects, the articles tagged for it and every
+relation edge that touches it.
+
+### `getProject(slug)`
+
+Returns the project, its articles, its relation edges and the evidence records
+for those edges.
+
+### `traverse(options)`
+
+The directive-shaped traversal: `startingNodes`, typed `relations` and a
+bounded `maxDepth`. An empty `relations` array means all types.
+
+### `getRelatedWork(node, options)`
+
+The systems, concepts and research reachable from a node. Unlike `traverse`,
+this follows edges in both directions, so a project's articles are related to
+it even though `documents` points at the project.
+
+### `verifyCitation(input)`
+
+Resolves `{ slug }` or `{ url }` against the catalog and, when a `span` is
+supplied, checks that the span is present in the hash-verified Markdown body.
+`{ claimId }` resolves against the claim's own source span. Returns
+`{ ok, url, contentHash, reason }` rather than throwing.
 
 ### `getLearningPath(slug)`
 

@@ -85,6 +85,12 @@ export default function AgentsPage() {
             >
               The book →
             </Link>
+            <Link
+              href="/graph"
+              className="label border border-rule-2 px-6 py-4 text-ink-2 transition-colors hover:border-gold hover:text-gold"
+            >
+              Explore the graph →
+            </Link>
           </div>
         </Container>
       </section>

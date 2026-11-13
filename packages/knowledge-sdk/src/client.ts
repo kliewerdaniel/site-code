@@ -20,19 +20,27 @@ import type {
   Catalog,
   CatalogArticle,
   CatalogPath,
+  CitationInput,
+  CitationVerification,
   Claim,
+  ConceptDetail,
   ConnectOptions,
   DocumentHit,
   Evidence,
   ExpandOptions,
   ExpansionResult,
+  GetClaimsOptions,
+  GetEvidenceOptions,
   KnowledgeError as KnowledgeErrorType,
   LearningPathResult,
+  ProjectDetail,
+  RelatedWorkResult,
   RelationEdge,
   RelationGraph,
   SearchOptions,
   SearchResult,
   TraversalResult,
+  TraverseManyOptions,
   TraverseOptions,
 } from "./types.ts";
 import { KnowledgeError } from "./types.ts";
@@ -347,7 +355,9 @@ export class KnowledgeCorpus {
   async traverseGraph(opts: TraverseOptions): Promise<TraversalResult> {
     if (!this.graph) throw new KnowledgeError("corpus is not connected");
     const maxDepth = opts.maxDepth ?? 2;
-    const wanted = new Set(opts.types ?? Object.keys(this.graph.edges));
+    const wanted = new Set(
+      opts.types && opts.types.length > 0 ? opts.types : Object.keys(this.graph.edges)
+    );
     const nodes = new Map<string, GraphNodeLite>();
     const edges: RelationEdge[] = [];
     const edgeSeen = new Set<string>();
@@ -407,11 +417,48 @@ export class KnowledgeCorpus {
 
   /* ── evidence, paths, book ──────────────────────────────────────────────── */
 
-  async getEvidence(claimId: string): Promise<Evidence[]> {
-    const claim = this.claims.find((c) => c.id === claimId);
-    if (!claim) throw new KnowledgeError(`unknown claim ${claimId}`, { path: "/agents/claims.json" });
-    const ids = new Set([...claim.supportingEvidence, ...claim.contradictoryEvidence]);
-    return this.evidence.filter((e) => ids.has(e.id));
+  /* ── claims and evidence ────────────────────────────────────────────────── */
+
+  /** Claims, optionally restricted to one document and/or authoritativeness.
+   *  A proposed claim is returned too: the caller decides whether to treat it
+   *  as authoritative, and `authoritative` is always present on the record. */
+  getClaims(opts: GetClaimsOptions = {}): Claim[] {
+    if (!this.catalog) throw new KnowledgeError("corpus is not connected");
+    let claims = this.claims;
+    if (opts.documentId) {
+      const edgeIds = new Set(this.edgesForSlug(opts.documentId).map((e) => e.id));
+      claims = claims.filter(
+        (c) =>
+          c.relationships.some((r) => edgeIds.has(r)) ||
+          c.source.includes(opts.documentId as string)
+      );
+    }
+    if (opts.authoritative !== undefined) {
+      claims = claims.filter((c) => c.authoritative === opts.authoritative);
+    }
+    return claims;
+  }
+
+  getClaim(id: string): Claim {
+    const claim = this.claims.find((c) => c.id === id);
+    if (!claim) throw new KnowledgeError(`unknown claim ${id}`, { path: "/agents/claims.json" });
+    return claim;
+  }
+
+  /** Evidence for one claim id, or for several at once. */
+  async getEvidence(claimId: string): Promise<Evidence[]>;
+  async getEvidence(opts: GetEvidenceOptions): Promise<Evidence[]>;
+  async getEvidence(arg: string | GetEvidenceOptions): Promise<Evidence[]> {
+    const ids = typeof arg === "string" ? [arg] : arg.claimIds;
+    const evidenceIds = new Set<string>();
+    for (const id of ids) {
+      const claim = this.claims.find((c) => c.id === id);
+      if (!claim) throw new KnowledgeError(`unknown claim ${id}`, { path: "/agents/claims.json" });
+      for (const e of [...claim.supportingEvidence, ...claim.contradictoryEvidence]) {
+        evidenceIds.add(e);
+      }
+    }
+    return this.evidence.filter((e) => evidenceIds.has(e.id));
   }
 
   async getLearningPath(slug: string): Promise<LearningPathResult> {
@@ -488,6 +535,161 @@ export class KnowledgeCorpus {
       });
     }
     return { body, bytes, contentHash };
+  }
+
+  /* ── concepts, projects, related work ───────────────────────────────────── */
+
+  private allEdges(): RelationEdge[] {
+    if (!this.graph) return [];
+    return Object.values(this.graph.edges).flat();
+  }
+
+  /** A concept with its projects, the articles tagged for it, and every
+   *  relation edge that touches it. */
+  getConcept(slug: string): ConceptDetail {
+    if (!this.catalog) throw new KnowledgeError("corpus is not connected");
+    const concept = this.catalog.concepts.find((c) => c.slug === slug);
+    if (!concept) throw new KnowledgeError(`unknown concept ${slug}`, { path: "/agents/catalog.json" });
+    const node = `/concepts/${slug}`;
+    const relationships = this.allEdges().filter((e) => e.from === node || e.to === node);
+    const tagSet = new Set(concept.tags.map((t) => t.toLowerCase()));
+    const articles = this.catalog.articles.filter((a) =>
+      a.tags.some((t) => tagSet.has(t.toLowerCase()))
+    );
+    const projects = this.catalog.projects.filter((p) => p.concepts.includes(slug));
+    return { concept, articles, projects, relationships };
+  }
+
+  /** A project with its articles, its relation edges and the evidence that
+   *  supports those edges. */
+  getProject(slug: string): ProjectDetail {
+    if (!this.catalog) throw new KnowledgeError("corpus is not connected");
+    const project = this.catalog.projects.find((p) => p.slug === slug);
+    if (!project) throw new KnowledgeError(`unknown project ${slug}`, { path: "/agents/catalog.json" });
+    const node = `/projects/${slug}`;
+    const relationships = this.allEdges().filter((e) => e.from === node || e.to === node);
+    const articleSet = new Set(project.articles);
+    const articles = this.catalog.articles.filter((a) => articleSet.has(a.slug));
+    const edgeIds = new Set(relationships.map((e) => e.id));
+    const evidence = this.evidence.filter((e) => edgeIds.has(e.id.replace(/^ev:/, "")));
+    return { project, articles, relationships, evidence };
+  }
+
+  /** Directive-shaped traversal: several starting nodes, typed relations, a
+   *  bounded depth. The node set is bounded by the graph itself and by depth. */
+  traverse(opts: TraverseManyOptions): TraversalResult {
+    if (!this.graph) throw new KnowledgeError("corpus is not connected");
+    const maxDepth = opts.maxDepth ?? 2;
+    const wanted = new Set(
+      opts.relations && opts.relations.length > 0 ? opts.relations : Object.keys(this.graph.edges)
+    );
+    const nodes = new Map<string, GraphNodeLite>();
+    const edges: RelationEdge[] = [];
+    const edgeSeen = new Set<string>();
+    for (const start of opts.startingNodes) nodes.set(start, { id: start, depth: 0 });
+    let frontier = new Set(opts.startingNodes);
+
+    for (let depth = 0; depth < maxDepth; depth++) {
+      const next = new Set<string>();
+      for (const type of Object.keys(this.graph.edges)) {
+        if (!wanted.has(type)) continue;
+        for (const edge of this.graph.edges[type] ?? []) {
+          if (!frontier.has(edge.from)) continue;
+          if (!edgeSeen.has(edge.id)) {
+            edgeSeen.add(edge.id);
+            edges.push(edge);
+          }
+          if (!nodes.has(edge.to)) {
+            nodes.set(edge.to, { id: edge.to, depth: depth + 1, via: edge });
+            next.add(edge.to);
+          }
+        }
+      }
+      frontier = next;
+      if (frontier.size === 0) break;
+    }
+    return { root: opts.startingNodes[0] ?? "", nodes: [...nodes.values()], edges };
+  }
+
+  /** Related systems, concepts and research reachable from a node. Unlike
+   *  `traverse`, this follows edges in both directions: a project's articles
+   *  are related to it even though `documents` points at the project. */
+  getRelatedWork(
+    node: string,
+    opts: { types?: string[]; maxDepth?: number } = {}
+  ): RelatedWorkResult {
+    const maxDepth = opts.maxDepth ?? 1;
+    const wanted = new Set(
+      opts.types && opts.types.length > 0 ? opts.types : Object.keys(this.graph?.edges ?? {})
+    );
+    const nodes = new Map<string, GraphNodeLite>();
+    const edges: RelationEdge[] = [];
+    const edgeSeen = new Set<string>();
+    nodes.set(node, { id: node, depth: 0 });
+    let frontier = new Set<string>([node]);
+
+    for (let depth = 0; depth < maxDepth; depth++) {
+      const next = new Set<string>();
+      for (const type of Object.keys(this.graph?.edges ?? {})) {
+        if (!wanted.has(type)) continue;
+        for (const edge of this.graph?.edges[type] ?? []) {
+          if (!frontier.has(edge.from) && !frontier.has(edge.to)) continue;
+          if (!edgeSeen.has(edge.id)) {
+            edgeSeen.add(edge.id);
+            edges.push(edge);
+          }
+          for (const id of [edge.from, edge.to]) {
+            if (!nodes.has(id)) {
+              nodes.set(id, { id, depth: depth + 1, via: edge });
+              next.add(id);
+            }
+          }
+        }
+      }
+      frontier = next;
+      if (frontier.size === 0) break;
+    }
+
+    const slugs = new Set<string>();
+    for (const n of nodes.keys()) {
+      const m = /^\/blog\/(.+)$/.exec(n);
+      if (m) slugs.add(m[1]);
+    }
+    const documents = (this.catalog?.articles ?? []).filter((a) => slugs.has(a.slug));
+    return { node, nodes: [...nodes.values()], edges, documents };
+  }
+
+  /* ── citation verification ──────────────────────────────────────────────── */
+
+  /** Check whether a citation resolves to a real document and, when a span is
+   *  supplied, that the span is present in the hash-verified body. A claim id
+   *  resolves against the claim's own source span. */
+  async verifyCitation(input: CitationInput): Promise<CitationVerification> {
+    if (input.claimId) {
+      const claim = this.claims.find((c) => c.id === input.claimId);
+      if (!claim) return { ok: false, reason: `unknown claim ${input.claimId}` };
+      return { ok: true, slug: claim.source, span: claim.sourceSpan, url: claim.source };
+    }
+    let slug = input.slug;
+    if (!slug && input.url) {
+      const m = /\/blog\/([^/?#]+)/.exec(input.url);
+      if (m) slug = m[1];
+    }
+    if (!slug) return { ok: false, reason: "no slug or recognizable url" };
+    const metadata = this.catalog?.articles.find((a) => a.slug === slug);
+    if (!metadata) return { ok: false, slug, reason: `unknown document ${slug}` };
+    const base: CitationVerification = { ok: true, slug, url: metadata.url };
+    if (!input.span) return base;
+    const mirror = await this.fetchMirror(slug);
+    if (!mirror) return { ...base, ok: false, span: input.span, reason: "no verified mirror" };
+    const found = mirror.body.includes(input.span);
+    return {
+      ...base,
+      ok: found,
+      span: input.span,
+      contentHash: mirror.contentHash,
+      reason: found ? undefined : "span not present in the document body",
+    };
   }
 }
 

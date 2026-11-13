@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/contact",
       "/sample",
       "/agents",
+      "/graph",
       "/projects",
       "/concepts",
       "/paths",

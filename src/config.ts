@@ -74,6 +74,7 @@ export const NAV_ITEMS = [
 export const SECONDARY_NAV = [
   { label: "Sample", href: "/sample" },
   { label: "For agents", href: "/agents" },
+  { label: "Graph", href: "/graph" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
 ] as const;

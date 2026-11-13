@@ -23,7 +23,7 @@
       "falseSupportRate": 1,
       "bytes": 0,
       "requestsPerQuery": 0,
-      "latencyMsPerQuery": 9.703601333333333
+      "latencyMsPerQuery": 10.373526433333337
     },
     "B_catalog_graph_html": {
       "questions": 30,
@@ -33,9 +33,9 @@
       "citationAccuracy": 1,
       "passageRecall": 0.2857142857142857,
       "falseSupportRate": 0.3333333333333333,
-      "bytes": 10910767,
+      "bytes": 10929863,
       "requestsPerQuery": 2.6333333333333333,
-      "latencyMsPerQuery": 0.18672646666666518
+      "latencyMsPerQuery": 0.19417899999999785
     },
     "C_catalog_graph_markdown": {
       "questions": 30,
@@ -47,11 +47,11 @@
       "falseSupportRate": 0.5,
       "bytes": 1870067,
       "requestsPerQuery": 2.566666666666667,
-      "latencyMsPerQuery": 0.1646166333333345
+      "latencyMsPerQuery": 0.19423196666666248
     }
   },
   "oneTimeBytes": {
-    "A_crawling": 32308319,
+    "A_crawling": 32357235,
     "B_catalog_graph_html": 271386,
     "C_catalog_graph_markdown": 271386
   },

@@ -40,7 +40,22 @@ Claude Desktop / compatible clients, `claude mcp add` or the config file:
 }
 ```
 
-Hermes and other local agents can use the same stdio transport.
+Hermes uses the same stdio transport. Add it under `mcp_servers` in
+`~/.hermes/config.yaml`:
+
+```yaml
+mcp_servers:
+  danielkliewer-knowledge:
+    command: node
+    args:
+      - /absolute/path/to/site-code/packages/knowledge-mcp/src/server.ts
+    enabled: true
+    env:
+      KNOWLEDGE_BASE_URL: https://www.danielkliewer.com
+```
+
+Restart Hermes, then confirm with `Tool Search → knowledge` or by asking for a
+corpus lookup.
 
 ## Tools
 
@@ -48,10 +63,18 @@ Hermes and other local agents can use the same stdio transport.
 |---|---|---|
 | `search_knowledge` | `query`, `maxDocuments?`, `maxBytes?`, `concepts?`, `projects?`, `tags?` | Ranked documents with verified Markdown bodies. |
 | `get_article` | `slug` | Metadata, verified body, content hash, claims, citation. |
+| `get_concept` | `slug` | The concept, its projects, articles and typed relationships. |
+| `get_project` | `slug` | The project, its articles, relationships and their evidence. |
+| `get_claim` | `claimId`, `includeEvidence?` | The claim and its assessment; evidence on request. |
+| `get_evidence` | `claimId` or `claimIds` | Supporting and contradictory evidence. |
+| `verify_citation` | `slug?`, `url?`, `claimId?`, `span?` | `{ ok, url, contentHash, reason }`. |
 | `traverse_graph` | `from`, `types?`, `maxDepth?` | Breadth-first nodes and edges. |
-| `get_evidence` | `claimId` | Supporting and contradictory evidence. |
+| `get_related_work` | `node`, `types?`, `maxDepth?` | Related nodes, edges and documents (bidirectional). |
 | `get_learning_path` | `slug` | The path with steps resolved to titles. |
 | `get_book_context` | `slug` | The book's relationships to the article, chapters, citation. |
+
+A proposed claim is returned with `assessment: "proposed"` and
+`authoritative: false`; no tool promotes it.
 
 ## Limits
 
