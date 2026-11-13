@@ -1,7 +1,7 @@
 {
   "generatedFrom": "scripts/route-manifest.mjs",
   "counts": {
-    "static": 12,
+    "static": 13,
     "blogPosts": 197,
     "dynamicRoutes": 23,
     "handlers": 10,
@@ -15,6 +15,7 @@
     "/book",
     "/concepts",
     "/contact",
+    "/graph",
     "/paths",
     "/privacy",
     "/projects",
