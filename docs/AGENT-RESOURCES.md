@@ -1,8 +1,8 @@
 # Agent knowledge interface
 
-Six public resources, generated at build time from the same source the pages
-render. No database, no runtime API, no per-request compute. All are static and
-cacheable.
+Nine machine-readable resources, generated at build time from the same source
+the pages render. No database, no runtime API, no per-request compute. All are
+static and cacheable. Authoritative counts: [STATISTICS.md](STATISTICS.md).
 
 | Path | Type | Purpose |
 |---|---|---|
@@ -11,7 +11,7 @@ cacheable.
 | `/agents` | HTML | Human guide to the corpus and its graph. |
 | `/agents/index.json` | `application/json` | Master index with byte sizes and content types. |
 | `/agents/catalog.json` | `application/json` | Structured catalog. ~204 KB. |
-| `/agents/graph.json` | `application/json` | Typed relation graph with provenance. ~19 KB. |
+| `/agents/graph.json` | `application/json` | Typed relation graph with provenance. ~61 KB. |
 | `/agents/book.json` | `application/json` | The book as a product record. ~18 KB. |
 | `/agents/claims.json` | `application/json` | Typed claims with source spans, assessments and evidence references. |
 | `/agents/evidence.json` | `application/json` | Evidence records supporting or contradicting each claim. |
@@ -19,6 +19,26 @@ cacheable.
 | `/research/{slug}.md` | `text/markdown` | Canonical Markdown mirror of every published article. One file per article, generated from the same source the page renders. |
 
 `/for-agents` is a permanent redirect to `/agents`.
+
+## Article-count discrepancy (investigated)
+
+The November 12, 2026 article *Compiling a Website for Agents* states "198
+articles" and "six static files". Both figures are point-in-time and stale:
+
+- At the article's own commit (`47c2a39`) the archive held **199** source
+  files, of which **2** were already marked `draft: true`. The article's 198
+  was the count *before* the article itself was added, and it included the two
+  drafts — so it was not the published count even at publication.
+- The authoritative published count is **197** (199 source files minus 2
+  drafts), and the resource count is **nine**, not six. Both are generated from
+  the build by `npm run stats` → [STATISTICS.md](STATISTICS.md).
+- The article also describes a `lib/corpus/` + zod architecture that was never
+  shipped; the shipped implementation is `src/lib/agent-resources-core.ts`
+  over `content/research/*.md`. The article is retained as the design
+  narrative, with an editor's note recording the current figures.
+
+The rule that prevents a recurrence: no prose document carries a hand-counted
+figure. Every count comes from the build output.
 
 ## Canonical Markdown mirrors
 
@@ -91,7 +111,7 @@ Everything is derived, never hand-copied:
 - `src/lib/book-links.ts` — article↔chapter relations, each with a reason.
 - `src/lib/relations-core.ts` — the graph semantics, shared with the auditor.
 - `src/lib/markdown-core.ts` — the pure Markdown mirror builder and verifier.
-- `src/lib/agent-resources-core.ts` — the pure builders for the six resources.
+- `src/lib/agent-resources-core.ts` — the pure builders for the nine resources.
 
 The builders are pure functions of that data: no clock, no randomness. Two
 builds of the same commit produce byte-identical resources — including across

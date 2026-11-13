@@ -52,7 +52,7 @@ Beyond the build gates, three checks run over the content and the built output:
   canonical on every sitemap URL, complete OG/Twitter metadata, parseable
   JSON-LD, and no unintended `noindex`.
 - `npm run validate:agents` (`scripts/validate-agents.mjs`, run after
-  `next build`) — the agent knowledge interface: all six resources exist and
+  `next build`) — the agent knowledge interface: all nine resources exist and
   parse, every canonical URL is on the site origin, the book record matches
   `src/config.ts`, no invented availability/rating, no dangling graph edge, the
   index's byte sizes match the built bodies, and no draft leaked into the
@@ -118,18 +118,20 @@ Current baseline: 0 fatal · 10 defects (all inert `canonical_url` frontmatter) 
 350 advisory · 98 relation edges with 0 dangling references · 9 agent resources ·
 197 published articles (2 drafts excluded) · 197 Markdown mirrors · 109 claims ·
 109 evidence records · 10 non-authoritative proposals · production smoke test
-passing with 0 errors.
+passing with 0 errors. Every figure is generated from the build by
+[`npm run stats`](docs/STATISTICS.md); none is hand-maintained.
 
 ## Agent interface
 
 The site is a statically compiled knowledge corpus, not a blog with an API
-bolted on. Six resources are generated at build time from the same source the
-pages render — see **[docs/AGENT-RESOURCES.md](docs/AGENT-RESOURCES.md)**:
+bolted on. Nine machine-readable resources are generated at build time from the
+same source the pages render — see **[docs/AGENT-RESOURCES.md](docs/AGENT-RESOURCES.md)**
+and the authoritative counts in **[docs/STATISTICS.md](docs/STATISTICS.md)**:
 
 | Path | Purpose |
 |---|---|
 | `/llms.txt` | Entry point: identity, domains, navigation, book, pointers. |
-| `/llms-full.txt` | Full catalog as text (~126 KB, not the 6.8 MB of bodies). |
+| `/llms-full.txt` | Full catalog as text (~145 KB, not the 6.8 MB of bodies). |
 | `/agents` | Human guide to the corpus and its graph. |
 | `/agents/index.json` | Master index with byte sizes and content types. |
 | `/agents/catalog.json` | Articles, projects, concepts, paths, chapters. |

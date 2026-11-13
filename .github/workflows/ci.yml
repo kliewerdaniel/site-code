@@ -77,7 +77,7 @@ jobs:
       - name: Validate build
         run: npm run validate:build
 
-      # Agent knowledge interface: the six generated resources exist, parse,
+      # Agent knowledge interface: the nine generated resources exist, parse,
       # carry canonical URLs, match the book config, and have no dangling edges.
       - name: Validate agent resources
         run: npm run validate:agents
@@ -104,6 +104,14 @@ jobs:
         run: npm run audit
       - name: Audit baseline
         run: npm run audit -- --check
+
+      # Regenerate the authoritative statistics page from the build and the
+      # committed validation reports. The file is deterministic per commit, so
+      # a stale committed copy fails here — no hand-maintained count survives.
+      - name: Statistics
+        run: |
+          npm run stats
+          git diff --exit-code docs/STATISTICS.md
 
       # Route parity: every URL in the manifest resolves, and every removed
       # section still 308s to its replacement. Starts its own server and always
