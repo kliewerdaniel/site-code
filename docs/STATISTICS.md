@@ -6,8 +6,8 @@
 
 | Count | Value |
 |---|---|
-| Source files | 199 |
-| Published articles | 197 |
+| Source files | 200 |
+| Published articles | 198 |
 | Drafts (excluded) | 2 |
 | Projects | 12 |
 | Concepts | 8 |
@@ -17,7 +17,7 @@
 | Claims | 109 |
 | Evidence records | 109 |
 | Non-authoritative proposals | 10 |
-| Markdown mirrors | 197 |
+| Markdown mirrors | 198 |
 
 ## Relation graph by type
 
@@ -42,23 +42,23 @@
 
 | Path | Type | Bytes | sha256 (first 12) |
 |---|---|---|---|
-| `/llms.txt` | text/plain | 3174 | `2d3e35bf1d75` |
-| `/llms-full.txt` | text/plain | 148536 | `d6d3d69d8337` |
-| `/agents/index.json` | application/json | 3782 | `374719df10e2` |
-| `/agents/catalog.json` | application/json | 208540 | `598dfebf0064` |
+| `/llms.txt` | text/plain | 3174 | `39b266f154a7` |
+| `/llms-full.txt` | text/plain | 149131 | `e3a4e54c6b9b` |
+| `/agents/index.json` | application/json | 3782 | `368462bef408` |
+| `/agents/catalog.json` | application/json | 209348 | `d77220335ac3` |
 | `/agents/graph.json` | application/json | 62846 | `7e0086db7151` |
 | `/agents/book.json` | application/json | 18077 | `8eab67fb31c3` |
-| `/agents/claims.json` | application/json | 108279 | `3265e5d3380e` |
-| `/agents/evidence.json` | application/json | 52209 | `58d98898d01e` |
-| `/agents/proposals.json` | application/json | 7685 | `c92448f04ec0` |
+| `/agents/claims.json` | application/json | 108122 | `2cd3d80305aa` |
+| `/agents/evidence.json` | application/json | 52142 | `d224cc144ec1` |
+| `/agents/proposals.json` | application/json | 7641 | `05fad083b329` |
 
-The master index (`/agents/index.json`) lists 9 resources and reports 598.8 KB in total.
+The master index (`/agents/index.json`) lists 9 resources and reports 599.9 KB in total.
 
 ## Validation
 
 | Gate | Result |
 |---|---|
-| Corpus conformance | 0 error(s), 10 warning(s), 521 info |
+| Corpus conformance | 0 error(s), 10 warning(s), 523 info |
 | Content audit | 0 fatal, 0 defect, 0 advisory |
 
 ## Notes

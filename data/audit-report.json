@@ -1,17 +1,17 @@
 {
   "generatedBy": "scripts/audit-site.mjs",
   "counts": {
-    "posts": 199,
-    "published": 197,
+    "posts": 200,
+    "published": 198,
     "drafts": 2,
-    "articles": 197,
+    "articles": 198,
     "projects": 12,
     "concepts": 8,
     "chapters": 24,
     "verifiedChapterLinks": 0,
-    "contentUrls": 232,
-    "sitemapUrls": 232,
-    "builtPages": 231,
+    "contentUrls": 233,
+    "sitemapUrls": 234,
+    "builtPages": 233,
     "redirects": 35
   },
   "relations": {
@@ -74,7 +74,7 @@
       },
       {
         "path": "/llms-full.txt",
-        "bytes": 148536,
+        "bytes": 149131,
         "contentType": "text/plain; charset=utf-8"
       },
       {
@@ -84,7 +84,7 @@
       },
       {
         "path": "/agents/catalog.json",
-        "bytes": 208540,
+        "bytes": 209348,
         "contentType": "application/json; charset=utf-8"
       },
       {
@@ -99,22 +99,22 @@
       },
       {
         "path": "/agents/claims.json",
-        "bytes": 108279,
+        "bytes": 108122,
         "contentType": "application/json; charset=utf-8"
       },
       {
         "path": "/agents/evidence.json",
-        "bytes": 52209,
+        "bytes": 52142,
         "contentType": "application/json; charset=utf-8"
       },
       {
         "path": "/agents/proposals.json",
-        "bytes": 7685,
+        "bytes": 7641,
         "contentType": "application/json; charset=utf-8"
       }
     ],
     "counts": {
-      "articles": 197,
+      "articles": 198,
       "drafts": 2,
       "projects": 12,
       "concepts": 8,
@@ -143,7 +143,7 @@
     "findings": 0
   },
   "markdown": {
-    "mirrors": 197,
+    "mirrors": 198,
     "fatal": 0,
     "findings": 0
   },
@@ -156,11 +156,11 @@
   },
   "fatal": 0,
   "defects": 10,
-  "advisory": 350,
+  "advisory": 351,
   "byKind": {
     "canonical-mismatch": 10,
     "description-long": 178,
-    "title-long": 159,
+    "title-long": 160,
     "description-missing": 13
   },
   "canonical": {
@@ -233,15 +233,15 @@
     ]
   },
   "routes": {
-    "contentUrls": 232,
+    "contentUrls": 233,
     "handlers": 10,
     "redirects": 35,
     "not200": 0
   },
   "build": {
-    "sitemapUrls": 232,
-    "checked": 231,
-    "builtPages": 231,
+    "sitemapUrls": 234,
+    "checked": 233,
+    "builtPages": 233,
     "fatal": 0
   },
   "defectList": [
@@ -616,7 +616,8 @@
     "title-long:2026-10-25-the-mask-that-rendered-anyway.md",
     "title-long:2026-10-29-frozen-spine-reference-model-enforcement.md",
     "title-long:2026-11-04-architecture-of-reliable-intelligence.md",
-    "title-long:2026-11-04-boundaries-of-intelligence.md"
+    "title-long:2026-11-04-boundaries-of-intelligence.md",
+    "title-long:2026-11-13-productizing-the-knowledge-compiler.md"
   ],
   "findings": [
     {
@@ -3138,6 +3139,13 @@
       "kind": "title-long",
       "file": "2026-11-04-boundaries-of-intelligence.md",
       "detail": "title is 100 chars (> 70)"
+    },
+    {
+      "id": "title-long:2026-11-13-productizing-the-knowledge-compiler.md",
+      "severity": "advisory",
+      "kind": "title-long",
+      "file": "2026-11-13-productizing-the-knowledge-compiler.md",
+      "detail": "title is 99 chars (> 70)"
     }
   ]
 }

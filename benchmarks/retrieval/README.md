@@ -49,27 +49,34 @@ claim. That is measured directly as the **false-support rate**.
 - These are per-session assumptions. A real deployment may cache more; the
   benchmark does not model a CDN or a shared cache.
 
-## Results (30 questions, 197 articles)
+## Results (30 questions, 198 articles)
 
 | Metric | A · Crawling | B · Catalog + graph | C · + Markdown |
 |---|---|---|---|
-| Recall@5 | 0.313 | **1.000** | **1.000** |
-| Precision@5 | 0.083 | 0.671 | 0.671 |
-| Citation accuracy | 0.417 | **1.000** | **1.000** |
-| Passage recall | **0.810** | 0.286 | 0.571 |
+| Recall@5 | 0.146 | **1.000** | **1.000** |
+| Precision@5 | 0.050 | 0.671 | 0.671 |
+| Citation accuracy | 0.250 | **1.000** | **1.000** |
+| Passage recall | **0.857** | 0.286 | 0.571 |
 | False-support rate | 1.000 | **0.333** | 0.500 |
-| One-time bytes | 31,599 KB | **265 KB** | **265 KB** |
-| Total bytes | 31,599 KB | 10,674 KB | **1,826 KB** |
+| One-time bytes | 31,754 KB | **266 KB** | **266 KB** |
+| Total bytes | 31,754 KB | 10,679 KB | **1,826 KB** |
 | Requests / query | 0.0 (after crawl) | 2.6 | 2.6 |
-| Latency / query (local) | 9.7 ms | 0.2 ms | 0.2 ms |
+| Latency / query (local) | 10.0 ms | 0.2 ms | 0.2 ms |
+
+The crawler's numbers are sensitive to the corpus: adding one broad-topic
+article (the post that describes this work) dropped A's Recall@5 from 0.313 to
+0.146 and its citation accuracy from 0.417 to 0.250, because the new page ranks
+highly for several queries and pushes relevant pages out of the top five. B and
+C did not move. That is the point of the comparison: a crawler's ranking is a
+function of the whole archive, while the catalog's is a function of the query.
 
 ## What the experiment establishes
 
 1. **The compiled catalog retrieves the right documents.** Recall@5 rises
-   from 0.313 to 1.000 and citation accuracy from 0.417 to 1.000. The graph
+   from 0.146 to 1.000 and citation accuracy from 0.250 to 1.000. The graph
    answers the relationship questions directly; a crawler has no graph.
 2. **The one-time cost drops by two orders of magnitude.** Crawling every page
-   costs 31.6 MB; the catalog and graph cost 265 KB.
+   costs 31.8 MB; the catalog and graph cost 266 KB.
 3. **Canonical Markdown is the cheapest body transport.** For the same
    ranking, Markdown mirrors cost 1.8 MB across the benchmark against 10.7 MB
    for the HTML pages — a 5.8× reduction on top of the catalog saving.

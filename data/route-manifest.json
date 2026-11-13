@@ -2,7 +2,7 @@
   "generatedFrom": "scripts/route-manifest.mjs",
   "counts": {
     "static": 13,
-    "blogPosts": 197,
+    "blogPosts": 198,
     "dynamicRoutes": 23,
     "handlers": 10,
     "removedRoutes": 12,
@@ -220,7 +220,8 @@
     "/blog/2026-10-29-frozen-spine-reference-model-enforcement",
     "/blog/2026-11-04-architecture-of-reliable-intelligence",
     "/blog/2026-11-04-boundaries-of-intelligence",
-    "/blog/2026-11-12-compiling-a-website-for-agents"
+    "/blog/2026-11-12-compiling-a-website-for-agents",
+    "/blog/2026-11-13-productizing-the-knowledge-compiler"
   ],
   "dynamic": [
     "/concepts/creative-automation",

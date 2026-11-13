@@ -101,7 +101,10 @@ cannot force a caller to treat it as non-authoritative.
 
 **Deterministic** (`npm run benchmark`, 30 adjudicated questions): the compiled
 catalog retrieves at Recall@5 1.000 and citation accuracy 1.000 against a
-crawler's 0.313 / 0.417, at 265 KB one-time cost against 30.8 MB.
+crawler's 0.146 / 0.250, at 266 KB one-time cost against 31.8 MB. Adding the
+post that describes this work dropped the crawler's Recall@5 from 0.313 to
+0.146 while the catalog did not move — a crawler's ranking is a function of the
+whole archive, the catalog's is a function of the query.
 
 **Agent** (`npm run benchmark:agent`, local models, temperature 0, 256-token
 budget, cold and warm passes). Cold results, two model families:

@@ -5,10 +5,10 @@
   "summary": {
     "errors": 0,
     "warnings": 10,
-    "info": 521,
-    "articles": 197,
+    "info": 523,
+    "articles": 198,
     "graphEdges": 98,
-    "mirrors": 197
+    "mirrors": 198
   },
   "errors": [],
   "warnings": [
@@ -374,7 +374,9 @@
     "content: 2026-11-04-boundaries-of-intelligence.md: description is 206 chars (> 160)",
     "content: 2026-11-04-boundaries-of-intelligence.md: title is 100 chars (> 70)",
     "content: 2026-11-12-compiling-a-website-for-agents.md: description is 325 chars (> 160)",
+    "content: 2026-11-13-productizing-the-knowledge-compiler.md: title is 99 chars (> 70)",
     "build: /: <title> is 74 chars (> 70)",
+    "build: /blog/2026-11-13-productizing-the-knowledge-compiler: <title> is 99 chars (> 70)",
     "build: /blog/2026-11-04-architecture-of-reliable-intelligence: <title> is 120 chars (> 70)",
     "build: /blog/2026-11-04-boundaries-of-intelligence: <title> is 100 chars (> 70)",
     "build: /blog/2026-10-29-frozen-spine-reference-model-enforcement: <title> is 75 chars (> 70)",
@@ -534,26 +536,26 @@
     "build: /blog/2024-10-12-django-react: <title> is 95 chars (> 70)",
     "build: /blog/2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models: <title> is 93 chars (> 70)",
     "build: /blog/2024-10-04-detailed-description-of-insight-journal: <title> is 77 chars (> 70)",
-    "/llms.txt: 3174 bytes, sha256:2d3e35bf1d75",
-    "/llms-full.txt: 148536 bytes, sha256:d6d3d69d8337",
-    "/agents/catalog.json: 208540 bytes, sha256:598dfebf0064",
+    "/llms.txt: 3174 bytes, sha256:39b266f154a7",
+    "/llms-full.txt: 149131 bytes, sha256:b4fb8be5e0e5",
+    "/agents/catalog.json: 209348 bytes, sha256:c96b8c92ad5c",
     "/agents/graph.json: 62846 bytes, sha256:7e0086db7151",
     "/agents/book.json: 18077 bytes, sha256:8eab67fb31c3",
-    "/agents/claims.json: 108279 bytes, sha256:3265e5d3380e",
-    "/agents/evidence.json: 52209 bytes, sha256:58d98898d01e",
-    "/agents/proposals.json: 7685 bytes, sha256:c92448f04ec0",
-    "/agents/index.json: 3782 bytes, sha256:374719df10e2",
-    "197 markdown mirrors verified against the deterministic render",
+    "/agents/claims.json: 108122 bytes, sha256:2cd3d80305aa",
+    "/agents/evidence.json: 52142 bytes, sha256:d224cc144ec1",
+    "/agents/proposals.json: 7641 bytes, sha256:05fad083b329",
+    "/agents/index.json: 3782 bytes, sha256:368462bef408",
+    "198 markdown mirrors verified against the deterministic render",
     "2 drafts excluded from the corpus"
   ],
   "checks": {
     "content": {
       "fatal": 0,
-      "findings": 360
+      "findings": 361
     },
     "build": {
       "fatal": 0,
-      "findings": 160
+      "findings": 161
     },
     "agents": {
       "fatal": 0,
