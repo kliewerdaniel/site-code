@@ -13,6 +13,9 @@ cacheable.
 | `/agents/catalog.json` | `application/json` | Structured catalog. ~204 KB. |
 | `/agents/graph.json` | `application/json` | Typed relation graph with provenance. ~19 KB. |
 | `/agents/book.json` | `application/json` | The book as a product record. ~18 KB. |
+| `/agents/claims.json` | `application/json` | Typed claims with source spans, assessments and evidence references. |
+| `/agents/evidence.json` | `application/json` | Evidence records supporting or contradicting each claim. |
+| `/agents/proposals.json` | `application/json` | Non-authoritative relation proposals. Never in the graph. |
 | `/research/{slug}.md` | `text/markdown` | Canonical Markdown mirror of every published article. One file per article, generated from the same source the page renders. |
 
 `/for-agents` is a permanent redirect to `/agents`.
@@ -47,6 +50,33 @@ mirror builder, so `/research/<draft-slug>.md` returns 404. `catalog.json`
 lists each article's `markdownUrl`; `index.json` describes the mirror scheme and
 its count.
 
+## Claims, evidence and proposals
+
+`/agents/claims.json` and `/agents/evidence.json` represent individual claims
+and the evidence for them. Every authoritative relation is a claim, so the
+graph and the claim model cannot disagree.
+
+A claim carries: a unique `id`, a `statement`, the `source` document, the exact
+`sourceSpan`, a `category` (`relation` / `property` / `absence` /
+`evaluation`), an `assessment` (`proposed` / `supported` / `contested` /
+`superseded` / `unverified`), a `verification` level (`implemented` / `tested` /
+`demonstrated` / `independently_verified` / `hypothesized`), supporting and
+contradictory evidence ids, related relation ids, and an `authoritative` flag.
+
+Schema validity is never confused with factual correctness: a claim that
+validates is still only as well established as its evidence, and the
+verification level states which proposition the evidence actually establishes.
+
+`/agents/proposals.json` carries non-authoritative proposals — a post that
+shares two or more concepts with a project but is not declared as its write-up.
+A proposal is a question for an editor, not a fact: it is marked
+`status: "proposed"`, appears in `claims.json` with `authoritative: false`, and
+never enters `/agents/graph.json` without explicit approval.
+
+The strongest negative statement the repository makes is also a claim: no
+`chapter_covers` relation can be verified between the manuscript and the
+article archive.
+
 ## Source of truth
 
 Everything is derived, never hand-copied:
@@ -76,6 +106,12 @@ builds of the same commit produce byte-identical resources.
 
 ## Graph vocabulary
 
+The controlled vocabulary is defined once, in `src/lib/relation-vocabulary.ts`:
+
+`implements`, `extends`, `depends_on`, `evaluates`, `contradicts`,
+`supersedes`, `derived_from`, `supports`, `refines`, `documents`,
+`demonstrates`, `prerequisite_for`, `chapter_covers`, `recommends_reading`.
+
 | Type | From | To | Meaning |
 |---|---|---|---|
 | `implements` | `/projects/<p>` | `/concepts/<c>` | the project implements the concept |
@@ -84,8 +120,13 @@ builds of the same commit produce byte-identical resources.
 | `chapter_covers` | `chapter:<n>` | `/blog/<post>` | the chapter covers the article (verified only) |
 | `recommends_reading` | `/blog/<post>` | `chapter:<n>` | the article is further reading for the chapter |
 
-Relation types with no data source are listed in `absent`, never fabricated:
-`extends`, `validates`, `explains`, `expands_on`, `related_product`.
+Every edge carries a stable `id` (`<type>:<from>-><to>`), a lifecycle `status`
+(`declared` / `proposed` / `approved` / `rejected`), a `verification` status,
+and `provenance` (declaring file, generator, reason, modification fingerprint).
+Types with no data source are listed in `absent`, never fabricated: `extends`,
+`depends_on`, `evaluates`, `contradicts`, `supersedes`, `derived_from`,
+`supports`, `refines`, `demonstrates`, plus the legacy proposed types
+`validates`, `explains`, `expands_on`, `related_product`.
 
 ### The `chapter_covers` rule
 
@@ -135,8 +176,15 @@ published post with no mirror, a mirror whose hash or byte count does not
 verify, a mirror whose body differs from the source article, a mirror that does
 not match the deterministic render, or a draft with a published mirror.
 
+`npm run validate:claims` runs after `next build` and fails closed on: a claim
+or evidence resource with no build output, a claim with a missing id,
+statement, source, span, category, assessment or verification level, a claim
+referencing unknown evidence, a proposed claim marked authoritative, a
+duplicate id, or a proposal present in the authoritative graph.
+
 The auditor (`npm run audit`) reports the resource list, the edge counts by
-type, the dangling count, the verified-chapter-link count and the mirror count.
+type, the dangling count, the verified-chapter-link count, the mirror count and
+the claim/evidence/proposal counts.
 
 `npm run conformance` aggregates every validator plus the corpus-level
 invariants (schema shape, deterministic compilation, output consistency,

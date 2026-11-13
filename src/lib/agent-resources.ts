@@ -11,6 +11,7 @@ import { PROJECTS, CONCEPTS, PATHS, conceptsForPost, projectsForPost } from "./t
 import { CHAPTERS } from "./chapters";
 import { BOOK_LINKS } from "./book-links";
 import { relationGraph } from "./relations";
+import { buildClaimsAndEvidence, buildProposals } from "./claim-evidence";
 import {
   buildAgentResources,
   buildMarkdownMirrors,
@@ -100,6 +101,10 @@ function corpus(): AgentCorpus {
       relation: l.relation,
       reason: l.reason,
     })),
+    ...(() => {
+      const { claims, evidence } = buildClaimsAndEvidence();
+      return { claims, evidence, proposals: buildProposals() };
+    })(),
   };
 }
 

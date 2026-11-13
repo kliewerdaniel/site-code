@@ -15,44 +15,49 @@
 //
 // `chapter_covers` is deliberately empty: the manuscript does not reproduce
 // individual articles, so no such claim can be verified. See `book-links.ts`.
+//
+// Every edge carries a stable id, a lifecycle status, a verification status and
+// provenance (declaring file, generator, reason, modification fingerprint).
+// Proposed edges live in `proposed` and never enter the authoritative graph.
 
-export type RelationType =
-  | "implements"
-  | "documents"
-  | "prerequisite_for"
-  | "chapter_covers"
-  | "recommends_reading";
+import {
+  ABSENT_RELATIONS,
+  LEGACY_ABSENT_RELATIONS,
+  RELATION_TYPES,
+  RELATION_VOCABULARY,
+  makeEdge,
+  type RelationEdge,
+  type RelationProvenance,
+  type RelationStatus,
+  type RelationType,
+  type VerificationStatus,
+} from "./relation-vocabulary.ts";
 
-export const RELATION_TYPES: RelationType[] = [
-  "implements",
-  "documents",
-  "prerequisite_for",
-  "chapter_covers",
-  "recommends_reading",
-];
-
-/** Relation types proposed elsewhere but with no data source in this repo. */
-export const ABSENT_RELATIONS = [
-  "extends",
-  "validates",
-  "explains",
-  "expands_on",
-  "related_product",
-];
-
-export interface RelationEdge {
-  from: string;
-  to: string;
-  /** Path/section that carries the relation, when there is one. */
-  via?: string;
-  /** Why the relation holds, for the types that assert a claim. */
-  reason?: string;
-}
+export {
+  ABSENT_RELATIONS,
+  LEGACY_ABSENT_RELATIONS,
+  RELATION_TYPES,
+  RELATION_VOCABULARY,
+  makeEdge,
+  relationFingerprint,
+  relationId,
+  sha256Hex,
+} from "./relation-vocabulary.ts";
+export type {
+  RelationEdge,
+  RelationProvenance,
+  RelationStatus,
+  RelationType,
+  VerificationStatus,
+} from "./relation-vocabulary.ts";
 
 export interface RelationGraph {
+  vocabulary: readonly RelationType[];
   counts: Record<RelationType, number>;
   edges: Record<RelationType, RelationEdge[]>;
   absent: string[];
+  /** Non-authoritative proposals. Never merged into `edges`. */
+  proposed: RelationEdge[];
 }
 
 export interface RelationInput {
@@ -73,53 +78,56 @@ export function chapterNode(n: number): string {
 }
 
 export function buildRelationGraph(input: RelationInput): RelationGraph {
-  const edges: Record<RelationType, RelationEdge[]> = {
-    implements: [],
-    documents: [],
-    prerequisite_for: [],
-    chapter_covers: [],
-    recommends_reading: [],
-  };
+  const edges = Object.fromEntries(
+    RELATION_TYPES.map((t) => [t, [] as RelationEdge[]])
+  ) as Record<RelationType, RelationEdge[]>;
 
   for (const project of input.projects) {
     for (const c of project.concepts) {
-      edges.implements.push({
-        from: `/projects/${project.slug}`,
-        to: `/concepts/${c}`,
-      });
+      edges.implements.push(
+        makeEdge("implements", `/projects/${project.slug}`, `/concepts/${c}`, {
+          source: "src/lib/taxonomy.ts",
+        })
+      );
     }
     for (const a of project.articles) {
-      edges.documents.push({
-        from: `/blog/${a}`,
-        to: `/projects/${project.slug}`,
-      });
+      edges.documents.push(
+        makeEdge("documents", `/blog/${a}`, `/projects/${project.slug}`, {
+          source: "src/lib/taxonomy.ts",
+        })
+      );
     }
   }
 
   for (const path of input.paths) {
     const refs = path.steps.map((s) => s.ref);
     for (let i = 0; i + 1 < refs.length; i++) {
-      edges.prerequisite_for.push({
-        from: refs[i],
-        to: refs[i + 1],
-        via: `/paths/${path.slug}`,
-      });
+      edges.prerequisite_for.push(
+        makeEdge("prerequisite_for", refs[i], refs[i + 1], {
+          source: "src/lib/taxonomy.ts",
+          via: `/paths/${path.slug}`,
+        })
+      );
     }
   }
 
   for (const link of input.bookLinks) {
     if (link.relation === "chapter_covers") {
-      edges.chapter_covers.push({
-        from: chapterNode(link.chapter),
-        to: `/blog/${link.article}`,
-        reason: link.reason,
-      });
+      edges.chapter_covers.push(
+        makeEdge("chapter_covers", chapterNode(link.chapter), `/blog/${link.article}`, {
+          source: "src/lib/book-links.ts",
+          reason: link.reason,
+          verification: "curated",
+        })
+      );
     } else {
-      edges.recommends_reading.push({
-        from: `/blog/${link.article}`,
-        to: chapterNode(link.chapter),
-        reason: link.reason,
-      });
+      edges.recommends_reading.push(
+        makeEdge("recommends_reading", `/blog/${link.article}`, chapterNode(link.chapter), {
+          source: "src/lib/book-links.ts",
+          reason: link.reason,
+          verification: "curated",
+        })
+      );
     }
   }
 
@@ -127,7 +135,13 @@ export function buildRelationGraph(input: RelationInput): RelationGraph {
     RELATION_TYPES.map((t) => [t, edges[t].length])
   ) as Record<RelationType, number>;
 
-  return { counts, edges, absent: [...ABSENT_RELATIONS] };
+  return {
+    vocabulary: RELATION_VOCABULARY,
+    counts,
+    edges,
+    absent: [...ABSENT_RELATIONS, ...LEGACY_ABSENT_RELATIONS],
+    proposed: [],
+  };
 }
 
 /** Everything the graph's edges are allowed to point at. */

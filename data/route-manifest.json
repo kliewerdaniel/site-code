@@ -4,7 +4,7 @@
     "static": 12,
     "blogPosts": 197,
     "dynamicRoutes": 23,
-    "handlers": 7,
+    "handlers": 10,
     "removedRoutes": 12,
     "legacyRedirects": 23
   },
@@ -249,8 +249,11 @@
   "handlers": [
     "/agents/book.json",
     "/agents/catalog.json",
+    "/agents/claims.json",
+    "/agents/evidence.json",
     "/agents/graph.json",
     "/agents/index.json",
+    "/agents/proposals.json",
     "/feed.xml",
     "/llms-full.txt",
     "/llms.txt"

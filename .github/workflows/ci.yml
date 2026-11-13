@@ -87,6 +87,11 @@ jobs:
       - name: Validate Markdown mirrors
         run: npm run validate:markdown
 
+      # Claim/evidence model: ids resolve, assessments are from the controlled
+      # vocabulary, and a proposed claim is never authoritative.
+      - name: Validate claims and evidence
+        run: npm run validate:claims
+
       # One reproducible command over the whole corpus: schema shape,
       # deterministic compilation, output consistency, resource references,
       # publication metadata, index completeness and draft exclusion.

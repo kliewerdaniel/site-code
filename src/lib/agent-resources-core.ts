@@ -10,6 +10,8 @@
 // `src/app/agents/*.json` serve the result.
 
 import type { RelationGraph } from "./relations-core";
+import type { RelationEdge } from "./relation-vocabulary.ts";
+import type { Claim, Evidence } from "./claim-evidence-core.ts";
 import {
   MARKDOWN_CONTENT_TYPE,
   markdownPath,
@@ -131,6 +133,10 @@ export interface AgentCorpus {
   chapters: AgentChapter[];
   graph: RelationGraph;
   bookLinks: AgentBookLink[];
+  claims: Claim[];
+  evidence: Evidence[];
+  /** Non-authoritative relation proposals. Never merged into `graph`. */
+  proposals: RelationEdge[];
 }
 
 export interface AgentResource {
@@ -381,9 +387,46 @@ function renderCatalog(c: AgentCorpus): string {
 function renderGraph(c: AgentCorpus): string {
   return json({
     site: { name: c.site.name, url: c.site.url },
+    vocabulary: c.graph.vocabulary,
     counts: c.graph.counts,
     absent: c.graph.absent,
     edges: c.graph.edges,
+    proposed: c.graph.proposed,
+  });
+}
+
+/* ── /agents/claims.json ─────────────────────────────────────────────────── */
+
+function renderClaims(c: AgentCorpus): string {
+  return json({
+    site: { name: c.site.name, url: c.site.url },
+    counts: {
+      total: c.claims.length,
+      authoritative: c.claims.filter((x) => x.authoritative).length,
+      proposed: c.claims.filter((x) => !x.authoritative).length,
+    },
+    claims: c.claims,
+  });
+}
+
+/* ── /agents/evidence.json ───────────────────────────────────────────────── */
+
+function renderEvidence(c: AgentCorpus): string {
+  return json({
+    site: { name: c.site.name, url: c.site.url },
+    counts: { total: c.evidence.length },
+    evidence: c.evidence,
+  });
+}
+
+/* ── /agents/proposals.json ──────────────────────────────────────────────── */
+
+function renderProposals(c: AgentCorpus): string {
+  return json({
+    site: { name: c.site.name, url: c.site.url },
+    rule: "A proposal is a question for an editor, not a fact. It never enters the authoritative graph without explicit approval.",
+    count: c.proposals.length,
+    proposals: c.proposals,
   });
 }
 
@@ -477,6 +520,21 @@ const RESOURCE_META: Array<{ path: string; contentType: string; description: str
     contentType: "application/json; charset=utf-8",
     description: "The book as a product record, sourced from the central config.",
   },
+  {
+    path: "/agents/claims.json",
+    contentType: "application/json; charset=utf-8",
+    description: "Typed claims with source spans, assessments, verification levels and evidence references.",
+  },
+  {
+    path: "/agents/evidence.json",
+    contentType: "application/json; charset=utf-8",
+    description: "Evidence records supporting or contradicting each claim.",
+  },
+  {
+    path: "/agents/proposals.json",
+    contentType: "application/json; charset=utf-8",
+    description: "Non-authoritative relation proposals. Never part of the authoritative graph.",
+  },
 ];
 
 function renderIndex(
@@ -513,6 +571,9 @@ function renderIndex(
       paths: c.paths.length,
       chapters: c.chapters.length,
       graphEdges: Object.values(c.graph.counts).reduce((a, b) => a + b, 0),
+      claims: c.claims.length,
+      evidence: c.evidence.length,
+      proposals: c.proposals.length,
     },
     markdown: {
       path: markdownPath("{slug}"),
@@ -548,6 +609,21 @@ export function buildAgentResources(c: AgentCorpus): AgentResource[] {
       path: "/agents/book.json",
       contentType: "application/json; charset=utf-8",
       body: renderBook(c),
+    },
+    {
+      path: "/agents/claims.json",
+      contentType: "application/json; charset=utf-8",
+      body: renderClaims(c),
+    },
+    {
+      path: "/agents/evidence.json",
+      contentType: "application/json; charset=utf-8",
+      body: renderEvidence(c),
+    },
+    {
+      path: "/agents/proposals.json",
+      contentType: "application/json; charset=utf-8",
+      body: renderProposals(c),
     },
   ];
   // The index lists its own byte size, which is self-referential: the number

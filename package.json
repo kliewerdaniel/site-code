@@ -43,6 +43,7 @@
     "validate:build": "node scripts/validate-build.mjs",
     "validate:agents": "node scripts/validate-agents.mjs",
     "validate:markdown": "node scripts/validate-markdown.mjs",
+    "validate:claims": "node scripts/validate-claims.mjs",
     "conformance": "node scripts/conformance.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "audit": "node scripts/audit-site.mjs",

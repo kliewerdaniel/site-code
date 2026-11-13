@@ -188,7 +188,11 @@ export default function AgentsPage() {
           Every published article also has a canonical Markdown mirror at{" "}
           <code className="font-mono text-gold">/research/&lt;slug&gt;.md</code>:
           the exact body, with frontmatter metadata, a content hash and a byte
-          count. Drafts have no mirror.
+          count. Drafts have no mirror. Every relation is also a typed{" "}
+          <code className="font-mono text-gold">claim</code> with an epistemic
+          assessment and evidence;{" "}
+          <code className="font-mono text-gold">/agents/proposals.json</code>{" "}
+          carries non-authoritative proposals that never enter the graph.
         </p>
       </Exhibit>
 

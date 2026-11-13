@@ -48,6 +48,9 @@ const RESOURCES = [
   { path: "/agents/catalog.json", contentType: "application/json; charset=utf-8" },
   { path: "/agents/graph.json", contentType: "application/json; charset=utf-8" },
   { path: "/agents/book.json", contentType: "application/json; charset=utf-8" },
+  { path: "/agents/claims.json", contentType: "application/json; charset=utf-8" },
+  { path: "/agents/evidence.json", contentType: "application/json; charset=utf-8" },
+  { path: "/agents/proposals.json", contentType: "application/json; charset=utf-8" },
 ];
 
 /** URL path -> prerendered body file. */

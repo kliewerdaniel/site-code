@@ -24,6 +24,7 @@ import { collect as collectContent } from "./validate-content.mjs";
 import { collect as collectBuild } from "./validate-build.mjs";
 import { collect as collectAgents } from "./validate-agents.mjs";
 import { collect as collectMarkdown } from "./validate-markdown.mjs";
+import { collect as collectClaims } from "./validate-claims.mjs";
 
 import { SITE, BOOK, SOCIAL } from "../src/config.ts";
 import { getAllPosts, getAllPostsIncludingDrafts } from "../src/lib/posts.ts";
@@ -31,6 +32,10 @@ import { PROJECTS, CONCEPTS, PATHS, conceptsForPost, projectsForPost } from "../
 import { CHAPTERS } from "../src/lib/chapters.ts";
 import { BOOK_LINKS } from "../src/lib/book-links.ts";
 import { buildRelationGraph, RELATION_TYPES } from "../src/lib/relations-core.ts";
+import {
+  buildClaimsAndEvidence,
+  buildProposals,
+} from "../src/lib/claim-evidence.ts";
 import {
   buildAgentResources,
   buildMarkdownMirrors,
@@ -42,13 +47,16 @@ const repo = path.resolve(root, "..");
 const APP = path.join(repo, ".next", "server", "app");
 const OUT = path.join(repo, "data", "conformance-report.json");
 
-const SIX_RESOURCES = [
+const CORE_RESOURCES = [
   "/llms.txt",
   "/llms-full.txt",
   "/agents/index.json",
   "/agents/catalog.json",
   "/agents/graph.json",
   "/agents/book.json",
+  "/agents/claims.json",
+  "/agents/evidence.json",
+  "/agents/proposals.json",
 ];
 
 const sha = (s) => crypto.createHash("sha256").update(s, "utf8").digest("hex");
@@ -136,6 +144,10 @@ function corpus() {
       relation: l.relation,
       reason: l.reason,
     })),
+    ...(() => {
+      const { claims, evidence } = buildClaimsAndEvidence();
+      return { claims, evidence, proposals: buildProposals() };
+    })(),
   };
 }
 
@@ -235,11 +247,11 @@ function checkReferences(c, errors) {
   }
 
   const listed = new Set((index.resources ?? []).map((r) => r.path));
-  for (const p of SIX_RESOURCES) {
+  for (const p of CORE_RESOURCES) {
     if (!listed.has(p)) errors.push(`index.json: does not list ${p}`);
   }
-  if (listed.size !== SIX_RESOURCES.length) {
-    errors.push(`index.json: lists ${listed.size} resources, expected ${SIX_RESOURCES.length}`);
+  if (listed.size !== CORE_RESOURCES.length) {
+    errors.push(`index.json: lists ${listed.size} resources, expected ${CORE_RESOURCES.length}`);
   }
   if (index.markdown?.count !== catalog.counts?.articles) {
     errors.push("index.json: markdown.count does not match catalog.counts.articles");
@@ -309,6 +321,7 @@ function main() {
   const build = collectBuild();
   const agents = collectAgents();
   const markdown = collectMarkdown();
+  const claims = collectClaims();
 
   const c = corpus();
   const resources = buildAgentResources(c);
@@ -333,6 +346,8 @@ function main() {
   for (const f of agents.findings) warnings.push(`agents: ${f.detail}`);
   for (const f of markdown.fatal) errors.push(`markdown: ${f}`);
   for (const f of markdown.findings) warnings.push(`markdown: ${f.detail}`);
+  for (const f of claims?.fatal ?? []) errors.push(`claims: ${f}`);
+  for (const f of claims?.findings ?? []) warnings.push(`claims: ${f.detail}`);
 
   checkSchemas({ catalog: { body: catalogBody }, graph: { body: graphBody }, index: { body: indexBody }, book: { body: bookBody } }, errors, warnings, info);
   checkDeterminismAndOutput(c, errors, info);
@@ -361,6 +376,7 @@ function main() {
       build: { fatal: build.fatal.length, findings: build.findings.length },
       agents: { fatal: agents.fatal.length, findings: agents.findings.length },
       markdown: { fatal: markdown.fatal.length, findings: markdown.findings.length },
+      claims: { fatal: claims?.fatal.length ?? 0, findings: claims?.findings.length ?? 0 },
     },
   };
 

@@ -36,6 +36,7 @@ import { CHAPTERS } from "../src/lib/chapters.ts";
 import { getAllPosts } from "../src/lib/posts.ts";
 import { collect as collectAgents } from "./validate-agents.mjs";
 import { collect as collectMarkdown } from "./validate-markdown.mjs";
+import { collect as collectClaims } from "./validate-claims.mjs";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, "..");
@@ -199,6 +200,7 @@ export function build() {
   const relationDanglingCount = relationDangling().length;
   const agents = collectAgents();
   const markdown = collectMarkdown();
+  const claims = collectClaims();
 
   return {
     generatedBy: "scripts/audit-site.mjs",
@@ -217,9 +219,10 @@ export function build() {
       redirects: routes?.redirects ?? null,
     },
     relations: {
+      vocabulary: relations.vocabulary,
       counts: relations.counts,
       absent: relations.absent,
-      edges: relations.edges,
+      edgeTotal: Object.values(relations.counts).reduce((a, b) => a + b, 0),
       dangling: relationDanglingCount,
     },
     agent: agents
@@ -239,11 +242,21 @@ export function build() {
           findings: markdown.findings.length,
         }
       : null,
+    claims: claims
+      ? {
+          claims: claims.claims,
+          evidence: claims.evidence,
+          proposals: claims.proposals,
+          fatal: claims.fatal.length,
+          findings: claims.findings.length,
+        }
+      : null,
     fatal:
       content.fatal.length +
       (buildRes?.fatal.length ?? 0) +
       (agents?.fatal.length ?? 0) +
-      (markdown?.fatal.length ?? 0),
+      (markdown?.fatal.length ?? 0) +
+      (claims?.fatal.length ?? 0),
     defects: defects.length,
     advisory: advisory.length,
     byKind: byKind([...defects, ...advisory]),
@@ -310,6 +323,11 @@ export function diff(base, next) {
   const nm = next.markdown?.fatal ?? 0;
   if (nm > bm) regressions.push(`markdown fatal: ${bm} -> ${nm}`);
   else if (nm < bm) improvements.push(`markdown fatal: ${bm} -> ${nm}`);
+
+  const bcl = base.claims?.fatal ?? 0;
+  const ncl = next.claims?.fatal ?? 0;
+  if (ncl > bcl) regressions.push(`claims fatal: ${bcl} -> ${ncl}`);
+  else if (ncl < bcl) improvements.push(`claims fatal: ${bcl} -> ${ncl}`);
 
   const a = new Set(base.defectList);
   const b = new Set(next.defectList);

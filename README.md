@@ -61,6 +61,11 @@ Beyond the build gates, three checks run over the content and the built output:
   `next build`) — the canonical Markdown mirrors: one per published article,
   each with a verifying content hash and byte count, a body identical to the
   source article, and a deterministic render; drafts have no mirror.
+- `npm run validate:claims` (`scripts/validate-claims.mjs`, run after
+  `next build`) — the claim/evidence model: every claim has a source span, an
+  assessment and a verification level; every evidence reference resolves; a
+  proposed claim is never authoritative; no proposal leaks into the
+  authoritative graph.
 - `npm run conformance` (`scripts/conformance.mjs`) — one reproducible command
   over the whole corpus. It aggregates the four validators and adds schema
   shape, deterministic compilation, output consistency, resource references,
@@ -109,8 +114,9 @@ Every finding carries a stable id (`kind:file`), so it can be referenced in a
 review or an issue without quoting its text.
 
 Current baseline: 0 fatal · 10 defects (all inert `canonical_url` frontmatter) ·
-350 advisory · 98 relation edges with 0 dangling references · 6 agent resources ·
-197 published articles (2 drafts excluded) · 197 Markdown mirrors.
+350 advisory · 98 relation edges with 0 dangling references · 9 agent resources ·
+197 published articles (2 drafts excluded) · 197 Markdown mirrors · 109 claims ·
+109 evidence records · 10 non-authoritative proposals.
 
 ## Agent interface
 
@@ -127,6 +133,9 @@ pages render — see **[docs/AGENT-RESOURCES.md](docs/AGENT-RESOURCES.md)**:
 | `/agents/catalog.json` | Articles, projects, concepts, paths, chapters. |
 | `/agents/graph.json` | Typed relation graph with provenance. |
 | `/agents/book.json` | The book as a product record (no invented availability). |
+| `/agents/claims.json` | Typed claims with source spans, assessments and evidence references. |
+| `/agents/evidence.json` | Evidence records supporting or contradicting each claim. |
+| `/agents/proposals.json` | Non-authoritative relation proposals (never in the graph). |
 | `/research/{slug}.md` | Canonical Markdown mirror of every published article. |
 
 Relationships are computed or verified, never invented. `chapter_covers` is

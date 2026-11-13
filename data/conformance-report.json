@@ -5,7 +5,7 @@
   "summary": {
     "errors": 0,
     "warnings": 10,
-    "info": 518,
+    "info": 521,
     "articles": 197,
     "graphEdges": 98,
     "mirrors": 197
@@ -537,9 +537,12 @@
     "/llms.txt: 3174 bytes, sha256:2d3e35bf1d75",
     "/llms-full.txt: 148536 bytes, sha256:6fe1b6f015e6",
     "/agents/catalog.json: 208540 bytes, sha256:e8c316db5b44",
-    "/agents/graph.json: 19028 bytes, sha256:da8fa7ad81bc",
+    "/agents/graph.json: 62846 bytes, sha256:7e0086db7151",
     "/agents/book.json: 18077 bytes, sha256:8eab67fb31c3",
-    "/agents/index.json: 2839 bytes, sha256:f4c3fb075b43",
+    "/agents/claims.json: 108279 bytes, sha256:3265e5d3380e",
+    "/agents/evidence.json: 52209 bytes, sha256:58d98898d01e",
+    "/agents/proposals.json: 7685 bytes, sha256:c92448f04ec0",
+    "/agents/index.json: 3782 bytes, sha256:374719df10e2",
     "197 markdown mirrors verified against the deterministic render",
     "2 drafts excluded from the corpus"
   ],
@@ -557,6 +560,10 @@
       "findings": 0
     },
     "markdown": {
+      "fatal": 0,
+      "findings": 0
+    },
+    "claims": {
       "fatal": 0,
       "findings": 0
     }

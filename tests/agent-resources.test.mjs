@@ -101,6 +101,13 @@ function fixture() {
       { n: 2, part: "I — Why Sovereignty", title: "The Sovereignty Stack" },
     ],
     graph: {
+      vocabulary: [
+        "implements",
+        "documents",
+        "prerequisite_for",
+        "chapter_covers",
+        "recommends_reading",
+      ],
       counts: {
         implements: 1,
         documents: 1,
@@ -126,6 +133,7 @@ function fixture() {
         ],
       },
       absent: ["extends", "validates", "explains", "expands_on", "related_product"],
+      proposed: [],
     },
     bookLinks: [
       {
@@ -135,13 +143,60 @@ function fixture() {
         reason: "Chapter 1 §1.1 prices the liability this article argues.",
       },
     ],
+    claims: [
+      {
+        id: "claim:implements:/projects/example-project->/concepts/local-first",
+        statement: "/projects/example-project implements /concepts/local-first",
+        source: "src/lib/taxonomy.ts",
+        sourceSpan: "implements:/projects/example-project->/concepts/local-first",
+        category: "relation",
+        assessment: "supported",
+        verification: "demonstrated",
+        supportingEvidence: ["ev:implements:/projects/example-project->/concepts/local-first"],
+        contradictoryEvidence: [],
+        relationships: ["implements:/projects/example-project->/concepts/local-first"],
+        authoritative: true,
+        provenance: {
+          source: "src/lib/taxonomy.ts",
+          generator: "src/lib/claim-evidence-core.ts",
+          fingerprint: "abc123",
+        },
+      },
+    ],
+    evidence: [
+      {
+        id: "ev:implements:/projects/example-project->/concepts/local-first",
+        type: "source_span",
+        source: "src/lib/taxonomy.ts",
+        span: "implements:/projects/example-project->/concepts/local-first",
+        contentHash: "def456",
+        verification: { status: "verified", method: "verified" },
+      },
+    ],
+    proposals: [
+      {
+        id: "documents:/blog/2026-01-01-example-post->/projects/other-project",
+        from: "/blog/2026-01-01-example-post",
+        to: "/projects/other-project",
+        type: "documents",
+        status: "proposed",
+        verification: "proposed",
+        provenance: {
+          source: "src/lib/claim-evidence.ts",
+          generator: "src/lib/claim-evidence.ts",
+          reason: "shares 2 concepts",
+          fingerprint: "ghi789",
+        },
+        reason: "shares 2 concepts",
+      },
+    ],
   };
 }
 
 const resources = () => buildAgentResources(fixture());
 const byPath = (p) => resources().find((r) => r.path === p);
 
-test("buildAgentResources: emits exactly the six public resources", () => {
+test("buildAgentResources: emits exactly the nine public resources", () => {
   const paths = resources().map((r) => r.path);
   assert.deepEqual(paths, [
     "/llms.txt",
@@ -149,6 +204,9 @@ test("buildAgentResources: emits exactly the six public resources", () => {
     "/agents/catalog.json",
     "/agents/graph.json",
     "/agents/book.json",
+    "/agents/claims.json",
+    "/agents/evidence.json",
+    "/agents/proposals.json",
     "/agents/index.json",
   ]);
 });
@@ -210,6 +268,26 @@ test("graph.json: counts match the edges and absent is declared", () => {
   assert.equal(g.counts.recommends_reading, 1);
   assert.ok(g.absent.includes("extends"));
   assert.ok(g.absent.includes("validates"));
+  assert.ok(Array.isArray(g.vocabulary));
+  assert.ok(Array.isArray(g.proposed));
+});
+
+test("claims/evidence/proposals: emitted with counts and the authoritative boundary", () => {
+  const claims = JSON.parse(byPath("/agents/claims.json").body);
+  const evidence = JSON.parse(byPath("/agents/evidence.json").body);
+  const proposals = JSON.parse(byPath("/agents/proposals.json").body);
+
+  assert.equal(claims.counts.total, 1);
+  assert.equal(claims.counts.authoritative, 1);
+  assert.equal(claims.counts.proposed, 0);
+  assert.equal(claims.claims[0].assessment, "supported");
+  assert.equal(claims.claims[0].authoritative, true);
+
+  assert.equal(evidence.counts.total, 1);
+  assert.equal(evidence.evidence[0].id, claims.claims[0].supportingEvidence[0]);
+
+  assert.equal(proposals.count, 1);
+  assert.equal(proposals.proposals[0].status, "proposed");
 });
 
 test("book.json: no invented product attributes, purchase needs a human", () => {
