@@ -94,7 +94,10 @@ Everything is derived, never hand-copied:
 - `src/lib/agent-resources-core.ts` — the pure builders for the six resources.
 
 The builders are pure functions of that data: no clock, no randomness. Two
-builds of the same commit produce byte-identical resources.
+builds of the same commit produce byte-identical resources — including across
+timezones, because date normalization constructs every timestamp from explicit
+UTC components rather than parsing in the build machine's local time (a bug
+the production smoke test caught after the first deploy).
 
 ## Retrieving efficiently
 

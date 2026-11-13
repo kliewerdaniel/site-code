@@ -76,7 +76,8 @@ Beyond the build gates, three checks run over the content and the built output:
   test against the live site: HTTP status, content type, caching, ETag/304,
   byte counts, content hashes and a sample of the Markdown mirrors, compared
   with the local build. Runs after a deploy (see
-  `.github/workflows/smoke.yml`); before a deploy it reports the drift.
+  `.github/workflows/smoke.yml`). **Currently passes with 0 errors** —
+  production and the local build are byte-identical.
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.
@@ -116,7 +117,8 @@ review or an issue without quoting its text.
 Current baseline: 0 fatal · 10 defects (all inert `canonical_url` frontmatter) ·
 350 advisory · 98 relation edges with 0 dangling references · 9 agent resources ·
 197 published articles (2 drafts excluded) · 197 Markdown mirrors · 109 claims ·
-109 evidence records · 10 non-authoritative proposals.
+109 evidence records · 10 non-authoritative proposals · production smoke test
+passing with 0 errors.
 
 ## Agent interface
 
