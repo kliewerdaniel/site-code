@@ -137,3 +137,10 @@ not match the deterministic render, or a draft with a published mirror.
 
 The auditor (`npm run audit`) reports the resource list, the edge counts by
 type, the dangling count, the verified-chapter-link count and the mirror count.
+
+`npm run conformance` aggregates every validator plus the corpus-level
+invariants (schema shape, deterministic compilation, output consistency,
+resource references, publication metadata, index completeness, draft
+exclusion) into `data/conformance-report.json`, and fails on any structural
+violation. `npm run smoke:production` checks the deployed site against the
+local build.

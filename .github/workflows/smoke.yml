@@ -1,0 +1,58 @@
+# Production smoke test.
+#
+# This does NOT run on pull requests: production always lags the commit under
+# review, so a smoke test against it would fail on every legitimate change.
+# It runs on demand (workflow_dispatch) and on a daily schedule, after the
+# deploy that the push triggers. It compares the live corpus against the
+# artifacts built from the same commit: HTTP status, content type, caching,
+# ETag handling, byte counts and content hashes, plus a sample of the
+# canonical Markdown mirrors.
+#
+# A failure here means production is not serving the commit it claims to.
+
+name: Production smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 06:17 UTC daily — off the hour, after the usual deploy window.
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read .nvmrc
+        id: nvmrc
+        run: |
+          VERSION="$(grep -E '^[0-9]' .nvmrc | tail -1 | tr -d '[:space:]')"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.nvmrc.outputs.version }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Smoke test production
+        run: npm run smoke:production
+
+      - name: Upload smoke report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-report
+          path: data/smoke-report.json
+          retention-days: 30

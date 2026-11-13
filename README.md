@@ -61,6 +61,17 @@ Beyond the build gates, three checks run over the content and the built output:
   `next build`) — the canonical Markdown mirrors: one per published article,
   each with a verifying content hash and byte count, a body identical to the
   source article, and a deterministic render; drafts have no mirror.
+- `npm run conformance` (`scripts/conformance.mjs`) — one reproducible command
+  over the whole corpus. It aggregates the four validators and adds schema
+  shape, deterministic compilation, output consistency, resource references,
+  publication metadata, index completeness and draft exclusion, then writes
+  `data/conformance-report.json` with errors / warnings / info. It exits
+  non-zero on any structural violation.
+- `npm run smoke:production` (`scripts/smoke-production.mjs`) — deployment smoke
+  test against the live site: HTTP status, content type, caching, ETag/304,
+  byte counts, content hashes and a sample of the Markdown mirrors, compared
+  with the local build. Runs after a deploy (see
+  `.github/workflows/smoke.yml`); before a deploy it reports the drift.
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.

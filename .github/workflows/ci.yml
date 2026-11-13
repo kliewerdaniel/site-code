@@ -87,6 +87,12 @@ jobs:
       - name: Validate Markdown mirrors
         run: npm run validate:markdown
 
+      # One reproducible command over the whole corpus: schema shape,
+      # deterministic compilation, output consistency, resource references,
+      # publication metadata, index completeness and draft exclusion.
+      - name: Corpus conformance
+        run: npm run conformance
+
       # Deterministic audit: aggregates the validators, categorises canonical
       # mismatches, and fails if the defect list has grown since the baseline.
       - name: Audit site
