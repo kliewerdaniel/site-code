@@ -76,7 +76,7 @@ Beyond the build gates, three checks run over the content and the built output:
   test against the live site: HTTP status, content type, caching, ETag/304,
   byte counts and content hashes for **all nine resources**, master-index
   completeness, claim/evidence referential integrity, proposal exclusion from
-  the authoritative graph, and **every** Markdown mirror, compared with the
+  the authoritative graph, and **every** Markdown mirror, compared with
   the local build. Findings are split into deployment drift (`errors`), local
   build problems (`compileErrors`) and non-fatal warnings. Runs after a deploy
   (see `.github/workflows/smoke.yml`, which also triggers automatically after
