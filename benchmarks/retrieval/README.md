@@ -117,11 +117,49 @@ The harness reads `.next/server/app`, writes
 the table above. The dataset is deterministic: the same build produces the
 same questions and the same numbers.
 
+## Agent experiment (LLM question answering)
+
+`src/agent-experiment.mjs` is the second experiment category. It feeds the
+retrieved documents to a real model and measures what the model then says.
+
+```bash
+npm run benchmark:agent
+```
+
+Architectures A/B/C use the same retrieval as the deterministic benchmark; D
+is a parametric control with no retrieval. B and C receive the compiled catalog
+metadata, the **full typed graph** and the **claim index**; C adds the Markdown
+bodies. Every architecture gets the same per-document context budget, so the
+comparison is about representation, not about how much text each side may read.
+
+Measured per question:
+
+| Metric | What it means |
+|---|---|
+| `ruleCorrectRate` | A transparent, category-aware rule check. Reported as rule-based, not as human adjudication. |
+| `citationAccuracy` | The answer contains an expected canonical URL. |
+| `abstentionRateOnNoSupport` | The model said the corpus does not contain the answer. |
+| `unsupportedClaimRate` | A `no_support` question answered anyway, or an answer with a fabricated citation. |
+| `fabricatedCitationRate` | The answer contains a URL that resolves to nothing in the corpus. |
+| `contradictoryRate` | The answer both abstains and cites. |
+| `tokensPerQuery`, `latencyMsPerQuery` | Model cost and latency. |
+
+The model is local (`lfm3-omni:latest` through Ollama), recorded in the report
+along with the exact prompt, temperature and token budget. Cold and warm passes
+are reported separately. Raw answers are committed in
+`data/agent-experiment-report.json` for human review.
+
+**Limitation:** only one model family was available on this machine. The
+results do not establish that the architecture improves reasoning, only what
+this model did with each representation.
+
 ## Files
 
 | Path | Purpose |
 |---|---|
 | `src/adjudicated.mjs` | The 30-question adjudicated set, with ground truth computed from the artifacts. |
-| `src/benchmark.mjs` | The three architectures and the metrics. |
+| `src/benchmark.mjs` | The three architectures and the deterministic metrics. |
+| `src/agent-experiment.mjs` | The LLM agent experiment over the same question set. |
 | `data/adjudicated-questions.json` | The committed evaluation dataset. |
-| `data/benchmark-report.json` | The full machine-readable report. |
+| `data/benchmark-report.json` | The full machine-readable deterministic report. |
+| `data/agent-experiment-report.json` | The raw agent answers, grades, tokens and latency. |

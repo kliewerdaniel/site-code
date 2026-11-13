@@ -47,6 +47,7 @@
     "conformance": "node scripts/conformance.mjs",
     "stats": "node scripts/statistics.mjs",
     "benchmark": "node benchmarks/retrieval/src/benchmark.mjs",
+    "benchmark:agent": "node benchmarks/retrieval/src/agent-experiment.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "audit": "node scripts/audit-site.mjs",
     "check:routes": "node scripts/check-routes.mjs"
