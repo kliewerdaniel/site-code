@@ -160,6 +160,11 @@ Next.js runtime:
   adapter exposing `search_knowledge`, `get_article`, `traverse_graph`,
   `get_evidence`, `get_learning_path` and `get_book_context`, with hard
   retrieval limits. See [its README](packages/knowledge-mcp/README.md).
+- **`packages/knowledge-compiler`** — `@danielkliewer/knowledge-compiler`. The
+  reusable compile-time knowledge compiler: source normalization, deterministic
+  validation, governed proposal approval and artifact emission. See
+  [its README](packages/knowledge-compiler/README.md) and the
+  [extraction evaluation](docs/KNOWLEDGE-COMPILER-EXTRACTION.md).
 
 ## Deploy
 

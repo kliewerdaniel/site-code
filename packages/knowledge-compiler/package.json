@@ -1,0 +1,12 @@
+{
+  "name": "@danielkliewer/knowledge-compiler",
+  "version": "0.1.0",
+  "description": "Reusable compile-time knowledge compiler: source normalization, deterministic proposals, validation and governed compilation.",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "files": ["src", "README.md"],
+  "license": "UNLICENSED",
+  "engines": { "node": ">=20" }
+}
