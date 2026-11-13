@@ -154,6 +154,17 @@ mirror at `/research/<slug>.md`, generated from the same source the page
 renders and verified by content hash; drafts have none. Traffic and bandwidth
 policy: **[docs/TRAFFIC.md](docs/TRAFFIC.md)**.
 
+### Graph explorer
+
+**[https://www.danielkliewer.com/graph](https://www.danielkliewer.com/graph)**
+renders the same generated catalog and relation graph as an interactive
+explorer: select a concept, follow typed relations, open the claims that rest
+on an edge, and read the evidence. The entity list is server-rendered as real
+links, so it works with JavaScript disabled; claims and evidence are fetched
+lazily and the rendered node set is bounded. Provenance and verification status
+are shown on every edge, claim and evidence record. The core is pure and
+tested (`src/lib/explorer-core.ts`, `tests/graph-explorer.test.mjs`).
+
 ## SDK and MCP
 
 Two standalone packages consume the compiled corpus without the website's
@@ -162,17 +173,22 @@ Next.js runtime:
 - **`packages/knowledge-sdk`** — `@danielkliewer/knowledge-sdk`. A typed,
   dependency-free TypeScript client: corpus discovery, conditional HTTP with
   ETag caching, byte-budget enforcement, content-hash verification, BM25-style
-  ranking, graph traversal, document expansion, evidence lookup and citation
-  generation. See [its README](packages/knowledge-sdk/README.md).
+  ranking, graph traversal, document expansion, concept and project lookup,
+  claim and evidence retrieval, citation verification and generation. See
+  [its README](packages/knowledge-sdk/README.md).
 - **`packages/knowledge-mcp`** — `@danielkliewer/knowledge-mcp`. A stdio MCP
-  adapter exposing `search_knowledge`, `get_article`, `traverse_graph`,
-  `get_evidence`, `get_learning_path` and `get_book_context`, with hard
-  retrieval limits. See [its README](packages/knowledge-mcp/README.md).
+  adapter exposing eleven tools — `search_knowledge`, `get_article`,
+  `get_concept`, `get_project`, `get_claim`, `get_evidence`, `verify_citation`,
+  `traverse_graph`, `get_related_work`, `get_learning_path` and
+  `get_book_context` — with hard retrieval limits. See
+  [its README](packages/knowledge-mcp/README.md).
 - **`packages/knowledge-compiler`** — `@danielkliewer/knowledge-compiler`. The
-  reusable compile-time knowledge compiler: source normalization, deterministic
-  validation, governed proposal approval and artifact emission. See
-  [its README](packages/knowledge-compiler/README.md) and the
-  [extraction evaluation](docs/KNOWLEDGE-COMPILER-EXTRACTION.md).
+  reusable compile-time knowledge compiler: a source manifest, Markdown and JSON
+  adapters, normalization, deterministic validation, governed proposal approval
+  with explicit approval records, and deterministic artifact emission. It has no
+  Next.js dependency. See [its README](packages/knowledge-compiler/README.md),
+  the [sample corpus](examples/sample-corpus) (a second, independent archive it
+  compiles) and the [extraction evaluation](docs/KNOWLEDGE-COMPILER-EXTRACTION.md).
 
 The SDK and MCP are audited against the integration requirements in
 **[docs/SDK-AND-MCP-AUDIT.md](docs/SDK-AND-MCP-AUDIT.md)**: both already

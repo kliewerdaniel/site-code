@@ -40,7 +40,13 @@ export interface Relation {
   predicate: string;
   object: string;
   status: "declared" | "approved";
-  provenance: { source: string; fingerprint: string };
+  provenance: {
+    source: string;
+    fingerprint: string;
+    approvedBy?: string;
+    approvedAt?: string;
+    approvalReason?: string;
+  };
 }
 
 export interface Claim {
@@ -54,7 +60,13 @@ export interface Claim {
   supportingEvidence: string[];
   contradictoryEvidence: string[];
   authoritative: boolean;
-  provenance: { source: string; fingerprint: string };
+  provenance: {
+    source: string;
+    fingerprint: string;
+    approvedBy?: string;
+    approvedAt?: string;
+    approvalReason?: string;
+  };
 }
 
 export interface CompileOptions {
