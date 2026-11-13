@@ -50,16 +50,12 @@
    The sticky research controls need to sit flush under the header. Publishing
    the height from JS was tried and abandoned: it needs a ResizeObserver or a
    resize event, and a stale value produces a visible 72px gap (measured). The
-   header's rows are now pinned to fixed heights, so this token and the real
-   header height cannot disagree — they are the same number by construction. */
+   header is a single pinned row at every width, so this token and the real
+   header height cannot disagree — they are the same number by construction.
+   The mobile nav is a dropdown panel, not a second row, so it does not change
+   the offset. */
 :root {
-  --header-h: 76px; /* main row only */
-}
-
-@media (max-width: 767px) {
-  :root {
-    --header-h: 124px; /* main row 76 + mobile nav row 48 */
-  }
+  --header-h: 76px;
 }
 
 ::selection {
