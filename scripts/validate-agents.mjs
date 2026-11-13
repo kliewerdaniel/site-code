@@ -35,11 +35,11 @@ import { BOOK, SITE } from "../src/config.ts";
 import { CHAPTERS } from "../src/lib/chapters.ts";
 import { BOOK_LINKS } from "../src/lib/book-links.ts";
 import { danglingEdges } from "../src/lib/relations-core.ts";
+import { getAllPosts, getAllPostsIncludingDrafts } from "../src/lib/posts.ts";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, "..");
 const APP = path.join(repo, ".next", "server", "app");
-const POSTS_DIR = path.join(repo, "content", "research");
 
 const RESOURCES = [
   { path: "/llms.txt", contentType: "text/plain; charset=utf-8" },
@@ -98,25 +98,33 @@ export function collect() {
     : null;
 
   /* ---- catalog ---- */
-  const postSlugs = new Set(
-    fs
-      .readdirSync(POSTS_DIR)
-      .filter((f) => f.endsWith(".md") && f !== "temp.md")
-      .map((f) => f.replace(/\.md$/, ""))
+  // The published-post source is posts.ts, the same loader the pages and the
+  // agent resources use. Reading the directory instead would let a draft leak
+  // through and would make this validator disagree with the catalog.
+  const publishedSlugs = new Set(getAllPosts().map((p) => p.slug));
+  const draftSlugs = new Set(
+    getAllPostsIncludingDrafts()
+      .filter((p) => p.draft)
+      .map((p) => p.slug)
   );
 
   if (catalog) {
-    if (catalog.counts?.articles !== postSlugs.size) {
+    if (catalog.counts?.articles !== publishedSlugs.size) {
       fatal.push(
-        `/agents/catalog.json: counts.articles is ${catalog.counts?.articles}, the archive has ${postSlugs.size}`
+        `/agents/catalog.json: counts.articles is ${catalog.counts?.articles}, the published archive has ${publishedSlugs.size} (${draftSlugs.size} drafts excluded)`
       );
     }
     for (const a of catalog.articles ?? []) {
       if (a.url !== `${SITE.url}/blog/${a.slug}`) {
         fatal.push(`/agents/catalog.json: article ${a.slug} has a non-canonical URL ${a.url}`);
       }
-      if (!postSlugs.has(a.slug)) {
-        fatal.push(`/agents/catalog.json: article ${a.slug} is not in the archive`);
+      if (!publishedSlugs.has(a.slug)) {
+        fatal.push(
+          `/agents/catalog.json: article ${a.slug} is not in the published archive`
+        );
+      }
+      if (draftSlugs.has(a.slug)) {
+        fatal.push(`/agents/catalog.json: draft ${a.slug} leaked into the corpus`);
       }
       if (typeof a.published !== "string" || a.published.length === 0) {
         fatal.push(`/agents/catalog.json: article ${a.slug} has no publication date`);
@@ -163,7 +171,7 @@ export function collect() {
       );
     }
     const known = {
-      posts: postSlugs,
+      posts: publishedSlugs,
       projects: new Set((catalog?.projects ?? []).map((p) => p.slug)),
       concepts: new Set((catalog?.concepts ?? []).map((c) => c.slug)),
       chapters: new Set(CHAPTERS.map((c) => c.n)),
@@ -267,8 +275,13 @@ export function collect() {
         );
       }
     }
-    if (index.counts?.articles !== postSlugs.size) {
-      fatal.push("/agents/index.json: counts.articles does not match the archive");
+    if (index.counts?.articles !== publishedSlugs.size) {
+      fatal.push("/agents/index.json: counts.articles does not match the published archive");
+    }
+    if (index.markdown?.count !== publishedSlugs.size) {
+      fatal.push(
+        `/agents/index.json: markdown.count is ${index.markdown?.count}, the published archive has ${publishedSlugs.size}`
+      );
     }
   }
 
@@ -288,7 +301,8 @@ export function collect() {
   return {
     resources,
     counts: {
-      articles: postSlugs.size,
+      articles: publishedSlugs.size,
+      drafts: draftSlugs.size,
       projects: catalog?.counts?.projects ?? null,
       concepts: catalog?.counts?.concepts ?? null,
       chapters: CHAPTERS.length,

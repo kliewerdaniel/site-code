@@ -50,11 +50,14 @@ export function collect() {
   const findings = [];
   const descriptions = new Map(); // description -> [slugs]
   const selfUrl = (slug) => `/blog/${slug}`;
+  let drafts = 0;
 
   for (const file of files) {
     const slug = file.replace(/\.md$/, "");
     const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
     const { data } = matter(raw);
+
+    if (data.draft === true) drafts++;
 
     // ---- fatal ----
     const date = data.date;
@@ -163,7 +166,7 @@ export function collect() {
     }
   }
 
-  return { posts: files.length, fatal, findings };
+  return { posts: files.length, published: files.length - drafts, drafts, fatal, findings };
 }
 
 /* ── CLI ─────────────────────────────────────────────────────────────────── */
@@ -172,7 +175,7 @@ const isEntry =
   process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
 if (isEntry) {
-  const { posts, fatal, findings } = collect();
+  const { posts, published, drafts, fatal, findings } = collect();
   const quiet = process.argv.includes("--quiet");
 
   if (!quiet) {
@@ -182,7 +185,7 @@ if (isEntry) {
   const defects = findings.filter((f) => f.severity === "defect").length;
   const advisory = findings.length - defects;
   console.log(
-    `\ncontent: ${posts} posts — ${fatal.length} fatal, ${defects} defect, ${advisory} advisory`
+    `\ncontent: ${published} published (${drafts} draft${drafts === 1 ? "" : "s"} excluded), ${posts} files — ${fatal.length} fatal, ${defects} defect, ${advisory} advisory`
   );
 
   if (fatal.length) {

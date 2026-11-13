@@ -24,6 +24,12 @@ export interface Post {
   seoDescription?: string;
   content: string;
   readingMinutes: number;
+  /**
+   * `draft: true` frontmatter. Drafts are excluded from `getAllPosts()`, so
+   * they never reach the pages, the sitemap, the feed or the agent corpus.
+   * The field is kept on the type so validators can account for them.
+   */
+  draft?: boolean;
 }
 
 const POSTS_DIR = path.join(process.cwd(), "content", "research");
@@ -105,6 +111,7 @@ function parsePostFile(filename: string): Post {
   const updated = normalizeDate(data.updated);
   const seoTitle = strField("seoTitle");
   const seoDescription = strField("seoDescription");
+  const draft = data.draft === true;
 
   return {
     slug,
@@ -118,6 +125,7 @@ function parsePostFile(filename: string): Post {
     ...(seoDescription ? { seoDescription } : {}),
     content,
     readingMinutes: Math.max(1, Math.ceil(countWords(content) / 200)),
+    ...(draft ? { draft: true } : {}),
   };
 }
 
@@ -130,7 +138,7 @@ function loadPosts(): Post[] {
   const files = fs
     .readdirSync(POSTS_DIR)
     .filter((f) => f.endsWith(".md"));
-  const posts = files.map(parsePostFile);
+  const posts = files.map(parsePostFile).filter((p) => !p.draft);
   posts.sort((a, b) => {
     const ta = new Date(a.date).getTime();
     const tb = new Date(b.date).getTime();
@@ -145,9 +153,21 @@ function loadPosts(): Post[] {
   return cache;
 }
 
-/** All posts, newest first. Posts with unparsable dates sort last. */
+/** All published posts, newest first. Posts with unparsable dates sort last.
+ *  Posts carrying `draft: true` are excluded: they must not be rendered,
+ *  listed, fed, sitemapped or compiled into the agent corpus. */
 export function getAllPosts(): Post[] {
   return loadPosts();
+}
+
+/** Every post on disk, including drafts. For validators and audits that need
+ *  to account for unpublished material without publishing it. */
+export function getAllPostsIncludingDrafts(): Post[] {
+  if (!fs.existsSync(POSTS_DIR)) return [];
+  return fs
+    .readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map(parsePostFile);
 }
 
 /** Single post by exact slug (filename minus ".md"), or undefined. */

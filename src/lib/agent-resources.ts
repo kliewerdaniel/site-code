@@ -7,17 +7,19 @@
 
 import { SITE, BOOK, SOCIAL } from "@/config";
 import { getAllPosts } from "./posts";
-import { PROJECTS, CONCEPTS, PATHS } from "./taxonomy";
+import { PROJECTS, CONCEPTS, PATHS, conceptsForPost, projectsForPost } from "./taxonomy";
 import { CHAPTERS } from "./chapters";
 import { BOOK_LINKS } from "./book-links";
 import { relationGraph } from "./relations";
 import {
   buildAgentResources,
+  buildMarkdownMirrors,
+  markdownPath,
   type AgentCorpus,
   type AgentResource,
 } from "./agent-resources-core";
 
-export { buildAgentResources } from "./agent-resources-core";
+export { buildAgentResources, buildMarkdownMirrors } from "./agent-resources-core";
 export type { AgentCorpus, AgentResource } from "./agent-resources-core";
 
 let cache: AgentResource[] | null = null;
@@ -62,6 +64,9 @@ function corpus(): AgentCorpus {
       description: p.description,
       tags: p.tags,
       readingMinutes: p.readingMinutes,
+      content: p.content,
+      concepts: conceptsForPost(p).map((c) => c.slug),
+      projects: projectsForPost(p.slug).map((pr) => pr.slug),
     })),
     projects: PROJECTS.map((p) => ({
       slug: p.slug,
@@ -106,6 +111,19 @@ export function getAgentResources(): AgentResource[] {
 
 export function getAgentResource(path: string): AgentResource | undefined {
   return getAgentResources().find((r) => r.path === path);
+}
+
+let mirrorCache: AgentResource[] | null = null;
+
+/** Every canonical Markdown mirror, built once. Deterministic. */
+export function getMarkdownMirrors(): AgentResource[] {
+  if (!mirrorCache) mirrorCache = buildMarkdownMirrors(corpus());
+  return mirrorCache;
+}
+
+/** One Markdown mirror by post slug, or undefined for a draft/unknown slug. */
+export function getMarkdownMirror(slug: string): AgentResource | undefined {
+  return getMarkdownMirrors().find((r) => r.path === markdownPath(slug));
 }
 
 /** Cache policy for a build-time resource: long edge cache, serve stale while

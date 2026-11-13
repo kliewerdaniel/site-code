@@ -21,10 +21,10 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { getAllPosts } from "../src/lib/posts.ts";
 
 const ROOT = process.cwd();
 const APP = path.join(ROOT, "src", "app");
-const POSTS_DIR = path.join(ROOT, "content", "research");
 const OUT = path.join(ROOT, "data", "route-manifest.json");
 
 /** Static routes: every directory containing a page.tsx. */
@@ -61,13 +61,11 @@ function handlerRoutes(dir = APP, prefix = "") {
   return out;
 }
 
-/** /blog/[slug] — one URL per post file. */
+/** /blog/[slug] — one URL per PUBLISHED post. Drafts are not routes the site
+ *  serves, so they are absent from the contract; the loader is the same one the
+ *  pages and the agent corpus use. */
 function blogSlugs() {
-  if (!fs.existsSync(POSTS_DIR)) return [];
-  return fs
-    .readdirSync(POSTS_DIR)
-    .filter((f) => f.endsWith(".md") && f !== "temp.md")
-    .map((f) => f.replace(/\.md$/, ""));
+  return getAllPosts().map((p) => p.slug);
 }
 
 /** Slugs declared in one of the taxonomy arrays (PROJECTS / CONCEPTS / PATHS). */

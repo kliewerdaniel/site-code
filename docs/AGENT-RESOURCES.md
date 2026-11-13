@@ -7,14 +7,45 @@ cacheable.
 | Path | Type | Purpose |
 |---|---|---|
 | `/llms.txt` | `text/plain` | Entry point: identity, domains, navigation, book, pointers. ~3 KB. |
-| `/llms-full.txt` | `text/plain` | Full catalog as text: every article, project, concept, path, chapter. ~126 KB. |
+| `/llms-full.txt` | `text/plain` | Full catalog as text: every article, project, concept, path, chapter. ~145 KB. |
 | `/agents` | HTML | Human guide to the corpus and its graph. |
 | `/agents/index.json` | `application/json` | Master index with byte sizes and content types. |
-| `/agents/catalog.json` | `application/json` | Structured catalog. ~183 KB. |
+| `/agents/catalog.json` | `application/json` | Structured catalog. ~204 KB. |
 | `/agents/graph.json` | `application/json` | Typed relation graph with provenance. ~19 KB. |
 | `/agents/book.json` | `application/json` | The book as a product record. ~18 KB. |
+| `/research/{slug}.md` | `text/markdown` | Canonical Markdown mirror of every published article. One file per article, generated from the same source the page renders. |
 
 `/for-agents` is a permanent redirect to `/agents`.
+
+## Canonical Markdown mirrors
+
+Every published article has a canonical Markdown representation at
+`/research/<slug>.md`, generated at build time from the same markdown body the
+blog page renders. There is no separate hand-edited copy: the mirror is the
+source body, preceded by a YAML frontmatter block.
+
+The frontmatter carries:
+
+| Field | Meaning |
+|---|---|
+| `doc_id` | Stable, URL-independent identifier (`danielkliewer.com/article/<slug>`). |
+| `canonical_url` | The article's canonical HTML URL. |
+| `title` | The article title. |
+| `published` / `modified` | ISO dates; `modified` falls back to `published`. |
+| `type` | `article`. |
+| `concepts` / `projects` | Slugs derived from the archive's own tags and the taxonomy. |
+| `content_hash` | `sha256:<hex>` over the emitted body. |
+| `bytes` | Exact byte length of the emitted body. |
+| `provenance` | Source file, generator and site. |
+
+The hash and byte count describe the **body**, not the whole file — a document
+cannot contain a hash of itself. `verifyMarkdownMirror` re-derives both from
+the emitted bytes and optionally checks the body against the source.
+
+Drafts have no mirror: they are absent from `generateStaticParams` and from the
+mirror builder, so `/research/<draft-slug>.md` returns 404. `catalog.json`
+lists each article's `markdownUrl`; `index.json` describes the mirror scheme and
+its count.
 
 ## Source of truth
 
@@ -22,12 +53,14 @@ Everything is derived, never hand-copied:
 
 - `src/config.ts` — site identity, the book, navigation.
 - `content/research/*.md` — the article archive.
+- `src/lib/posts.ts` — the published-post loader; excludes `draft: true`.
 - `src/lib/taxonomy.ts` — projects, concepts, learning paths, and the derived
   article↔concept joins.
 - `src/lib/chapters.ts` — the 24-chapter manifest (verified against the
   manuscript's table of contents).
 - `src/lib/book-links.ts` — article↔chapter relations, each with a reason.
 - `src/lib/relations-core.ts` — the graph semantics, shared with the auditor.
+- `src/lib/markdown-core.ts` — the pure Markdown mirror builder and verifier.
 - `src/lib/agent-resources-core.ts` — the pure builders for the six resources.
 
 The builders are pure functions of that data: no clock, no randomness. Two
@@ -94,6 +127,13 @@ The archive, the projects and the book are one body of work by the same author.
 `npm run validate:agents` runs after `next build` and fails closed on: a missing
 resource, unparseable JSON, a non-canonical URL, a book record that contradicts
 the config, an invented availability/rating, a dangling graph edge, a chapter
-relation with no reason, or an index whose byte sizes do not match the bodies.
+relation with no reason, an index whose byte sizes do not match the bodies, or a
+draft that leaked into the catalog.
+
+`npm run validate:markdown` runs after `next build` and fails closed on: a
+published post with no mirror, a mirror whose hash or byte count does not
+verify, a mirror whose body differs from the source article, a mirror that does
+not match the deterministic render, or a draft with a published mirror.
+
 The auditor (`npm run audit`) reports the resource list, the edge counts by
-type, the dangling count and the verified-chapter-link count.
+type, the dangling count, the verified-chapter-link count and the mirror count.

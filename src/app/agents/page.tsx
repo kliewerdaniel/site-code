@@ -184,6 +184,12 @@ export default function AgentsPage() {
           article body into one file would ship 6.8 MB per request — the exact
           bandwidth problem a static corpus is meant to avoid.
         </p>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-3">
+          Every published article also has a canonical Markdown mirror at{" "}
+          <code className="font-mono text-gold">/research/&lt;slug&gt;.md</code>:
+          the exact body, with frontmatter metadata, a content hash and a byte
+          count. Drafts have no mirror.
+        </p>
       </Exhibit>
 
       {/* Provenance */}

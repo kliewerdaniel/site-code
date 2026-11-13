@@ -54,8 +54,13 @@ Beyond the build gates, three checks run over the content and the built output:
 - `npm run validate:agents` (`scripts/validate-agents.mjs`, run after
   `next build`) — the agent knowledge interface: all six resources exist and
   parse, every canonical URL is on the site origin, the book record matches
-  `src/config.ts`, no invented availability/rating, no dangling graph edge, and
-  the index's byte sizes match the built bodies.
+  `src/config.ts`, no invented availability/rating, no dangling graph edge, the
+  index's byte sizes match the built bodies, and no draft leaked into the
+  catalog.
+- `npm run validate:markdown` (`scripts/validate-markdown.mjs`, run after
+  `next build`) — the canonical Markdown mirrors: one per published article,
+  each with a verifying content hash and byte count, a body identical to the
+  source article, and a deterministic render; drafts have no mirror.
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.
@@ -93,7 +98,8 @@ Every finding carries a stable id (`kind:file`), so it can be referenced in a
 review or an issue without quoting its text.
 
 Current baseline: 0 fatal · 10 defects (all inert `canonical_url` frontmatter) ·
-349 advisory · 98 relation edges with 0 dangling references · 6 agent resources.
+350 advisory · 98 relation edges with 0 dangling references · 6 agent resources ·
+197 published articles (2 drafts excluded) · 197 Markdown mirrors.
 
 ## Agent interface
 
@@ -110,12 +116,15 @@ pages render — see **[docs/AGENT-RESOURCES.md](docs/AGENT-RESOURCES.md)**:
 | `/agents/catalog.json` | Articles, projects, concepts, paths, chapters. |
 | `/agents/graph.json` | Typed relation graph with provenance. |
 | `/agents/book.json` | The book as a product record (no invented availability). |
+| `/research/{slug}.md` | Canonical Markdown mirror of every published article. |
 
 Relationships are computed or verified, never invented. `chapter_covers` is
 withheld rather than inferred from keyword overlap — the manuscript does not
 reproduce individual articles — and the remaining unused relation types are
-reported as `absent`. Traffic and bandwidth policy:
-**[docs/TRAFFIC.md](docs/TRAFFIC.md)**.
+reported as `absent`. Every published article also has a canonical Markdown
+mirror at `/research/<slug>.md`, generated from the same source the page
+renders and verified by content hash; drafts have none. Traffic and bandwidth
+policy: **[docs/TRAFFIC.md](docs/TRAFFIC.md)**.
 
 ## Deploy
 

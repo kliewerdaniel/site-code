@@ -42,6 +42,7 @@
     "validate:content": "node scripts/validate-content.mjs",
     "validate:build": "node scripts/validate-build.mjs",
     "validate:agents": "node scripts/validate-agents.mjs",
+    "validate:markdown": "node scripts/validate-markdown.mjs",
     "audit": "node scripts/audit-site.mjs",
     "check:routes": "node scripts/check-routes.mjs"
   },

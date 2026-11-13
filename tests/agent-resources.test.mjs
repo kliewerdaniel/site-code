@@ -60,6 +60,8 @@ function fixture() {
         readingMinutes: 4,
         // A body marker that must NOT leak into the full-text catalog.
         content: "SUPER_SECRET_BODY_MARKER",
+        concepts: ["local-first"],
+        projects: ["example-project"],
       },
     ],
     projects: [
@@ -186,6 +188,10 @@ test("catalog.json: canonical URLs and counts", () => {
   assert.equal(c.counts.paths, 1);
   assert.equal(c.counts.chapters, 2);
   assert.equal(c.articles[0].url, "https://www.danielkliewer.com/blog/2026-01-01-example-post");
+  assert.equal(
+    c.articles[0].markdownUrl,
+    "https://www.danielkliewer.com/research/2026-01-01-example-post.md"
+  );
   assert.equal(c.projects[0].url, "https://www.danielkliewer.com/projects/example-project");
   assert.equal(c.concepts[0].url, "https://www.danielkliewer.com/concepts/local-first");
   assert.equal(c.paths[0].steps[0].url, "https://www.danielkliewer.com/concepts/local-first");
@@ -231,6 +237,15 @@ test("index.json: every listed size matches the body, including its own", () => 
     assert.equal(r.bytes, Buffer.byteLength(body, "utf8"), `${r.path} byte size`);
     assert.ok(r.bytes > 0, `${r.path} is non-empty`);
   }
+  assert.equal(idx.markdown.path, "/research/{slug}.md");
+  assert.equal(idx.markdown.count, 1);
+  assert.equal(idx.markdown.contentType, "text/markdown; charset=utf-8");
+});
+
+test("llms-full.txt: points at the Markdown mirror without inlining the body", () => {
+  const t = byPath("/llms-full.txt").body;
+  assert.match(t, /https:\/\/www\.danielkliewer\.com\/research\/2026-01-01-example-post\.md/);
+  assert.doesNotMatch(t, /SUPER_SECRET_BODY_MARKER/);
 });
 
 test("resources are deterministic: two builds are byte-identical", () => {

@@ -10,6 +10,22 @@
 // `src/app/agents/*.json` serve the result.
 
 import type { RelationGraph } from "./relations-core";
+import {
+  MARKDOWN_CONTENT_TYPE,
+  markdownPath,
+  renderMarkdownMirror,
+} from "./markdown-core.ts";
+
+export {
+  MARKDOWN_CONTENT_TYPE,
+  canonicalBody,
+  markdownDocId,
+  markdownPath,
+  parseMarkdownMirror,
+  renderMarkdownMirror,
+  sha256Hex,
+  verifyMarkdownMirror,
+} from "./markdown-core.ts";
 
 export interface AgentSite {
   name: string;
@@ -51,6 +67,12 @@ export interface AgentPost {
   description: string;
   tags: string[];
   readingMinutes: number;
+  /** The raw markdown body, exactly as rendered by the blog page. */
+  content: string;
+  /** Concept slugs derived from the archive's own tags. */
+  concepts: string[];
+  /** Project slugs this post is a write-up for. */
+  projects: string[];
 }
 
 export interface AgentProject {
@@ -160,6 +182,9 @@ function renderLlms(c: AgentCorpus): string {
   L.push(`- ${c.site.url}/agents/graph.json — the typed relation graph, with provenance`);
   L.push(`- ${c.site.url}/agents/book.json — the book as a product record`);
   L.push(`- ${c.site.url}/llms-full.txt — the full catalog as plain text`);
+  L.push(
+    `- ${c.site.url}/research/{slug}.md — canonical Markdown mirror of every article body`
+  );
   L.push(`- ${c.site.url}/feed.xml — RSS 2.0`);
   L.push(`- ${c.site.url}/sitemap.xml — every indexable URL`);
   L.push("");
@@ -211,6 +236,9 @@ function renderLlmsFull(c: AgentCorpus): string {
   L.push(
     "This is a catalog, not the article bodies. Full text lives at each canonical URL; fetch only the documents you need."
   );
+  L.push(
+    `Every article also has a canonical Markdown mirror at ${c.site.url}/research/<slug>.md (frontmatter metadata + the exact body, hash-verified).`
+  );
   L.push("");
   L.push(`## Articles (${c.posts.length})`);
   L.push("");
@@ -220,6 +248,7 @@ function renderLlmsFull(c: AgentCorpus): string {
     L.push(`- Published: ${p.date}${p.updated ? ` · Updated: ${p.updated}` : ""}`);
     L.push(`- Tags: ${p.tags.join(", ") || "(none)"}`);
     L.push(`- Reading time: ${p.readingMinutes} min`);
+    L.push(`- Markdown: ${abs(c.site.url, markdownPath(p.slug))}`);
     L.push(`- ${p.description}`);
     L.push("");
   }
@@ -298,6 +327,7 @@ function renderCatalog(c: AgentCorpus): string {
     articles: c.posts.map((p) => ({
       slug: p.slug,
       url: abs(c.site.url, `/blog/${p.slug}`),
+      markdownUrl: abs(c.site.url, markdownPath(p.slug)),
       title: p.title,
       published: p.date,
       ...(p.updated ? { updated: p.updated } : {}),
@@ -484,6 +514,13 @@ function renderIndex(
       chapters: c.chapters.length,
       graphEdges: Object.values(c.graph.counts).reduce((a, b) => a + b, 0),
     },
+    markdown: {
+      path: markdownPath("{slug}"),
+      contentType: MARKDOWN_CONTENT_TYPE,
+      count: c.posts.length,
+      description:
+        "Canonical Markdown mirror of every published article body: frontmatter metadata, content hash, byte count and the exact body the page renders.",
+    },
   });
 }
 
@@ -535,4 +572,17 @@ export function buildAgentResources(c: AgentCorpus): AgentResource[] {
     body: indexBody,
   });
   return bodies;
+}
+
+/* ── Markdown mirrors ──────────────────────────────────────────────────────
+   One canonical Markdown document per published post, generated from the
+   same corpus the pages render. Served by the `/research/[slug].md` route
+   handler; listed per-article in catalog.json and described in index.json. */
+
+export function buildMarkdownMirrors(c: AgentCorpus): AgentResource[] {
+  return c.posts.map((p) => ({
+    path: markdownPath(p.slug),
+    contentType: MARKDOWN_CONTENT_TYPE,
+    body: renderMarkdownMirror(c.site.url, p),
+  }));
 }

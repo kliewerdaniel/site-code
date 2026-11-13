@@ -2,7 +2,7 @@
   "generatedFrom": "scripts/route-manifest.mjs",
   "counts": {
     "static": 12,
-    "blogPosts": 198,
+    "blogPosts": 197,
     "dynamicRoutes": 23,
     "handlers": 7,
     "removedRoutes": 12,
@@ -183,8 +183,6 @@
     "/blog/2026-07-20-compile-time-intelligence-research-compiler-agent",
     "/blog/2026-07-21-compiling-medical-evidence-clinical-research-compiler",
     "/blog/2026-07-21-research-compiler-scientific-discovery",
-    "/blog/2026-07-22-if-the-loop-is-the-product",
-    "/blog/2026-07-23-building-the-scientific-question-compiler",
     "/blog/2026-07-23-the-loop-closes-itself",
     "/blog/2026-07-23-the-next-experiment-grounded-and-quantitative",
     "/blog/2026-07-23-the-scientific-state-compiler-pass-4",
@@ -220,7 +218,8 @@
     "/blog/2026-10-25-the-mask-that-rendered-anyway",
     "/blog/2026-10-29-frozen-spine-reference-model-enforcement",
     "/blog/2026-11-04-architecture-of-reliable-intelligence",
-    "/blog/2026-11-04-boundaries-of-intelligence"
+    "/blog/2026-11-04-boundaries-of-intelligence",
+    "/blog/2026-11-12-compiling-a-website-for-agents"
   ],
   "dynamic": [
     "/concepts/creative-automation",
