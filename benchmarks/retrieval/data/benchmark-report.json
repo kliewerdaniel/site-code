@@ -19,7 +19,7 @@
       "oneTimeRequests": 198,
       "bytes": 32306210,
       "requestsPerQuery": 6.6,
-      "latencyMsPerQuery": 90.8983790666667,
+      "latencyMsPerQuery": 93.67050273333332,
       "contextEfficiency": 0.0698042574477167
     },
     "B_catalog_graph_html": {
@@ -31,7 +31,7 @@
       "oneTimeRequests": 2,
       "bytes": 25374733,
       "requestsPerQuery": 3.966666666666667,
-      "latencyMsPerQuery": 2.95908479999999,
+      "latencyMsPerQuery": 2.723797100000009,
       "contextEfficiency": 0.2803925463964488
     },
     "C_catalog_graph_markdown": {
@@ -43,7 +43,7 @@
       "oneTimeRequests": 2,
       "bytes": 6469103,
       "requestsPerQuery": 3.9,
-      "latencyMsPerQuery": 2.6892014666666113,
+      "latencyMsPerQuery": 3.47548886666666,
       "contextEfficiency": 0.2751186679204211
     }
   },

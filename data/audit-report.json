@@ -234,7 +234,7 @@
   },
   "routes": {
     "contentUrls": 232,
-    "handlers": 7,
+    "handlers": 10,
     "redirects": 35,
     "not200": 0
   },
