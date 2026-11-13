@@ -1,0 +1,552 @@
+[
+  {
+    "id": "topical-2024-10-04-detailed-description-of-insight-journal",
+    "type": "topical",
+    "query": "A comprehensive guide to creating Insight Journal - an AI-integrated journaling platform using locally-hosted LLMs for personalized feedback while maintaining complete data privacy and control.",
+    "expectedAnswer": "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+    "relevantDocuments": [
+      "2024-10-04-detailed-description-of-insight-journal"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "A comprehensive guide to creating Insight Journal - an AI-integrated journaling platform using locally-hosted LLMs for personalized feedback while maintaining complete data privacy and control."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2024-10-04-detailed-description-of-insight-journal"
+    ]
+  },
+  {
+    "id": "topical-2024-11-04-deep-fake",
+    "type": "topical",
+    "query": "In-depth exploration of AI-generated deepfake technology, from persona encoding and LLM-based content generation to ethical concerns, censorship mechanisms, and the future of synthetic media creation.",
+    "expectedAnswer": "AI-Generated Deepfakes: Complete Guide to Persona-Based Content Creation and Ethical Implications",
+    "relevantDocuments": [
+      "2024-11-04-deep-fake"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "In-depth exploration of AI-generated deepfake technology, from persona encoding and LLM-based content generation to ethical concerns, censorship mechanisms, and the future of synthetic media creation."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2024-11-04-deep-fake"
+    ]
+  },
+  {
+    "id": "topical-2024-11-27-instagram-feed-summarizer",
+    "type": "topical",
+    "query": "Creating a Multi Model AI Agent that monitors a user's Instagram posts, generates detailed descriptions from images, summarizes the user's persona, and finally…",
+    "expectedAnswer": "AI Instagram Feed Summarizer: Build Multi-Modal Persona Blog Generator",
+    "relevantDocuments": [
+      "2024-11-27-instagram-feed-summarizer"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Creating a Multi Model AI Agent that monitors a user's Instagram posts, generates detailed descriptions from images, summarizes the user's persona, and finally…"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2024-11-27-instagram-feed-summarizer"
+    ]
+  },
+  {
+    "id": "topical-2024-12-02-persona-chat",
+    "type": "topical",
+    "query": "Comprehensive tutorial for creating intelligent AI assistants using LangChain, OpenAI, and ChromaDB to build persona-based chatbots that imitate writing styles and provide personalized conversational experiences.",
+    "expectedAnswer": "Complete Guide: Building Personalized AI Assistants with LangChain - Persona-Based Chatbot Development",
+    "relevantDocuments": [
+      "2024-12-02-persona-chat"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Comprehensive tutorial for creating intelligent AI assistants using LangChain, OpenAI, and ChromaDB to build persona-based chatbots that imitate writing styles and provide personalized conversational experiences."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2024-12-02-persona-chat"
+    ]
+  },
+  {
+    "id": "topical-2024-12-19-homeless-guide-austin",
+    "type": "topical",
+    "query": "Detailed survival guide for homelessness in Austin, featuring personal recovery story, comprehensive resource listings from shelters to employment opportunities, legal protections, healthcare access, and steps toward long-term stability.",
+    "expectedAnswer": "Comprehensive Austin Homeless Survival Guide: Essential Resources, Legal Rights, and Personal Recovery Journey Through Adversity",
+    "relevantDocuments": [
+      "2024-12-19-homeless-guide-austin"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Detailed survival guide for homelessness in Austin, featuring personal recovery story, comprehensive resource listings from shelters to employment opportunities, legal protections, healthcare access, and steps toward long-term stability."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2024-12-19-homeless-guide-austin"
+    ]
+  },
+  {
+    "id": "topical-2025-02-05-loco-local-localllama",
+    "type": "topical",
+    "query": "Comprehensive announcement and participation guide for the Loco LLM Hackathon 1.0, a global 24-hour event featuring competitive building of open-source AI tools using local LLMs and the new smolagents framework.",
+    "expectedAnswer": "Announcing Loco LLM Hackathon 1.0: 24-Hour Global Sprint to Build Open-Source AI Tools with Local Large Language Models and Smolagents Framework",
+    "relevantDocuments": [
+      "2025-02-05-loco-local-localllama"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Comprehensive announcement and participation guide for the Loco LLM Hackathon 1.0, a global 24-hour event featuring competitive building of open-source AI tools using local LLMs and the new smolagents framework."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-02-05-loco-local-localllama"
+    ]
+  },
+  {
+    "id": "topical-2025-03-09-custom-agent",
+    "type": "topical",
+    "query": "Building a Custom AI Agent Framework with Next.js and Ollama In today's rapidly evolving AI landscape, agent based systems have emerged as powerful tools for ta…",
+    "expectedAnswer": "Custom AI Agent Framework: Next.js & Ollama Integration Guide",
+    "relevantDocuments": [
+      "2025-03-09-custom-agent"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Building a Custom AI Agent Framework with Next.js and Ollama In today's rapidly evolving AI landscape, agent based systems have emerged as powerful tools for ta…"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-03-09-custom-agent"
+    ]
+  },
+  {
+    "id": "topical-2025-03-12-integrating-openai-agents-sdk-ollama",
+    "type": "topical",
+    "query": "This comprehensive guide demonstrates how to integrate the official OpenAI Agents SDK with Ollama to create AI agents that run entirely on local infrastructure. By the end, you'll understand both the theoretical foundations and practical implementation of locally-hosted AI agents.",
+    "expectedAnswer": "OpenAI Agents SDK & Ollama Integration: Complete Architecture Guide",
+    "relevantDocuments": [
+      "2025-03-12-integrating-openai-agents-sdk-ollama"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "This comprehensive guide demonstrates how to integrate the official OpenAI Agents SDK with Ollama to create AI agents that run entirely on local infrastructure. By the end, you'll understand both the theoretical foundations and practical implementation of locally-hosted AI agents."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-03-12-integrating-openai-agents-sdk-ollama"
+    ]
+  },
+  {
+    "id": "topical-2025-03-24-model-context-protocol",
+    "type": "topical",
+    "query": "A comprehensive guide to building a Model Context Protocol (MCP) server for managing contextual information in machine learning systems, including implementation, scaling, security, and best practices for enterprise AI applications.",
+    "expectedAnswer": "Complete Guide: Building Your Own Model Context Protocol (MCP) Server for AI Tool Integration and Communication",
+    "relevantDocuments": [
+      "2025-03-24-model-context-protocol"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "A comprehensive guide to building a Model Context Protocol (MCP) server for managing contextual information in machine learning systems, including implementation, scaling, security, and best practices for enterprise AI applications."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-03-24-model-context-protocol"
+    ]
+  },
+  {
+    "id": "topical-2025-04-06-judgmental-art-cat",
+    "type": "topical",
+    "query": "A case study in building a sustainable micro-enterprise through hand-drawn art stickers, automated business systems, and organic growth strategies with minimal investment.",
+    "expectedAnswer": "Building Sustainable Micro-Enterprises: The Judgmental Art Cat Project - Art, Automation, and Experimentation",
+    "relevantDocuments": [
+      "2025-04-06-judgmental-art-cat"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "A case study in building a sustainable micro-enterprise through hand-drawn art stickers, automated business systems, and organic growth strategies with minimal investment."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-04-06-judgmental-art-cat"
+    ]
+  },
+  {
+    "id": "topical-2025-10-19-vibe-coding-janitor-session",
+    "type": "topical",
+    "query": "In part one I started a vibe coding session with just a vauge idea we and created the following repo using a single prompt. So what I am doing now is I cloned t…",
+    "expectedAnswer": "Vibe Coding Janitor Session Building a Local LLM-Powered Knowledge Graph Part Two",
+    "relevantDocuments": [
+      "2025-10-19-vibe-coding-janitor-session"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "In part one I started a vibe coding session with just a vauge idea we and created the following repo using a single prompt. So what I am doing now is I cloned t…"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-10-19-vibe-coding-janitor-session"
+    ]
+  },
+  {
+    "id": "topical-2025-11-03-document-driven-development-nextjs-blog",
+    "type": "topical",
+    "query": "A complete guide to Document-Driven Development and AI-assisted coding: building a Next.js 16 blog from scratch using plain language prompts, comprehensive documentation, and iterative AI collaboration.",
+    "expectedAnswer": "Document-Driven Development: How I Built a Production Blog Without Writing a Single Line of Code By Hand",
+    "relevantDocuments": [
+      "2025-11-03-document-driven-development-nextjs-blog"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "A complete guide to Document-Driven Development and AI-assisted coding: building a Next.js 16 blog from scratch using plain language prompts, comprehensive documentation, and iterative AI collaboration."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-11-03-document-driven-development-nextjs-blog"
+    ]
+  },
+  {
+    "id": "topical-2025-11-10-top-ai-algortihms",
+    "type": "topical",
+    "query": "Discover the top 20 AI algorithms powering modern machine learning. This comprehensive guide covers practical use cases, implementation tips, and hands-on sample projects tailored for solo architects, freelance makers, enterprise developers, and side-hustle entrepreneurs.",
+    "expectedAnswer": "Top 20 AI Algorithms: Complete Guide with Use Cases and Sample Projects for Developers",
+    "relevantDocuments": [
+      "2025-11-10-top-ai-algortihms"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Discover the top 20 AI algorithms powering modern machine learning. This comprehensive guide covers practical use cases, implementation tips, and hands-on sample projects tailored for solo architects, freelance makers, enterprise developers, and side-hustle entrepreneurs."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-11-10-top-ai-algortihms"
+    ]
+  },
+  {
+    "id": "topical-2026-01-03-american-phoenix",
+    "type": "topical",
+    "query": "From mescaline baby to AI pioneer, this is the untold story of how trauma, technology, and unbreakable will forged a new path for human resilience in the digital age.",
+    "expectedAnswer": "The American Phoenix: How One Man's Digital Resurrection Rewrites the Rules of Survival",
+    "relevantDocuments": [
+      "2026-01-03-american-phoenix"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "From mescaline baby to AI pioneer, this is the untold story of how trauma, technology, and unbreakable will forged a new path for human resilience in the digital age."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-01-03-american-phoenix"
+    ]
+  },
+  {
+    "id": "topical-2026-01-11-from-grief-to-code-the-digital-resurrection-journey",
+    "type": "topical",
+    "query": "Formalizing memory preservation constraints in AI systems to enable identity reconstruction and long-horizon autonomy beyond traditional RAG and agent frameworks.",
+    "expectedAnswer": "Memory Preservation Invariants: A New Class of Autonomous Agent Architectures",
+    "relevantDocuments": [
+      "2026-01-11-from-grief-to-code-the-digital-resurrection-journey"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Formalizing memory preservation constraints in AI systems to enable identity reconstruction and long-horizon autonomy beyond traditional RAG and agent frameworks."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-01-11-from-grief-to-code-the-digital-resurrection-journey"
+    ]
+  },
+  {
+    "id": "topical-2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system",
+    "type": "topical",
+    "query": "A comprehensive guide to building a local-first, privacy-focused AI system that transforms large corpuses into grounded, attributable, and conversationally explorable intelligence while maintaining complete data sovereignty.",
+    "expectedAnswer": "Dynamic Persona MoE RAG - Building a Sovereign Synthetic Intelligence System",
+    "relevantDocuments": [
+      "2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "A comprehensive guide to building a local-first, privacy-focused AI system that transforms large corpuses into grounded, attributable, and conversationally explorable intelligence while maintaining complete data sovereignty."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-01-25-dynamic-persona-moe-rag-building-a-sovereign-synthetic-intelligence-system"
+    ]
+  },
+  {
+    "id": "topical-2026-02-19-building-knowledge-chatbot",
+    "type": "topical",
+    "query": "How to build a chatbot that captures your knowledge, answers questions about your expertise, and helps anyone learn from your experience - all running locally with zero API costs.",
+    "expectedAnswer": "Building a Knowledge-Sharing Chatbot: Turn Expertise Into an AI That Anyone Can Query",
+    "relevantDocuments": [
+      "2026-02-19-building-knowledge-chatbot"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "How to build a chatbot that captures your knowledge, answers questions about your expertise, and helps anyone learn from your experience - all running locally with zero API costs."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-02-19-building-knowledge-chatbot"
+    ]
+  },
+  {
+    "id": "topical-2026-03-28-sovereignty-manifesto",
+    "type": "topical",
+    "query": "An exploration of data sovereignty as the foundation for human agency in the age of AI, arguing that local control over data and algorithms is essential to preserve autonomy and resist centralized corporate control.",
+    "expectedAnswer": "The Sovereignty Manifesto: Why Local Data is the Last Bastion of Human Agency",
+    "relevantDocuments": [
+      "2026-03-28-sovereignty-manifesto"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "An exploration of data sovereignty as the foundation for human agency in the age of AI, arguing that local control over data and algorithms is essential to preserve autonomy and resist centralized corporate control."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-03-28-sovereignty-manifesto"
+    ]
+  },
+  {
+    "id": "topical-2026-06-01-objective03-local-news-agency",
+    "type": "topical",
+    "query": "An autonomous news ingestion, claim extraction, contradiction tracking, and TTS broadcast system that runs entirely locally. No API keys. No monthly bills. No vendor lock-in.",
+    "expectedAnswer": "objective03: My Laptop Eats the News and Talks Back",
+    "relevantDocuments": [
+      "2026-06-01-objective03-local-news-agency"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "An autonomous news ingestion, claim extraction, contradiction tracking, and TTS broadcast system that runs entirely locally. No API keys. No monthly bills. No vendor lock-in."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-06-01-objective03-local-news-agency"
+    ]
+  },
+  {
+    "id": "topical-2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems",
+    "type": "topical",
+    "query": "Sovereign Memory Bank's full architecture: the seven-layer memory model, tripartite storage, the autonomous evolution engine, and the FastAPI agent interface with hybrid recall.",
+    "expectedAnswer": "Sovereign Memory Bank: A Deep Dive Into Autonomous Cognitive Memory for Agent Systems",
+    "relevantDocuments": [
+      "2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [],
+    "requiredPassages": [
+      "Sovereign Memory Bank's full architecture: the seven-layer memory model, tripartite storage, the autonomous evolution engine, and the FastAPI agent interface with hybrid recall."
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-06-14-sovereign-memory-bank-a-deep-dive-into-autonomous-cognitive-memory-for-agent-systems"
+    ]
+  },
+  {
+    "id": "relational-chapter-1",
+    "type": "relational",
+    "query": "What further reading does chapter 1 recommend?",
+    "expectedAnswer": "Chapter 1 recommends 2 article(s).",
+    "relevantDocuments": [
+      "2026-03-10-breaking-free-from-chatgpt",
+      "2026-09-04-the-rented-sovereign-agent-agency-stack"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2026-03-10-breaking-free-from-chatgpt->chapter:1",
+      "recommends_reading:/blog/2026-09-04-the-rented-sovereign-agent-agency-stack->chapter:1"
+    ],
+    "requiredPassages": [
+      "/blog/2026-03-10-breaking-free-from-chatgpt",
+      "/blog/2026-09-04-the-rented-sovereign-agent-agency-stack"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-03-10-breaking-free-from-chatgpt",
+      "https://www.danielkliewer.com/blog/2026-09-04-the-rented-sovereign-agent-agency-stack"
+    ]
+  },
+  {
+    "id": "relational-chapter-2",
+    "type": "relational",
+    "query": "What further reading does chapter 2 recommend?",
+    "expectedAnswer": "Chapter 2 recommends 2 article(s).",
+    "relevantDocuments": [
+      "2026-03-28-sovereignty-manifesto",
+      "2026-07-05-sovereign-ai-architecture-synthesis"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2026-03-28-sovereignty-manifesto->chapter:2",
+      "recommends_reading:/blog/2026-07-05-sovereign-ai-architecture-synthesis->chapter:2"
+    ],
+    "requiredPassages": [
+      "/blog/2026-03-28-sovereignty-manifesto",
+      "/blog/2026-07-05-sovereign-ai-architecture-synthesis"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-03-28-sovereignty-manifesto",
+      "https://www.danielkliewer.com/blog/2026-07-05-sovereign-ai-architecture-synthesis"
+    ]
+  },
+  {
+    "id": "relational-chapter-3",
+    "type": "relational",
+    "query": "What further reading does chapter 3 recommend?",
+    "expectedAnswer": "Chapter 3 recommends 1 article(s).",
+    "relevantDocuments": [
+      "2025-11-08-local-llm-integration"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2025-11-08-local-llm-integration->chapter:3"
+    ],
+    "requiredPassages": [
+      "/blog/2025-11-08-local-llm-integration"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-11-08-local-llm-integration"
+    ]
+  },
+  {
+    "id": "relational-chapter-4",
+    "type": "relational",
+    "query": "What further reading does chapter 4 recommend?",
+    "expectedAnswer": "Chapter 4 recommends 1 article(s).",
+    "relevantDocuments": [
+      "2025-07-06-demystifying-large-language-models"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2025-07-06-demystifying-large-language-models->chapter:4"
+    ],
+    "requiredPassages": [
+      "/blog/2025-07-06-demystifying-large-language-models"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-07-06-demystifying-large-language-models"
+    ]
+  },
+  {
+    "id": "relational-chapter-5",
+    "type": "relational",
+    "query": "What further reading does chapter 5 recommend?",
+    "expectedAnswer": "Chapter 5 recommends 1 article(s).",
+    "relevantDocuments": [
+      "2025-11-14-2025-inference-new-geography-intelligence"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2025-11-14-2025-inference-new-geography-intelligence->chapter:5"
+    ],
+    "requiredPassages": [
+      "/blog/2025-11-14-2025-inference-new-geography-intelligence"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-11-14-2025-inference-new-geography-intelligence"
+    ]
+  },
+  {
+    "id": "relational-chapter-6",
+    "type": "relational",
+    "query": "What further reading does chapter 6 recommend?",
+    "expectedAnswer": "Chapter 6 recommends 2 article(s).",
+    "relevantDocuments": [
+      "2025-11-12-mastering-llama-cpp-local-llm-integration-guide",
+      "2026-10-23-two-models-one-harness"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2025-11-12-mastering-llama-cpp-local-llm-integration-guide->chapter:6",
+      "recommends_reading:/blog/2026-10-23-two-models-one-harness->chapter:6"
+    ],
+    "requiredPassages": [
+      "/blog/2025-11-12-mastering-llama-cpp-local-llm-integration-guide",
+      "/blog/2026-10-23-two-models-one-harness"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-11-12-mastering-llama-cpp-local-llm-integration-guide",
+      "https://www.danielkliewer.com/blog/2026-10-23-two-models-one-harness"
+    ]
+  },
+  {
+    "id": "relational-chapter-7",
+    "type": "relational",
+    "query": "What further reading does chapter 7 recommend?",
+    "expectedAnswer": "Chapter 7 recommends 2 article(s).",
+    "relevantDocuments": [
+      "2025-03-28-ollama-chunking",
+      "2025-10-19-building-a-local-llm-powered-knowledge-graph"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2025-03-28-ollama-chunking->chapter:7",
+      "recommends_reading:/blog/2025-10-19-building-a-local-llm-powered-knowledge-graph->chapter:7"
+    ],
+    "requiredPassages": [
+      "/blog/2025-03-28-ollama-chunking",
+      "/blog/2025-10-19-building-a-local-llm-powered-knowledge-graph"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-03-28-ollama-chunking",
+      "https://www.danielkliewer.com/blog/2025-10-19-building-a-local-llm-powered-knowledge-graph"
+    ]
+  },
+  {
+    "id": "relational-chapter-8",
+    "type": "relational",
+    "query": "What further reading does chapter 8 recommend?",
+    "expectedAnswer": "Chapter 8 recommends 1 article(s).",
+    "relevantDocuments": [
+      "2024-12-01-basic-rag"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2024-12-01-basic-rag->chapter:8"
+    ],
+    "requiredPassages": [
+      "/blog/2024-12-01-basic-rag"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2024-12-01-basic-rag"
+    ]
+  },
+  {
+    "id": "relational-chapter-9",
+    "type": "relational",
+    "query": "What further reading does chapter 9 recommend?",
+    "expectedAnswer": "Chapter 9 recommends 2 article(s).",
+    "relevantDocuments": [
+      "2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
+      "2026-07-06-sovereign-ai-benchmarks-performance-results"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval->chapter:9",
+      "recommends_reading:/blog/2026-07-06-sovereign-ai-benchmarks-performance-results->chapter:9"
+    ],
+    "requiredPassages": [
+      "/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
+      "/blog/2026-07-06-sovereign-ai-benchmarks-performance-results"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2025-11-15-building-evaluating-local-research-assistant-graphrag-vero-eval",
+      "https://www.danielkliewer.com/blog/2026-07-06-sovereign-ai-benchmarks-performance-results"
+    ]
+  },
+  {
+    "id": "relational-chapter-10",
+    "type": "relational",
+    "query": "What further reading does chapter 10 recommend?",
+    "expectedAnswer": "Chapter 10 recommends 1 article(s).",
+    "relevantDocuments": [
+      "2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents"
+    ],
+    "relevantConcepts": [],
+    "relevantRelations": [
+      "recommends_reading:/blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents->chapter:10"
+    ],
+    "requiredPassages": [
+      "/blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents"
+    ],
+    "expectedCitations": [
+      "https://www.danielkliewer.com/blog/2026-03-17-building-a-private-knowledge-graph-with-local-ai-agents"
+    ]
+  }
+]
