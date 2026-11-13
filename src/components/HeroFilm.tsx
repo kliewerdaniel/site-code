@@ -12,20 +12,23 @@ import { useEffect, useRef, useState } from "react";
  *   - reduced-motion and data-saver users get the still, by preference and not
  *     as a fallback after a wasted download
  *
- * Muted, looping, no audio track, no controls. It is decoration and is marked
- * as such for assistive tech; the alt text lives on the image.
+ * Muted, looping, no audio track, no controls. The plate is a decorative
+ * background behind the page's own text, so it is hidden from assistive tech
+ * (`alt=""`, `aria-hidden`) and from the visible layout: a descriptive alt
+ * renders as faint text over the hero whenever the still fails or is still
+ * loading, and the text already carries the message. The intrinsic size is
+ * declared so the browser reserves the box and never shows a loading
+ * placeholder.
  */
 export function HeroFilm({
   poster,
   srcMp4,
   srcWebm,
-  alt,
   className = "",
 }: {
   poster: string;
   srcMp4: string;
   srcWebm?: string;
-  alt: string;
   className?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -79,11 +82,15 @@ export function HeroFilm({
 
   return (
     <div className={`overflow-hidden bg-void ${className || "relative"}`}>
-      {/* The still. Always present, always the fallback. */}
+      {/* The still. Always present, always the fallback. Decorative: the page's
+          own text is the content, so the plate is hidden from assistive tech. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={poster}
-        alt={alt}
+        alt=""
+        aria-hidden="true"
+        width={2304}
+        height={960}
         className="h-full w-full object-cover"
         fetchPriority="high"
         decoding="async"

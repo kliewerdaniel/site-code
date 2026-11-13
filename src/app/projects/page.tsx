@@ -23,7 +23,6 @@ export default function ProjectsPage() {
         poster="/images/hero/hero-projects.jpg"
         srcMp4="/images/hero/hero-projects-loop.mp4"
         srcWebm="/images/hero/hero-projects-loop.webm"
-        alt="A row of machined metal instruments on a dark steel bench under a single warm amber light"
       >
         <Kicker>Systems</Kicker>
         <h1 className="display-lg mt-6 max-w-3xl">

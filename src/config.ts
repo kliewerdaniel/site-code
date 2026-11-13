@@ -57,10 +57,9 @@ export const SOCIAL = {
 
 /* Primary navigation leads with the WORK, not the book. The book is one
    artifact inside a larger program; putting it first made the whole site read
-   as a book landing page. /sample stays live and is linked from /book and the
-   footer — removing it from the nav is a navigation change, not a route change.
-   /press no longer exists: it is a permanent redirect to /about (see
-   REMOVED_SECTION_REDIRECTS in next.config.ts). */
+   as a book landing page. /sample stays live and is linked from /book — it is
+   not a nav destination. /press no longer exists: it is a permanent redirect
+   to /about (see REMOVED_SECTION_REDIRECTS in next.config.ts). */
 export const NAV_ITEMS = [
   { label: "Projects", href: "/projects" },
   { label: "Research", href: "/research" },
@@ -72,7 +71,6 @@ export const NAV_ITEMS = [
 ] as const;
 
 export const SECONDARY_NAV = [
-  { label: "Sample", href: "/sample" },
   { label: "For agents", href: "/agents" },
   { label: "Graph", href: "/graph" },
   { label: "Privacy", href: "/privacy" },

@@ -114,7 +114,6 @@ export default async function HomePage() {
           poster="/images/hero/hero-archive.jpg"
           srcMp4="/images/hero/hero-loop.mp4"
           srcWebm="/images/hero/hero-loop.webm"
-          alt="A monumental archive of dark metal plates receding into blackness, lit by a single warm amber light"
           className="absolute inset-0 -z-10"
         />
         <div

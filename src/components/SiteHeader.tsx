@@ -54,7 +54,7 @@ export function SiteHeader() {
           href="/book"
           className="rounded-sm bg-gold px-4 py-2 font-mono text-[11px] font-semibold tracking-[0.14em] text-void uppercase transition-colors hover:bg-gold-2"
         >
-          The book
+          Get the book
         </Link>
       </div>
       {/* Mobile nav */}

@@ -9,7 +9,7 @@
     "concepts": 8,
     "chapters": 24,
     "verifiedChapterLinks": 0,
-    "contentUrls": 233,
+    "contentUrls": 234,
     "sitemapUrls": 234,
     "builtPages": 233,
     "redirects": 35
@@ -233,7 +233,7 @@
     ]
   },
   "routes": {
-    "contentUrls": 233,
+    "contentUrls": 234,
     "handlers": 10,
     "redirects": 35,
     "not200": 0
