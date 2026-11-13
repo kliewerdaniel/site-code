@@ -58,8 +58,8 @@ claim. That is measured directly as the **false-support rate**.
 | Citation accuracy | 0.417 | **1.000** | **1.000** |
 | Passage recall | **0.810** | 0.286 | 0.571 |
 | False-support rate | 1.000 | **0.333** | 0.500 |
-| One-time bytes | 30,808 KB | **265 KB** | **265 KB** |
-| Total bytes | 30,808 KB | 10,405 KB | **1,826 KB** |
+| One-time bytes | 31,599 KB | **265 KB** | **265 KB** |
+| Total bytes | 31,599 KB | 10,674 KB | **1,826 KB** |
 | Requests / query | 0.0 (after crawl) | 2.6 | 2.6 |
 | Latency / query (local) | 9.7 ms | 0.2 ms | 0.2 ms |
 
@@ -69,10 +69,10 @@ claim. That is measured directly as the **false-support rate**.
    from 0.313 to 1.000 and citation accuracy from 0.417 to 1.000. The graph
    answers the relationship questions directly; a crawler has no graph.
 2. **The one-time cost drops by two orders of magnitude.** Crawling every page
-   costs 30.8 MB; the catalog and graph cost 265 KB.
+   costs 31.6 MB; the catalog and graph cost 265 KB.
 3. **Canonical Markdown is the cheapest body transport.** For the same
-   ranking, Markdown mirrors cost 1.8 MB across the benchmark against 10.4 MB
-   for the HTML pages — a 5.7× reduction on top of the catalog saving.
+   ranking, Markdown mirrors cost 1.8 MB across the benchmark against 10.7 MB
+   for the HTML pages — a 5.8× reduction on top of the catalog saving.
 4. **Metadata alone does not carry the answer.** B's passage recall is 0.286:
    it retrieves the right documents, but a title, description and tag list do
    not contain a `doc_id` or a publication date. C raises passage recall to
@@ -114,8 +114,10 @@ npm run benchmark
 
 The harness reads `.next/server/app`, writes
 `data/adjudicated-questions.json` and `data/benchmark-report.json`, and prints
-the table above. The dataset is deterministic: the same build produces the
-same questions and the same numbers.
+the table above. The dataset and the structural metrics are deterministic: the
+same build produces the same questions and the same recall, precision,
+citation, passage and byte numbers. Latency is measured on the local machine
+and varies per run.
 
 ## Agent experiment (LLM question answering)
 
