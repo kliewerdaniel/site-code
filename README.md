@@ -77,11 +77,11 @@ Beyond the build gates, three checks run over the content and the built output:
   byte counts and content hashes for **all nine resources**, master-index
   completeness, claim/evidence referential integrity, proposal exclusion from
   the authoritative graph, and **every** Markdown mirror, compared with the
-  local build. Findings are split into deployment drift (`errors`), local
+  the local build. Findings are split into deployment drift (`errors`), local
   build problems (`compileErrors`) and non-fatal warnings. Runs after a deploy
   (see `.github/workflows/smoke.yml`, which also triggers automatically after
-  a successful CI run). **Currently passes with 0 errors** — production and
-  the local build are byte-identical.
+  a successful CI run). **Currently passes with 0 drift, 0 compile errors and
+  0 warnings** — production and the local build are byte-identical.
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.
