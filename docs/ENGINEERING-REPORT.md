@@ -1,8 +1,9 @@
 # Engineering report — productizing the deterministic knowledge compiler
 
-Branch `feat/knowledge-compiler-productization`. Production was **not**
-deployed; this report distinguishes what is verified locally from what is
-still pending.
+Branch `feat/knowledge-compiler-productization`. The branch was merged to
+`main` (`f337df2`) and deployed to https://www.danielkliewer.com; the
+deployment is verified in §12. This report distinguishes what is verified from
+what is still pending.
 
 ## 1. Original architecture audit
 
@@ -178,13 +179,34 @@ conformance and the route-parity check pass with 0 errors.
 | `cada77e` | Interactive graph explorer |
 | `1245432` | Manifest compiler + sample corpus |
 | `2e791c3` | Agent benchmark + governance docs |
+| `cb9d17c` | Final engineering report; sync benchmark numbers |
+| `6d3f7b3` | Second model family in the agent benchmark |
+| `f337df2` | Merge to `main` (production deploy) |
+
+## 12. Deployment verification
+
+Merged to `main` and pushed; Vercel deployed within two minutes.
+
+- `npm run smoke:production` — **0 drift, 0 compile, 0 warning(s), 24 info**:
+  all nine agent resources match the local build by byte hash, conditional
+  requests return 304, 197 Markdown mirrors resolve, the draft mirror correctly
+  404s, 109 claims / 109 evidence records resolve, and none of the 10 proposals
+  appears in the authoritative graph.
+- `https://www.danielkliewer.com/graph` — 200, title "Knowledge graph — Daniel
+  Kliewer", 244 server-rendered entity links, `/graph` present in the sitemap.
+- Real-browser check of production: 8 graph nodes on load, the **article**
+  entity filter narrows the list 244 → 197, the **implements** relation filter
+  narrows the graph to 7 nodes, reset restores 8, search input present,
+  provenance text rendered in the detail panel.
+- Live catalog: 197 articles · 12 projects · 8 concepts · 3 paths.
 
 ## 13. Recommended next phase
 
-1. Human review, then deploy the branch and run `npm run smoke:production`.
-2. Wire the site's build to the extracted compiler behind the existing bound
-   layer, so there is one compilation path.
-3. Add an approval workflow (who may approve, revocation, audit log) and a
+Deployed and verified (§12). Remaining work:
+
+1. Wire the site's build to the extracted compiler behind the existing bound
+   layer, so there is one compilation path (G7).
+2. Add an approval workflow (who may approve, revocation, audit log) and a
    writer that refuses to promote an unapproved id.
-4. Add the remaining source adapters against real archives, and run the agent
-   benchmark on a second model family.
+3. Add the remaining source adapters against real archives.
+4. Add a third model family and human adjudication of the 30 answers.
