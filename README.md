@@ -146,6 +146,21 @@ mirror at `/research/<slug>.md`, generated from the same source the page
 renders and verified by content hash; drafts have none. Traffic and bandwidth
 policy: **[docs/TRAFFIC.md](docs/TRAFFIC.md)**.
 
+## SDK and MCP
+
+Two standalone packages consume the compiled corpus without the website's
+Next.js runtime:
+
+- **`packages/knowledge-sdk`** — `@danielkliewer/knowledge-sdk`. A typed,
+  dependency-free TypeScript client: corpus discovery, conditional HTTP with
+  ETag caching, byte-budget enforcement, content-hash verification, BM25-style
+  ranking, graph traversal, document expansion, evidence lookup and citation
+  generation. See [its README](packages/knowledge-sdk/README.md).
+- **`packages/knowledge-mcp`** — `@danielkliewer/knowledge-mcp`. A stdio MCP
+  adapter exposing `search_knowledge`, `get_article`, `traverse_graph`,
+  `get_evidence`, `get_learning_path` and `get_book_context`, with hard
+  retrieval limits. See [its README](packages/knowledge-mcp/README.md).
+
 ## Deploy
 
 Push to GitHub, import into Vercel. No env vars required. `.github/workflows/ci.yml`
