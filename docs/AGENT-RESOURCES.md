@@ -1,20 +1,101 @@
 # Agent knowledge interface
 
-Six public resources, generated at build time from the same source the pages
-render. No database, no runtime API, no per-request compute. All are static and
-cacheable.
+Nine machine-readable resources, generated at build time from the same source
+the pages render. No database, no runtime API, no per-request compute. All are
+static and cacheable. Authoritative counts: [STATISTICS.md](STATISTICS.md).
 
 | Path | Type | Purpose |
 |---|---|---|
 | `/llms.txt` | `text/plain` | Entry point: identity, domains, navigation, book, pointers. ~3 KB. |
-| `/llms-full.txt` | `text/plain` | Full catalog as text: every article, project, concept, path, chapter. ~126 KB. |
+| `/llms-full.txt` | `text/plain` | Full catalog as text: every article, project, concept, path, chapter. ~145 KB. |
 | `/agents` | HTML | Human guide to the corpus and its graph. |
 | `/agents/index.json` | `application/json` | Master index with byte sizes and content types. |
-| `/agents/catalog.json` | `application/json` | Structured catalog. ~183 KB. |
-| `/agents/graph.json` | `application/json` | Typed relation graph with provenance. ~19 KB. |
+| `/agents/catalog.json` | `application/json` | Structured catalog. ~204 KB. |
+| `/agents/graph.json` | `application/json` | Typed relation graph with provenance. ~61 KB. |
 | `/agents/book.json` | `application/json` | The book as a product record. ~18 KB. |
+| `/agents/claims.json` | `application/json` | Typed claims with source spans, assessments and evidence references. |
+| `/agents/evidence.json` | `application/json` | Evidence records supporting or contradicting each claim. |
+| `/agents/proposals.json` | `application/json` | Non-authoritative relation proposals. Never in the graph. |
+| `/research/{slug}.md` | `text/markdown` | Canonical Markdown mirror of every published article. One file per article, generated from the same source the page renders. |
 
 `/for-agents` is a permanent redirect to `/agents`.
+
+## Article-count discrepancy (investigated)
+
+The November 12, 2026 article *Compiling a Website for Agents* states "198
+articles" and "six static files". Both figures are point-in-time and stale:
+
+- At the article's own commit (`47c2a39`) the archive held **199** source
+  files, of which **2** were already marked `draft: true`. The article's 198
+  was the count *before* the article itself was added, and it included the two
+  drafts — so it was not the published count even at publication.
+- The authoritative published count is **197** (199 source files minus 2
+  drafts), and the resource count is **nine**, not six. Both are generated from
+  the build by `npm run stats` → [STATISTICS.md](STATISTICS.md).
+- The article also describes a `lib/corpus/` + zod architecture that was never
+  shipped; the shipped implementation is `src/lib/agent-resources-core.ts`
+  over `content/research/*.md`. The article is retained as the design
+  narrative, with an editor's note recording the current figures.
+
+The rule that prevents a recurrence: no prose document carries a hand-counted
+figure. Every count comes from the build output.
+
+## Canonical Markdown mirrors
+
+Every published article has a canonical Markdown representation at
+`/research/<slug>.md`, generated at build time from the same markdown body the
+blog page renders. There is no separate hand-edited copy: the mirror is the
+source body, preceded by a YAML frontmatter block.
+
+The frontmatter carries:
+
+| Field | Meaning |
+|---|---|
+| `doc_id` | Stable, URL-independent identifier (`danielkliewer.com/article/<slug>`). |
+| `canonical_url` | The article's canonical HTML URL. |
+| `title` | The article title. |
+| `published` / `modified` | ISO dates; `modified` falls back to `published`. |
+| `type` | `article`. |
+| `concepts` / `projects` | Slugs derived from the archive's own tags and the taxonomy. |
+| `content_hash` | `sha256:<hex>` over the emitted body. |
+| `bytes` | Exact byte length of the emitted body. |
+| `provenance` | Source file, generator and site. |
+
+The hash and byte count describe the **body**, not the whole file — a document
+cannot contain a hash of itself. `verifyMarkdownMirror` re-derives both from
+the emitted bytes and optionally checks the body against the source.
+
+Drafts have no mirror: they are absent from `generateStaticParams` and from the
+mirror builder, so `/research/<draft-slug>.md` returns 404. `catalog.json`
+lists each article's `markdownUrl`; `index.json` describes the mirror scheme and
+its count.
+
+## Claims, evidence and proposals
+
+`/agents/claims.json` and `/agents/evidence.json` represent individual claims
+and the evidence for them. Every authoritative relation is a claim, so the
+graph and the claim model cannot disagree.
+
+A claim carries: a unique `id`, a `statement`, the `source` document, the exact
+`sourceSpan`, a `category` (`relation` / `property` / `absence` /
+`evaluation`), an `assessment` (`proposed` / `supported` / `contested` /
+`superseded` / `unverified`), a `verification` level (`implemented` / `tested` /
+`demonstrated` / `independently_verified` / `hypothesized`), supporting and
+contradictory evidence ids, related relation ids, and an `authoritative` flag.
+
+Schema validity is never confused with factual correctness: a claim that
+validates is still only as well established as its evidence, and the
+verification level states which proposition the evidence actually establishes.
+
+`/agents/proposals.json` carries non-authoritative proposals — a post that
+shares two or more concepts with a project but is not declared as its write-up.
+A proposal is a question for an editor, not a fact: it is marked
+`status: "proposed"`, appears in `claims.json` with `authoritative: false`, and
+never enters `/agents/graph.json` without explicit approval.
+
+The strongest negative statement the repository makes is also a claim: no
+`chapter_covers` relation can be verified between the manuscript and the
+article archive.
 
 ## Source of truth
 
@@ -22,16 +103,21 @@ Everything is derived, never hand-copied:
 
 - `src/config.ts` — site identity, the book, navigation.
 - `content/research/*.md` — the article archive.
+- `src/lib/posts.ts` — the published-post loader; excludes `draft: true`.
 - `src/lib/taxonomy.ts` — projects, concepts, learning paths, and the derived
   article↔concept joins.
 - `src/lib/chapters.ts` — the 24-chapter manifest (verified against the
   manuscript's table of contents).
 - `src/lib/book-links.ts` — article↔chapter relations, each with a reason.
 - `src/lib/relations-core.ts` — the graph semantics, shared with the auditor.
-- `src/lib/agent-resources-core.ts` — the pure builders for the six resources.
+- `src/lib/markdown-core.ts` — the pure Markdown mirror builder and verifier.
+- `src/lib/agent-resources-core.ts` — the pure builders for the nine resources.
 
 The builders are pure functions of that data: no clock, no randomness. Two
-builds of the same commit produce byte-identical resources.
+builds of the same commit produce byte-identical resources — including across
+timezones, because date normalization constructs every timestamp from explicit
+UTC components rather than parsing in the build machine's local time (a bug
+the production smoke test caught after the first deploy).
 
 ## Retrieving efficiently
 
@@ -43,6 +129,12 @@ builds of the same commit produce byte-identical resources.
 
 ## Graph vocabulary
 
+The controlled vocabulary is defined once, in `src/lib/relation-vocabulary.ts`:
+
+`implements`, `extends`, `depends_on`, `evaluates`, `contradicts`,
+`supersedes`, `derived_from`, `supports`, `refines`, `documents`,
+`demonstrates`, `prerequisite_for`, `chapter_covers`, `recommends_reading`.
+
 | Type | From | To | Meaning |
 |---|---|---|---|
 | `implements` | `/projects/<p>` | `/concepts/<c>` | the project implements the concept |
@@ -51,8 +143,13 @@ builds of the same commit produce byte-identical resources.
 | `chapter_covers` | `chapter:<n>` | `/blog/<post>` | the chapter covers the article (verified only) |
 | `recommends_reading` | `/blog/<post>` | `chapter:<n>` | the article is further reading for the chapter |
 
-Relation types with no data source are listed in `absent`, never fabricated:
-`extends`, `validates`, `explains`, `expands_on`, `related_product`.
+Every edge carries a stable `id` (`<type>:<from>-><to>`), a lifecycle `status`
+(`declared` / `proposed` / `approved` / `rejected`), a `verification` status,
+and `provenance` (declaring file, generator, reason, modification fingerprint).
+Types with no data source are listed in `absent`, never fabricated: `extends`,
+`depends_on`, `evaluates`, `contradicts`, `supersedes`, `derived_from`,
+`supports`, `refines`, `demonstrates`, plus the legacy proposed types
+`validates`, `explains`, `expands_on`, `related_product`.
 
 ### The `chapter_covers` rule
 
@@ -94,6 +191,27 @@ The archive, the projects and the book are one body of work by the same author.
 `npm run validate:agents` runs after `next build` and fails closed on: a missing
 resource, unparseable JSON, a non-canonical URL, a book record that contradicts
 the config, an invented availability/rating, a dangling graph edge, a chapter
-relation with no reason, or an index whose byte sizes do not match the bodies.
+relation with no reason, an index whose byte sizes do not match the bodies, or a
+draft that leaked into the catalog.
+
+`npm run validate:markdown` runs after `next build` and fails closed on: a
+published post with no mirror, a mirror whose hash or byte count does not
+verify, a mirror whose body differs from the source article, a mirror that does
+not match the deterministic render, or a draft with a published mirror.
+
+`npm run validate:claims` runs after `next build` and fails closed on: a claim
+or evidence resource with no build output, a claim with a missing id,
+statement, source, span, category, assessment or verification level, a claim
+referencing unknown evidence, a proposed claim marked authoritative, a
+duplicate id, or a proposal present in the authoritative graph.
+
 The auditor (`npm run audit`) reports the resource list, the edge counts by
-type, the dangling count and the verified-chapter-link count.
+type, the dangling count, the verified-chapter-link count, the mirror count and
+the claim/evidence/proposal counts.
+
+`npm run conformance` aggregates every validator plus the corpus-level
+invariants (schema shape, deterministic compilation, output consistency,
+resource references, publication metadata, index completeness, draft
+exclusion) into `data/conformance-report.json`, and fails on any structural
+violation. `npm run smoke:production` checks the deployed site against the
+local build.

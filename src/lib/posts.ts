@@ -24,22 +24,71 @@ export interface Post {
   seoDescription?: string;
   content: string;
   readingMinutes: number;
+  /**
+   * `draft: true` frontmatter. Drafts are excluded from `getAllPosts()`, so
+   * they never reach the pages, the sitemap, the feed or the agent corpus.
+   * The field is kept on the type so validators can account for them.
+   */
+  draft?: boolean;
 }
 
 const POSTS_DIR = path.join(process.cwd(), "content", "research");
 
 let cache: Post[] | null = null;
 
-function normalizeDate(raw: unknown): string {
+/**
+ * Normalise a frontmatter date to a deterministic UTC ISO timestamp.
+ *
+ * The archive mixes formats: ISO dates (`2025-11-05`), ISO datetimes with an
+ * offset (`2024-12-19 07:42:44 -0500`), and US month-day-year dates
+ * (`11-12-2026`). `new Date(raw).toISOString()` parses the US form in the
+ * build machine's LOCAL timezone, so the compiled artifacts were not
+ * reproducible across machines: the same source produced 06:00Z on a CST
+ * build and 00:00Z on a UTC build. Every branch here constructs the timestamp
+ * from explicit components in UTC, or honours an explicit offset.
+ */
+export function normalizeDate(raw: unknown): string {
   if (raw instanceof Date) {
     return isNaN(raw.getTime()) ? "" : raw.toISOString();
   }
-  if (typeof raw === "string" && raw.trim().length > 0) {
-    const d = new Date(raw);
-    if (!isNaN(d.getTime())) return d.toISOString();
-    return raw;
+  if (typeof raw !== "string" || raw.trim().length === 0) return "";
+  const s = raw.trim();
+
+  // Explicit timezone offset: convert deterministically.
+  const offset =
+    /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}))?\s*([+-])(\d{2}):?(\d{2})$/.exec(
+      s
+    );
+  if (offset) {
+    const sign = offset[7] === "-" ? -1 : 1;
+    const utc =
+      Date.UTC(+offset[1], +offset[2] - 1, +offset[3], +offset[4], +offset[5], +(offset[6] ?? 0)) -
+      sign * (+offset[8] * 60 + +offset[9]) * 60_000;
+    return new Date(utc).toISOString();
   }
-  return "";
+
+  // ISO datetime ending in Z: the engine parses this deterministically.
+  if (/^\d{4}-\d{2}-\d{2}T.*Z$/i.test(s)) {
+    const d = new Date(s);
+    return isNaN(d.getTime()) ? "" : d.toISOString();
+  }
+
+  // ISO date: 2026-11-12 -> UTC midnight.
+  let m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+  if (m) return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])).toISOString();
+
+  // ISO datetime without a timezone: treat as UTC, not local.
+  m = /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}))?$/.exec(s);
+  if (m)
+    return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +(m[6] ?? 0))).toISOString();
+
+  // US month-day-year: 11-12-2026 -> UTC midnight.
+  m = /^(\d{1,2})-(\d{1,2})-(\d{4})$/.exec(s);
+  if (m) return new Date(Date.UTC(+m[3], +m[1] - 1, +m[2])).toISOString();
+
+  // Fallback: engine parsing. The archive's own formats are all handled above.
+  const d = new Date(s);
+  return isNaN(d.getTime()) ? "" : d.toISOString();
 }
 
 function normalizeTags(raw: unknown): string[] {
@@ -105,6 +154,7 @@ function parsePostFile(filename: string): Post {
   const updated = normalizeDate(data.updated);
   const seoTitle = strField("seoTitle");
   const seoDescription = strField("seoDescription");
+  const draft = data.draft === true;
 
   return {
     slug,
@@ -118,6 +168,7 @@ function parsePostFile(filename: string): Post {
     ...(seoDescription ? { seoDescription } : {}),
     content,
     readingMinutes: Math.max(1, Math.ceil(countWords(content) / 200)),
+    ...(draft ? { draft: true } : {}),
   };
 }
 
@@ -130,7 +181,7 @@ function loadPosts(): Post[] {
   const files = fs
     .readdirSync(POSTS_DIR)
     .filter((f) => f.endsWith(".md"));
-  const posts = files.map(parsePostFile);
+  const posts = files.map(parsePostFile).filter((p) => !p.draft);
   posts.sort((a, b) => {
     const ta = new Date(a.date).getTime();
     const tb = new Date(b.date).getTime();
@@ -145,9 +196,21 @@ function loadPosts(): Post[] {
   return cache;
 }
 
-/** All posts, newest first. Posts with unparsable dates sort last. */
+/** All published posts, newest first. Posts with unparsable dates sort last.
+ *  Posts carrying `draft: true` are excluded: they must not be rendered,
+ *  listed, fed, sitemapped or compiled into the agent corpus. */
 export function getAllPosts(): Post[] {
   return loadPosts();
+}
+
+/** Every post on disk, including drafts. For validators and audits that need
+ *  to account for unpublished material without publishing it. */
+export function getAllPostsIncludingDrafts(): Post[] {
+  if (!fs.existsSync(POSTS_DIR)) return [];
+  return fs
+    .readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map(parsePostFile);
 }
 
 /** Single post by exact slug (filename minus ".md"), or undefined. */

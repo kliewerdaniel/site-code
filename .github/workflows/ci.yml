@@ -77,10 +77,26 @@ jobs:
       - name: Validate build
         run: npm run validate:build
 
-      # Agent knowledge interface: the six generated resources exist, parse,
+      # Agent knowledge interface: the nine generated resources exist, parse,
       # carry canonical URLs, match the book config, and have no dangling edges.
       - name: Validate agent resources
         run: npm run validate:agents
+
+      # Canonical Markdown mirrors: one per published article, hash-verified,
+      # body-identical to the source, with no draft mirrors.
+      - name: Validate Markdown mirrors
+        run: npm run validate:markdown
+
+      # Claim/evidence model: ids resolve, assessments are from the controlled
+      # vocabulary, and a proposed claim is never authoritative.
+      - name: Validate claims and evidence
+        run: npm run validate:claims
+
+      # One reproducible command over the whole corpus: schema shape,
+      # deterministic compilation, output consistency, resource references,
+      # publication metadata, index completeness and draft exclusion.
+      - name: Corpus conformance
+        run: npm run conformance
 
       # Deterministic audit: aggregates the validators, categorises canonical
       # mismatches, and fails if the defect list has grown since the baseline.
@@ -88,6 +104,14 @@ jobs:
         run: npm run audit
       - name: Audit baseline
         run: npm run audit -- --check
+
+      # Regenerate the authoritative statistics page from the build and the
+      # committed validation reports. The file is deterministic per commit, so
+      # a stale committed copy fails here — no hand-maintained count survives.
+      - name: Statistics
+        run: |
+          npm run stats
+          git diff --exit-code docs/STATISTICS.md
 
       # Route parity: every URL in the manifest resolves, and every removed
       # section still 308s to its replacement. Starts its own server and always

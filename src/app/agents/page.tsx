@@ -85,6 +85,12 @@ export default function AgentsPage() {
             >
               The book →
             </Link>
+            <Link
+              href="/graph"
+              className="label border border-rule-2 px-6 py-4 text-ink-2 transition-colors hover:border-gold hover:text-gold"
+            >
+              Explore the graph →
+            </Link>
           </div>
         </Container>
       </section>
@@ -183,6 +189,16 @@ export default function AgentsPage() {
           The full-text index is deliberately a catalog. Duplicating every
           article body into one file would ship 6.8 MB per request — the exact
           bandwidth problem a static corpus is meant to avoid.
+        </p>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-3">
+          Every published article also has a canonical Markdown mirror at{" "}
+          <code className="font-mono text-gold">/research/&lt;slug&gt;.md</code>:
+          the exact body, with frontmatter metadata, a content hash and a byte
+          count. Drafts have no mirror. Every relation is also a typed{" "}
+          <code className="font-mono text-gold">claim</code> with an epistemic
+          assessment and evidence;{" "}
+          <code className="font-mono text-gold">/agents/proposals.json</code>{" "}
+          carries non-authoritative proposals that never enter the graph.
         </p>
       </Exhibit>
 

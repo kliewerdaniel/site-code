@@ -27,14 +27,12 @@ export function HeroBand({
   poster,
   srcMp4,
   srcWebm,
-  alt,
   children,
   className = "",
 }: {
   poster: string;
   srcMp4: string;
   srcWebm?: string;
-  alt: string;
   children: ReactNode;
   className?: string;
 }) {
@@ -44,7 +42,6 @@ export function HeroBand({
         poster={poster}
         srcMp4={srcMp4}
         srcWebm={srcWebm}
-        alt={alt}
         className="absolute inset-0 -z-10"
       />
       <div

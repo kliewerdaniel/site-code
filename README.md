@@ -52,10 +52,36 @@ Beyond the build gates, three checks run over the content and the built output:
   canonical on every sitemap URL, complete OG/Twitter metadata, parseable
   JSON-LD, and no unintended `noindex`.
 - `npm run validate:agents` (`scripts/validate-agents.mjs`, run after
-  `next build`) — the agent knowledge interface: all six resources exist and
+  `next build`) — the agent knowledge interface: all nine resources exist and
   parse, every canonical URL is on the site origin, the book record matches
-  `src/config.ts`, no invented availability/rating, no dangling graph edge, and
-  the index's byte sizes match the built bodies.
+  `src/config.ts`, no invented availability/rating, no dangling graph edge, the
+  index's byte sizes match the built bodies, and no draft leaked into the
+  catalog.
+- `npm run validate:markdown` (`scripts/validate-markdown.mjs`, run after
+  `next build`) — the canonical Markdown mirrors: one per published article,
+  each with a verifying content hash and byte count, a body identical to the
+  source article, and a deterministic render; drafts have no mirror.
+- `npm run validate:claims` (`scripts/validate-claims.mjs`, run after
+  `next build`) — the claim/evidence model: every claim has a source span, an
+  assessment and a verification level; every evidence reference resolves; a
+  proposed claim is never authoritative; no proposal leaks into the
+  authoritative graph.
+- `npm run conformance` (`scripts/conformance.mjs`) — one reproducible command
+  over the whole corpus. It aggregates the four validators and adds schema
+  shape, deterministic compilation, output consistency, resource references,
+  publication metadata, index completeness and draft exclusion, then writes
+  `data/conformance-report.json` with errors / warnings / info. It exits
+  non-zero on any structural violation.
+- `npm run smoke:production` (`scripts/smoke-production.mjs`) — deployment smoke
+  test against the live site: HTTP status, content type, caching, ETag/304,
+  byte counts and content hashes for **all nine resources**, master-index
+  completeness, claim/evidence referential integrity, proposal exclusion from
+  the authoritative graph, and **every** Markdown mirror, compared with
+  the local build. Findings are split into deployment drift (`errors`), local
+  build problems (`compileErrors`) and non-fatal warnings. Runs after a deploy
+  (see `.github/workflows/smoke.yml`, which also triggers automatically after
+  a successful CI run). **Currently passes with 0 drift, 0 compile errors and
+  0 warnings** — production and the local build are byte-identical.
 - `npm run check:routes` — regenerates `data/route-manifest.json`, starts the
   production server, and diffs `data/route-status.json` against the committed
   baseline. The baseline reflects the intended state: removed sections are 308.
@@ -93,29 +119,80 @@ Every finding carries a stable id (`kind:file`), so it can be referenced in a
 review or an issue without quoting its text.
 
 Current baseline: 0 fatal · 10 defects (all inert `canonical_url` frontmatter) ·
-349 advisory · 98 relation edges with 0 dangling references · 6 agent resources.
+350 advisory · 98 relation edges with 0 dangling references · 9 agent resources ·
+197 published articles (2 drafts excluded) · 197 Markdown mirrors · 109 claims ·
+109 evidence records · 10 non-authoritative proposals · production smoke test
+passing with 0 errors. Every figure is generated from the build by
+[`npm run stats`](docs/STATISTICS.md); none is hand-maintained.
 
 ## Agent interface
 
 The site is a statically compiled knowledge corpus, not a blog with an API
-bolted on. Six resources are generated at build time from the same source the
-pages render — see **[docs/AGENT-RESOURCES.md](docs/AGENT-RESOURCES.md)**:
+bolted on. Nine machine-readable resources are generated at build time from the
+same source the pages render — see **[docs/AGENT-RESOURCES.md](docs/AGENT-RESOURCES.md)**
+and the authoritative counts in **[docs/STATISTICS.md](docs/STATISTICS.md)**:
 
 | Path | Purpose |
 |---|---|
 | `/llms.txt` | Entry point: identity, domains, navigation, book, pointers. |
-| `/llms-full.txt` | Full catalog as text (~126 KB, not the 6.8 MB of bodies). |
+| `/llms-full.txt` | Full catalog as text (~145 KB, not the 6.8 MB of bodies). |
 | `/agents` | Human guide to the corpus and its graph. |
 | `/agents/index.json` | Master index with byte sizes and content types. |
 | `/agents/catalog.json` | Articles, projects, concepts, paths, chapters. |
 | `/agents/graph.json` | Typed relation graph with provenance. |
 | `/agents/book.json` | The book as a product record (no invented availability). |
+| `/agents/claims.json` | Typed claims with source spans, assessments and evidence references. |
+| `/agents/evidence.json` | Evidence records supporting or contradicting each claim. |
+| `/agents/proposals.json` | Non-authoritative relation proposals (never in the graph). |
+| `/research/{slug}.md` | Canonical Markdown mirror of every published article. |
 
 Relationships are computed or verified, never invented. `chapter_covers` is
 withheld rather than inferred from keyword overlap — the manuscript does not
 reproduce individual articles — and the remaining unused relation types are
-reported as `absent`. Traffic and bandwidth policy:
-**[docs/TRAFFIC.md](docs/TRAFFIC.md)**.
+reported as `absent`. Every published article also has a canonical Markdown
+mirror at `/research/<slug>.md`, generated from the same source the page
+renders and verified by content hash; drafts have none. Traffic and bandwidth
+policy: **[docs/TRAFFIC.md](docs/TRAFFIC.md)**.
+
+### Graph explorer
+
+**[https://www.danielkliewer.com/graph](https://www.danielkliewer.com/graph)**
+renders the same generated catalog and relation graph as an interactive
+explorer: select a concept, follow typed relations, open the claims that rest
+on an edge, and read the evidence. The entity list is server-rendered as real
+links, so it works with JavaScript disabled; claims and evidence are fetched
+lazily and the rendered node set is bounded. Provenance and verification status
+are shown on every edge, claim and evidence record. The core is pure and
+tested (`src/lib/explorer-core.ts`, `tests/graph-explorer.test.mjs`).
+
+## SDK and MCP
+
+Two standalone packages consume the compiled corpus without the website's
+Next.js runtime:
+
+- **`packages/knowledge-sdk`** — `@danielkliewer/knowledge-sdk`. A typed,
+  dependency-free TypeScript client: corpus discovery, conditional HTTP with
+  ETag caching, byte-budget enforcement, content-hash verification, BM25-style
+  ranking, graph traversal, document expansion, concept and project lookup,
+  claim and evidence retrieval, citation verification and generation. See
+  [its README](packages/knowledge-sdk/README.md).
+- **`packages/knowledge-mcp`** — `@danielkliewer/knowledge-mcp`. A stdio MCP
+  adapter exposing eleven tools — `search_knowledge`, `get_article`,
+  `get_concept`, `get_project`, `get_claim`, `get_evidence`, `verify_citation`,
+  `traverse_graph`, `get_related_work`, `get_learning_path` and
+  `get_book_context` — with hard retrieval limits. See
+  [its README](packages/knowledge-mcp/README.md).
+- **`packages/knowledge-compiler`** — `@danielkliewer/knowledge-compiler`. The
+  reusable compile-time knowledge compiler: a source manifest, Markdown and JSON
+  adapters, normalization, deterministic validation, governed proposal approval
+  with explicit approval records, and deterministic artifact emission. It has no
+  Next.js dependency. See [its README](packages/knowledge-compiler/README.md),
+  the [sample corpus](examples/sample-corpus) (a second, independent archive it
+  compiles) and the [extraction evaluation](docs/KNOWLEDGE-COMPILER-EXTRACTION.md).
+
+The SDK and MCP are audited against the integration requirements in
+**[docs/SDK-AND-MCP-AUDIT.md](docs/SDK-AND-MCP-AUDIT.md)**: both already
+satisfy the interface, so no overlapping package was created.
 
 ## Deploy
 

@@ -123,7 +123,6 @@ export default function AboutPage() {
         poster="/images/hero/hero-about.jpg"
         srcMp4="/images/hero/hero-about-loop.mp4"
         srcWebm="/images/hero/hero-about-loop.webm"
-        alt="A painter's workbench and easel in a dark room under a single warm lamp"
       >
         <div className="flex flex-col items-center gap-10 md:flex-row">
           <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-sm border border-rule">

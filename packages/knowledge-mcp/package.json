@@ -1,0 +1,16 @@
+{
+  "name": "@danielkliewer/knowledge-mcp",
+  "version": "0.1.0",
+  "description": "MCP adapter for the danielkliewer.com static knowledge corpus.",
+  "type": "module",
+  "private": true,
+  "main": "src/server.ts",
+  "bin": {
+    "knowledge-mcp": "src/server.ts"
+  },
+  "files": ["src", "README.md"],
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  }
+}

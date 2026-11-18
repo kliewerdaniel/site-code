@@ -4,17 +4,17 @@
 // `node --test` suites import this module outside a Next build, where the
 // `@/` alias does not resolve.
 
-import { PROJECTS, CONCEPTS, PATHS } from "./taxonomy";
-import { BOOK_LINKS } from "./book-links";
-import { CHAPTERS } from "./chapters";
-import { getAllPosts } from "./posts";
+import { PROJECTS, CONCEPTS, PATHS } from "./taxonomy.ts";
+import { BOOK_LINKS } from "./book-links.ts";
+import { CHAPTERS } from "./chapters.ts";
+import { getAllPosts } from "./posts.ts";
 import {
   buildRelationGraph,
   danglingEdges,
   type DanglingEdge,
   type KnownNodes,
   type RelationGraph,
-} from "./relations-core";
+} from "./relations-core.ts";
 
 export function relationGraph(): RelationGraph {
   return buildRelationGraph({
@@ -40,5 +40,5 @@ export function graphDangling(): DanglingEdge[] {
   return danglingEdges(relationGraph(), knownNodes());
 }
 
-export { buildRelationGraph, danglingEdges } from "./relations-core";
-export type { RelationEdge, RelationGraph, RelationType } from "./relations-core";
+export { buildRelationGraph, danglingEdges } from "./relations-core.ts";
+export type { RelationEdge, RelationGraph, RelationType } from "./relations-core.ts";

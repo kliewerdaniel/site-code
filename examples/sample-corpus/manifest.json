@@ -1,0 +1,24 @@
+{
+  "schema": "knowledge-source/1",
+  "site": {
+    "name": "Sample Knowledge Corpus",
+    "url": "https://example.com"
+  },
+  "sources": [
+    { "kind": "markdown", "root": "examples/sample-corpus/docs" },
+    { "kind": "json", "file": "examples/sample-corpus/knowledge.json" }
+  ],
+  "approvals": [
+    {
+      "proposalId": "proposal:related_to:governed-execution.md->json:architecture",
+      "approvedBy": "Daniel Kliewer",
+      "reason": "The architecture notes and the governed-execution article describe the same deterministic authorization layer.",
+      "at": "2026-11-13T00:00:00.000Z",
+      "sourceFingerprint": "95f1b0e081d46bd776777bd4743b2b6ac3c5ca7acfbc3d45551ad25f51489e78"
+    }
+  ],
+  "output": {
+    "directory": "examples/sample-corpus/dist",
+    "baseUrl": "https://example.com/knowledge"
+  }
+}

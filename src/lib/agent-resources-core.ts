@@ -10,6 +10,24 @@
 // `src/app/agents/*.json` serve the result.
 
 import type { RelationGraph } from "./relations-core";
+import type { RelationEdge } from "./relation-vocabulary.ts";
+import type { Claim, Evidence } from "./claim-evidence-core.ts";
+import {
+  MARKDOWN_CONTENT_TYPE,
+  markdownPath,
+  renderMarkdownMirror,
+} from "./markdown-core.ts";
+
+export {
+  MARKDOWN_CONTENT_TYPE,
+  canonicalBody,
+  markdownDocId,
+  markdownPath,
+  parseMarkdownMirror,
+  renderMarkdownMirror,
+  sha256Hex,
+  verifyMarkdownMirror,
+} from "./markdown-core.ts";
 
 export interface AgentSite {
   name: string;
@@ -51,6 +69,12 @@ export interface AgentPost {
   description: string;
   tags: string[];
   readingMinutes: number;
+  /** The raw markdown body, exactly as rendered by the blog page. */
+  content: string;
+  /** Concept slugs derived from the archive's own tags. */
+  concepts: string[];
+  /** Project slugs this post is a write-up for. */
+  projects: string[];
 }
 
 export interface AgentProject {
@@ -109,6 +133,10 @@ export interface AgentCorpus {
   chapters: AgentChapter[];
   graph: RelationGraph;
   bookLinks: AgentBookLink[];
+  claims: Claim[];
+  evidence: Evidence[];
+  /** Non-authoritative relation proposals. Never merged into `graph`. */
+  proposals: RelationEdge[];
 }
 
 export interface AgentResource {
@@ -160,6 +188,9 @@ function renderLlms(c: AgentCorpus): string {
   L.push(`- ${c.site.url}/agents/graph.json — the typed relation graph, with provenance`);
   L.push(`- ${c.site.url}/agents/book.json — the book as a product record`);
   L.push(`- ${c.site.url}/llms-full.txt — the full catalog as plain text`);
+  L.push(
+    `- ${c.site.url}/research/{slug}.md — canonical Markdown mirror of every article body`
+  );
   L.push(`- ${c.site.url}/feed.xml — RSS 2.0`);
   L.push(`- ${c.site.url}/sitemap.xml — every indexable URL`);
   L.push("");
@@ -211,6 +242,9 @@ function renderLlmsFull(c: AgentCorpus): string {
   L.push(
     "This is a catalog, not the article bodies. Full text lives at each canonical URL; fetch only the documents you need."
   );
+  L.push(
+    `Every article also has a canonical Markdown mirror at ${c.site.url}/research/<slug>.md (frontmatter metadata + the exact body, hash-verified).`
+  );
   L.push("");
   L.push(`## Articles (${c.posts.length})`);
   L.push("");
@@ -220,6 +254,7 @@ function renderLlmsFull(c: AgentCorpus): string {
     L.push(`- Published: ${p.date}${p.updated ? ` · Updated: ${p.updated}` : ""}`);
     L.push(`- Tags: ${p.tags.join(", ") || "(none)"}`);
     L.push(`- Reading time: ${p.readingMinutes} min`);
+    L.push(`- Markdown: ${abs(c.site.url, markdownPath(p.slug))}`);
     L.push(`- ${p.description}`);
     L.push("");
   }
@@ -298,6 +333,7 @@ function renderCatalog(c: AgentCorpus): string {
     articles: c.posts.map((p) => ({
       slug: p.slug,
       url: abs(c.site.url, `/blog/${p.slug}`),
+      markdownUrl: abs(c.site.url, markdownPath(p.slug)),
       title: p.title,
       published: p.date,
       ...(p.updated ? { updated: p.updated } : {}),
@@ -351,9 +387,46 @@ function renderCatalog(c: AgentCorpus): string {
 function renderGraph(c: AgentCorpus): string {
   return json({
     site: { name: c.site.name, url: c.site.url },
+    vocabulary: c.graph.vocabulary,
     counts: c.graph.counts,
     absent: c.graph.absent,
     edges: c.graph.edges,
+    proposed: c.graph.proposed,
+  });
+}
+
+/* ── /agents/claims.json ─────────────────────────────────────────────────── */
+
+function renderClaims(c: AgentCorpus): string {
+  return json({
+    site: { name: c.site.name, url: c.site.url },
+    counts: {
+      total: c.claims.length,
+      authoritative: c.claims.filter((x) => x.authoritative).length,
+      proposed: c.claims.filter((x) => !x.authoritative).length,
+    },
+    claims: c.claims,
+  });
+}
+
+/* ── /agents/evidence.json ───────────────────────────────────────────────── */
+
+function renderEvidence(c: AgentCorpus): string {
+  return json({
+    site: { name: c.site.name, url: c.site.url },
+    counts: { total: c.evidence.length },
+    evidence: c.evidence,
+  });
+}
+
+/* ── /agents/proposals.json ──────────────────────────────────────────────── */
+
+function renderProposals(c: AgentCorpus): string {
+  return json({
+    site: { name: c.site.name, url: c.site.url },
+    rule: "A proposal is a question for an editor, not a fact. It never enters the authoritative graph without explicit approval.",
+    count: c.proposals.length,
+    proposals: c.proposals,
   });
 }
 
@@ -447,6 +520,21 @@ const RESOURCE_META: Array<{ path: string; contentType: string; description: str
     contentType: "application/json; charset=utf-8",
     description: "The book as a product record, sourced from the central config.",
   },
+  {
+    path: "/agents/claims.json",
+    contentType: "application/json; charset=utf-8",
+    description: "Typed claims with source spans, assessments, verification levels and evidence references.",
+  },
+  {
+    path: "/agents/evidence.json",
+    contentType: "application/json; charset=utf-8",
+    description: "Evidence records supporting or contradicting each claim.",
+  },
+  {
+    path: "/agents/proposals.json",
+    contentType: "application/json; charset=utf-8",
+    description: "Non-authoritative relation proposals. Never part of the authoritative graph.",
+  },
 ];
 
 function renderIndex(
@@ -483,6 +571,16 @@ function renderIndex(
       paths: c.paths.length,
       chapters: c.chapters.length,
       graphEdges: Object.values(c.graph.counts).reduce((a, b) => a + b, 0),
+      claims: c.claims.length,
+      evidence: c.evidence.length,
+      proposals: c.proposals.length,
+    },
+    markdown: {
+      path: markdownPath("{slug}"),
+      contentType: MARKDOWN_CONTENT_TYPE,
+      count: c.posts.length,
+      description:
+        "Canonical Markdown mirror of every published article body: frontmatter metadata, content hash, byte count and the exact body the page renders.",
     },
   });
 }
@@ -512,6 +610,21 @@ export function buildAgentResources(c: AgentCorpus): AgentResource[] {
       contentType: "application/json; charset=utf-8",
       body: renderBook(c),
     },
+    {
+      path: "/agents/claims.json",
+      contentType: "application/json; charset=utf-8",
+      body: renderClaims(c),
+    },
+    {
+      path: "/agents/evidence.json",
+      contentType: "application/json; charset=utf-8",
+      body: renderEvidence(c),
+    },
+    {
+      path: "/agents/proposals.json",
+      contentType: "application/json; charset=utf-8",
+      body: renderProposals(c),
+    },
   ];
   // The index lists its own byte size, which is self-referential: the number
   // is part of the string being measured. Iterate to a fixed point (the digit
@@ -535,4 +648,17 @@ export function buildAgentResources(c: AgentCorpus): AgentResource[] {
     body: indexBody,
   });
   return bodies;
+}
+
+/* ── Markdown mirrors ──────────────────────────────────────────────────────
+   One canonical Markdown document per published post, generated from the
+   same corpus the pages render. Served by the `/research/[slug].md` route
+   handler; listed per-article in catalog.json and described in index.json. */
+
+export function buildMarkdownMirrors(c: AgentCorpus): AgentResource[] {
+  return c.posts.map((p) => ({
+    path: markdownPath(p.slug),
+    contentType: MARKDOWN_CONTENT_TYPE,
+    body: renderMarkdownMirror(c.site.url, p),
+  }));
 }

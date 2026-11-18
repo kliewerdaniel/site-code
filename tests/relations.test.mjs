@@ -121,9 +121,10 @@ test("danglingEdges: a fabricated slug is caught", () => {
   assert.match(why, /unknown chapter/);
 });
 
-test("ABSENT_RELATIONS: no absent type is silently carried as an edge", () => {
+test("ABSENT_RELATIONS: an absent type is declared but carries no edges", () => {
   const g = buildRelationGraph({ projects: [], concepts: [], paths: [], bookLinks: [] });
   for (const t of ABSENT_RELATIONS) {
-    assert.equal(g.edges[t], undefined);
+    assert.equal(g.counts[t], 0);
+    assert.equal(g.edges[t].length, 0);
   }
 });

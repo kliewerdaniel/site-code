@@ -10,7 +10,7 @@
 // "Repository signals" are dated. They are a snapshot, not a live feed, and the
 // UI labels them as such.
 
-import { getAllPosts, type Post } from "./posts";
+import { getAllPosts, type Post } from "./posts.ts";
 
 export type Maturity = "implementation" | "prototype" | "research";
 

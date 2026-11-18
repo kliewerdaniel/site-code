@@ -32,8 +32,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Hermes planning scratch — local plans and design prototypes, not part of
-# the product. docs/design/ IS tracked (the spec and prototype are review
+# Hermes planning scratch — local plans and design prototypes, not part of the
+# product. docs/design/ IS tracked (the spec and prototype are review
 # artifacts); only the binary cover copy the prototype references is not.
 .hermes/
 docs/design/*.png
+
+# Point-in-time deployment smoke report: depends on the live site and the
+# commit, so it is an artifact of a run, not a source of truth.
+data/smoke-report.json

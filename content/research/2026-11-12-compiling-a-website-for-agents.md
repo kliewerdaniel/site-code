@@ -12,6 +12,14 @@ tags:
 ---
 # Compiling a Website for Agents: A Static Knowledge Corpus on Next.js
 
+> **Editor's note (2026-11-13).** The figures in this article are point-in-time
+> as of publication. The corpus now has **197 published articles** (199 source
+> files, 2 drafts excluded), **nine** machine-readable resources, and **109
+> claims** with **109 evidence records**. The `lib/corpus/` + zod architecture
+> sketched below was the design at writing time; the shipped implementation is
+> `src/lib/agent-resources-core.ts`. Authoritative, build-generated counts:
+> [docs/STATISTICS.md](https://github.com/kliewerdaniel/site-code/blob/main/docs/STATISTICS.md).
+
 danielkliewer.com now ships its 198 articles, 12 systems, 8 concepts, 3 learning paths and a 98-edge typed relation graph as six static files generated at build time, so an agent fetches one compact catalog instead of crawling the site.
 
 ## The problem: agents read the archive, and bandwidth is the bill

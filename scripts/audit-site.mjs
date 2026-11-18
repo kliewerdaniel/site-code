@@ -33,7 +33,10 @@ import { collect as collectBuild } from "./validate-build.mjs";
 import { buildRelationGraph, danglingEdges } from "../src/lib/relations-core.ts";
 import { BOOK_LINKS } from "../src/lib/book-links.ts";
 import { CHAPTERS } from "../src/lib/chapters.ts";
+import { getAllPosts } from "../src/lib/posts.ts";
 import { collect as collectAgents } from "./validate-agents.mjs";
+import { collect as collectMarkdown } from "./validate-markdown.mjs";
+import { collect as collectClaims } from "./validate-claims.mjs";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, "..");
@@ -108,13 +111,7 @@ export function relationGraph() {
 
 /** The nodes the source-derived graph may reference. */
 function auditNodes() {
-  const postsDir = path.join(repo, "content", "research");
-  const posts = new Set(
-    fs
-      .readdirSync(postsDir)
-      .filter((f) => f.endsWith(".md") && f !== "temp.md")
-      .map((f) => f.replace(/\.md$/, ""))
-  );
+  const posts = new Set(getAllPosts().map((p) => p.slug));
   const src = fs.readFileSync(path.join(repo, "src", "lib", "taxonomy.ts"), "utf8");
   const conceptsStart = src.indexOf("export const CONCEPTS");
   const pathsStart = src.indexOf("export const PATHS");
@@ -202,12 +199,16 @@ export function build() {
   const relations = relationGraph();
   const relationDanglingCount = relationDangling().length;
   const agents = collectAgents();
+  const markdown = collectMarkdown();
+  const claims = collectClaims();
 
   return {
     generatedBy: "scripts/audit-site.mjs",
     counts: {
       posts: content.posts,
-      articles: agents?.counts.articles ?? content.posts,
+      published: content.published,
+      drafts: content.drafts,
+      articles: agents?.counts.articles ?? content.published,
       projects: agents?.counts.projects ?? null,
       concepts: agents?.counts.concepts ?? null,
       chapters: agents?.counts.chapters ?? null,
@@ -218,9 +219,10 @@ export function build() {
       redirects: routes?.redirects ?? null,
     },
     relations: {
+      vocabulary: relations.vocabulary,
       counts: relations.counts,
       absent: relations.absent,
-      edges: relations.edges,
+      edgeTotal: Object.values(relations.counts).reduce((a, b) => a + b, 0),
       dangling: relationDanglingCount,
     },
     agent: agents
@@ -233,10 +235,28 @@ export function build() {
           findings: agents.findings.length,
         }
       : null,
+    markdown: markdown
+      ? {
+          mirrors: markdown.mirrors.length,
+          fatal: markdown.fatal.length,
+          findings: markdown.findings.length,
+        }
+      : null,
+    claims: claims
+      ? {
+          claims: claims.claims,
+          evidence: claims.evidence,
+          proposals: claims.proposals,
+          fatal: claims.fatal.length,
+          findings: claims.findings.length,
+        }
+      : null,
     fatal:
       content.fatal.length +
       (buildRes?.fatal.length ?? 0) +
-      (agents?.fatal.length ?? 0),
+      (agents?.fatal.length ?? 0) +
+      (markdown?.fatal.length ?? 0) +
+      (claims?.fatal.length ?? 0),
     defects: defects.length,
     advisory: advisory.length,
     byKind: byKind([...defects, ...advisory]),
@@ -298,6 +318,16 @@ export function diff(base, next) {
   const nd = next.relations?.dangling ?? 0;
   if (nd > bd) regressions.push(`dangling relations: ${bd} -> ${nd}`);
   else if (nd < bd) improvements.push(`dangling relations: ${bd} -> ${nd}`);
+
+  const bm = base.markdown?.fatal ?? 0;
+  const nm = next.markdown?.fatal ?? 0;
+  if (nm > bm) regressions.push(`markdown fatal: ${bm} -> ${nm}`);
+  else if (nm < bm) improvements.push(`markdown fatal: ${bm} -> ${nm}`);
+
+  const bcl = base.claims?.fatal ?? 0;
+  const ncl = next.claims?.fatal ?? 0;
+  if (ncl > bcl) regressions.push(`claims fatal: ${bcl} -> ${ncl}`);
+  else if (ncl < bcl) improvements.push(`claims fatal: ${bcl} -> ${ncl}`);
 
   const a = new Set(base.defectList);
   const b = new Set(next.defectList);
