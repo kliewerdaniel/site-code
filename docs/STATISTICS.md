@@ -58,7 +58,7 @@ The master index (`/agents/index.json`) lists 9 resources and reports 603.0 KB i
 
 | Gate | Result |
 |---|---|
-| Corpus conformance | 0 error(s), 10 warning(s), 523 info |
+| Corpus conformance | 0 error(s), 10 warning(s), 529 info |
 | Content audit | 0 fatal, 0 defect, 0 advisory |
 
 ## Notes

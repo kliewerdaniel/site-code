@@ -8,7 +8,7 @@
 // and enhances the list into a graph with a detail panel. The rendered node set
 // is bounded; the layout is deterministic.
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import {
   computeLayout,
   filterEdges,
@@ -62,6 +62,14 @@ const TYPE_RADII: Record<ExplorerNodeType, number> = {
 
 const MAX_LISTED = 400;
 
+// Mount detection without setState inside an effect: useSyncExternalStore
+// deliberately returns the server snapshot during SSR and hydration, then the
+// client snapshot once the component is live. react-hooks/set-state-in-effect
+// rejects the old setMounted(true) pattern in eslint-config-next 16.4.6.
+const subscribeNever = () => () => {};
+const clientMounted = () => true;
+const serverMounted = () => false;
+
 function toggle(set: Set<string>, value: string): Set<string> {
   const next = new Set(set);
   if (next.has(value)) next.delete(value);
@@ -76,7 +84,7 @@ export function GraphExplorer({
   data: ExplorerData;
   initialSelected: string | null;
 }) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribeNever, clientMounted, serverMounted);
   const [query, setQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState<Set<string>>(new Set());
   const [relFilter, setRelFilter] = useState<Set<string>>(new Set());
@@ -88,7 +96,6 @@ export function GraphExplorer({
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    setMounted(true);
     let cancelled = false;
     (async () => {
       try {

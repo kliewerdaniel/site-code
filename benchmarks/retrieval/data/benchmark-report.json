@@ -23,7 +23,7 @@
       "falseSupportRate": 1,
       "bytes": 0,
       "requestsPerQuery": 0,
-      "latencyMsPerQuery": 10.785147266666668
+      "latencyMsPerQuery": 10.697593233333338
     },
     "B_catalog_graph_html": {
       "questions": 30,
@@ -35,7 +35,7 @@
       "falseSupportRate": 0.3333333333333333,
       "bytes": 10998041,
       "requestsPerQuery": 2.6333333333333333,
-      "latencyMsPerQuery": 0.21728463333333253
+      "latencyMsPerQuery": 0.217149933333341
     },
     "C_catalog_graph_markdown": {
       "questions": 30,
@@ -47,7 +47,7 @@
       "falseSupportRate": 0.5,
       "bytes": 1870067,
       "requestsPerQuery": 2.566666666666667,
-      "latencyMsPerQuery": 0.17083473333332885
+      "latencyMsPerQuery": 0.17259993333332962
     }
   },
   "oneTimeBytes": {
