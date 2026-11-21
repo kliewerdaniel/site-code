@@ -6,8 +6,8 @@
 
 | Count | Value |
 |---|---|
-| Source files | 200 |
-| Published articles | 198 |
+| Source files | 202 |
+| Published articles | 200 |
 | Drafts (excluded) | 2 |
 | Projects | 12 |
 | Concepts | 8 |
@@ -17,7 +17,7 @@
 | Claims | 109 |
 | Evidence records | 109 |
 | Non-authoritative proposals | 10 |
-| Markdown mirrors | 198 |
+| Markdown mirrors | 200 |
 
 ## Relation graph by type
 
@@ -42,17 +42,17 @@
 
 | Path | Type | Bytes | sha256 (first 12) |
 |---|---|---|---|
-| `/llms.txt` | text/plain | 3174 | `39b266f154a7` |
-| `/llms-full.txt` | text/plain | 149131 | `e3a4e54c6b9b` |
-| `/agents/index.json` | application/json | 3782 | `368462bef408` |
-| `/agents/catalog.json` | application/json | 209348 | `d77220335ac3` |
+| `/llms.txt` | text/plain | 3174 | `a7cb663b144c` |
+| `/llms-full.txt` | text/plain | 150533 | `e6222fb70c4f` |
+| `/agents/index.json` | application/json | 3782 | `459de245f014` |
+| `/agents/catalog.json` | application/json | 211169 | `4d7e16477ce0` |
 | `/agents/graph.json` | application/json | 62846 | `7e0086db7151` |
 | `/agents/book.json` | application/json | 18077 | `8eab67fb31c3` |
 | `/agents/claims.json` | application/json | 108122 | `2cd3d80305aa` |
 | `/agents/evidence.json` | application/json | 52142 | `d224cc144ec1` |
 | `/agents/proposals.json` | application/json | 7641 | `05fad083b329` |
 
-The master index (`/agents/index.json`) lists 9 resources and reports 599.9 KB in total.
+The master index (`/agents/index.json`) lists 9 resources and reports 603.0 KB in total.
 
 ## Validation
 

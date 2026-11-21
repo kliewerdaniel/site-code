@@ -8,7 +8,7 @@
   },
   "localOnly": true,
   "corpus": {
-    "articles": 198,
+    "articles": 200,
     "graphEdges": 98,
     "claims": 109
   },
@@ -23,7 +23,7 @@
       "falseSupportRate": 1,
       "bytes": 0,
       "requestsPerQuery": 0,
-      "latencyMsPerQuery": 10.005447199999997
+      "latencyMsPerQuery": 10.785147266666668
     },
     "B_catalog_graph_html": {
       "questions": 30,
@@ -33,9 +33,9 @@
       "citationAccuracy": 1,
       "passageRecall": 0.2857142857142857,
       "falseSupportRate": 0.3333333333333333,
-      "bytes": 10934797,
+      "bytes": 10998041,
       "requestsPerQuery": 2.6333333333333333,
-      "latencyMsPerQuery": 0.17976806666667264
+      "latencyMsPerQuery": 0.21728463333333253
     },
     "C_catalog_graph_markdown": {
       "questions": 30,
@@ -47,13 +47,13 @@
       "falseSupportRate": 0.5,
       "bytes": 1870067,
       "requestsPerQuery": 2.566666666666667,
-      "latencyMsPerQuery": 0.15927636666667316
+      "latencyMsPerQuery": 0.17083473333332885
     }
   },
   "oneTimeBytes": {
-    "A_crawling": 32516375,
-    "B_catalog_graph_html": 272194,
-    "C_catalog_graph_markdown": 272194
+    "A_crawling": 33058424,
+    "B_catalog_graph_html": 274015,
+    "C_catalog_graph_markdown": 274015
   },
   "questions": [
     {
