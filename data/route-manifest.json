@@ -2,7 +2,7 @@
   "generatedFrom": "scripts/route-manifest.mjs",
   "counts": {
     "static": 13,
-    "blogPosts": 200,
+    "blogPosts": 201,
     "dynamicRoutes": 23,
     "handlers": 10,
     "removedRoutes": 12,
@@ -223,7 +223,8 @@
     "/blog/2026-11-12-compiling-a-website-for-agents",
     "/blog/2026-11-13-productizing-the-knowledge-compiler",
     "/blog/2026-11-18-running-zcode-agent-with-local-ai",
-    "/blog/2026-11-20-calibrating-a-terminal-bench-task-agents-could-not-just-read"
+    "/blog/2026-11-20-calibrating-a-terminal-bench-task-agents-could-not-just-read",
+    "/blog/2026-11-21-what-would-count-as-evidence"
   ],
   "dynamic": [
     "/concepts/creative-automation",
