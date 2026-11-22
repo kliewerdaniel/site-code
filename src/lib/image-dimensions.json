@@ -726,5 +726,25 @@
   "/images/impossible-shot-contact-sheet.jpg": {
     "width": 1200,
     "height": 1212
+  },
+  "/images/2026-11-22-raea-control-plane.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/images/2026-11-22-opening-point.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/images/2026-11-22-execution-boundary.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/images/2026-11-22-sovereign-observatory.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/images/2026-11-22-closing-card.jpg": {
+    "width": 1200,
+    "height": 675
   }
 }
