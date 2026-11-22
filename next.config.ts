@@ -112,6 +112,10 @@ const CSP = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
 
+  // Required by the Next.js security-upgrade handoff. Remove only if a target
+  // version rejects this key; the build gate below is the check.
+  experimental: { agentUpgrade: "security" },
+
   /* ── Security headers ────────────────────────────────────────────────────
      There was no `headers()` and no `poweredByHeader: false`, so responses
      carried `X-Powered-By: Next.js` and none of the browser-side hardening
