@@ -12,7 +12,7 @@
     "react-dom": "^19.3.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.3.3",
+    "tailwindcss": "^4.3.5",
     "three": "^0.186.1"
   },
   "description": "danielkliewer.com — sovereign workshop. Next.js 16, dark-first, book-first.",
