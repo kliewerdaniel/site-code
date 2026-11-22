@@ -5,10 +5,10 @@
   "summary": {
     "errors": 0,
     "warnings": 10,
-    "info": 532,
-    "articles": 201,
+    "info": 533,
+    "articles": 202,
     "graphEdges": 98,
-    "mirrors": 201
+    "mirrors": 202
   },
   "errors": [],
   "warnings": [
@@ -381,6 +381,7 @@
     "content: 2026-11-20-calibrating-a-terminal-bench-task-agents-could-not-just-read.md: title is 77 chars (> 70)",
     "content: 2026-11-21-what-would-count-as-evidence.md: description is 224 chars (> 160)",
     "content: 2026-11-21-what-would-count-as-evidence.md: title is 72 chars (> 70)",
+    "content: 2026-11-22-unified-local-creative-production-system.md: description is 204 chars (> 160)",
     "build: /: <title> is 74 chars (> 70)",
     "build: /blog/2026-11-21-what-would-count-as-evidence: <title> is 72 chars (> 70)",
     "build: /blog/2026-11-20-calibrating-a-terminal-bench-task-agents-could-not-just-read: <title> is 77 chars (> 70)",
@@ -545,22 +546,22 @@
     "build: /blog/2024-10-12-django-react: <title> is 95 chars (> 70)",
     "build: /blog/2024-10-09-how-to-build-a-persona-based-blog-post-generator-with-large-language-models: <title> is 93 chars (> 70)",
     "build: /blog/2024-10-04-detailed-description-of-insight-journal: <title> is 77 chars (> 70)",
-    "/llms.txt: 3174 bytes, sha256:dce20a269b8e",
-    "/llms-full.txt: 151172 bytes, sha256:0d40f9b5e68b",
-    "/agents/catalog.json: 212024 bytes, sha256:5b5e39e63594",
+    "/llms.txt: 3174 bytes, sha256:3d07101fa870",
+    "/llms-full.txt: 151799 bytes, sha256:3c498e6b93ba",
+    "/agents/catalog.json: 212889 bytes, sha256:2d8416320ca5",
     "/agents/graph.json: 62846 bytes, sha256:7e0086db7151",
     "/agents/book.json: 18077 bytes, sha256:8eab67fb31c3",
     "/agents/claims.json: 108122 bytes, sha256:2cd3d80305aa",
     "/agents/evidence.json: 52142 bytes, sha256:d224cc144ec1",
     "/agents/proposals.json: 7641 bytes, sha256:05fad083b329",
-    "/agents/index.json: 3782 bytes, sha256:c38fcea5e15e",
-    "201 markdown mirrors verified against the deterministic render",
+    "/agents/index.json: 3782 bytes, sha256:7a12f73dcd06",
+    "202 markdown mirrors verified against the deterministic render",
     "2 drafts excluded from the corpus"
   ],
   "checks": {
     "content": {
       "fatal": 0,
-      "findings": 367
+      "findings": 368
     },
     "build": {
       "fatal": 0,

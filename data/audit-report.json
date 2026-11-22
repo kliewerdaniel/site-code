@@ -1,17 +1,17 @@
 {
   "generatedBy": "scripts/audit-site.mjs",
   "counts": {
-    "posts": 203,
-    "published": 201,
+    "posts": 204,
+    "published": 202,
     "drafts": 2,
-    "articles": 201,
+    "articles": 202,
     "projects": 12,
     "concepts": 8,
     "chapters": 24,
     "verifiedChapterLinks": 0,
-    "contentUrls": 236,
-    "sitemapUrls": 237,
-    "builtPages": 236,
+    "contentUrls": 237,
+    "sitemapUrls": 238,
+    "builtPages": 237,
     "redirects": 35
   },
   "relations": {
@@ -74,7 +74,7 @@
       },
       {
         "path": "/llms-full.txt",
-        "bytes": 151172,
+        "bytes": 151799,
         "contentType": "text/plain; charset=utf-8"
       },
       {
@@ -84,7 +84,7 @@
       },
       {
         "path": "/agents/catalog.json",
-        "bytes": 212024,
+        "bytes": 212889,
         "contentType": "application/json; charset=utf-8"
       },
       {
@@ -114,7 +114,7 @@
       }
     ],
     "counts": {
-      "articles": 201,
+      "articles": 202,
       "drafts": 2,
       "projects": 12,
       "concepts": 8,
@@ -143,7 +143,7 @@
     "findings": 0
   },
   "markdown": {
-    "mirrors": 201,
+    "mirrors": 202,
     "fatal": 0,
     "findings": 0
   },
@@ -156,10 +156,10 @@
   },
   "fatal": 0,
   "defects": 10,
-  "advisory": 357,
+  "advisory": 358,
   "byKind": {
     "canonical-mismatch": 10,
-    "description-long": 181,
+    "description-long": 182,
     "title-long": 163,
     "description-missing": 13
   },
@@ -233,15 +233,15 @@
     ]
   },
   "routes": {
-    "contentUrls": 236,
+    "contentUrls": 237,
     "handlers": 10,
     "redirects": 35,
     "not200": 0
   },
   "build": {
-    "sitemapUrls": 237,
-    "checked": 236,
-    "builtPages": 236,
+    "sitemapUrls": 238,
+    "checked": 237,
+    "builtPages": 237,
     "fatal": 0
   },
   "defectList": [
@@ -448,6 +448,7 @@
     "description-long:2026-11-18-running-zcode-agent-with-local-ai.md",
     "description-long:2026-11-20-calibrating-a-terminal-bench-task-agents-could-not-just-read.md",
     "description-long:2026-11-21-what-would-count-as-evidence.md",
+    "description-long:2026-11-22-unified-local-creative-production-system.md",
     "description-missing:2024-11-27-instagram-feed-summarizer.md",
     "description-missing:2024-11-27-reddit-blog-generator.md",
     "description-missing:2024-11-27-swarm-autogen.md",
@@ -1962,6 +1963,13 @@
       "kind": "description-long",
       "file": "2026-11-21-what-would-count-as-evidence.md",
       "detail": "description is 224 chars (> 160)"
+    },
+    {
+      "id": "description-long:2026-11-22-unified-local-creative-production-system.md",
+      "severity": "advisory",
+      "kind": "description-long",
+      "file": "2026-11-22-unified-local-creative-production-system.md",
+      "detail": "description is 204 chars (> 160)"
     },
     {
       "id": "description-missing:2024-11-27-instagram-feed-summarizer.md",
